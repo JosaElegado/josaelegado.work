@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="styles/base.css" />
 <link rel="stylesheet" href="styles/components.css" />
 <link rel="stylesheet" href="styles/animations.css" />
+<link rel="stylesheet" href="styles/home.css" />
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -54,28 +55,81 @@
 </nav>
 
 <main id="main">
-  <section class="chapter-stub">
-    <div class="wrap chapter-stub__inner" data-reveal>
+  <section class="section">
+    <div class="wrap" data-reveal>
       <p class="eyebrow">Chapter 02</p>
       <h1>The Work</h1>
       <p class="lede">
         Every venture becomes a journal entry here — background, the problem,
-        the journey, process notes, lessons learned, sketches, timelines, and
-        downloads. Apolaki and Rubeo Agrilabs are first in line. This chapter
-        is still being written.
+        the journey, process notes, and the lessons that stick. Two are far
+        enough along to write about: Apolaki, which has a full case file, and
+        Rubeo Agrilabs, which is still early enough that these are field
+        notes rather than a finished story.
       </p>
-      <div style="display:flex; flex-wrap:wrap; gap: var(--space-2); margin-bottom: var(--space-7);">
-        <span class="tag">Background</span>
-        <span class="tag">Problem</span>
-        <span class="tag">Journey &amp; process</span>
-        <span class="tag">Lessons learned</span>
-        <span class="tag">Timeline</span>
-        <span class="tag">Downloads</span>
+    </div>
+  </section>
+
+  <section class="section section--beige torn-top">
+    <div class="wrap">
+      <div data-reveal-group>
+        <article class="work-entry" id="apolaki">
+          <div class="work-entry__figure">
+            <div class="work-entry__sketch wear-2 rot-2">
+              <span class="tape tape--sm rot-3" style="top:-10px; left:20px;" aria-hidden="true"></span>
+              <svg viewBox="0 0 320 200" role="img" aria-label="Sketch of a solar panel installation with a dashed adoption curve">
+                <g stroke="var(--color-eggplant)" stroke-width="1.6" fill="none" opacity="0.85">
+                  <path d="M40 150h80l-14-24H54z"/>
+                  <line x1="40" y1="150" x2="120" y2="150"/>
+                  <line x1="80" y1="126" x2="80" y2="80"/>
+                  <path d="M62 92h36v-8H62z"/>
+                  <path d="M150 150c30-70 70-70 100 0" stroke-dasharray="2 8"/>
+                </g>
+                <circle cx="250" cy="60" r="18" fill="none" stroke="var(--color-lavender)" stroke-width="2"/>
+                <text x="40" y="30" font-family="Caveat, cursive" font-size="20" fill="var(--color-ink-soft)">adoption, not just installs</text>
+              </svg>
+            </div>
+          </div>
+          <div class="work-entry__text">
+            <span class="tag tag--eggplant">Renewable Energy · Active</span>
+            <h2>Apolaki: getting renewable energy adopted, not just installed</h2>
+            <p>On the gap between a working technology and a household that actually chooses it — the policy maze, the financing gap, and the very human reasons adoption stalls.</p>
+            <a class="ink-link" href="work-apolaki.html">Read the full case file →</a>
+          </div>
+        </article>
+
+        <article class="work-entry work-entry--reverse" id="rubeo">
+          <div class="work-entry__figure">
+            <div class="work-entry__sketch wear-2 rot-4">
+              <span class="tape tape--sm rot-1" style="top:-10px; right:24px;" aria-hidden="true"></span>
+              <svg viewBox="0 0 320 200" role="img" aria-label="Sketch of a seedling with field observation markers">
+                <g stroke="var(--color-eggplant)" stroke-width="1.6" fill="none" opacity="0.85">
+                  <path d="M160 150c0-40 -10-60 0-90"/>
+                  <path d="M160 130c-20-6-30-24-26-40 18 2 30 16 26 40z"/>
+                  <path d="M160 108c20-6 30-22 26-38-18 2-30 14-26 38z"/>
+                  <line x1="120" y1="150" x2="200" y2="150"/>
+                </g>
+                <g stroke="var(--color-lavender)" stroke-width="1.6" fill="none">
+                  <circle cx="230" cy="70" r="3"/><circle cx="250" cy="90" r="3"/><circle cx="230" cy="110" r="3"/>
+                  <path d="M230 70v40M230 90h20" stroke-dasharray="1 6"/>
+                </g>
+                <text x="40" y="30" font-family="Caveat, cursive" font-size="20" fill="var(--color-ink-soft)">field observations</text>
+              </svg>
+            </div>
+          </div>
+          <div class="work-entry__text">
+            <span class="tag tag--eggplant">Agri-Technology · Building</span>
+            <h2>Rubeo Agrilabs: technology that starts on the farm, not the whiteboard</h2>
+            <p>Notes from building agri-tech that has to survive real soil, real weather, and real margins. Early enough that there's no finished case file yet — check back as this one develops.</p>
+            <span class="stamp">field notes in progress</span>
+          </div>
+        </article>
       </div>
-      <div class="chapter-stub__actions">
-        <span class="stamp">in progress</span>
-        <a class="ink-link" href="index.html">← Back to the journal home</a>
-      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap chapter-stub__actions" data-reveal>
+      <a class="ink-link" href="index.html">← Back to the journal home</a>
     </div>
   </section>
 </main>

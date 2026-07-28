@@ -44,11 +44,13 @@
   --color-status-catalogued: var(--color-ink-soft);
 
   /* ---- Typography ----
-     Three faces, three jobs: Fraunces carries editorial authority
+     Four faces, four jobs: Fraunces carries editorial authority
      (headlines and long-form body, same family, different optical size).
      Inter stays invisible as interface type. Space Mono is the archive's
-     own voice — catalog numbers, dates, coordinates, status. No hand
-     lettering anywhere in this system. */
+     own voice — catalog numbers, dates, coordinates, status. Caveat is the
+     hand in the margins — annotations, stamps, and the notebook motifs
+     that carry the field-journal concept; used deliberately, never for
+     body copy or interface labels. */
   --font-serif: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "Space Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
