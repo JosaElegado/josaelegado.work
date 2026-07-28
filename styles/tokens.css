@@ -1,0 +1,138 @@
+/* ==========================================================================
+   DESIGN TOKENS — Josa Elegado / The Archive
+   Single source of truth for color, type, spacing, motion.
+   Recreate these as Wix Studio design variables / global styles.
+   ========================================================================== */
+
+:root {
+  /* ---- Color: paper ---- */
+  --color-paper: #faf6ef;          /* primary background, warm white */
+  --color-paper-raised: #fffdf9;   /* surfaces sitting "above" the page */
+  --color-beige: #f0e6d6;          /* soft beige paper, section blocks */
+  --color-beige-deep: #e6d7bd;     /* deeper beige, borders / texture */
+
+  /* ---- Color: ink ---- */
+  --color-ink: #24211e;            /* primary text, dark charcoal */
+  --color-ink-soft: #58524a;       /* secondary text */
+  --color-ink-faint: #8c8479;      /* meta text, timestamps, captions */
+  --color-ink-line: rgba(36, 33, 30, 0.13); /* hairline rules on paper */
+  --color-ink-line-strong: rgba(36, 33, 30, 0.24);
+
+  /* ---- Color: eggplant — the archive's ink. Used sparingly: index
+     numbers, rule lines, one primary action. Not a decorative accent. ---- */
+  --color-eggplant: #3b2142;
+  --color-eggplant-deep: #271229;
+  --color-eggplant-tint: rgba(59, 33, 66, 0.07);
+
+  /* ---- Color: lavender — reserved for diagrams and maps only (ink tint
+     on evidence plates). Never used as UI color. ---- */
+  --color-lavender: #a893bf;
+  --color-lavender-soft: #eae2f0;
+
+  --color-on-eggplant: #f4ecf6;
+  --color-on-ink: #f7f3ea;
+
+  /* ---- Color: paper artifacts (tape, sticky notes) ---- */
+  --color-kraft: #cbb28c;
+  --color-kraft-deep: #ab8f63;
+  --color-sticky: #f5efde;
+  --color-sticky-deep: #e8dcbc;
+
+  /* ---- Status glyphs (archive processing states) ---- */
+  --color-status-process: var(--color-eggplant);
+  --color-status-accessioned: var(--color-ink-faint);
+  --color-status-catalogued: var(--color-ink-soft);
+
+  /* ---- Typography ----
+     Three faces, three jobs: Fraunces carries editorial authority
+     (headlines and long-form body, same family, different optical size).
+     Inter stays invisible as interface type. Space Mono is the archive's
+     own voice — catalog numbers, dates, coordinates, status. No hand
+     lettering anywhere in this system. */
+  --font-serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-hand: "Caveat", cursive;
+
+  --serif-personality: "SOFT" 40, "WONK" 1;
+
+  --text-xs:   clamp(0.72rem, 0.70rem + 0.10vw, 0.78rem);
+  --text-sm:   clamp(0.84rem, 0.81rem + 0.14vw, 0.92rem);
+  --text-base: clamp(1rem, 0.96rem + 0.18vw, 1.09rem);
+  --text-md:   clamp(1.15rem, 1.08rem + 0.32vw, 1.35rem);
+  --text-lg:   clamp(1.35rem, 1.22rem + 0.6vw, 1.75rem);
+  --text-xl:   clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+  --text-2xl:  clamp(2.25rem, 1.8rem + 2.1vw, 3.5rem);
+  --text-3xl:  clamp(2.9rem, 2.2rem + 3.2vw, 4.75rem);
+  --text-4xl:  clamp(3.6rem, 2.4rem + 6vw, 7.5rem);
+
+  --leading-tight: 1.06;
+  --leading-snug: 1.28;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.75;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em;
+  --tracking-wider: 0.14em;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+  --space-11: 6.5rem;
+  --space-12: 8rem;
+  --space-13: 10rem;
+
+  /* ---- Layout ---- */
+  --content-width: 78rem;
+  --content-width-narrow: 42rem;
+  --content-width-text: 34rem;
+  --page-margin: clamp(1.25rem, 4vw, 4rem);
+  --grid-gap: clamp(1rem, 2vw, 1.75rem);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* ---- Elevation ----
+     Photographed shadows, not CSS shadows: several soft layers instead of
+     one hard one, warm (not neutral-black), and always cast down-and-right
+     — one consistent light source across the whole page. Nothing floats;
+     everything rests. */
+  --shadow-paper:
+    0 1px 1px rgba(41, 30, 20, 0.09),
+    0 3px 5px rgba(41, 30, 20, 0.08),
+    0 9px 14px -6px rgba(41, 30, 20, 0.14),
+    0 20px 30px -12px rgba(41, 30, 20, 0.12);
+  --shadow-paper-lift:
+    0 2px 2px rgba(41, 30, 20, 0.10),
+    0 6px 10px rgba(41, 30, 20, 0.10),
+    0 16px 24px -8px rgba(41, 30, 20, 0.18),
+    0 32px 48px -16px rgba(41, 30, 20, 0.18);
+  --shadow-deep:
+    0 3px 3px rgba(41, 30, 20, 0.10),
+    0 10px 16px rgba(41, 30, 20, 0.12),
+    0 26px 40px -10px rgba(41, 30, 20, 0.22),
+    0 50px 70px -20px rgba(41, 30, 20, 0.20);
+
+  /* ---- Motion — editorial pagination, not physical bounce ---- */
+  --ease-ink: cubic-bezier(0.22, 0.61, 0.25, 1);
+  --ease-page: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-slow: 560ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

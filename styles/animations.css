@@ -1,0 +1,70 @@
+/* ==========================================================================
+   ANIMATIONS — scroll reveal, hero entrance, small delight
+   Reveal is progressive enhancement: [data-reveal] is visible by default,
+   JS adds .is-observed then toggles .is-visible via IntersectionObserver.
+   ========================================================================== */
+
+[data-reveal].is-observed {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--duration-slow) var(--ease-page), transform var(--duration-slow) var(--ease-page);
+}
+
+[data-reveal].is-observed.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal-group].is-observed > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--duration-slow) var(--ease-page), transform var(--duration-slow) var(--ease-page);
+}
+
+[data-reveal-group].is-observed.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal-group].is-observed.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+[data-reveal-group].is-observed.is-visible > *:nth-child(2) { transition-delay: 90ms; }
+[data-reveal-group].is-observed.is-visible > *:nth-child(3) { transition-delay: 180ms; }
+[data-reveal-group].is-observed.is-visible > *:nth-child(4) { transition-delay: 270ms; }
+[data-reveal-group].is-observed.is-visible > *:nth-child(5) { transition-delay: 360ms; }
+[data-reveal-group].is-observed.is-visible > *:nth-child(6) { transition-delay: 450ms; }
+
+@keyframes draw-line {
+  from { stroke-dashoffset: var(--line-length, 300); }
+  to { stroke-dashoffset: 0; }
+}
+
+.draw-in path {
+  stroke-dasharray: var(--line-length, 300);
+  stroke-dashoffset: var(--line-length, 300);
+  animation: draw-line var(--duration-slow) var(--ease-ink) forwards;
+  animation-delay: 300ms;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-fade-1 { animation: fade-up var(--duration-slow) var(--ease-page) both; animation-delay: 60ms; }
+.hero-fade-2 { animation: fade-up var(--duration-slow) var(--ease-page) both; animation-delay: 180ms; }
+.hero-fade-3 { animation: fade-up var(--duration-slow) var(--ease-page) both; animation-delay: 300ms; }
+.hero-fade-4 { animation: fade-up var(--duration-slow) var(--ease-page) both; animation-delay: 420ms; }
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.travel-strip__track {
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.travel-strip:hover .travel-strip__track,
+.travel-strip:focus-within .travel-strip__track {
+  animation-play-state: paused;
+}

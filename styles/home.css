@@ -1,0 +1,273 @@
+/* ==========================================================================
+   HOME — page-specific layout
+   ========================================================================== */
+
+/* ---- Hero ---- */
+
+.hero { padding-block: var(--space-9) var(--space-8); position: relative; }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: var(--space-9);
+  align-items: center;
+}
+
+.hero__text .eyebrow { margin-bottom: var(--space-5); }
+
+.hero__text h1 { font-size: var(--text-3xl); }
+
+.hero__role { color: var(--color-eggplant); font-style: italic; }
+
+.hero__text .lede { margin-top: var(--space-6); max-width: 44ch; }
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+
+/* Hero collage — a desk arrangement, not a centered illustration.
+   Everything is absolutely placed within a fixed-ratio stage so the
+   pieces can overlap the way real objects on a desk would. */
+
+.hero__collage {
+  position: relative;
+  height: 500px;
+  perspective: 1400px;
+}
+
+.hero__polaroid {
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  width: 46%;
+  z-index: 2;
+  transform: rotate(-3deg) rotateY(-5deg) rotateX(2deg);
+  transform-style: preserve-3d;
+}
+
+.hero__polaroid .polaroid__photo { aspect-ratio: 4/5; }
+
+.hero__notebook {
+  position: absolute;
+  right: 0;
+  bottom: 6%;
+  width: 60%;
+  z-index: 1;
+  transform: rotate(2deg) rotateY(4deg) rotateX(-1deg);
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 3px 3px rgba(41,30,20,0.10)) drop-shadow(0 18px 26px rgba(41,30,20,0.18));
+}
+
+.hero__notebook svg { width: 100%; height: auto; display: block; }
+
+.hero__stamp {
+  position: absolute;
+  left: 30%;
+  bottom: 2%;
+  width: 210px;
+  z-index: 3;
+  filter: drop-shadow(0 4px 6px rgba(41,30,20,0.14));
+}
+
+.hero__stamp svg { width: 100%; height: auto; display: block; }
+
+.hero__tape-a { top: -12px; left: 30%; z-index: 3; }
+
+/* ---- Intro strip ---- */
+
+.intro-strip {
+  padding-block: var(--space-9);
+  background: var(--color-beige);
+}
+
+.intro-strip__row {
+  display: grid;
+  grid-template-columns: 0.55fr 1.45fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.intro-strip p.font-serif {
+  font-size: var(--text-md);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-snug);
+}
+
+/* ---- Section scaffolding ---- */
+
+.section-head__title { margin-top: var(--space-3); }
+
+/* ---- Currently: scattered polaroid row ---- */
+
+.venture-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-7);
+  flex-wrap: wrap;
+}
+
+.venture-item { width: 240px; }
+.venture-item:nth-child(2) { margin-top: var(--space-8); }
+.venture-item:nth-child(3) { margin-top: var(--space-2); }
+.venture-item:nth-child(4) { margin-top: var(--space-9); }
+
+.venture-item .polaroid__photo { aspect-ratio: 1/1; }
+
+.venture-item__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: var(--space-3);
+  gap: var(--space-2);
+}
+
+.venture-item__name {
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  font-variation-settings: var(--serif-personality);
+}
+
+.venture-item__excerpt {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-relaxed);
+}
+
+.venture-other {
+  width: 230px;
+  margin-top: var(--space-6);
+}
+
+.venture-other__label {
+  font-family: var(--font-hand);
+  font-size: var(--text-lg);
+  color: var(--color-eggplant);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.venture-other p {
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-relaxed);
+}
+
+/* ---- Selected Work: alternating editorial spread ---- */
+
+.work-entry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-9);
+  align-items: center;
+  padding-block: var(--space-9);
+}
+
+.work-entry + .work-entry { border-top: 1px solid var(--color-ink-line); }
+
+.work-entry--reverse .work-entry__figure { order: 2; }
+.work-entry--reverse .work-entry__text { order: 1; }
+
+.work-entry__figure { position: relative; }
+
+.work-entry__sketch {
+  position: relative;
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-ink-line);
+  border-radius: 2px 4px 1px 3px;
+  padding: var(--space-6);
+  box-shadow: var(--wear-shadow, var(--shadow-paper));
+}
+
+.work-entry__sketch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 16% 14%, rgba(255, 253, 246, 0.5), transparent 55%),
+    radial-gradient(150% 110% at 92% 94%, rgba(41, 30, 20, 0.07), transparent 60%);
+  mix-blend-mode: multiply;
+}
+
+.work-entry__sketch svg { position: relative; width: 100%; height: auto; }
+
+.work-entry__text .tag { margin-bottom: var(--space-4); }
+
+.work-entry__text h3 { font-size: var(--text-xl); margin-bottom: var(--space-4); }
+
+.work-entry__text p { color: var(--color-ink-soft); line-height: var(--leading-relaxed); margin-bottom: var(--space-5); }
+
+/* ---- Field notes: taped photo cards ---- */
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-7);
+}
+
+.notes-grid .entry-card:nth-child(2) { margin-top: var(--space-5); }
+
+.note-card__photo {
+  position: relative;
+  aspect-ratio: 16/10;
+  margin: calc(var(--space-6) * -1) calc(var(--space-6) * -1) 0;
+  overflow: hidden;
+}
+
+.note-card__label {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+}
+
+.section-head--with-note {
+  align-items: flex-start;
+}
+
+/* ---- Travel: polaroid stamps + map fragment ---- */
+
+.travel-section { position: relative; }
+
+.travel-strip { overflow: hidden; padding-block: var(--space-4); }
+
+.travel-strip__track { display: flex; width: max-content; gap: var(--space-6); }
+
+.travel-polaroid { width: 168px; flex: 0 0 auto; }
+.travel-polaroid .polaroid__photo { aspect-ratio: 4/5; }
+.travel-polaroid .polaroid__caption { font-size: var(--text-base); }
+
+.map-fragment {
+  position: absolute;
+  right: var(--page-margin);
+  top: -32px;
+  width: 110px;
+  z-index: 4;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 960px) {
+  .hero__grid { grid-template-columns: 1fr; }
+  .hero__collage { order: -1; height: 380px; max-width: 380px; margin-inline: auto; width: 100%; }
+  .intro-strip__row { grid-template-columns: 1fr; gap: var(--space-4); }
+  .work-entry,
+  .work-entry--reverse { grid-template-columns: 1fr; }
+  .work-entry--reverse .work-entry__figure,
+  .work-entry--reverse .work-entry__text { order: initial; }
+  .notes-grid { grid-template-columns: 1fr; }
+  .notes-grid .entry-card:nth-child(2) { margin-top: 0; }
+  .map-fragment { display: none; }
+}
+
+@media (max-width: 640px) {
+  .site-footer__grid { grid-template-columns: 1fr; }
+  .venture-row { gap: var(--space-6); }
+  .venture-item, .venture-other { width: 100%; max-width: 260px; }
+  .venture-item:nth-child(2),
+  .venture-item:nth-child(3),
+  .venture-item:nth-child(4) { margin-top: 0; }
+}

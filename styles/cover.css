@@ -1,0 +1,194 @@
+/* ==========================================================================
+   THE COVER — home page. Six exhibitions, none repeating:
+   1. Full-bleed map opener (image before type)
+   2. Log-line + masthead intro
+   3. In Process — the catalogue index
+   4. Pull quote — the quiet beat
+   5. Field Notes — editorial teaser
+   6. Footer
+   ========================================================================== */
+
+/* ---- 1. Opening — image first ---- */
+
+.cover-open {
+  position: relative;
+  height: 92vh;
+  min-height: 640px;
+  max-height: 920px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.cover-open__map {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translateY(-50%);
+  width: clamp(260px, 30vw, 420px);
+}
+
+.cover-open__map svg { width: 100%; height: auto; }
+
+.cover-open__caption {
+  position: relative;
+  z-index: 1;
+  padding-bottom: var(--space-8);
+}
+
+.cover-open__log {
+  position: absolute;
+  left: 6%;
+  bottom: 14%;
+  width: 200px;
+  z-index: 2;
+}
+
+/* ---- Evidence spread — real objects, composed and layered ---- */
+
+.spread-section { padding-block: var(--space-10) var(--space-11); }
+
+.spread-row + .spread-row { margin-top: var(--space-7); }
+
+.spread-status {
+  margin-top: var(--space-9);
+  margin-left: calc(-1 * var(--space-8));
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 860px) {
+  .cover-open__log { display: none; }
+  .spread-status { margin-top: var(--space-4); margin-left: 0; }
+}
+
+/* ---- 2. Masthead intro ---- */
+
+.cover-intro { padding-block: var(--space-10) var(--space-11); }
+
+.cover-intro__label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cover-intro__name {
+  font-size: var(--text-4xl);
+  line-height: 0.94;
+}
+
+.cover-intro__role {
+  display: block;
+  color: var(--color-eggplant);
+  font-style: italic;
+}
+
+.cover-intro__text { padding-top: var(--space-2); }
+
+.cover-intro__text .lede { max-width: 46ch; }
+
+.cover-intro__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+
+/* ---- 3. In Process — catalogue index ---- */
+
+.process-section { padding-block: var(--space-10) var(--space-11); }
+
+.process-aside {
+  font-size: var(--text-xs);
+}
+
+/* ---- 4. Pull quote ---- */
+
+.pull-section {
+  padding-block: var(--space-12);
+  background: var(--color-beige);
+  border-block: 1px solid var(--color-beige-deep);
+  display: flex;
+  align-items: center;
+}
+
+.pull-section .wrap { display: flex; justify-content: flex-end; }
+
+/* ---- 5. Field notes teaser ---- */
+
+.notes-section { padding-block: var(--space-11); }
+
+.notes-lead {
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-ink-line);
+  margin-bottom: var(--space-2);
+}
+
+.notes-lead__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-faint);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+.notes-lead__title { font-size: var(--text-xl); margin-bottom: var(--space-5); max-width: 20ch; }
+
+.notes-lead__excerpt {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+  max-width: 58ch;
+}
+
+.notes-lead__excerpt::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3.4em;
+  float: left;
+  line-height: 0.85;
+  padding-right: 0.08em;
+  color: var(--color-ink);
+  font-variation-settings: var(--serif-personality);
+}
+
+.notes-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-ink-line);
+  text-decoration: none;
+  color: var(--color-ink);
+}
+
+.notes-list a:hover .notes-list__title { color: var(--color-eggplant); }
+
+.notes-list__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  font-variation-settings: var(--serif-personality);
+  transition: color var(--duration-fast) var(--ease-ink);
+}
+
+.notes-list__date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-faint);
+  white-space: nowrap;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 860px) {
+  .cover-open { height: 78vh; align-items: center; }
+  .cover-open__map { right: 50%; transform: translate(50%, -50%); width: clamp(220px, 60vw, 320px); }
+  .cover-open__caption { padding-bottom: var(--space-6); }
+  .cover-intro__name { font-size: var(--text-3xl); }
+  .pull-section .wrap { justify-content: flex-start; }
+  .pull { font-size: var(--text-xl); max-width: 100%; }
+}

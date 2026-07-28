@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apolaki — Work Archive | Josa Elegado</title>
+<meta name="description" content="File 001 — Apolaki, a renewable energy adoption pilot. Current status, evidence, and open questions, documented while the work is still in progress." />
+<link rel="canonical" href="https://www.josaelegado.com/work-apolaki.html" />
+<meta name="theme-color" content="#24211e" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/animations.css" />
+<link rel="stylesheet" href="styles/dossier.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-arrow-right" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap site-header__row">
+    <a class="wordmark" href="index.html" aria-label="Josa Elegado — home">Josa Elegado<span class="wordmark__mark">.</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="story.html">Story</a></li>
+        <li><a href="work.html" aria-current="page">Work</a></li>
+        <li><a href="field-notes.html">Field Notes</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="lets-build.html" class="site-nav__cta">Let's Build</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle__lines" aria-hidden="true"><span></span><span></span><span></span></span>
+      Index
+    </button>
+  </div>
+</header>
+
+<nav id="mobile-nav" class="mobile-nav" aria-label="Section index">
+  <p class="mobile-nav__label">Index</p>
+  <ol>
+    <li><a href="story.html">Story</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="field-notes.html">Field Notes</a></li>
+    <li><a href="timeline.html">Timeline</a></li>
+    <li><a href="lets-build.html">Let's Build</a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+  <!-- ============= Opener — full-bleed schematic ============= -->
+  <section class="dossier-open">
+    <div class="dossier-open__grid" aria-hidden="true"></div>
+    <div class="dossier-open__figure" data-reveal>
+      <svg viewBox="0 0 800 400" role="img" aria-labelledby="schematic-title">
+        <title id="schematic-title">Schematic diagram of a solar micro-grid: array, inverter, storage, and household distribution</title>
+        <g stroke="var(--color-on-ink)" stroke-width="1.4" fill="none">
+          <rect x="60" y="120" width="140" height="80"/>
+          <line x1="60" y1="140" x2="200" y2="140"/>
+          <line x1="60" y1="160" x2="200" y2="160"/>
+          <line x1="60" y1="180" x2="200" y2="180"/>
+          <line x1="95" y1="120" x2="95" y2="200"/>
+          <line x1="130" y1="120" x2="130" y2="200"/>
+          <line x1="165" y1="120" x2="165" y2="200"/>
+          <line x1="130" y1="200" x2="130" y2="230"/>
+          <line x1="105" y1="230" x2="155" y2="230"/>
+        </g>
+
+        <g stroke="var(--color-on-ink)" stroke-width="1" font-family="Space Mono, monospace" font-size="8" fill="var(--color-on-ink)">
+          <line x1="60" y1="105" x2="200" y2="105"/>
+          <line x1="60" y1="100" x2="60" y2="110"/>
+          <line x1="200" y1="100" x2="200" y2="110"/>
+          <text x="130" y="96" text-anchor="middle">ARRAY — 3.2 KWP</text>
+        </g>
+
+        <line x1="200" y1="160" x2="300" y2="160" stroke="var(--color-on-ink)" stroke-width="1.4"/>
+        <rect x="300" y="140" width="72" height="40" fill="none" stroke="var(--color-on-ink)" stroke-width="1.4"/>
+        <text x="336" y="164" font-family="Space Mono, monospace" font-size="9" fill="var(--color-on-ink)" text-anchor="middle">INV</text>
+
+        <line x1="336" y1="180" x2="336" y2="228" stroke="var(--color-on-ink)" stroke-width="1.4"/>
+        <rect x="300" y="228" width="72" height="38" fill="none" stroke="var(--color-on-ink)" stroke-width="1.4"/>
+        <text x="336" y="251" font-family="Space Mono, monospace" font-size="9" fill="var(--color-on-ink)" text-anchor="middle">STORAGE</text>
+
+        <g stroke="var(--color-lavender)" stroke-width="1.1" stroke-dasharray="2 4" fill="none">
+          <path d="M372,158 C440,158 470,95 560,95"/>
+          <path d="M372,160 C440,162 470,150 560,152"/>
+          <path d="M372,163 C440,175 470,215 560,213"/>
+          <path d="M372,167 C440,205 470,272 560,270"/>
+        </g>
+
+        <g stroke="var(--color-on-ink)" stroke-width="1.2" fill="none">
+          <path d="M560,95 h34 M577,95 l-17,-14 -17,14 M560,95 v22 h34 v-22"/>
+          <path d="M560,152 h34 M577,152 l-17,-14 -17,14 M560,152 v22 h34 v-22"/>
+          <path d="M560,213 h34 M577,213 l-17,-14 -17,14 M560,213 v22 h34 v-22"/>
+          <path d="M560,270 h34 M577,270 l-17,-14 -17,14 M560,270 v22 h34 v-22"/>
+        </g>
+
+        <g font-family="Space Mono, monospace" font-size="8" fill="var(--color-ink-faint)">
+          <text x="620" y="98">HH — 01</text>
+          <text x="620" y="155">HH — 02</text>
+          <text x="620" y="216">HH — 03</text>
+          <text x="620" y="273">HH — 04</text>
+        </g>
+
+        <text x="770" y="40" text-anchor="end" font-family="Space Mono, monospace" font-size="26" fill="rgba(250,246,239,0.18)">01</text>
+      </svg>
+    </div>
+    <div class="wrap dossier-open__title">
+      <p class="eyebrow">Work — File 001</p>
+      <h1>Apolaki</h1>
+    </div>
+  </section>
+
+  <!-- ============= File header ============= -->
+  <div class="wrap">
+    <div class="file-header">
+      <div class="file-header__field"><span>Status</span><strong>In process</strong></div>
+      <div class="file-header__field"><span>Category</span><strong>Renewable Energy</strong></div>
+      <div class="file-header__field"><span>Started</span><strong>Jan 2025</strong></div>
+      <div class="file-header__field"><span>Last updated</span><strong>3 days ago</strong></div>
+      <div class="file-header__field"><span>Location</span><strong>Luzon &amp; Visayas, PH</strong></div>
+    </div>
+  </div>
+
+  <!-- ============= Narrative ============= -->
+  <section class="dossier-body">
+    <div class="wrap grid">
+      <div class="col-8">
+        <p class="dossier-body__lead font-serif-text">
+          Apolaki started as a simple question: if solar and micro-hydro systems
+          already work technically, why do so few households actually adopt
+          them once the pilot support ends? Most renewable energy programs are
+          measured by installations. This one is measured by what happens
+          twelve months after the installer leaves.
+        </p>
+
+        <h3>The problem</h3>
+        <p>
+          Technical feasibility was never the hard part. What stalls adoption is
+          upstream of the technology — financing that doesn't match how rural
+          households actually earn, cooperative governance that varies from one
+          barangay to the next, and a policy environment that changes faster
+          than a pilot can adapt to it. None of that shows up in a spec sheet.
+        </p>
+
+        <div class="plate plate--wide">
+          <div class="evidence__frame plate__frame">
+            <svg viewBox="0 0 640 280" role="img" aria-label="Line chart of household enrollment over fourteen months across three pilot sites" preserveAspectRatio="xMidYMid meet" style="background:var(--color-paper-raised);">
+              <g stroke="var(--color-ink-line-strong)" stroke-width="1">
+                <line x1="60" y1="20" x2="60" y2="230"/>
+                <line x1="60" y1="230" x2="600" y2="230"/>
+              </g>
+              <path d="M60,215 C140,205 200,190 260,160 C320,128 380,95 440,72 C500,52 560,42 600,38" fill="none" stroke="var(--color-eggplant)" stroke-width="1.8"/>
+              <path d="M60,222 C140,218 200,214 260,205 C320,196 380,182 440,168 C500,155 560,146 600,140" fill="none" stroke="var(--color-lavender)" stroke-width="1.6" stroke-dasharray="2 5"/>
+              <g font-family="Space Mono, monospace" font-size="9" fill="var(--color-ink-faint)">
+                <text x="60" y="248">MONTH 0</text>
+                <text x="560" y="248">MONTH 14</text>
+                <text x="16" y="24" transform="rotate(-90 16 24)">HOUSEHOLDS</text>
+              </g>
+            </svg>
+          </div>
+          <p class="evidence__caption"><strong>Fig. 01</strong> — Enrollment across two of three pilot sites, first fourteen months. The third site's data is still being cleaned.</p>
+        </div>
+
+        <h3>The approach</h3>
+        <p>
+          Apolaki pairs the installation with a financing structure negotiated
+          directly with existing local cooperatives, rather than a standalone
+          loan product. The bet is that trust already sits inside those
+          institutions, and adoption follows trust more reliably than it
+          follows price.
+        </p>
+        <p>
+          It's early. Two cooperatives are testing two different repayment
+          structures right now, on purpose — the difference in outcomes is
+          part of what this file is tracking.
+        </p>
+
+        <div class="plate plate--inset">
+          <div class="evidence__frame plate__frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Cross-section diagram of the household connection point" preserveAspectRatio="xMidYMid meet" style="background:var(--color-paper-raised);">
+              <g stroke="var(--color-ink)" stroke-width="1.4" fill="none">
+                <rect x="40" y="60" width="80" height="50"/>
+                <text x="80" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" fill="var(--color-ink)">METER</text>
+                <line x1="120" y1="85" x2="180" y2="85"/>
+                <rect x="180" y="65" width="50" height="40"/>
+                <text x="205" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" fill="var(--color-ink)">BRKR</text>
+                <line x1="230" y1="85" x2="290" y2="85"/>
+                <path d="M290,60 h50 v50 h-50 z"/>
+                <text x="315" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" fill="var(--color-ink)">HOME</text>
+              </g>
+              <g stroke="var(--color-ink-line-strong)" stroke-width="1" font-family="Space Mono, monospace" font-size="8" fill="var(--color-ink-faint)">
+                <line x1="40" y1="130" x2="120" y2="130"/>
+                <line x1="40" y1="125" x2="40" y2="135"/>
+                <line x1="120" y1="125" x2="120" y2="135"/>
+                <text x="80" y="150" text-anchor="middle">0.8M</text>
+              </g>
+            </svg>
+          </div>
+          <p class="evidence__caption"><strong>Fig. 02</strong> — Standard connection point, revised twice since the first site went live.</p>
+        </div>
+
+        <p class="aside" style="margin-top: var(--space-8);">
+          Financing terms are still negotiated per cooperative — there's no
+          standard package across sites yet, and it isn't clear whether there
+          should be one.
+        </p>
+      </div>
+
+      <div class="col-3 start-10 dossier-aside">
+        <p class="eyebrow eyebrow--ink" style="margin-bottom: var(--space-3);">On file</p>
+        <p style="font-size: var(--text-sm); color: var(--color-ink-soft); line-height: var(--leading-relaxed);">
+          Site visit notes, cooperative agreements, and metering data are kept
+          separately and summarized here as the picture becomes clearer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= Status close — deliberately unresolved ============= -->
+  <section class="status-close">
+    <div class="wrap status-close__grid">
+      <div>
+        <h3>Current status</h3>
+        <ul>
+          <li>Running in three barangays across Luzon and Visayas</li>
+          <li>Two financing structures being tested in parallel, by design</li>
+          <li>Metering and usage data collection ongoing at all sites</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Open questions</h3>
+        <ul>
+          <li>Whether either financing model holds without subsidy support after year one</li>
+          <li>How to standardize onboarding across cooperatives with different governance norms</li>
+          <li>What attrition looks like past month eighteen — not yet observable</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap" style="padding-block: var(--space-8);">
+    <a class="ink-link" href="index.html">← Back to the archive</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__status">
+      <span class="status-dot" aria-hidden="true"></span>
+      Based in Manila — Apolaki and Rubeo Agrilabs in process, one study ongoing.
+    </div>
+    <div class="site-footer__grid">
+      <div>
+        <p class="site-footer__heading">Josa Elegado</p>
+        <p style="max-width:28ch; color:rgba(250,246,239,0.7); font-size:var(--text-sm); line-height:var(--leading-relaxed);">An archive of ventures, research, and travel, filed while still in progress.</p>
+      </div>
+      <div>
+        <p class="site-footer__heading">Index</p>
+        <a href="story.html">Story</a>
+        <a href="work.html">Work</a>
+        <a href="field-notes.html">Field Notes</a>
+        <a href="timeline.html">Timeline</a>
+      </div>
+      <div>
+        <p class="site-footer__heading">Elsewhere</p>
+        <a href="https://www.linkedin.com/">LinkedIn</a>
+        <a href="mailto:hello@josaelegado.com">Email</a>
+        <a href="lets-build.html">Let's Build</a>
+      </div>
+      <div>
+        <p class="site-footer__heading">Record</p>
+        <a href="field-notes.html">Latest entry</a>
+        <a href="lets-build.html">Say hello</a>
+      </div>
+    </div>
+    <div class="site-footer__base">
+      <span>© <span data-current-year>2026</span> Josa Elegado</span>
+      <span>File 001</span>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+/* ==========================================================================
+   BASE — reset, typography, page texture, layout primitives
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Paper grain + faint notebook grid, layered behind everything.
+   Pure CSS/SVG — no image requests, easy to drop as a Wix section background. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--color-ink-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-ink-line) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.28;
+  mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, black 0%, transparent 78%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#top { position: absolute; top: 0; }
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+button { font: inherit; color: inherit; }
+
+ul, ol { padding: 0; margin: 0; list-style: none; }
+
+/* ---- Typography ---- */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+  text-wrap: balance;
+  font-variation-settings: var(--serif-personality);
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-lg); }
+h4 { font-size: var(--text-md); font-family: var(--font-sans); font-weight: 600; }
+
+p { max-width: 62ch; }
+p.lede { font-size: var(--text-md); color: var(--color-ink-soft); line-height: var(--leading-relaxed); }
+
+.font-serif { font-family: var(--font-serif); }
+
+/* Long-form body text set in the same family as the headlines, at text
+   optical size — one typeface doing headline and reading duty. */
+.font-serif-text {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 12;
+}
+
+.font-mono { font-family: var(--font-mono); }
+
+/* Eyebrow / kicker label — the archive's own voice: mono, quiet, precise */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+}
+
+.eyebrow--ink { color: var(--color-eggplant); }
+
+/* ---- Editorial grid ----
+   A 12-column asymmetric grid. Sections set their own spans per element —
+   nothing tiles, nothing repeats by default. .bleed breaks an element out
+   to the full viewport width regardless of container. */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gap);
+}
+
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+.start-1  { grid-column-start: 1; }
+.start-2  { grid-column-start: 2; }
+.start-3  { grid-column-start: 3; }
+.start-4  { grid-column-start: 4; }
+.start-5  { grid-column-start: 5; }
+.start-6  { grid-column-start: 6; }
+.start-7  { grid-column-start: 7; }
+.start-8  { grid-column-start: 8; }
+.start-9  { grid-column-start: 9; }
+
+.bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: repeat(4, 1fr); column-gap: var(--space-4); }
+  [class^="col-"], [class*=" col-"] { grid-column: span 4 !important; }
+  [class^="start-"], [class*=" start-"] { grid-column-start: 1 !important; }
+}
+
+/* ---- Layout ---- */
+
+.wrap {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--page-margin);
+  position: relative;
+  z-index: 1;
+}
+
+.wrap--narrow { max-width: var(--content-width-narrow); }
+
+.stack > * + * { margin-top: var(--space-6); }
+
+section { position: relative; z-index: 1; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -60px;
+  background: var(--color-eggplant);
+  color: var(--color-on-eggplant);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  z-index: 200;
+  transition: top var(--duration-fast) var(--ease-ink);
+}
+
+.skip-link:focus { top: var(--space-4); }
+
+:focus-visible {
+  outline: 2px solid var(--color-eggplant);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-lavender-soft);
+  color: var(--color-eggplant-deep);
+}

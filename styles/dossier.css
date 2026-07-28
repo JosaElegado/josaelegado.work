@@ -1,0 +1,146 @@
+/* ==========================================================================
+   THE BLUEPRINT DOSSIER — a single venture, staged as a case file:
+   full-bleed schematic opener, file metadata, editorial narrative,
+   evidence plates, margin annotation, open status close.
+   ========================================================================== */
+
+/* ---- Opener ---- */
+
+.dossier-open {
+  position: relative;
+  height: 82vh;
+  min-height: 560px;
+  max-height: 820px;
+  background: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dossier-open__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(250,246,239,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250,246,239,0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dossier-open__figure {
+  position: relative;
+  width: clamp(320px, 58vw, 760px);
+}
+
+.dossier-open__figure svg { width: 100%; height: auto; }
+
+.dossier-open__title {
+  position: absolute;
+  left: var(--page-margin);
+  bottom: var(--space-8);
+  color: var(--color-on-ink);
+  z-index: 1;
+}
+
+.dossier-open__title .eyebrow { color: rgba(250,246,239,0.55); }
+.dossier-open__title .eyebrow::before { background: rgba(250,246,239,0.55); }
+
+.dossier-open__title h1 {
+  color: var(--color-on-ink);
+  font-size: var(--text-3xl);
+  margin-top: var(--space-3);
+}
+
+/* ---- File header ---- */
+
+.file-header { margin-top: 0; }
+
+/* ---- Narrative ---- */
+
+.dossier-body { padding-block: var(--space-11); }
+
+.dossier-body__lead {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  max-width: var(--content-width-text);
+}
+
+.dossier-body__lead::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3.6em;
+  float: left;
+  line-height: 0.82;
+  padding-right: 0.09em;
+  padding-top: 0.03em;
+  color: var(--color-eggplant);
+  font-variation-settings: var(--serif-personality);
+}
+
+.dossier-body p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+  max-width: var(--content-width-text);
+}
+
+.dossier-body p + p { margin-top: var(--space-5); }
+
+.dossier-body h3 {
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-4);
+  font-size: var(--text-lg);
+}
+
+/* ---- Evidence plates ---- */
+
+.plate { margin-block: var(--space-10); }
+.plate--wide { margin-inline: 0; }
+.plate__frame { aspect-ratio: 16/8; }
+.plate--inset .plate__frame { aspect-ratio: 4/3; }
+
+/* ---- Margin annotation, set beside the narrative on wide screens ---- */
+
+.dossier-aside {
+  position: sticky;
+  top: 7rem;
+}
+
+/* ---- Status close ---- */
+
+.status-close {
+  background: var(--color-beige);
+  border-block: 1px solid var(--color-beige-deep);
+  padding-block: var(--space-10);
+}
+
+.status-close__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-9); }
+
+.status-close h3 { font-size: var(--text-md); margin-bottom: var(--space-4); }
+
+.status-close ul { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.status-close li {
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-relaxed);
+  padding-left: var(--space-5);
+  position: relative;
+}
+
+.status-close li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 6px; height: 6px;
+  border: 1px solid var(--color-eggplant);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 860px) {
+  .dossier-open { height: 68vh; }
+  .dossier-open__title h1 { font-size: var(--text-2xl); }
+  .file-header { flex-direction: column; gap: var(--space-4); }
+  .status-close__grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .dossier-aside { position: static; }
+}

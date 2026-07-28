@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Style Guide — Josa Elegado | Field Journal</title>
+<meta name="description" content="Internal design system reference for the Field Journal — color, type, spacing, motion, and components." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#faf6ef" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/animations.css" />
+<style>
+  .sg-section { padding-block: var(--space-9); border-bottom: 1px solid var(--color-ink-line); }
+  .sg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-5); }
+  .sg-swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-ink-line); }
+  .sg-swatch__fill { height: 84px; }
+  .sg-swatch__label { padding: var(--space-3); font-size: var(--text-xs); background: var(--color-paper-raised); }
+  .sg-swatch__label code { display: block; color: var(--color-ink-faint); margin-top: 2px; }
+  .sg-type-row { display: flex; align-items: baseline; gap: var(--space-6); padding-block: var(--space-4); border-top: 1px solid var(--color-ink-line); }
+  .sg-type-row:first-of-type { border-top: none; }
+  .sg-type-row code { flex: 0 0 140px; color: var(--color-ink-faint); font-size: var(--text-xs); }
+  .sg-space-row { display: flex; align-items: center; gap: var(--space-4); padding-block: var(--space-2); }
+  .sg-space-row code { flex: 0 0 90px; font-size: var(--text-xs); color: var(--color-ink-faint); }
+  .sg-space-row span { display: block; height: 14px; background: var(--color-eggplant); border-radius: 2px; }
+  .sg-row { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+  .sg-nav { position: sticky; top: 84px; }
+  .sg-nav a { display: block; padding-block: var(--space-2); font-size: var(--text-sm); text-decoration: none; color: var(--color-ink-soft); }
+  .sg-nav a:hover { color: var(--color-eggplant); }
+  .sg-layout { display: grid; grid-template-columns: 200px 1fr; gap: var(--space-8); }
+  @media (max-width: 800px) { .sg-layout { grid-template-columns: 1fr; } .sg-nav { position: static; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap site-header__row">
+    <a class="wordmark" href="index.html">Josa Elegado<span class="wordmark__mark">.</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul><li><a href="index.html">← Back to site</a></li></ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="padding-top: var(--space-8);">
+  <p class="eyebrow">Internal reference</p>
+  <h1>Field Journal — Style Guide</h1>
+  <p class="lede" style="margin-top: var(--space-4); margin-bottom: var(--space-8);">
+    The design system behind the site: tokens, type, spacing, motion, and
+    components — documented so each piece can be rebuilt identically as a
+    Wix Studio global style, text preset, or repeater component.
+  </p>
+
+  <div class="sg-layout">
+    <nav class="sg-nav" aria-label="Style guide sections">
+      <a href="#colors">Color</a>
+      <a href="#type">Typography</a>
+      <a href="#space">Spacing</a>
+      <a href="#motion">Motion</a>
+      <a href="#components">Components</a>
+    </nav>
+
+    <div>
+      <!-- COLOR -->
+      <section id="colors" class="sg-section">
+        <h2>Color</h2>
+        <p class="lede" style="margin-block: var(--space-3) var(--space-6);">Mostly paper. Eggplant and lavender are accents, used sparingly.</p>
+        <div class="sg-grid">
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-paper)"></div><div class="sg-swatch__label">Paper<code>--color-paper #faf6ef</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-paper-raised); border-bottom:1px solid var(--color-ink-line)"></div><div class="sg-swatch__label">Paper Raised<code>--color-paper-raised #fffdf9</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-beige)"></div><div class="sg-swatch__label">Beige<code>--color-beige #f0e6d6</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-beige-deep)"></div><div class="sg-swatch__label">Beige Deep<code>--color-beige-deep #e6d7bd</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-ink)"></div><div class="sg-swatch__label">Ink<code>--color-ink #24211e</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-ink-soft)"></div><div class="sg-swatch__label">Ink Soft<code>--color-ink-soft #58524a</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-eggplant)"></div><div class="sg-swatch__label">Eggplant<code>--color-eggplant #3b2142</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-eggplant-deep)"></div><div class="sg-swatch__label">Eggplant Deep<code>--color-eggplant-deep #271229</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-lavender)"></div><div class="sg-swatch__label">Lavender<code>--color-lavender #a893bf</code></div></div>
+          <div class="sg-swatch"><div class="sg-swatch__fill" style="background:var(--color-lavender-soft)"></div><div class="sg-swatch__label">Lavender Soft<code>--color-lavender-soft #eae2f0</code></div></div>
+        </div>
+      </section>
+
+      <!-- TYPE -->
+      <section id="type" class="sg-section">
+        <h2>Typography</h2>
+        <p class="lede" style="margin-block: var(--space-3) var(--space-6);">Fraunces (editorial serif) for headings, Inter (sans) for body, Caveat (hand) for annotations only.</p>
+
+        <div class="sg-type-row"><code>h1 / 3xl</code><h1 style="margin:0;">The notebook stays open.</h1></div>
+        <div class="sg-type-row"><code>h2 / 2xl</code><h2 style="margin:0;">Ideas worth documenting.</h2></div>
+        <div class="sg-type-row"><code>h3 / lg</code><h3 style="margin:0;">A chapter, not a bullet point.</h3></div>
+        <div class="sg-type-row"><code>lede / md serif</code><p class="lede" style="margin:0;">Field notes on building slowly and honestly.</p></div>
+        <div class="sg-type-row"><code>body / base sans</code><p style="margin:0;">Set in Inter for long-form reading comfort.</p></div>
+        <div class="sg-type-row"><code>eyebrow</code><p class="eyebrow" style="margin:0;">Section Label</p></div>
+        <div class="sg-type-row"><code>hand / Caveat</code><p class="font-hand" style="margin:0; font-size:var(--text-lg); color:var(--color-eggplant);">a small handwritten note</p></div>
+      </section>
+
+      <!-- SPACE -->
+      <section id="space" class="sg-section">
+        <h2>Spacing</h2>
+        <p class="lede" style="margin-block: var(--space-3) var(--space-6);">4px base scale, used for all margin/padding/gap.</p>
+        <div class="sg-space-row"><code>--space-1</code><span style="width:var(--space-1)"></span></div>
+        <div class="sg-space-row"><code>--space-2</code><span style="width:var(--space-2)"></span></div>
+        <div class="sg-space-row"><code>--space-3</code><span style="width:var(--space-3)"></span></div>
+        <div class="sg-space-row"><code>--space-4</code><span style="width:var(--space-4)"></span></div>
+        <div class="sg-space-row"><code>--space-5</code><span style="width:var(--space-5)"></span></div>
+        <div class="sg-space-row"><code>--space-6</code><span style="width:var(--space-6)"></span></div>
+        <div class="sg-space-row"><code>--space-7</code><span style="width:var(--space-7)"></span></div>
+        <div class="sg-space-row"><code>--space-8</code><span style="width:var(--space-8)"></span></div>
+        <div class="sg-space-row"><code>--space-9</code><span style="width:var(--space-9)"></span></div>
+      </section>
+
+      <!-- MOTION -->
+      <section id="motion" class="sg-section">
+        <h2>Motion</h2>
+        <p class="lede" style="margin-block: var(--space-3) var(--space-6);">Two easings: <code>--ease-ink</code> for small interactive feedback, <code>--ease-page</code> for entrances. Reduced-motion collapses all durations to 0.</p>
+        <div class="sg-row">
+          <a class="btn btn--solid" href="#motion">Hover me <svg class="btn__arrow" width="16" height="16"><use href="#icon-arrow-right"/></svg></a>
+          <a class="ink-link" href="#motion">Underline draw link</a>
+          <div class="entry-card float" style="max-width:200px; padding: var(--space-4);"><p style="margin:0; font-size:var(--text-sm);">float</p></div>
+        </div>
+      </section>
+
+      <!-- COMPONENTS -->
+      <section id="components" class="sg-section" style="border-bottom:none;">
+        <h2>Components</h2>
+
+        <h3 style="margin-top:var(--space-7);">Buttons</h3>
+        <div class="sg-row" style="margin-top:var(--space-4);">
+          <a class="btn btn--solid" href="#components">Solid button <svg class="btn__arrow" width="16" height="16"><use href="#icon-arrow-right"/></svg></a>
+          <a class="btn btn--ghost" href="#components">Ghost button</a>
+        </div>
+
+        <h3 style="margin-top:var(--space-8);">Tags &amp; stamps</h3>
+        <div class="sg-row" style="margin-top:var(--space-4);">
+          <span class="tag">Default tag</span>
+          <span class="tag tag--eggplant">Eggplant tag</span>
+          <span class="stamp">hand stamp</span>
+        </div>
+
+        <h3 style="margin-top:var(--space-8);">Entry card</h3>
+        <div class="work-grid" style="margin-top:var(--space-4); max-width:640px;">
+          <a class="entry-card" href="#components">
+            <div class="entry-card__meta"><span class="tag tag--eggplant">Example</span></div>
+            <h3 class="entry-card__title">Card title in Fraunces</h3>
+            <p class="entry-card__excerpt">Excerpt copy set in Inter at the sm size, ink-soft color.</p>
+            <span class="entry-card__foot">Read more <svg width="14" height="14"><use href="#icon-arrow-right"/></svg></span>
+          </a>
+        </div>
+
+        <h3 style="margin-top:var(--space-8);">Divider</h3>
+        <div class="divider" style="margin-top:var(--space-4); max-width:400px;" aria-hidden="true"></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-arrow-right" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+</body>
+</html>
