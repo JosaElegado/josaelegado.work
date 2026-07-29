@@ -9,18 +9,65 @@
 
 /* ---- Site header / nav ---- */
 
+/* Frosted glass is the wrong material on paper. The header is part of the
+   sheet: it sits on it opaquely and earns a hairline once the page moves
+   under it. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 246, 239, 0.88);
-  backdrop-filter: blur(10px) saturate(1.1);
-  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  background: var(--color-paper);
   border-bottom: 1px solid transparent;
   transition: border-color var(--duration-base) var(--ease-ink);
 }
 
-.site-header.is-scrolled { border-bottom-color: var(--color-ink-line); }
+.site-header.is-scrolled { border-bottom-color: var(--color-hairline); }
+
+/* ---- Title block ----
+   Engineering-drawing furniture: a hairline row of labeled fields opening a
+   page or a case. This is the system's kicker — it replaces the tracked
+   uppercase eyebrow stacked over every section. */
+
+.title-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-9);
+  padding-block: var(--space-3);
+  border-top: 1px solid var(--color-ink);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+/* Metadata type does not need to be fluid, and it does not go below 12px:
+   the field label is distinguished by colour and tracking, not by shrinking
+   to the edge of legibility. */
+.title-block__field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.3;
+}
+
+.title-block__field dt {
+  color: var(--color-ink-faint);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.title-block__field dd {
+  margin: 0;
+  color: var(--color-ink);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.title-block__field--wide { margin-inline-start: auto; text-align: right; }
+
+@media (max-width: 700px) {
+  .title-block { gap: var(--space-3) var(--space-6); }
+  .title-block__field--wide { margin-inline-start: 0; text-align: left; }
+}
 
 .site-header__row {
   display: flex;
@@ -623,13 +670,15 @@ a.polaroid-link:focus-visible .polaroid {
   border-top: 1px solid var(--color-ink-line);
   text-decoration: none;
   color: var(--color-ink);
-  transition: padding-left var(--duration-base) var(--ease-ink);
+  /* Nudged with a transform, not padding: animating a layout property makes
+     the browser reflow the whole list on every frame of a hover. */
+  transition: transform var(--duration-base) var(--ease-ink);
 }
 
 .index-row:last-child { border-bottom: 1px solid var(--color-ink-line); }
 
 a.index-row:hover,
-a.index-row:focus-visible { padding-left: var(--space-3); }
+a.index-row:focus-visible { transform: translateX(var(--space-3)); }
 
 .index-row__no {
   font-family: var(--font-mono);
@@ -712,11 +761,241 @@ a.index-row:hover .index-row__arrow { transform: translateX(4px); color: var(--c
 
 /* ---- Catalog number (figure / page numbering) ---- */
 
-.catalog-no {
+.catalog-no,
+.page-mark {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-ink-faint);
   letter-spacing: var(--tracking-wide);
+}
+
+/* ==========================================================================
+   NOTEBOOK BEHAVIOURS
+   The devices a working notebook actually uses, built as components so they
+   are placed on purpose rather than sprinkled. Every one of these carries
+   information: a margin note explains a specific paragraph, a revision shows
+   what changed, a box marks the sentence that matters, a cross-reference
+   points somewhere real. None of them is ornament.
+   ========================================================================== */
+
+/* ---- Metadata stamp ----
+   The context line a documented thing always carries: what kind of note,
+   when, where, under what conditions. Middot-separated mono fields. */
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--space-3);
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  line-height: 1.5;
+}
+
+/* The separator trails the field it follows rather than leading the next one,
+   so a wrapped metadata line never starts with an orphaned middot. */
+.meta > *:not(:last-child)::after {
+  content: "·";
+  margin-left: var(--space-3);
+  color: var(--color-hairline-strong);
+}
+
+.meta strong { color: var(--color-ink); font-weight: 400; }
+.meta em { font-style: normal; color: var(--color-plum); }
+
+/* Stacked: one field per line, for a record rather than a caption. */
+.meta--stack {
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta--stack > *:not(:last-child)::after { content: none; }
+
+/* ---- Notebook page layout ----
+   A body column with a real margin beside it. Annotations are grid siblings
+   placed immediately after the block they annotate, so auto-placement lands
+   each note on its paragraph's row — no absolute positioning to drift. */
+
+.page-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 36rem) minmax(0, 15rem);
+  column-gap: var(--space-8);
+  align-items: start;
+}
+
+.page-layout > * { grid-column: 1; }
+.page-layout > .page-note { grid-column: 2; }
+
+/* ---- Margin note ----
+   Hand, plum, short, with an arrow that points at the thing it is about:
+   left toward the text on a wide screen, up toward it on a narrow one. */
+
+.page-note {
+  display: flex;
+  gap: var(--space-2);
+  font-family: var(--font-hand);
+  font-size: 1.06rem;
+  line-height: 1.3;
+  color: var(--color-plum);
+  padding-top: 0.35em;
+}
+
+.page-note__arrow {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 16px;
+  margin-top: 0.28em;
+  color: var(--color-plum);
+  opacity: 0.85;
+}
+
+/* ---- Revision mark ----
+   Struck word, correction beside it. This is what a page looks like when the
+   thinking changed after it was written down. */
+
+.revision s {
+  color: var(--color-ink-faint);
+  text-decoration-line: line-through;
+  text-decoration-color: var(--color-plum);
+  text-decoration-thickness: 1.5px;
+}
+
+.revision em {
+  font-style: normal;
+  font-family: var(--font-hand);
+  color: var(--color-plum);
+  margin-left: 0.3em;
+  font-size: 1.08em;
+}
+
+/* ---- Boxed idea ----
+   A drawn box around the one sentence that matters. The frame is an SVG
+   stretched to the content with a constant pen width, so the irregularity
+   reads as a hand and never as a border-radius. */
+
+.boxed {
+  position: relative;
+  padding: var(--space-5) var(--space-6);
+  margin-block: var(--space-6);
+}
+
+.boxed__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--color-plum);
+  pointer-events: none;
+}
+
+.boxed__frame path {
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.boxed > :last-child { margin-bottom: 0; }
+
+/* ---- Cross-reference ----
+   "see fig. 02", "revisit later", "still unresolved". Mono when it is a
+   pointer, hand when it is a note to self. */
+
+.xref {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  white-space: nowrap;
+}
+
+a.xref {
+  color: var(--color-plum);
+  text-decoration-color: var(--color-plum-rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-ink);
+}
+
+a.xref:hover { text-decoration-color: var(--color-plum); }
+
+.xref--hand {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-plum);
+}
+
+/* ---- Tipped-in sheet ----
+   The one licensed exception to "diagrams are drawn straight on the page":
+   a document that genuinely came from somewhere else — a case file excerpt,
+   a printed page — laid on top of the notebook. Lighter than the page, one
+   hairline, one low shadow. Never rotated, never taped. */
+
+.tipped {
+  position: relative;
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-hairline);
+  box-shadow: var(--shadow-paper);
+  padding: var(--space-8) var(--space-8) var(--space-7);
+}
+
+@media (max-width: 700px) {
+  .tipped { padding: var(--space-6) var(--space-5); }
+}
+
+/* ---- Section opener ----
+   Every movement states the one question it answers. This is the site's
+   only kicker pattern, and it is a question, not a category label. */
+
+.opener {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-hairline);
+  margin-bottom: var(--space-8);
+}
+
+.opener__q {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.opener__q::before {
+  content: attr(data-index);
+  margin-right: var(--space-4);
+  color: var(--color-ink-faint);
+}
+
+@media (max-width: 900px) {
+  .page-layout { grid-template-columns: 1fr; row-gap: var(--space-5); }
+  .page-layout > .page-note { grid-column: 1; }
+
+  /* In one column the note sits under its paragraph, so the arrow turns to
+     point back up at it. */
+  .page-note {
+    padding-top: 0;
+    padding-left: var(--space-4);
+    border-left: 1px solid var(--color-plum-rule);
+  }
+  .page-note__arrow { transform: rotate(90deg); }
 }
 
 /* ---- Site footer ---- */
@@ -749,48 +1028,43 @@ a.index-row:hover .index-row__arrow { transform: translateX(4px); color: var(--c
   flex-shrink: 0;
 }
 
-.site-footer__grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: var(--space-8);
-  padding-block: var(--space-8);
+/* The inside back cover, not a sitemap. One chapter row, one base line. */
+
+.site-footer__chapters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  padding-block: var(--space-7);
+  margin-top: var(--space-6);
+  border-top: 1px solid rgba(250, 246, 239, 0.14);
   border-bottom: 1px solid rgba(250, 246, 239, 0.14);
 }
 
-.site-footer__heading {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: rgba(250, 246, 239, 0.5);
-  margin-bottom: var(--space-4);
-}
-
-.site-footer__grid a {
-  display: block;
+.site-footer__chapters a {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-md);
   text-decoration: none;
-  font-size: var(--text-sm);
-  color: rgba(250, 246, 239, 0.86);
-  padding-block: var(--space-2);
+  color: rgba(250, 246, 239, 0.82);
   transition: color var(--duration-fast) var(--ease-ink);
 }
-.site-footer__grid a:hover { color: var(--color-paper); }
+.site-footer__chapters a:hover { color: var(--color-paper); }
 
 .site-footer__base {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
-  padding-top: var(--space-6);
+  gap: var(--space-3) var(--space-6);
+  padding-top: var(--space-5);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: rgba(250, 246, 239, 0.5);
 }
 
-@media (max-width: 800px) {
-  .site-footer__grid { grid-template-columns: 1fr 1fr; }
-}
+.site-footer__base a { color: rgba(250, 246, 239, 0.72); }
+.site-footer__base a:hover { color: var(--color-paper); }
+.site-footer .page-mark { color: rgba(250, 246, 239, 0.42); }
 
 /* ---- Entry card (used for field-note tiles) ---- */
 

@@ -9,6 +9,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  background-color: var(--color-paper);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -25,6 +26,13 @@ body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
   margin: 0;
 }
 
+/* ---- The page is ruled notebook paper ----
+   The ruling is a background on the document, not a fixed overlay: it has to
+   travel with the text, or the illusion breaks the moment you scroll. Two
+   layers — horizontal rules at the ruling pitch, and a plum margin rule down
+   the left. Faint enough that you notice them only when you look. No grain,
+   no noise, no distress: the notebook is used, not old. */
+
 body {
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -33,33 +41,40 @@ body {
   background-color: var(--color-paper);
   min-height: 100vh;
   position: relative;
-}
 
-/* Paper grain + faint notebook grid, layered behind everything.
-   Pure CSS/SVG — no image requests, easy to drop as a Wix section background. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+  /* Sits 0.875rem left of where the writing starts, and tracks the content
+     column, so the margin rule and the first letter of every heading share
+     one edge at any width. */
+  --margin-rule-x: calc(
+    max(var(--page-margin), 50% - (var(--content-width) / 2) + var(--page-margin))
+    - 0.875rem
+  );
+
   background-image:
-    linear-gradient(var(--color-ink-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-ink-line) 1px, transparent 1px);
-  background-size: 34px 34px;
-  opacity: 0.28;
-  mask-image: radial-gradient(ellipse 100% 60% at 50% 0%, black 0%, transparent 78%);
+    repeating-linear-gradient(
+      to bottom,
+      var(--color-rule) 0 1px,
+      transparent 1px var(--rule-pitch)
+    );
+  background-repeat: repeat;
+  background-size: 100% var(--rule-pitch);
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+/* The margin rule earns its place only where the gutter is wide enough to
+   read as a margin rather than as a stray border. */
+@media (min-width: 1024px) {
+  body {
+    background-image:
+      linear-gradient(var(--color-plum-rule), var(--color-plum-rule)),
+      repeating-linear-gradient(
+        to bottom,
+        var(--color-rule) 0 1px,
+        transparent 1px var(--rule-pitch)
+      );
+    background-repeat: repeat-y, repeat;
+    background-size: 1px 100%, 100% var(--rule-pitch);
+    background-position: var(--margin-rule-x) 0, 0 0;
+  }
 }
 
 #top { position: absolute; top: 0; }
@@ -74,32 +89,49 @@ ul, ol { padding: 0; margin: 0; list-style: none; }
 
 /* ---- Typography ---- */
 
-h1, h2, h3, h4 {
-  font-family: var(--font-serif);
+/* Bodoni is display type: it lives large, where its hairlines are the point.
+   Optical sizing does the work of keeping it from getting brittle. */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
   font-weight: 500;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   color: var(--color-ink);
   text-wrap: balance;
-  font-variation-settings: var(--serif-personality);
+}
+
+h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
 }
 
 h1 { font-size: var(--text-3xl); }
 h2 { font-size: var(--text-2xl); }
 h3 { font-size: var(--text-lg); }
-h4 { font-size: var(--text-md); font-family: var(--font-sans); font-weight: 600; }
+h4 { font-size: var(--text-md); }
 
 p { max-width: 62ch; }
 p.lede { font-size: var(--text-md); color: var(--color-ink-soft); line-height: var(--leading-relaxed); }
 
-.font-serif { font-family: var(--font-serif); }
+.font-display,
+.font-serif { font-family: var(--font-display); font-optical-sizing: auto; }
 
-/* Long-form body text set in the same family as the headlines, at text
-   optical size — one typeface doing headline and reading duty. */
 .font-serif-text {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 12;
+}
+
+/* The hand. Annotations, sketch labels, revision marks — a dozen words at a
+   time. Never body copy, never navigation. */
+.hand {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  color: var(--color-plum);
+  line-height: 1.35;
+  letter-spacing: 0.005em;
 }
 
 .font-mono { font-family: var(--font-mono); }

@@ -1,82 +1,85 @@
 /* ==========================================================================
-   DESIGN TOKENS — Josa Elegado / The Archive
-   Single source of truth for color, type, spacing, motion.
-   Recreate these as Wix Studio design variables / global styles.
+   DESIGN TOKENS — Josa Elegado
+   Single source of truth for material, ink, type, spacing, motion.
+   See DESIGN.md for the direction contract these values serve.
+
+   The notebook is the interface, not a picture inside it. Warm white paper,
+   graphite ink, deep plum used once per viewport, soft lavender for non-text
+   marks only. No beige, no kraft, no grain, no distress.
    ========================================================================== */
 
 :root {
-  /* ---- Color: paper ---- */
-  --color-paper: #faf6ef;          /* primary background, warm white */
-  --color-paper-raised: #fffdf9;   /* surfaces sitting "above" the page */
-  --color-beige: #f0e6d6;          /* soft beige paper, section blocks */
-  --color-beige-deep: #e6d7bd;     /* deeper beige, borders / texture */
+  /* ---- Paper — warm white, not yellow, not aged ----------------------- */
+  --color-paper: #faf8f4;          /* the page itself */
+  --color-paper-raised: #fefdfb;   /* a fresh sheet laid on the pad */
+  --color-paper-sunk: #f2efe9;     /* a recessed band, quieter than the page */
 
-  /* ---- Color: ink ---- */
-  --color-ink: #24211e;            /* primary text, dark charcoal */
-  --color-ink-soft: #58524a;       /* secondary text */
-  --color-ink-faint: #8c8479;      /* meta text, timestamps, captions */
-  --color-ink-line: rgba(36, 33, 30, 0.13); /* hairline rules on paper */
-  --color-ink-line-strong: rgba(36, 33, 30, 0.24);
+  /* ---- Ink — graphite, faintly cool against warm paper ---------------- */
+  --color-ink: #22242a;            /* body + headings          14.5:1 */
+  --color-ink-soft: #54575e;       /* secondary prose           6.7:1 */
+  --color-ink-faint: #6c7078;      /* mono metadata, captions   4.7:1 */
 
-  /* ---- Color: eggplant — the archive's ink. Used sparingly: index
-     numbers, rule lines, one primary action. Not a decorative accent. ---- */
-  --color-eggplant: #3b2142;
-  --color-eggplant-deep: #271229;
-  --color-eggplant-tint: rgba(59, 33, 66, 0.07);
+  /* Ruled lines and hairlines. The rule is the faintest mark on the page:
+     you should notice it only when you go looking for it. */
+  --color-rule: rgba(34, 36, 42, 0.055);   /* notebook ruling */
+  --color-hairline: rgba(34, 36, 42, 0.13); /* structural rules, borders */
+  --color-hairline-strong: rgba(34, 36, 42, 0.24);
 
-  /* ---- Color: lavender — reserved for diagrams and maps only (ink tint
-     on evidence plates). Never used as UI color. ---- */
-  --color-lavender: #a893bf;
-  --color-lavender-soft: #eae2f0;
+  /* ---- Plum — the signature. One job per viewport: a primary action, a
+     link, a diagram stroke, an annotation. Never a background field, never
+     two things at once. ------------------------------------------------- */
+  --color-plum: #5c2e6b;           /* on paper                  9.6:1 */
+  --color-plum-deep: #42204e;      /* pressed / hover */
+  --color-plum-wash: rgba(92, 46, 107, 0.06);
+  --color-plum-rule: rgba(92, 46, 107, 0.16); /* the margin line */
+  --color-on-plum: #f6f1f8;        /* on plum                   9.1:1 */
 
-  --color-on-eggplant: #f4ecf6;
-  --color-on-ink: #f7f3ea;
+  /* ---- Lavender — non-text only. Secondary connectors, highlight washes,
+     the second tier of a diagram. Never carries a word. ----------------- */
+  --color-lavender: #b9a5ce;
+  --color-lavender-wash: #ede7f3;
 
-  /* ---- Color: paper artifacts (tape, sticky notes) ---- */
-  --color-kraft: #cbb28c;
-  --color-kraft-deep: #ab8f63;
-  --color-sticky: #f5efde;
-  --color-sticky-deep: #e8dcbc;
-
-  /* ---- Status glyphs (archive processing states) ---- */
-  --color-status-process: var(--color-eggplant);
-  --color-status-accessioned: var(--color-ink-faint);
-  --color-status-catalogued: var(--color-ink-soft);
+  --color-on-ink: #f7f5f1;
 
   /* ---- Typography ----
-     Four faces, four jobs: Fraunces carries editorial authority
-     (headlines and long-form body, same family, different optical size).
-     Inter stays invisible as interface type. Space Mono is the archive's
-     own voice — catalog numbers, dates, coordinates, status. Caveat is the
-     hand in the margins — annotations, stamps, and the notebook motifs
-     that carry the field-journal concept; used deliberately, never for
-     body copy or interface labels. */
-  --font-serif: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "Space Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
-  --font-hand: "Caveat", cursive;
+     Four faces, four jobs.
+     Bodoni Moda — display only, >=28px. Chosen for construction, not
+       fashion: Bodoni drew letters mathematically, which is the right
+       ancestor for an engineer's page.
+     Libre Franklin — body and interface. Franklin Gothic lineage, the
+       American editorial and technical-drawing workhorse. Invisible.
+     Fragment Mono — the page's own voice: title-block fields, dates, stage
+       labels, figure numbers. Metadata and measurement, never costume.
+     Kalam — the hand. Margin notes and sketch labels, a dozen words at a
+       time. Never body copy, never navigation.                            */
+  --font-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --font-sans: "Libre Franklin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Fragment Mono", ui-monospace, Menlo, monospace;
+  --font-hand: "Kalam", cursive;
 
-  --serif-personality: "SOFT" 40, "WONK" 1;
+  /* Bodoni carries its own optical sizing; nothing extra to dial in. Kept
+     as a token because existing surfaces reference it. */
+  --serif-personality: normal;
 
-  --text-xs:   clamp(0.72rem, 0.70rem + 0.10vw, 0.78rem);
-  --text-sm:   clamp(0.84rem, 0.81rem + 0.14vw, 0.92rem);
+  --text-xs:   clamp(0.70rem, 0.68rem + 0.10vw, 0.76rem);
+  --text-sm:   clamp(0.83rem, 0.80rem + 0.14vw, 0.91rem);
   --text-base: clamp(1rem, 0.96rem + 0.18vw, 1.09rem);
-  --text-md:   clamp(1.15rem, 1.08rem + 0.32vw, 1.35rem);
+  --text-md:   clamp(1.13rem, 1.06rem + 0.32vw, 1.31rem);
   --text-lg:   clamp(1.35rem, 1.22rem + 0.6vw, 1.75rem);
   --text-xl:   clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
-  --text-2xl:  clamp(2.25rem, 1.8rem + 2.1vw, 3.5rem);
-  --text-3xl:  clamp(2.9rem, 2.2rem + 3.2vw, 4.75rem);
-  --text-4xl:  clamp(3.6rem, 2.4rem + 6vw, 7.5rem);
+  --text-2xl:  clamp(2.2rem, 1.8rem + 2vw, 3.4rem);
+  --text-3xl:  clamp(2.6rem, 1.9rem + 3.1vw, 4.4rem);
+  --text-4xl:  clamp(3.2rem, 2.2rem + 4.6vw, 5.6rem);
 
   --leading-tight: 1.06;
   --leading-snug: 1.28;
   --leading-normal: 1.55;
   --leading-relaxed: 1.75;
 
-  --tracking-tight: -0.02em;
+  --tracking-tight: -0.015em;   /* didones do not want to be crushed */
   --tracking-normal: 0;
   --tracking-wide: 0.06em;
-  --tracking-wider: 0.14em;
+  --tracking-wider: 0.13em;
 
   /* ---- Spacing (4px base) ---- */
   --space-1: 0.25rem;
@@ -100,35 +103,59 @@
   --page-margin: clamp(1.25rem, 4vw, 4rem);
   --grid-gap: clamp(1rem, 2vw, 1.75rem);
   --radius-sm: 2px;
-  --radius-md: 4px;
+  --radius-md: 3px;
 
-  /* ---- Elevation ----
-     Photographed shadows, not CSS shadows: several soft layers instead of
-     one hard one, warm (not neutral-black), and always cast down-and-right
-     — one consistent light source across the whole page. Nothing floats;
-     everything rests. */
+  /* The ruling pitch. Also the leading of the one paragraph per page that
+     is set to land on the lines. */
+  --rule-pitch: 1.75rem;
+
+  /* ---- Elevation — a sheet resting on the pad, lit from upper-left.
+     Warm, low, down-and-right. Nothing floats. --------------------------- */
   --shadow-paper:
-    0 1px 1px rgba(41, 30, 20, 0.09),
-    0 3px 5px rgba(41, 30, 20, 0.08),
-    0 9px 14px -6px rgba(41, 30, 20, 0.14),
-    0 20px 30px -12px rgba(41, 30, 20, 0.12);
+    0 1px 1px rgba(34, 30, 26, 0.05),
+    0 3px 6px -2px rgba(34, 30, 26, 0.07),
+    0 10px 18px -8px rgba(34, 30, 26, 0.10);
   --shadow-paper-lift:
-    0 2px 2px rgba(41, 30, 20, 0.10),
-    0 6px 10px rgba(41, 30, 20, 0.10),
-    0 16px 24px -8px rgba(41, 30, 20, 0.18),
-    0 32px 48px -16px rgba(41, 30, 20, 0.18);
+    0 1px 2px rgba(34, 30, 26, 0.06),
+    0 6px 12px -3px rgba(34, 30, 26, 0.09),
+    0 20px 32px -12px rgba(34, 30, 26, 0.14);
   --shadow-deep:
-    0 3px 3px rgba(41, 30, 20, 0.10),
-    0 10px 16px rgba(41, 30, 20, 0.12),
-    0 26px 40px -10px rgba(41, 30, 20, 0.22),
-    0 50px 70px -20px rgba(41, 30, 20, 0.20);
+    0 2px 3px rgba(34, 30, 26, 0.07),
+    0 10px 20px -4px rgba(34, 30, 26, 0.11),
+    0 34px 48px -18px rgba(34, 30, 26, 0.18);
 
-  /* ---- Motion — editorial pagination, not physical bounce ---- */
+  /* ---- Motion — a line being drawn, an underline pulled, a note revealed.
+     Exponential ease-out from an already-visible default. ---------------- */
   --ease-ink: cubic-bezier(0.22, 0.61, 0.25, 1);
-  --ease-page: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-draw: cubic-bezier(0.16, 0.84, 0.28, 1);
   --duration-fast: 160ms;
   --duration-base: 320ms;
   --duration-slow: 560ms;
+  --duration-draw: 900ms;
+
+  /* ---- LEGACY ALIASES ------------------------------------------------
+     The collage system is being replaced one section at a time. These keep
+     not-yet-migrated sections rendering coherently on the new paper
+     instead of collapsing. Delete each alias as its last consumer is
+     rebuilt; none of them may appear in new work. */
+  --color-beige: var(--color-paper-sunk);
+  --color-beige-deep: var(--color-hairline);
+  --color-ink-line: var(--color-hairline);
+  --color-ink-line-strong: var(--color-hairline-strong);
+  --color-eggplant: var(--color-plum);
+  --color-eggplant-deep: var(--color-plum-deep);
+  --color-eggplant-tint: var(--color-plum-wash);
+  --color-lavender-soft: var(--color-lavender-wash);
+  --color-on-eggplant: var(--color-on-plum);
+  --color-kraft: #cdc3b4;
+  --color-kraft-deep: #b0a494;
+  --color-sticky: var(--color-paper-raised);
+  --color-sticky-deep: var(--color-paper-sunk);
+  --color-status-process: var(--color-plum);
+  --color-status-accessioned: var(--color-ink-faint);
+  --color-status-catalogued: var(--color-ink-soft);
+  --font-serif: var(--font-display);
+  --ease-page: var(--ease-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -136,5 +163,6 @@
     --duration-fast: 0ms;
     --duration-base: 0ms;
     --duration-slow: 0ms;
+    --duration-draw: 0ms;
   }
 }

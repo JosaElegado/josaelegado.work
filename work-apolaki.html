@@ -78,7 +78,7 @@
           <line x1="60" y1="105" x2="200" y2="105"/>
           <line x1="60" y1="100" x2="60" y2="110"/>
           <line x1="200" y1="100" x2="200" y2="110"/>
-          <text x="130" y="96" text-anchor="middle">ARRAY — 3.2 KWP</text>
+          <text x="130" y="96" text-anchor="middle">ARRAY</text>
         </g>
 
         <line x1="200" y1="160" x2="300" y2="160" stroke="var(--color-on-ink)" stroke-width="1.4"/>
@@ -104,10 +104,10 @@
         </g>
 
         <g font-family="Space Mono, monospace" font-size="8" fill="var(--color-ink-faint)">
-          <text x="620" y="98">HH — 01</text>
-          <text x="620" y="155">HH — 02</text>
-          <text x="620" y="216">HH — 03</text>
-          <text x="620" y="273">HH — 04</text>
+          <text x="620" y="98">HH</text>
+          <text x="620" y="155">HH</text>
+          <text x="620" y="216">HH</text>
+          <text x="620" y="273">HH</text>
         </g>
 
         <text x="770" y="40" text-anchor="end" font-family="Space Mono, monospace" font-size="26" fill="rgba(250,246,239,0.18)">01</text>
@@ -151,23 +151,14 @@
           than a pilot can adapt to it. None of that shows up in a spec sheet.
         </p>
 
-        <div class="plate plate--wide">
-          <div class="evidence__frame plate__frame">
-            <svg viewBox="0 0 640 280" role="img" aria-label="Line chart of household enrollment over fourteen months across three pilot sites" preserveAspectRatio="xMidYMid meet" style="background:var(--color-paper-raised);">
-              <g stroke="var(--color-ink-line-strong)" stroke-width="1">
-                <line x1="60" y1="20" x2="60" y2="230"/>
-                <line x1="60" y1="230" x2="600" y2="230"/>
-              </g>
-              <path d="M60,215 C140,205 200,190 260,160 C320,128 380,95 440,72 C500,52 560,42 600,38" fill="none" stroke="var(--color-eggplant)" stroke-width="1.8"/>
-              <path d="M60,222 C140,218 200,214 260,205 C320,196 380,182 440,168 C500,155 560,146 600,140" fill="none" stroke="var(--color-lavender)" stroke-width="1.6" stroke-dasharray="2 5"/>
-              <g font-family="Space Mono, monospace" font-size="9" fill="var(--color-ink-faint)">
-                <text x="60" y="248">MONTH 0</text>
-                <text x="560" y="248">MONTH 14</text>
-                <text x="16" y="24" transform="rotate(-90 16 24)">HOUSEHOLDS</text>
-              </g>
-            </svg>
-          </div>
-          <p class="evidence__caption"><strong>Fig. 01</strong> — Enrollment across two of three pilot sites, first fourteen months. The third site's data is still being cleaned.</p>
+        <div class="boxed" style="max-width:34rem;">
+          <svg class="boxed__frame" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M3 6 200 4 397 3.5 396.5 50 396 96 200 98 3.5 97.5 3.2 50 3 6 4.2 11.5"/>
+          </svg>
+          <p class="prose">
+            Enrolment and retention figures are being collected but are not
+            published here yet. <span class="xref">add when the data is clean</span>
+          </p>
         </div>
 
         <h3>The approach</h3>
@@ -179,9 +170,9 @@
           follows price.
         </p>
         <p>
-          It's early. Two cooperatives are testing two different repayment
-          structures right now, on purpose — the difference in outcomes is
-          part of what this file is tracking.
+          It's early. More than one repayment structure is being tried at
+          once, on purpose — the difference in how they hold up is part of
+          what this file is tracking.
         </p>
 
         <div class="plate plate--inset">
@@ -198,14 +189,10 @@
                 <text x="315" y="90" text-anchor="middle" font-family="Space Mono, monospace" font-size="9" fill="var(--color-ink)">HOME</text>
               </g>
               <g stroke="var(--color-ink-line-strong)" stroke-width="1" font-family="Space Mono, monospace" font-size="8" fill="var(--color-ink-faint)">
-                <line x1="40" y1="130" x2="120" y2="130"/>
-                <line x1="40" y1="125" x2="40" y2="135"/>
-                <line x1="120" y1="125" x2="120" y2="135"/>
-                <text x="80" y="150" text-anchor="middle">0.8M</text>
               </g>
             </svg>
           </div>
-          <p class="evidence__caption"><strong>Fig. 02</strong> — Standard connection point, revised twice since the first site went live.</p>
+          <p class="evidence__caption"><strong>Fig. 01</strong> — Standard connection point at the household end.</p>
         </div>
 
         <p class="aside" style="margin-top: var(--space-8);">
@@ -255,37 +242,23 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="site-footer__status">
+    <p class="site-footer__status">
       <span class="status-dot" aria-hidden="true"></span>
-      Based in Manila — Apolaki and Rubeo Agrilabs in process, one study ongoing.
-    </div>
-    <div class="site-footer__grid">
-      <div>
-        <p class="site-footer__heading">Josa Elegado</p>
-        <p style="max-width:28ch; color:rgba(250,246,239,0.7); font-size:var(--text-sm); line-height:var(--leading-relaxed);">An archive of ventures, research, and travel, filed while still in progress.</p>
-      </div>
-      <div>
-        <p class="site-footer__heading">Index</p>
-        <a href="story.html">Story</a>
-        <a href="work.html">Work</a>
-        <a href="field-notes.html">Field Notes</a>
-        <a href="timeline.html">Timeline</a>
-      </div>
-      <div>
-        <p class="site-footer__heading">Elsewhere</p>
-        <a href="https://www.linkedin.com/">LinkedIn</a>
-        <a href="mailto:hello@josaelegado.com">Email</a>
-        <a href="lets-build.html">Let's Build</a>
-      </div>
-      <div>
-        <p class="site-footer__heading">Record</p>
-        <a href="field-notes.html">Latest entry</a>
-        <a href="lets-build.html">Say hello</a>
-      </div>
-    </div>
+      Manila &middot; Building Apolaki &middot; Notes updated Jul 2026
+    </p>
+
+    <nav class="site-footer__chapters" aria-label="Chapters">
+      <a href="story.html">The Story</a>
+      <a href="work.html">The Work</a>
+      <a href="field-notes.html">Field Notes</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="lets-build.html">Let&rsquo;s Build</a>
+    </nav>
+
     <div class="site-footer__base">
-      <span>© <span data-current-year>2026</span> Josa Elegado</span>
-      <span>File 001</span>
+      <span>&copy; <span data-current-year>2026</span> Josa Elegado</span>
+      <a href="mailto:hello@josaelegado.com">hello@josaelegado.com</a>
+      <span class="page-mark">&mdash; pg. 01 &mdash;</span>
     </div>
   </div>
 </footer>

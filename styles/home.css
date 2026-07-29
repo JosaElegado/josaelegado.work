@@ -2,272 +2,460 @@
    HOME — page-specific layout
    ========================================================================== */
 
-/* ---- Hero ---- */
+/* ---- Opening spread ----
+   Title block, thesis, figure. The figure is drawn on the paper: no card, no
+   border, no shadow — the whole point is that there is nothing between the
+   drawing and the page. */
 
-.hero { padding-block: var(--space-9) var(--space-8); position: relative; }
+.hero { padding-block: var(--space-6) var(--space-11); }
+
+.hero__title-block { margin-bottom: var(--space-9); }
 
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: var(--space-9);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: var(--space-8) var(--space-10);
+  align-items: start;
 }
 
-.hero__text .eyebrow { margin-bottom: var(--space-5); }
+/* ---- The thesis ---- */
 
-.hero__text h1 { font-size: var(--text-3xl); }
+/* Ramps faster than the global display step so Bodoni's hairlines are not
+   pushed against the page margin on a phone. */
+.hero__thesis {
+  font-size: clamp(2.1rem, 1.1rem + 4.2vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  max-width: 20ch;
+}
 
-.hero__role { color: var(--color-eggplant); font-style: italic; }
+.hero__thesis-line { display: block; }
 
-.hero__text .lede { margin-top: var(--space-6); max-width: 44ch; }
+.hero__thesis-line--turn {
+  font-style: italic;
+  color: var(--color-ink);
+}
+
+/* A hand-drawn underline pulled under the word on load. inline-block so the
+   stroke has the word's exact box to measure against; non-scaling-stroke so the
+   line keeps one pen width however far the box stretches. */
+.mark-underline {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.mark-underline__stroke {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 100%;
+  height: 0.2em;
+  overflow: visible;
+  fill: none;
+  stroke: var(--color-plum);
+  stroke-linecap: round;
+}
+
+.mark-underline__stroke path {
+  stroke-width: 2.6;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---- Lede ----
+   Leading is set to the ruling pitch, so the paragraph's lines run at the
+   same rhythm as the paper underneath it. */
+.hero__lede {
+  margin-top: var(--space-6);
+  max-width: 46ch;
+  font-size: clamp(1.06rem, 1rem + 0.28vw, 1.19rem);
+  line-height: var(--rule-pitch);
+  color: var(--color-ink-soft);
+}
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4);
-  margin-top: var(--space-7);
-}
-
-/* Hero collage — a desk arrangement, not a centered illustration.
-   Everything is absolutely placed within a fixed-ratio stage so the
-   pieces can overlap the way real objects on a desk would. */
-
-.hero__collage {
-  position: relative;
-  height: 500px;
-  perspective: 1400px;
-}
-
-.hero__polaroid {
-  position: absolute;
-  top: 4%;
-  left: 4%;
-  width: 46%;
-  z-index: 2;
-  transform: rotate(-3deg) rotateY(-5deg) rotateX(2deg);
-  transform-style: preserve-3d;
-}
-
-.hero__polaroid .polaroid__photo { aspect-ratio: 4/5; }
-
-.hero__notebook {
-  position: absolute;
-  right: 0;
-  bottom: 6%;
-  width: 60%;
-  z-index: 1;
-  transform: rotate(2deg) rotateY(4deg) rotateX(-1deg);
-  transform-style: preserve-3d;
-  filter: drop-shadow(0 3px 3px rgba(41,30,20,0.10)) drop-shadow(0 18px 26px rgba(41,30,20,0.18));
-}
-
-.hero__notebook svg { width: 100%; height: auto; display: block; }
-
-.hero__stamp {
-  position: absolute;
-  left: 30%;
-  bottom: 2%;
-  width: 210px;
-  z-index: 3;
-  filter: drop-shadow(0 4px 6px rgba(41,30,20,0.14));
-}
-
-.hero__stamp svg { width: 100%; height: auto; display: block; }
-
-.hero__tape-a { top: -12px; left: 30%; z-index: 3; }
-
-/* ---- Intro strip ---- */
-
-.intro-strip {
-  padding-block: var(--space-9);
-  background: var(--color-beige);
-}
-
-.intro-strip__row {
-  display: grid;
-  grid-template-columns: 0.55fr 1.45fr;
-  gap: var(--space-8);
-  align-items: start;
-}
-
-.intro-strip p.font-serif {
-  font-size: var(--text-md);
-  color: var(--color-ink-soft);
-  line-height: var(--leading-snug);
-}
-
-/* ---- Section scaffolding ---- */
-
-.section-head__title { margin-top: var(--space-3); }
-
-/* ---- Currently: scattered polaroid row ---- */
-
-.venture-row {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-7);
-  flex-wrap: wrap;
-}
-
-.venture-item { width: 240px; }
-.venture-item:nth-child(2) { margin-top: var(--space-8); }
-.venture-item:nth-child(3) { margin-top: var(--space-2); }
-.venture-item:nth-child(4) { margin-top: var(--space-9); }
-
-.venture-item .polaroid__photo { aspect-ratio: 1/1; }
-
-.venture-item__meta {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-top: var(--space-3);
-  gap: var(--space-2);
-}
-
-.venture-item__name {
-  font-family: var(--font-serif);
-  font-size: var(--text-md);
-  font-variation-settings: var(--serif-personality);
-}
-
-.venture-item__excerpt {
-  margin-top: var(--space-2);
-  font-size: var(--text-sm);
-  color: var(--color-ink-soft);
-  line-height: var(--leading-relaxed);
-}
-
-.venture-other {
-  width: 230px;
-  margin-top: var(--space-6);
-}
-
-.venture-other__label {
-  font-family: var(--font-hand);
-  font-size: var(--text-lg);
-  color: var(--color-eggplant);
-  margin-bottom: var(--space-2);
-  display: block;
-}
-
-.venture-other p {
-  font-size: var(--text-sm);
-  color: var(--color-ink-soft);
-  line-height: var(--leading-relaxed);
-}
-
-/* ---- Selected Work: alternating editorial spread ---- */
-
-.work-entry {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-9);
   align-items: center;
-  padding-block: var(--space-9);
+  gap: var(--space-4) var(--space-7);
+  margin-top: var(--space-8);
 }
 
-.work-entry + .work-entry { border-top: 1px solid var(--color-ink-line); }
+/* ---- Fig. 01 ---- */
 
-.work-entry--reverse .work-entry__figure { order: 2; }
-.work-entry--reverse .work-entry__text { order: 1; }
-
-.work-entry__figure { position: relative; }
-
-.work-entry__sketch {
-  position: relative;
-  background: var(--color-paper-raised);
-  border: 1px solid var(--color-ink-line);
-  border-radius: 2px 4px 1px 3px;
-  padding: var(--space-6);
-  box-shadow: var(--wear-shadow, var(--shadow-paper));
+.hero__figure {
+  margin: 0;
+  max-width: 27rem;
+  justify-self: end;
+  width: 100%;
 }
 
-.work-entry__sketch::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(120% 90% at 16% 14%, rgba(255, 253, 246, 0.5), transparent 55%),
-    radial-gradient(150% 110% at 92% 94%, rgba(41, 30, 20, 0.07), transparent 60%);
-  mix-blend-mode: multiply;
+.figure__label {
+  display: flex;
+  gap: var(--space-4);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-hairline);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
 }
 
-.work-entry__sketch svg { position: relative; width: 100%; height: auto; }
+.figure__label span:first-child { color: var(--color-ink); }
 
-.work-entry__text .tag { margin-bottom: var(--space-4); }
+.hero__figure .draw-figure { width: 100%; height: auto; }
 
-.work-entry__text h3 { font-size: var(--text-xl); margin-bottom: var(--space-4); }
+.figure__equation {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-hairline);
+  max-width: none;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
 
-.work-entry__text p { color: var(--color-ink-soft); line-height: var(--leading-relaxed); margin-bottom: var(--space-5); }
+.figure__equation span { color: var(--color-lavender); padding-inline: 0.15em; }
+.figure__equation strong { color: var(--color-plum); font-weight: 400; }
 
-/* ---- Field notes: taped photo cards ---- */
+/* ---- Responsive ----
+   Notebook principles, not notebook proportions: one column, same paper,
+   same ink. The figure keeps its own scale rather than stretching. */
 
-.notes-grid {
+@media (max-width: 1040px) {
+  .hero { padding-block: var(--space-5) var(--space-9); }
+  .hero__grid { grid-template-columns: 1fr; gap: var(--space-9); }
+  .hero__title-block { margin-bottom: var(--space-7); }
+  .hero__thesis { max-width: 24ch; }
+  .hero__figure { justify-self: start; max-width: 24rem; }
+}
+
+@media (max-width: 560px) {
+  .hero__thesis { max-width: none; }
+  .hero__figure { max-width: 100%; }
+  .hero__actions { gap: var(--space-5); }
+}
+
+
+/* ==========================================================================
+   MOVEMENTS
+   The homepage is one continuous read, not a directory. Seven movements, each
+   answering exactly one question, and no two sharing a format or a density.
+   Spacing is deliberately uneven: prose breathes, the ledger is tight, the
+   figure gets the most room on the page, the close is quiet.
+   ========================================================================== */
+
+.mv { padding-block: var(--space-10); }
+
+/* Pacing. These are not a scale — they are seven specific decisions. */
+.mv--prose   { padding-block: var(--space-11) var(--space-10); }
+.mv--ledger  { padding-block: var(--space-8) var(--space-9); }
+.mv--figure  { padding-block: var(--space-11); }
+.mv--case    { padding-block: var(--space-9) var(--space-10); }
+.mv--moments { padding-block: var(--space-10) var(--space-11); }
+.mv--entries { padding-block: var(--space-9) var(--space-10); }
+.mv--open    { padding-block: var(--space-11) var(--space-13); }
+
+/* A hairline between movements, so the page reads as one continuous sheet
+   with ruled divisions rather than a stack of independent blocks. */
+.mv + .mv { border-top: 1px solid var(--color-rule); }
+
+.mv__head {
+  font-size: var(--text-xl);
+  max-width: 26ch;
+  margin-bottom: var(--space-6);
+}
+
+/* ---- Prose ----
+   Set at the ruling pitch so the lines of the passage run with the lines of
+   the paper. Measure stays inside the comfortable reading band. */
+
+.prose {
+  max-width: 34rem;
+  line-height: var(--rule-pitch);
+  color: var(--color-ink-soft);
+}
+
+.prose + .prose { margin-top: var(--rule-pitch); }
+
+/* A lead paragraph is still a paragraph: it stays in the reading face. The
+   display face is for headings and for statements short enough to take in at
+   a glance — a seven-line block of Bodoni is elegant and tiring. */
+.prose--lead {
+  font-size: clamp(1.06rem, 1rem + 0.28vw, 1.19rem);
+  line-height: var(--rule-pitch);
+  color: var(--color-ink);
+  max-width: 44ch;
+}
+
+/* One line, said once. This is where the display face belongs. */
+.prose--stmt {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-md);
+  line-height: 1.35;
+  color: var(--color-ink);
+  max-width: 34ch;
+}
+
+.boxed .prose--stmt { margin: 0; }
+
+/* ---- 02 · Ledger ----
+   The running list at the front of a working notebook: index, name, the open
+   question, then the metadata that makes it a record rather than a claim. */
+
+/* No rule of its own: the opener already closes with one, and two hairlines
+   a few pixels apart read as a stutter rather than a table head. */
+.ledger__row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-7);
+  grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 18rem);
+  gap: var(--space-3) var(--space-6);
+  align-items: baseline;
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--color-hairline);
 }
 
-.notes-grid .entry-card:nth-child(2) { margin-top: var(--space-5); }
+.ledger__no {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--color-ink-faint);
+}
 
-.note-card__photo {
+.ledger__name {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+
+.ledger__name a {
+  text-decoration-color: var(--color-hairline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-ink);
+}
+.ledger__name a:hover { text-decoration-color: var(--color-plum); }
+
+/* The open question is written by hand, because it is a note to self rather
+   than a description of the project. */
+.ledger__q {
+  font-family: var(--font-hand);
+  font-size: 1.13rem;
+  line-height: 1.4;
+  color: var(--color-plum);
+  max-width: 40ch;
+}
+
+.ledger__meta { align-items: flex-end; text-align: right; }
+
+@media (max-width: 860px) {
+  .ledger__row { grid-template-columns: 2.25rem minmax(0, 1fr); }
+  .ledger__meta { grid-column: 2; align-items: flex-start; text-align: left; }
+}
+
+/* ---- 03 · The dominant figure ----
+   Drawn straight onto the paper: no frame, no card, no shadow. It gets more
+   width than anything else on the page because it is the page's one argument.
+   Two variants — a wide drawing cannot hold legible labels on a phone. */
+
+.spread-figure { margin: 0 auto; max-width: 62rem; }
+
+.spread-figure .figure__label { margin-bottom: var(--space-7); }
+
+.spread-figure__wide,
+.spread-figure__narrow { width: 100%; height: auto; }
+
+.spread-figure__narrow { display: none; }
+
+@media (max-width: 820px) {
+  .spread-figure__wide { display: none; }
+  .spread-figure__narrow { display: block; max-width: 24rem; }
+}
+
+.figure__note {
+  max-width: 46ch;
+  margin-top: var(--space-8);
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
+
+/* ---- 04 · Case file ----
+   One file at scale rather than two competing previews. */
+
+.case { max-width: 48rem; }
+
+.case__stamp { margin-bottom: var(--space-5); }
+
+.case__title {
+  font-size: var(--text-xl);
+  max-width: 24ch;
+  margin-bottom: var(--space-5);
+}
+
+.case__fields { margin-top: var(--space-7); border-bottom: none; }
+
+.case__more { margin-top: var(--space-7); max-width: none; }
+
+.case__aside {
+  margin-top: var(--space-6);
+  max-width: 46ch;
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+}
+
+.case__aside strong { color: var(--color-ink); font-weight: 600; }
+.case__aside .xref--hand { margin-left: var(--space-2); }
+
+/* ---- 05 · Moments ----
+   A photo essay that stands up before the photographs exist: the caption is
+   the content, an image is an enhancement. Staggered so it reads as a spread
+   rather than a list. No empty frames are ever reserved. */
+
+.moments {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gap);
+  row-gap: var(--space-9);
+}
+
+.moment { position: relative; padding-left: var(--space-6); }
+
+.moment:nth-child(1) { grid-column: 1 / span 5; }
+.moment:nth-child(2) { grid-column: 7 / span 5; margin-top: var(--space-8); }
+.moment:nth-child(3) { grid-column: 2 / span 5; }
+.moment:nth-child(4) { grid-column: 8 / span 4; margin-top: var(--space-6); }
+
+.moment__no {
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--color-ink-faint);
+}
+
+.moment .meta { margin-bottom: var(--space-3); }
+
+.moment__caption {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-md);
+  line-height: 1.4;
+  color: var(--color-ink);
+  max-width: 30ch;
+}
+
+/* When a photograph arrives it drops in here and the row absorbs it. */
+.moment__shot { margin: var(--space-4) 0 0; }
+.moment__shot img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-hairline);
+}
+
+@media (max-width: 820px) {
+  .moments { grid-template-columns: 1fr; row-gap: var(--space-8); }
+  .moment:nth-child(1),
+  .moment:nth-child(2),
+  .moment:nth-child(3),
+  .moment:nth-child(4) { grid-column: 1; margin-top: 0; }
+}
+
+/* ---- 06 · Entries ----
+   The newest note dominates; the older ones are an index under it. */
+
+.entry-lead { max-width: 40rem; }
+
+.entry-lead .meta { margin-bottom: var(--space-4); }
+
+.entry-lead__title {
+  font-size: var(--text-xl);
+  max-width: 26ch;
+  margin-bottom: var(--space-5);
+}
+
+.entry-lead__title a { text-decoration: none; }
+.entry-lead__title a:hover { color: var(--color-plum); }
+
+.entry-lead .prose { margin-bottom: var(--space-5); }
+
+.entry-index {
+  margin-top: var(--space-9);
+  border-top: 1px solid var(--color-hairline);
+  max-width: 46rem;
+}
+
+.entry-index li {
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  gap: var(--space-2) var(--space-6);
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--color-hairline);
+  align-items: baseline;
+}
+
+.entry-index a {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-md);
+  text-decoration-color: var(--color-hairline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--duration-fast) var(--ease-ink);
+}
+.entry-index a:hover { text-decoration-color: var(--color-plum); }
+
+.entry-index__take {
+  grid-column: 2;
+  font-size: var(--text-sm);
+  color: var(--color-ink-soft);
+  max-width: 52ch;
+}
+
+@media (max-width: 700px) {
+  .entry-index li { grid-template-columns: 1fr; }
+  .entry-index__take { grid-column: 1; }
+}
+
+/* ---- 07 · Still unresolved ----
+   The quiet close. Open problems in the hand, generously spaced, and one
+   assumption struck out because it stopped holding. */
+
+.open__head { font-size: var(--text-2xl); }
+
+.open__meta { margin-top: var(--space-4); }
+
+.open-list {
+  margin-top: var(--space-9);
+  counter-reset: openq;
+  max-width: 44rem;
+}
+
+.open-list > li {
+  counter-increment: openq;
   position: relative;
-  aspect-ratio: 16/10;
-  margin: calc(var(--space-6) * -1) calc(var(--space-6) * -1) 0;
-  overflow: hidden;
+  padding-left: var(--space-7);
+  font-family: var(--font-hand);
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  line-height: 1.45;
+  color: var(--color-plum);
 }
 
-.note-card__label {
+.open-list > li + li { margin-top: var(--space-7); }
+
+.open-list > li::before {
+  content: counter(openq, decimal-leading-zero);
   position: absolute;
-  top: var(--space-3);
-  left: var(--space-3);
+  left: 0;
+  top: 0.42em;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--color-ink-faint);
 }
 
-.section-head--with-note {
-  align-items: flex-start;
-}
+.open-list .revision s { color: var(--color-ink-faint); }
+.open-list .revision em { display: block; margin-left: 0; font-size: 0.86em; }
 
-/* ---- Travel: polaroid stamps + map fragment ---- */
-
-.travel-section { position: relative; }
-
-.travel-strip { overflow: hidden; padding-block: var(--space-4); }
-
-.travel-strip__track { display: flex; width: max-content; gap: var(--space-6); }
-
-.travel-polaroid { width: 168px; flex: 0 0 auto; }
-.travel-polaroid .polaroid__photo { aspect-ratio: 4/5; }
-.travel-polaroid .polaroid__caption { font-size: var(--text-base); }
-
-.map-fragment {
-  position: absolute;
-  right: var(--page-margin);
-  top: -32px;
-  width: 110px;
-  z-index: 4;
-}
-
-/* ---- Responsive ---- */
-
-@media (max-width: 960px) {
-  .hero__grid { grid-template-columns: 1fr; }
-  .hero__collage { order: -1; height: 380px; max-width: 380px; margin-inline: auto; width: 100%; }
-  .intro-strip__row { grid-template-columns: 1fr; gap: var(--space-4); }
-  .work-entry,
-  .work-entry--reverse { grid-template-columns: 1fr; }
-  .work-entry--reverse .work-entry__figure,
-  .work-entry--reverse .work-entry__text { order: initial; }
-  .notes-grid { grid-template-columns: 1fr; }
-  .notes-grid .entry-card:nth-child(2) { margin-top: 0; }
-  .map-fragment { display: none; }
-}
-
-@media (max-width: 640px) {
-  .site-footer__grid { grid-template-columns: 1fr; }
-  .venture-row { gap: var(--space-6); }
-  .venture-item, .venture-other { width: 100%; max-width: 260px; }
-  .venture-item:nth-child(2),
-  .venture-item:nth-child(3),
-  .venture-item:nth-child(4) { margin-top: 0; }
-}
+.open__foot { margin-top: var(--space-9); }

@@ -46,25 +46,33 @@
     });
   }
 
-  /* ---- Scroll reveal ---- */
-  var revealTargets = document.querySelectorAll("[data-reveal], [data-reveal-group]");
+  /* ---- Draw-on-arrival ----
+     Figures below the fold draw themselves when you reach them, using the
+     same pen the opening spread uses. Arming is done here rather than in CSS
+     so that a visitor without JavaScript sees the finished drawing instead of
+     a blank frame. Runs once per figure. */
+  var drawTargets = document.querySelectorAll("[data-draw]");
 
-  if (revealTargets.length && "IntersectionObserver" in window) {
-    revealTargets.forEach(function (el) { el.classList.add("is-observed"); });
+  if (drawTargets.length && "IntersectionObserver" in window) {
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
+    if (!reduced.matches) {
+      drawTargets.forEach(function (el) { el.classList.add("is-armed"); });
 
-    revealTargets.forEach(function (el) { observer.observe(el); });
+      var drawObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-drawn");
+              drawObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: "0px 0px -60px 0px" }
+      );
+
+      drawTargets.forEach(function (el) { drawObserver.observe(el); });
+    }
   }
 
   /* ---- Footer year ---- */

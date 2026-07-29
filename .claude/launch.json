@@ -4,7 +4,7 @@
     {
       "name": "field-journal-dev",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4173"],
+      "runtimeArgs": ["scripts/devserver.py", "4173"],
       "port": 4173
     }
   ]

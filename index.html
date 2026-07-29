@@ -15,12 +15,12 @@
 <meta property="og:locale" content="en_PH" />
 <meta name="twitter:card" content="summary_large_image" />
 
-<meta name="theme-color" content="#faf6ef" />
+<meta name="theme-color" content="#faf8f4" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Fragment+Mono:ital@0;1&family=Kalam:wght@300;400&family=Libre+Franklin:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="styles/tokens.css" />
 <link rel="stylesheet" href="styles/base.css" />
@@ -44,12 +44,6 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <svg style="display:none" aria-hidden="true">
-  <defs>
-    <filter id="ink-rough" x="-30%" y="-30%" width="160%" height="160%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.045 0.11" numOctaves="2" seed="7" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
   <symbol id="icon-arrow-right" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="icon-arrow-up-right" viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
@@ -86,360 +80,612 @@
 
 <main id="main">
 
-  <!-- ================= HERO — homepage concept ================= -->
+  <!-- ================= OPENING SPREAD =================
+       The page does not depict a notebook; it is one. The framework is drawn
+       directly on the paper — no card, no frame, no shadow — because that is
+       where an engineer would draw it. One authored motion: the arrows and the
+       underline stroke themselves, in order, once. -->
   <section class="hero">
-    <div class="wrap hero__grid">
-      <div class="hero__text">
-        <p class="eyebrow eyebrow--ink hero-fade-1">Field Journal · Vol. 01 — Manila</p>
-        <h1>
-          <span class="hero-fade-2" style="display:block;">Josa Elegado</span>
-          <span class="hero-fade-3 hero__role" style="display:block;">Builder.</span>
-        </h1>
-        <p class="lede hero-fade-4">
-          This is where I keep the record — the ventures I'm building, the questions
-          I haven't answered yet, the things that worked and the things that quietly
-          didn't. Some entries become companies. Some become research. Most become
-          lessons. All of it stays here, dated and a little unfinished.
-        </p>
-        <div class="hero__actions hero-fade-4">
-          <a class="btn btn--solid" href="story.html">
-            Read the story
-            <svg class="btn__arrow" width="16" height="16"><use href="#icon-arrow-right"/></svg>
-          </a>
-          <a class="btn btn--ghost" href="field-notes.html">Latest field notes</a>
+    <div class="wrap">
+
+      <dl class="title-block hero__title-block">
+        <div class="title-block__field">
+          <dt>Discipline</dt>
+          <dd>Technology commercialization</dd>
         </div>
-      </div>
+        <div class="title-block__field">
+          <dt>Fieldwork</dt>
+          <dd>Renewable energy · Agriculture</dd>
+        </div>
+        <div class="title-block__field">
+          <dt>Based</dt>
+          <dd>Manila, Philippines</dd>
+        </div>
+        <div class="title-block__field title-block__field--wide">
+          <dt>Sheet</dt>
+          <dd>01 — Index</dd>
+        </div>
+      </dl>
 
-      <div class="hero__collage" data-reveal>
-        <span class="tape rot-2 hero__tape-a" aria-hidden="true"></span>
-        <figure class="polaroid wear-2 hero__polaroid rot-1">
-          <div class="polaroid__photo photo-wash-2"><span class="photo-marker">photo</span></div>
-          <figcaption class="polaroid__caption">— caption pending —</figcaption>
-        </figure>
+      <div class="hero__grid">
+        <div class="hero__text">
+          <h1 class="hero__thesis">
+            <span class="hero__thesis-line">The hard part was never the idea.</span>
+            <em class="hero__thesis-line hero__thesis-line--turn">
+              It&rsquo;s getting it
+              <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6" pathLength="100"/></svg></span>.
+            </em>
+          </h1>
 
-        <div class="hero__notebook rot-3">
-          <svg viewBox="0 0 320 400" role="img" aria-labelledby="hero-illo-title">
-            <title id="hero-illo-title">A notebook page sketching how an idea moves from problem to impact</title>
-            <defs>
-              <radialGradient id="nb-light" cx="18%" cy="12%" r="90%">
-                <stop offset="0%" stop-color="#fffdf8" stop-opacity="0.6"/>
-                <stop offset="55%" stop-color="#fffdf8" stop-opacity="0"/>
-              </radialGradient>
-              <filter id="nb-grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/></filter>
-            </defs>
-            <rect x="8" y="8" width="304" height="384" rx="10" fill="var(--color-paper-raised)" stroke="var(--color-ink-line-strong)" stroke-width="1.5"/>
-            <rect x="8" y="8" width="304" height="384" rx="10" fill="url(#nb-light)"/>
-            <rect x="8" y="8" width="304" height="384" rx="10" filter="url(#nb-grain)"/>
-            <path d="M300,370 C302,378 296,388 286,390 C296,386 300,378 296,370 Z" fill="rgba(41,30,20,0.08)"/>
-            <g stroke="var(--color-ink-faint)" stroke-width="1.3" fill="none">
-              <circle cx="26" cy="34" r="4"/><circle cx="26" cy="68" r="4"/><circle cx="26" cy="102" r="4"/>
-              <circle cx="26" cy="136" r="4"/><circle cx="26" cy="170" r="4"/><circle cx="26" cy="204" r="4"/>
-              <circle cx="26" cy="238" r="4"/><circle cx="26" cy="272" r="4"/><circle cx="26" cy="306" r="4"/>
-              <circle cx="26" cy="340" r="4"/><circle cx="26" cy="374" r="4"/>
+          <p class="hero__lede">
+            I&rsquo;m a licensed agricultural and biosystems engineer working in
+            technology commercialization and innovation in the Philippine public
+            sector, and studying for a Master in Innovation and Business. Everything
+            on this site started as a note: the frameworks that held up, the pilots
+            that didn&rsquo;t, and the questions I&rsquo;m still working through.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--solid" href="story.html">
+              Read the story
+              <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="ink-link" href="field-notes.html">Latest field notes</a>
+          </div>
+        </div>
+
+        <!-- The framework, drawn on the page. Pencil for the structure, plum for
+             the through-line, lavender for the loop nobody plans for. -->
+        <figure class="hero__figure">
+          <figcaption class="figure__label">
+            <span>Fig. 01</span>
+            <span>Concept &rarr; adoption</span>
+          </figcaption>
+
+          <svg class="draw-figure" viewBox="0 0 380 456" role="img" aria-labelledby="fig01-title fig01-desc">
+            <title id="fig01-title">The route from concept to adoption</title>
+            <desc id="fig01-desc">Five stages in sequence: problem, insight (revised from “solution”), prototype, pilot, and impact. A loop runs back from pilot to prototype, annotated “this loop is most of the job.”</desc>
+
+            <!-- Boxes are drawn, not stamped: the corners overshoot and the
+                 verticals lean a fraction, the way they do by hand. The
+                 irregularity lives in the coordinates — never in a filter. -->
+            <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
+              <path d="M58 16.5 84 15.5 85 41.5 59 42.5 58 16.5 58.8 13.6"/>
+              <path d="M58.5 112.5 84.5 111.6 85.4 137.6 59.4 138.5 58.5 112.5 59.2 109.7"/>
+              <path d="M58 222.4 84 221.6 84.9 247.6 58.9 248.4 58 222.4 58.6 219.5"/>
+              <path d="M58.6 318.5 84.6 317.5 85.5 343.5 59.5 344.5 58.6 318.5 59.3 315.6"/>
             </g>
-            <text x="56" y="46" font-family="Caveat, cursive" font-size="26" fill="var(--color-ink)">how an idea moves</text>
-            <path d="M56 56c22-8 36 8 58 0s34-8 50 0" fill="none" stroke="var(--color-eggplant)" stroke-width="1.6" stroke-linecap="round"/>
+            <path class="fig-node fig-node--terminal" d="M58 414.4 84 413.5 85 439.5 59 440.4 58 414.4Z" fill="var(--color-plum)" stroke="var(--color-plum)" stroke-width="1.5"/>
 
-            <circle cx="72" cy="98" r="15" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.6"/>
-            <text x="72" y="105" font-family="Fraunces, serif" font-style="italic" font-size="16" text-anchor="middle" fill="var(--color-ink-soft)">?</text>
-            <text x="98" y="103" font-family="Space Mono, monospace" font-size="12" letter-spacing="1" fill="var(--color-ink-soft)">PROBLEM</text>
-            <path d="M72 116v24" stroke="var(--color-lavender)" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/>
-            <path d="M67 136 72 146 77 136" fill="none" stroke="var(--color-lavender)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-
-            <g transform="translate(72,172)" stroke="var(--color-eggplant)" stroke-width="1.6" fill="none">
-              <circle r="12"/>
-              <path d="M-4 11h8M-3 15h6"/>
-              <path d="M0 -19v5M13 -9l-4 3M-13 -9l4 3"/>
+            <g class="fig-arrows" fill="none" stroke="var(--color-plum)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path class="fig-arrow" d="M71 48.5 70.6 105" pathLength="100"/>
+              <path class="fig-arrowhead" d="M66.4 99.4 70.6 106.5 75 99.6"/>
+              <path class="fig-arrow" d="M71.4 144.5 70.8 215" pathLength="100"/>
+              <path class="fig-arrowhead" d="M66.6 209.4 70.8 216.5 75.2 209.6"/>
+              <path class="fig-arrow" d="M70.9 254.4 71.4 311" pathLength="100"/>
+              <path class="fig-arrowhead" d="M67.1 305.4 71.4 312.5 75.7 305.6"/>
+              <path class="fig-arrow" d="M71.5 350.5 71 411" pathLength="100"/>
+              <path class="fig-arrowhead" d="M66.8 405.4 71 412.5 75.4 405.6"/>
             </g>
-            <text x="98" y="177" font-family="Space Mono, monospace" font-size="12" letter-spacing="1" fill="var(--color-ink-soft)">INSIGHT</text>
-            <path d="M72 190v24" stroke="var(--color-lavender)" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/>
-            <path d="M67 210 72 220 77 210" fill="none" stroke="var(--color-lavender)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
-            <g transform="translate(72,246)" stroke="var(--color-eggplant)" stroke-width="1.6" fill="none">
-              <circle cx="-8" cy="-8" r="5"/>
-              <circle cx="8" cy="8" r="5"/>
-              <line x1="-4.5" y1="-4.5" x2="4.5" y2="4.5"/>
+            <!-- The loop nobody puts in the proposal. -->
+            <g class="fig-loop" fill="none" stroke="var(--color-lavender)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M57 331C34 327 21 309 21.5 283 22 258 34 240 55.5 235.5" stroke-dasharray="3 5"/>
+              <path d="M49.6 229.6 56.4 235.4 50.2 241.6"/>
             </g>
-            <text x="98" y="251" font-family="Space Mono, monospace" font-size="12" letter-spacing="1" fill="var(--color-ink-soft)">PROTOTYPE</text>
-            <path d="M72 264v24" stroke="var(--color-lavender)" stroke-width="2" stroke-dasharray="1 6" stroke-linecap="round"/>
-            <path d="M67 284 72 294 77 284" fill="none" stroke="var(--color-lavender)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
-            <g transform="translate(60,318)" stroke="var(--color-eggplant)" stroke-width="1.6" fill="none">
-              <path d="M0 24h24l-4-8H4z"/>
-              <line x1="12" y1="16" x2="12" y2="2"/>
-              <path d="M4 8h16v-6H4z"/>
+            <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)">
+              <text x="106" y="33.5">PROBLEM</text>
+              <text x="106" y="129.5" fill="var(--color-ink-faint)">SOLUTION</text>
+              <text x="106" y="239.5">PROTOTYPE</text>
+              <text x="106" y="335.5">PILOT</text>
+              <text x="106" y="431.5">IMPACT</text>
             </g>
-            <text x="98" y="325" font-family="Space Mono, monospace" font-size="12" letter-spacing="1" fill="var(--color-ink-soft)">IMPACT</text>
+
+            <!-- The revision that matters: it was never about having the solution. -->
+            <path class="fig-strike" d="M104 125.4 175.5 123.8" pathLength="100" fill="none" stroke="var(--color-plum)" stroke-width="1.4" stroke-linecap="round"/>
+            <text class="fig-label fig-label--revised" x="187" y="129.5" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-plum)">INSIGHT</text>
+
+            <text class="fig-hand" x="104" y="288" font-family="Kalam, cursive" font-size="19" fill="var(--color-plum)">this loop is most of the job</text>
           </svg>
-        </div>
 
-        <svg class="hero__stamp" viewBox="0 0 260 100" role="img" aria-label="Stamp: currently in Manila, Philippines">
-          <g filter="url(#ink-rough)">
-            <rect x="5" y="5" width="250" height="90" rx="5" fill="none" stroke="var(--color-eggplant)" stroke-width="2.6"/>
-            <line x1="16" y1="55" x2="244" y2="55" stroke="var(--color-eggplant)" stroke-width="1.4"/>
-          </g>
-          <text x="130" y="42" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="17" fill="var(--color-eggplant)">currently in</text>
-          <text x="130" y="76" text-anchor="middle" font-family="Space Mono, monospace" font-size="12.5" letter-spacing="1.5" fill="var(--color-eggplant)">MANILA, PHILIPPINES</text>
-        </svg>
+          <p class="figure__equation">
+            Technology <span>+</span> People <span>+</span> Policy <span>=</span> <strong>Adoption</strong>
+          </p>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- ================= INTRO ================= -->
-  <section class="intro-strip torn-top">
-    <div class="wrap intro-strip__row" data-reveal>
-      <p class="eyebrow eyebrow--ink" style="margin:0;">The Field Journal</p>
-      <p class="font-serif">
-        I'm Josa — a licensed agricultural and biosystems engineer working in
-        technology commercialization and innovation in the Philippine public sector,
-        currently studying for a Master in Innovation and Business. This site isn't
-        a portfolio. It's closer to a notebook I keep while building: half-finished
-        ideas, small wins, longer failures, and the occasional map of where I'm
-        headed next.
+  <!-- ============================================================
+       01 — WHY I WORK THIS WAY
+       One question, one format: a single editorial passage with a real
+       margin. No cards, no images, nothing competing. The margin notes
+       explain specific paragraphs; the box marks the one sentence the
+       whole page turns on.
+       ============================================================ -->
+  <section class="mv mv--prose">
+    <div class="wrap">
+      <div class="opener">
+        <p class="opener__q" data-index="01">Why do I work this way?</p>
+        <a class="xref" href="story.html">Full chapter &rarr;</a>
+      </div>
+
+      <div class="page-layout">
+        <h2 class="mv__head">A working design is roughly the halfway mark.</h2>
+
+        <p class="prose">
+          I trained as an engineer. Engineering teaches you that a problem is
+          solved when the design works. A few years of fieldwork taught me that
+          a working design is about halfway.
+        </p>
+
+        <p class="prose">
+          The pattern repeats everywhere I&rsquo;ve worked &mdash; renewable
+          energy, agriculture, the public sector. Financing that doesn&rsquo;t
+          match how people actually earn is a constraint. Institutions that
+          change faster than a pilot can adapt to them are a constraint. Trust
+          is a constraint, and it isn&rsquo;t transferable.
+        </p>
+
+        <aside class="page-note">
+          <svg class="page-note__arrow" viewBox="0 0 26 16" aria-hidden="true">
+            <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>none of these show up on a spec sheet</span>
+        </aside>
+
+        <div class="boxed">
+          <svg class="boxed__frame" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M3 6 200 4 397 3.5 396.5 50 396 96 200 98 3.5 97.5 3.2 50 3 6 4.2 11.5"/>
+          </svg>
+          <p class="prose prose--stmt">The technology is rarely the constraint.</p>
+        </div>
+
+        <p class="prose">
+          So I stopped trying to design better
+          <span class="revision"><s>solutions</s><em>conditions</em></span>
+          and started trying to understand adoption. In practice that means
+          being on the site rather than reading the report about the site.
+          Sitting in the meeting where the decision actually gets made. Asking
+          the question that makes a room briefly uncomfortable, because that is
+          usually the question with the answer in it.
+        </p>
+
+        <p class="prose">
+          And writing all of it down &mdash; because the detail that turns out to
+          matter is almost never the one I walked in expecting to matter.
+          That&rsquo;s what the notebook is for. Not a habit. The method.
+        </p>
+
+        <aside class="page-note">
+          <svg class="page-note__arrow" viewBox="0 0 26 16" aria-hidden="true">
+            <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>which is why every page here has a date on it</span>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       02 — WHAT I'M EXPLORING RIGHT NOW
+       A ledger, not tiles. Rows carry real metadata and one open
+       question each — the running list at the front of a working
+       notebook. Deliberately no confidence ratings on ventures.
+       ============================================================ -->
+  <section class="mv mv--ledger">
+    <div class="wrap">
+      <div class="opener">
+        <p class="opener__q" data-index="02">What am I exploring right now?</p>
+        <p class="meta"><span>Three open threads</span><span>Rev. Jul 2026</span></p>
+      </div>
+
+      <ol class="ledger">
+        <li class="ledger__row">
+          <span class="ledger__no">01</span>
+          <div class="ledger__main">
+            <h3 class="ledger__name"><a href="work-apolaki.html">Apolaki</a></h3>
+            <p class="ledger__q">Does trust transfer between sites, or does it have to be rebuilt every time?</p>
+          </div>
+          <p class="meta meta--stack ledger__meta">
+            <span><strong>Renewable energy</strong></span>
+            <span><em>In process</em></span>
+            <span>Started Jan 2025</span>
+            <span>Luzon &amp; Visayas, PH</span>
+          </p>
+        </li>
+
+        <li class="ledger__row">
+          <span class="ledger__no">02</span>
+          <div class="ledger__main">
+            <h3 class="ledger__name">Rubeo Agrilabs</h3>
+            <p class="ledger__q">What does a farmer actually change their mind about &mdash; and what never moves?</p>
+          </div>
+          <p class="meta meta--stack ledger__meta">
+            <span><strong>Agri-technology</strong></span>
+            <span><em>Early</em></span>
+            <span>Notes only</span>
+            <span class="xref">no case file yet</span>
+          </p>
+        </li>
+
+        <li class="ledger__row">
+          <span class="ledger__no">03</span>
+          <div class="ledger__main">
+            <h3 class="ledger__name">Master in Innovation &amp; Business</h3>
+            <p class="ledger__q">Which parts of innovation theory survive contact with a barangay?</p>
+          </div>
+          <p class="meta meta--stack ledger__meta">
+            <span><strong>Study</strong></span>
+            <span><em>Ongoing</em></span>
+            <span>Coursework &amp; thesis</span>
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       03 — HOW THIS ACTUALLY WORKS
+       The dominant figure on the page. Drawn straight onto the paper:
+       no frame, no card, no shadow. Two variants, horizontal on a wide
+       screen and vertical on a narrow one, because a 2.9:1 drawing
+       cannot carry legible labels on a phone.
+       ============================================================ -->
+  <section class="mv mv--figure">
+    <div class="wrap">
+      <div class="opener">
+        <p class="opener__q" data-index="03">How does a thing actually get adopted?</p>
+      </div>
+
+      <figure class="spread-figure" data-draw>
+        <figcaption class="figure__label">
+          <span>Fig. 02</span>
+          <span>Where pilots stall</span>
+        </figcaption>
+
+        <!-- Wide: the pipeline runs left to right, with the three ways it dies
+             dropping out of the long stretch before adoption. -->
+        <svg class="spread-figure__wide" viewBox="0 0 880 300" role="img" aria-labelledby="fig02-title fig02-desc">
+          <title id="fig02-title">Where pilots stall on the way to adoption</title>
+          <desc id="fig02-desc">A pipeline runs from research to prototype to pilot to adoption. A bracket marks research through pilot as “what programs measure”, and a second bracket spans the whole pipeline as “what actually decides it”. Three arrows drop out of the long stretch between pilot and adoption into a box listing financing mismatch, governance churn, and no local trust — annotated “none of these are engineering problems”.</desc>
+
+          <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
+            <path d="M20 30.6 112 29.4 112.8 63.4 20.8 64.4 20 30.6 20.9 27.4"/>
+            <path d="M172 30.4 264 29.6 264.9 63.6 172.9 64.4 172 30.4 172.8 27.3"/>
+            <path d="M324 30.7 416 29.5 416.7 63.5 324.7 64.5 324 30.7 324.8 27.5"/>
+          </g>
+          <path class="fig-node fig-node--terminal" d="M780 30.5 872 29.5 872.8 63.5 780.8 64.5Z" fill="var(--color-plum)" stroke="var(--color-plum)" stroke-width="1.5"/>
+
+          <g class="fig-arrows" fill="none" stroke="var(--color-plum)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path class="fig-arrow" d="M112 47.2 165 46.6" pathLength="100"/>
+            <path class="fig-arrowhead" d="M159.4 42.4 166.5 46.7 159.6 51"/>
+            <path class="fig-arrow" d="M264 47 317 46.5" pathLength="100"/>
+            <path class="fig-arrowhead" d="M311.4 42.3 318.5 46.6 311.6 50.9"/>
+            <path class="fig-arrow" d="M416 46.8 773 46.2" pathLength="100"/>
+            <path class="fig-arrowhead" d="M767.4 42 774.5 46.3 767.6 50.6"/>
+          </g>
+
+          <!-- Dimension brackets: the drawing states what the measurement misses. -->
+          <g class="fig-dim" fill="none" stroke="var(--color-hairline-strong)" stroke-width="1">
+            <path d="M20 85 416 85M20 80 20 90M416 80 416 90"/>
+            <path d="M20 270 872 270M20 265 20 275M872 265 872 275"/>
+          </g>
+          <g class="fig-dim-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.1" fill="var(--color-ink-faint)" text-anchor="middle">
+            <text x="218" y="102">WHAT PROGRAMS MEASURE</text>
+            <text x="446" y="287">WHAT ACTUALLY DECIDES IT</text>
+          </g>
+
+          <g class="fig-drops" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="fig-arrow" d="M500 48 500.4 104" pathLength="100"/>
+            <path class="fig-arrowhead" d="M496 98.5 500.4 105.5 504.8 98.5"/>
+            <path class="fig-arrow" d="M570 48 569.6 104" pathLength="100"/>
+            <path class="fig-arrowhead" d="M565.2 98.5 569.6 105.5 574 98.5"/>
+            <path class="fig-arrow" d="M640 48 640.4 104" pathLength="100"/>
+            <path class="fig-arrowhead" d="M636 98.5 640.4 105.5 644.8 98.5"/>
+          </g>
+
+          <path class="fig-box" d="M400 113 790 111.5 790.8 247 400.8 248.2 400 113 400.9 109.6" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round"/>
+
+          <g class="fig-fail" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round">
+            <path d="M419 143 429 153M429 143 419 153"/>
+            <path d="M419 177 429 187M429 177 419 187"/>
+            <path d="M419 211 429 221M429 211 419 221"/>
+          </g>
+          <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)">
+            <text x="448" y="152">FINANCING MISMATCH</text>
+            <text x="448" y="186">GOVERNANCE CHURN</text>
+            <text x="448" y="220">NO LOCAL TRUST</text>
+          </g>
+
+          <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)" text-anchor="middle">
+            <text x="66" y="52">RESEARCH</text>
+            <text x="218" y="52">PROTOTYPE</text>
+            <text x="370" y="52">PILOT</text>
+            <text x="826" y="52" fill="var(--color-on-plum)">ADOPTION</text>
+          </g>
+
+          <g class="fig-hand" font-family="Kalam, cursive" font-size="20" fill="var(--color-plum)">
+            <text x="40" y="168">none of these are</text>
+            <text x="40" y="190">engineering problems</text>
+          </g>
+          <path class="fig-hand" d="M232 182 392 179" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="fig-hand" d="M386 174 393.5 179.2 386 184" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <!-- Narrow: the same drawing, turned so the labels stay legible. -->
+        <svg class="spread-figure__narrow" viewBox="0 0 400 580" role="img" aria-labelledby="fig02n-title">
+          <title id="fig02n-title">Where pilots stall on the way to adoption</title>
+
+          <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
+            <path d="M20 14.6 112 13.4 112.8 47.4 20.8 48.4 20 14.6 20.9 11.4"/>
+            <path d="M20 94.4 112 93.6 112.9 127.6 20.9 128.4 20 94.4 20.8 91.3"/>
+            <path d="M20 174.7 112 173.5 112.7 207.5 20.7 208.5 20 174.7 20.8 171.5"/>
+          </g>
+          <path class="fig-node fig-node--terminal" d="M20 486.5 112 485.5 112.8 519.5 20.8 520.5Z" fill="var(--color-plum)" stroke="var(--color-plum)" stroke-width="1.5"/>
+
+          <g class="fig-arrows" fill="none" stroke="var(--color-plum)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path class="fig-arrow" d="M66 48.5 65.6 87" pathLength="100"/>
+            <path class="fig-arrowhead" d="M61.4 81.4 65.6 88.5 70 81.5"/>
+            <path class="fig-arrow" d="M66 128.5 66.4 167" pathLength="100"/>
+            <path class="fig-arrowhead" d="M62 161.4 66.4 168.5 70.8 161.5"/>
+            <path class="fig-arrow" d="M66 208.5 65.6 479" pathLength="100"/>
+            <path class="fig-arrowhead" d="M61.4 473.4 65.6 480.5 70 473.5"/>
+          </g>
+
+          <g class="fig-dim" fill="none" stroke="var(--color-hairline-strong)" stroke-width="1">
+            <path d="M132 14 132 208M127 14 137 14M127 208 137 208"/>
+            <path d="M20 548 392 548M20 543 20 553M392 543 392 553"/>
+          </g>
+          <g class="fig-dim-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.1" fill="var(--color-ink-faint)">
+            <text x="146" y="106">WHAT PROGRAMS</text>
+            <text x="146" y="124">MEASURE</text>
+            <text x="20" y="570">WHAT ACTUALLY DECIDES IT</text>
+          </g>
+
+          <g class="fig-drops" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path class="fig-arrow" d="M68 268 128 267.6" pathLength="100"/>
+            <path class="fig-arrowhead" d="M122.4 263.2 129.5 267.7 122.6 272"/>
+            <path class="fig-arrow" d="M68 318 128 317.6" pathLength="100"/>
+            <path class="fig-arrowhead" d="M122.4 313.2 129.5 317.7 122.6 322"/>
+            <path class="fig-arrow" d="M68 368 128 367.6" pathLength="100"/>
+            <path class="fig-arrowhead" d="M122.4 363.2 129.5 367.7 122.6 372"/>
+          </g>
+
+          <path class="fig-box" d="M138 240 392 238.5 392.8 394 138.8 395.2 138 240 138.9 236.6" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round"/>
+
+          <g class="fig-fail" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round">
+            <path d="M157 263 167 273M167 263 157 273"/>
+            <path d="M157 313 167 323M167 313 157 323"/>
+            <path d="M157 363 167 373M167 363 157 373"/>
+          </g>
+          <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)">
+            <text x="180" y="272">FINANCING</text>
+            <text x="180" y="290">MISMATCH</text>
+            <text x="180" y="322">GOVERNANCE</text>
+            <text x="180" y="340">CHURN</text>
+            <text x="180" y="372">NO LOCAL TRUST</text>
+          </g>
+
+          <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)" text-anchor="middle">
+            <text x="66" y="36">RESEARCH</text>
+            <text x="66" y="116">PROTOTYPE</text>
+            <text x="66" y="196">PILOT</text>
+            <text x="66" y="508" fill="var(--color-on-plum)">ADOPTION</text>
+          </g>
+
+          <g class="fig-hand" font-family="Kalam, cursive" font-size="20" fill="var(--color-plum)">
+            <text x="150" y="432">none of these are</text>
+            <text x="150" y="454">engineering problems</text>
+          </g>
+          <path class="fig-hand" d="M160 418 156 402" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round"/>
+          <path class="fig-hand" d="M151 407 155.5 400.5 161 403.5" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </figure>
+
+      <p class="figure__note">
+        Every venture on this page is an attempt to work the bottom half of that
+        drawing. <a class="xref" href="work.html">See the case files &rarr;</a>
       </p>
     </div>
   </section>
 
-  <!-- ================= VENTURES PREVIEW CONCEPT ================= -->
-  <section class="section">
+  <!-- ============================================================
+       04 — WHAT I'VE WORKED ON
+       One file, at scale, presented as a tipped-in sheet — a page from
+       another document laid on the notebook. The second venture gets a
+       single quiet line rather than a competing card.
+       ============================================================ -->
+  <section class="mv mv--case">
     <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow eyebrow--ink">Currently</p>
-          <h2 class="section-head__title">What I'm building right now</h2>
-        </div>
-        <a class="ink-link" href="work.html">See the full work log</a>
+      <div class="opener">
+        <p class="opener__q" data-index="04">What problems have I worked on?</p>
+        <a class="xref" href="work.html">All files &rarr;</a>
       </div>
 
-      <div class="venture-row" data-reveal-group>
-        <a class="polaroid-link venture-item" href="work-apolaki.html">
-          <figure class="polaroid wear-2 rot-4">
-            <div class="polaroid__photo photo-wash-4"><span class="photo-marker">photo</span></div>
-          </figure>
-          <div class="venture-item__meta">
-            <span class="venture-item__name">Apolaki</span>
-            <span class="tag tag--eggplant tag--tilt-l">Active</span>
-          </div>
-          <p class="venture-item__excerpt">A renewable energy adoption platform — working through the policy maze, the financing gap, and the very human reasons adoption stalls.</p>
-        </a>
-
-        <a class="polaroid-link venture-item" href="work.html#rubeo">
-          <figure class="polaroid wear-1 rot-6">
-            <div class="polaroid__photo photo-wash-1"><span class="photo-marker">photo</span></div>
-          </figure>
-          <div class="venture-item__meta">
-            <span class="venture-item__name">Rubeo Agrilabs</span>
-            <span class="tag tag--eggplant tag--tilt-r">Building</span>
-          </div>
-          <p class="venture-item__excerpt">An agri-focused lab exploring how emerging technology can meet farmers where they actually are.</p>
-        </a>
-
-        <a class="polaroid-link venture-item" href="story.html#mib">
-          <figure class="polaroid wear-1 rot-3">
-            <div class="polaroid__photo photo-wash-2"><span class="photo-marker">photo</span></div>
-          </figure>
-          <div class="venture-item__meta">
-            <span class="venture-item__name">MIB Studies</span>
-            <span class="tag tag--tilt-l">Ongoing</span>
-          </div>
-          <p class="venture-item__excerpt">Learning to ask better questions about how ideas survive contact with the real world.</p>
-        </a>
-
-        <div class="torn-note wear-1 venture-other rot-1">
-          <span class="venture-other__label">ongoing experiments</span>
-          <p>Some are quiet. Some are messy. All of them are moving — I'll write about the ones worth telling.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SELECTED WORK — editorial spread ================= -->
-  <section class="section section--beige torn-top">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow eyebrow--ink">Selected Work</p>
-          <h2 class="section-head__title">Ventures worth a closer look</h2>
-        </div>
-        <a class="ink-link" href="work.html">Browse all entries</a>
-      </div>
-
-      <div data-reveal-group>
-        <article class="work-entry">
-          <div class="work-entry__figure">
-            <div class="work-entry__sketch wear-2 rot-2">
-              <span class="tape tape--sm rot-3" style="top:-10px; left:20px;" aria-hidden="true"></span>
-              <svg viewBox="0 0 320 200" role="img" aria-label="Sketch of a solar panel installation with a dashed adoption curve">
-                <g stroke="var(--color-eggplant)" stroke-width="1.6" fill="none" opacity="0.85">
-                  <path d="M40 150h80l-14-24H54z"/>
-                  <line x1="40" y1="150" x2="120" y2="150"/>
-                  <line x1="80" y1="126" x2="80" y2="80"/>
-                  <path d="M62 92h36v-8H62z"/>
-                  <path d="M150 150c30-70 70-70 100 0" stroke-dasharray="2 8"/>
-                </g>
-                <circle cx="250" cy="60" r="18" fill="none" stroke="var(--color-lavender)" stroke-width="2"/>
-                <text x="40" y="30" font-family="Caveat, cursive" font-size="20" fill="var(--color-ink-soft)">adoption, not just installs</text>
-              </svg>
-            </div>
-          </div>
-          <div class="work-entry__text">
-            <span class="tag tag--eggplant">Renewable Energy</span>
-            <h3>Apolaki: getting renewable energy adopted, not just installed</h3>
-            <p>On the gap between a working technology and a household that actually chooses it — the policy maze, the financing gap, and the very human reasons adoption stalls.</p>
-            <a class="ink-link" href="work-apolaki.html">Read the case</a>
-          </div>
-        </article>
-
-        <article class="work-entry work-entry--reverse">
-          <div class="work-entry__figure">
-            <div class="work-entry__sketch wear-2 rot-4">
-              <span class="tape tape--sm rot-1" style="top:-10px; right:24px;" aria-hidden="true"></span>
-              <svg viewBox="0 0 320 200" role="img" aria-label="Sketch of a seedling with field observation markers">
-                <g stroke="var(--color-eggplant)" stroke-width="1.6" fill="none" opacity="0.85">
-                  <path d="M160 150c0-40 -10-60 0-90"/>
-                  <path d="M160 130c-20-6-30-24-26-40 18 2 30 16 26 40z"/>
-                  <path d="M160 108c20-6 30-22 26-38-18 2-30 14-26 38z"/>
-                  <line x1="120" y1="150" x2="200" y2="150"/>
-                </g>
-                <g stroke="var(--color-lavender)" stroke-width="1.6" fill="none">
-                  <circle cx="230" cy="70" r="3"/><circle cx="250" cy="90" r="3"/><circle cx="230" cy="110" r="3"/>
-                  <path d="M230 70v40M230 90h20" stroke-dasharray="1 6"/>
-                </g>
-                <text x="40" y="30" font-family="Caveat, cursive" font-size="20" fill="var(--color-ink-soft)">field observations</text>
-              </svg>
-            </div>
-          </div>
-          <div class="work-entry__text">
-            <span class="tag tag--eggplant">Agri-Technology</span>
-            <h3>Rubeo Agrilabs: technology that starts on the farm, not the whiteboard</h3>
-            <p>Notes from building agri-tech that has to survive real soil, real weather, and real margins.</p>
-            <a class="ink-link" href="work.html#rubeo">Read the case</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FIELD NOTES CONCEPT ================= -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head section-head--with-note">
-        <div>
-          <p class="eyebrow eyebrow--ink">Latest Field Notes</p>
-          <h2 class="section-head__title">Recently written</h2>
-        </div>
-        <p class="margin-note" style="max-width:190px;">
-          <svg class="margin-note__arrow" width="60" height="30" viewBox="0 0 60 30" aria-hidden="true"><path d="M2 4c14 2 24 14 40 18M34 16l8 6-2 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          new entries whenever I learn something worth remembering
+      <article class="tipped case">
+        <p class="meta case__stamp">
+          <span>File 001</span><span><strong>Apolaki</strong></span><span><em>In process</em></span>
         </p>
-      </div>
 
-      <div class="notes-grid" data-reveal-group>
-        <a class="entry-card" href="field-notes.html">
-          <span class="tape tape--sm rot-3" style="top:-8px; left:26px;" aria-hidden="true"></span>
-          <div class="note-card__photo photo-wash-3">
-            <span class="tag tag--tilt-l note-card__label">Renewable Energy</span>
+        <h2 class="case__title">Getting renewable energy adopted, not just installed</h2>
+
+        <p class="prose prose--lead">
+          Apolaki started as a simple question: if solar and micro-hydro systems
+          already work technically, why do so few households keep using them once
+          the pilot support ends? Most renewable energy programmes are measured by
+          installations. This one is measured by what happens after the installer
+          leaves.
+        </p>
+
+        <dl class="title-block case__fields">
+          <div class="title-block__field">
+            <dt>Category</dt>
+            <dd>Renewable energy</dd>
           </div>
-          <div class="entry-card__meta"><span class="catalog-no">Jul 2026</span></div>
-          <h3 class="entry-card__title">What renewable energy pilots don't tell you</h3>
-          <p class="entry-card__excerpt">The parts of a pilot program that never make it into the final report.</p>
-          <span class="entry-card__foot">Read note <svg width="14" height="14"><use href="#icon-arrow-up-right"/></svg></span>
-        </a>
-        <a class="entry-card" href="field-notes.html">
-          <span class="tape tape--sm rot-6" style="top:-8px; right:30px;" aria-hidden="true"></span>
-          <div class="note-card__photo photo-wash-4">
-            <span class="tag tag--tilt-r note-card__label">Innovation</span>
+          <div class="title-block__field">
+            <dt>Started</dt>
+            <dd>Jan 2025</dd>
           </div>
-          <div class="entry-card__meta"><span class="catalog-no">Jun 2026</span></div>
-          <h3 class="entry-card__title">Notes on commercializing hard things</h3>
-          <p class="entry-card__excerpt">Why the hardest part of deep-tech isn't the technology.</p>
-          <span class="entry-card__foot">Read note <svg width="14" height="14"><use href="#icon-arrow-up-right"/></svg></span>
-        </a>
-        <a class="entry-card" href="field-notes.html">
-          <span class="tape tape--sm rot-1" style="top:-8px; left:40%;" aria-hidden="true"></span>
-          <div class="note-card__photo photo-wash-2">
-            <span class="tag tag--tilt-l note-card__label">Reflections</span>
+          <div class="title-block__field">
+            <dt>Sites</dt>
+            <dd>Luzon &amp; Visayas, PH</dd>
           </div>
-          <div class="entry-card__meta"><span class="catalog-no">May 2026</span></div>
-          <h3 class="entry-card__title">A case for slow ideas</h3>
-          <p class="entry-card__excerpt">On resisting the urge to ship before the idea is actually ready.</p>
-          <span class="entry-card__foot">Read note <svg width="14" height="14"><use href="#icon-arrow-up-right"/></svg></span>
-        </a>
-      </div>
+          <div class="title-block__field title-block__field--wide">
+            <dt>Status</dt>
+            <dd>In process</dd>
+          </div>
+        </dl>
+
+        <p class="case__more">
+          <a class="btn btn--solid" href="work-apolaki.html">
+            Open the file
+            <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </a>
+        </p>
+      </article>
+
+      <p class="case__aside">
+        Also open: <strong>Rubeo Agrilabs</strong> &mdash; early enough that there
+        are field notes but no case file.
+        <span class="xref xref--hand">write this one up next</span>
+      </p>
     </div>
   </section>
 
-  <!-- ================= TRAVEL STRIP CONCEPT ================= -->
-  <section class="section section--tight section--beige torn-top travel-section">
-    <svg class="map-fragment rot-2" viewBox="0 0 120 120" aria-hidden="true">
-      <circle cx="60" cy="60" r="56" fill="var(--color-paper-raised)" stroke="var(--color-ink-line-strong)" stroke-width="1.5"/>
-      <g stroke="var(--color-ink-faint)" stroke-width="1" fill="none" opacity="0.7">
-        <path d="M14 50c14-10 30-4 40 6s26 12 36-2"/>
-        <path d="M18 70c16-6 30 2 42-2s28-10 38 4"/>
-      </g>
-      <path d="M30 40c10 8 8 24 22 30s26-6 36 6" fill="none" stroke="var(--color-eggplant)" stroke-width="1.6" stroke-dasharray="1 6" stroke-linecap="round"/>
-      <circle cx="30" cy="40" r="3" fill="var(--color-eggplant)"/>
-      <circle cx="88" cy="76" r="3" fill="var(--color-eggplant)"/>
-    </svg>
+  <!-- ============================================================
+       05 — WHERE THIS HAPPENS
+       A photo essay that works before the photographs arrive: each
+       moment is a numbered observation with its own metadata, so the
+       captions carry the meaning and an image is an enhancement rather
+       than a hole in the layout. Staggered, so it reads as a spread and
+       not a third list.
+
+       TO ADD A PHOTOGRAPH: append a figure.moment__shot holding one image as
+       the last child of .moment. Nothing else needs to change.
+       ============================================================ -->
+  <section class="mv mv--moments">
     <div class="wrap">
-      <p class="eyebrow eyebrow--ink">Recent Travels</p>
-      <h2 class="section-head__title" style="margin-bottom: var(--space-6);">Places that shape perspective</h2>
-    </div>
-    <div class="travel-strip" aria-label="Recent travel stops, auto-scrolling — hover to pause">
-      <div class="travel-strip__track">
-        <figure class="polaroid wear-2 travel-polaroid rot-1"><div class="polaroid__photo photo-wash-1"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">Manila — home base</figcaption></figure>
-        <figure class="polaroid wear-1 travel-polaroid rot-5"><div class="polaroid__photo photo-wash-4"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">— caption pending —</figcaption></figure>
-        <figure class="polaroid wear-1 travel-polaroid rot-2"><div class="polaroid__photo photo-wash-2"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">— caption pending —</figcaption></figure>
-        <figure class="polaroid wear-2 travel-polaroid rot-4"><div class="polaroid__photo photo-wash-5"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">— caption pending —</figcaption></figure>
-        <figure class="polaroid wear-1 travel-polaroid rot-3"><div class="polaroid__photo photo-wash-3"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">— caption pending —</figcaption></figure>
-        <figure class="polaroid wear-2 travel-polaroid rot-1"><div class="polaroid__photo photo-wash-1"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">Manila — home base</figcaption></figure>
-        <figure class="polaroid wear-1 travel-polaroid rot-5"><div class="polaroid__photo photo-wash-4"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">— caption pending —</figcaption></figure>
-        <figure class="polaroid wear-1 travel-polaroid rot-2"><div class="polaroid__photo photo-wash-2"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">— caption pending —</figcaption></figure>
-        <figure class="polaroid wear-2 travel-polaroid rot-4"><div class="polaroid__photo photo-wash-5"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">— caption pending —</figcaption></figure>
-        <figure class="polaroid wear-1 travel-polaroid rot-3"><div class="polaroid__photo photo-wash-3"><span class="photo-marker">photo</span></div><figcaption class="polaroid__caption">— caption pending —</figcaption></figure>
+      <div class="opener">
+        <p class="opener__q" data-index="05">Where does this actually happen?</p>
+        <p class="meta"><span>Photographs pending</span></p>
       </div>
+
+      <ol class="moments">
+        <li class="moment">
+          <span class="moment__no">01</span>
+          <p class="meta"><span>Site visit</span><span>Luzon</span></p>
+          <p class="moment__caption">Everything on the roof works. Nothing about that guarantees it gets used.</p>
+        </li>
+        <li class="moment">
+          <span class="moment__no">02</span>
+          <p class="meta"><span>Cooperative meeting</span><span>Visayas</span></p>
+          <p class="moment__caption">The real decision had already been made before the presentation started.</p>
+        </li>
+        <li class="moment">
+          <span class="moment__no">03</span>
+          <p class="meta"><span>Whiteboard</span><span>Manila</span></p>
+          <p class="moment__caption">Third version of the pipeline this quarter. The gates keep moving.</p>
+        </li>
+        <li class="moment">
+          <span class="moment__no">04</span>
+          <p class="meta"><span>Notebook</span><span>In transit</span></p>
+          <p class="moment__caption">Most of these pages never become anything. That is what they are for.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
+  <!-- ============================================================
+       06 — WHAT I LEARNED RECENTLY
+       The most recent entry at length, so one thing dominates, with the
+       older entries as a tight index beneath it. Not a third card grid.
+       ============================================================ -->
+  <section class="mv mv--entries">
+    <div class="wrap">
+      <div class="opener">
+        <p class="opener__q" data-index="06">What did I learn recently?</p>
+        <a class="xref" href="field-notes.html">All notes &rarr;</a>
+      </div>
+
+      <article class="entry-lead">
+        <p class="meta"><span>Field note</span><span>Jul 2026</span><span>Renewable energy</span></p>
+        <h2 class="entry-lead__title">
+          <a href="field-notes.html">What renewable energy pilots don&rsquo;t tell you</a>
+        </h2>
+        <p class="prose">
+          A pilot is designed to prove that something works. That makes it a poor
+          instrument for finding out whether anyone wants it. Every pilot
+          I&rsquo;ve been part of arrived with support that would not exist
+          afterwards &mdash; a coordinator, a subsidy, someone who answered the
+          phone. The interesting month is not any month during the pilot. It
+          is the first one after it ends.
+        </p>
+        <a class="ink-link" href="field-notes.html">Read the note</a>
+      </article>
+
+      <ol class="entry-index">
+        <li>
+          <p class="meta"><span>Jun 2026</span><span>Innovation</span></p>
+          <a href="field-notes.html">Notes on commercialising hard things</a>
+          <p class="entry-index__take">The technology was never the bottleneck. The institution was.</p>
+        </li>
+        <li>
+          <p class="meta"><span>May 2026</span><span>Reflections</span></p>
+          <a href="field-notes.html">A case for slow ideas</a>
+          <p class="entry-index__take">Shipping early is cheap. Shipping early into a system you don&rsquo;t understand is not.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       07 — STILL UNRESOLVED
+       The close, and the one movement with no opener: its question is
+       the content. Open problems in the hand, and one assumption struck
+       out because it stopped holding.
+       ============================================================ -->
+  <section class="mv mv--open">
+    <div class="wrap">
+      <h2 class="open__head">Still unresolved</h2>
+      <p class="meta open__meta"><span>Working questions</span><span>Rev. Jul 2026</span></p>
+
+      <ol class="open-list">
+        <li>Does trust transfer between sites, or does it have to be rebuilt every time?</li>
+        <li>Is there a version of a pilot that doesn&rsquo;t distort the thing it&rsquo;s measuring?</li>
+        <li>Why do the frameworks that survive fieldwork always end up simpler than the ones that don&rsquo;t?</li>
+        <li>
+          <span class="revision"><s>Adoption is a financing problem.</s><em>less sure about this than I was</em></span>
+        </li>
+      </ol>
+
+      <p class="open__foot">
+        <span class="xref xref--hand">revisit after the next site visit</span>
+      </p>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <div class="site-footer__status">
+    <p class="site-footer__status">
       <span class="status-dot" aria-hidden="true"></span>
-      Currently based in Manila — building Apolaki, tending Rubeo Agrilabs, mid-way through a Master's.
-    </div>
+      Manila &middot; Building Apolaki &middot; Notes updated Jul 2026
+    </p>
 
-    <div class="site-footer__grid">
-      <div>
-        <p class="site-footer__heading">Josa Elegado</p>
-        <p style="max-width:28ch; color:rgba(250,246,239,0.7); font-size:var(--text-sm); line-height:var(--leading-relaxed);">
-          A field journal for ideas in progress — some become ventures, some become lessons.
-        </p>
-      </div>
-      <div>
-        <p class="site-footer__heading">Explore</p>
-        <a href="story.html">The Story</a>
-        <a href="work.html">The Work</a>
-        <a href="field-notes.html">Field Notes</a>
-        <a href="timeline.html">Timeline</a>
-      </div>
-      <div>
-        <p class="site-footer__heading">Elsewhere</p>
-        <a href="https://www.linkedin.com/">LinkedIn</a>
-        <a href="mailto:hello@josaelegado.com">Email</a>
-        <a href="lets-build.html">Let's Build</a>
-      </div>
-      <div>
-        <p class="site-footer__heading">Field Journal</p>
-        <a href="field-notes.html">Latest note</a>
-        <a href="lets-build.html">Say hello</a>
-      </div>
-    </div>
+    <nav class="site-footer__chapters" aria-label="Chapters">
+      <a href="story.html">The Story</a>
+      <a href="work.html">The Work</a>
+      <a href="field-notes.html">Field Notes</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="lets-build.html">Let&rsquo;s Build</a>
+    </nav>
 
     <div class="site-footer__base">
-      <span>© <span data-current-year>2026</span> Josa Elegado. Written, built, and revised in the field.</span>
-      <span class="catalog-no">— pg. 01 —</span>
+      <span>&copy; <span data-current-year>2026</span> Josa Elegado</span>
+      <a href="mailto:hello@josaelegado.com">hello@josaelegado.com</a>
+      <span class="page-mark">— pg. 01 —</span>
     </div>
   </div>
 </footer>

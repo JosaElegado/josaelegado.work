@@ -1,70 +1,93 @@
 /* ==========================================================================
-   ANIMATIONS — scroll reveal, hero entrance, small delight
-   Reveal is progressive enhancement: [data-reveal] is visible by default,
-   JS adds .is-observed then toggles .is-visible via IntersectionObserver.
+   MOTION — one verb: drawing.
+   The page has exactly one kind of movement, and it is a pen making a mark:
+   an underline pulled under a word, an arrow drawn from one box to the next,
+   a note appearing, a correction struck through. Nothing fades in just
+   because it scrolled into view — prose is never hidden from a reader, and a
+   uniform entrance on every section is a tic, not a design.
+
+   Everything is declared finished first. A visitor with reduced motion, or
+   without JavaScript, gets the completed drawing rather than an empty page.
    ========================================================================== */
 
-[data-reveal].is-observed {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity var(--duration-slow) var(--ease-page), transform var(--duration-slow) var(--ease-page);
-}
-
-[data-reveal].is-observed.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-[data-reveal-group].is-observed > * {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity var(--duration-slow) var(--ease-page), transform var(--duration-slow) var(--ease-page);
-}
-
-[data-reveal-group].is-observed.is-visible > * {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-[data-reveal-group].is-observed.is-visible > *:nth-child(1) { transition-delay: 0ms; }
-[data-reveal-group].is-observed.is-visible > *:nth-child(2) { transition-delay: 90ms; }
-[data-reveal-group].is-observed.is-visible > *:nth-child(3) { transition-delay: 180ms; }
-[data-reveal-group].is-observed.is-visible > *:nth-child(4) { transition-delay: 270ms; }
-[data-reveal-group].is-observed.is-visible > *:nth-child(5) { transition-delay: 360ms; }
-[data-reveal-group].is-observed.is-visible > *:nth-child(6) { transition-delay: 450ms; }
-
-@keyframes draw-line {
-  from { stroke-dashoffset: var(--line-length, 300); }
+@keyframes draw-stroke {
+  from { stroke-dashoffset: 100; }
   to { stroke-dashoffset: 0; }
 }
 
-.draw-in path {
-  stroke-dasharray: var(--line-length, 300);
-  stroke-dashoffset: var(--line-length, 300);
-  animation: draw-line var(--duration-slow) var(--ease-ink) forwards;
-  animation-delay: 300ms;
+@keyframes mark-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@media (prefers-reduced-motion: no-preference) {
 
-.hero-fade-1 { animation: fade-up var(--duration-slow) var(--ease-page) both; animation-delay: 60ms; }
-.hero-fade-2 { animation: fade-up var(--duration-slow) var(--ease-page) both; animation-delay: 180ms; }
-.hero-fade-3 { animation: fade-up var(--duration-slow) var(--ease-page) both; animation-delay: 300ms; }
-.hero-fade-4 { animation: fade-up var(--duration-slow) var(--ease-page) both; animation-delay: 420ms; }
+  /* ---- Fig. 01, in the opening spread: drawn on arrival ---- */
 
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
+  /* The headline underline is read first, so it is drawn first. */
+  .mark-underline__stroke path {
+    stroke-dasharray: 100;
+    animation: draw-stroke 620ms var(--ease-draw) 420ms both;
+  }
 
-.travel-strip__track {
-  animation: marquee-scroll 34s linear infinite;
-}
+  .hero__figure .fig-arrow {
+    stroke-dasharray: 100;
+    animation: draw-stroke 400ms var(--ease-draw) both;
+  }
+  .hero__figure .fig-arrowhead { animation: mark-appear 200ms linear both; }
 
-.travel-strip:hover .travel-strip__track,
-.travel-strip:focus-within .travel-strip__track {
-  animation-play-state: paused;
+  /* Arrows and their heads are interleaved siblings, so the arrows are the
+     odd paths and the heads are the even ones. Counting them as if each were
+     its own sequence silently drops the later delays. */
+  .hero__figure .fig-arrow:nth-of-type(1) { animation-delay: 260ms; }
+  .hero__figure .fig-arrow:nth-of-type(3) { animation-delay: 450ms; }
+  .hero__figure .fig-arrow:nth-of-type(5) { animation-delay: 640ms; }
+  .hero__figure .fig-arrow:nth-of-type(7) { animation-delay: 830ms; }
+
+  .hero__figure .fig-arrowhead:nth-of-type(2) { animation-delay: 620ms; }
+  .hero__figure .fig-arrowhead:nth-of-type(4) { animation-delay: 810ms; }
+  .hero__figure .fig-arrowhead:nth-of-type(6) { animation-delay: 1000ms; }
+  .hero__figure .fig-arrowhead:nth-of-type(8) { animation-delay: 1190ms; }
+
+  /* The loop nobody plans for shows up after the tidy version is finished. */
+  .hero__figure .fig-loop { animation: mark-appear 520ms var(--ease-ink) 1300ms both; }
+
+  /* Then the annotation, then the correction — the order you would actually
+     write them in. */
+  .hero__figure .fig-hand { animation: mark-appear 480ms var(--ease-ink) 1560ms both; }
+
+  .hero__figure .fig-strike {
+    stroke-dasharray: 100;
+    animation: draw-stroke 300ms var(--ease-draw) 1900ms both;
+  }
+
+  .hero__figure .fig-label--revised { animation: mark-appear 320ms var(--ease-ink) 2080ms both; }
+
+  /* ---- Fig. 02, further down: drawn when you reach it ----
+     JS arms the figure, so without JS it simply renders complete. The pen
+     runs the pipeline first, then drops into the three failure modes, then
+     writes the note — the order the drawing was thought in. */
+
+  [data-draw].is-armed .fig-arrow { stroke-dasharray: 100; stroke-dashoffset: 100; }
+  [data-draw].is-armed .fig-arrowhead,
+  [data-draw].is-armed .fig-hand { opacity: 0; }
+
+  [data-draw].is-drawn .fig-arrow { animation: draw-stroke 380ms var(--ease-draw) both; }
+  [data-draw].is-drawn .fig-arrowhead { animation: mark-appear 200ms linear both; }
+
+  [data-draw].is-drawn .fig-arrows .fig-arrow:nth-of-type(1) { animation-delay: 0ms; }
+  [data-draw].is-drawn .fig-arrows .fig-arrow:nth-of-type(3) { animation-delay: 170ms; }
+  [data-draw].is-drawn .fig-arrows .fig-arrow:nth-of-type(5) { animation-delay: 340ms; }
+  [data-draw].is-drawn .fig-arrows .fig-arrowhead:nth-of-type(2) { animation-delay: 360ms; }
+  [data-draw].is-drawn .fig-arrows .fig-arrowhead:nth-of-type(4) { animation-delay: 530ms; }
+  [data-draw].is-drawn .fig-arrows .fig-arrowhead:nth-of-type(6) { animation-delay: 700ms; }
+
+  [data-draw].is-drawn .fig-drops .fig-arrow:nth-of-type(1) { animation-delay: 820ms; }
+  [data-draw].is-drawn .fig-drops .fig-arrow:nth-of-type(3) { animation-delay: 930ms; }
+  [data-draw].is-drawn .fig-drops .fig-arrow:nth-of-type(5) { animation-delay: 1040ms; }
+  [data-draw].is-drawn .fig-drops .fig-arrowhead:nth-of-type(2) { animation-delay: 1130ms; }
+  [data-draw].is-drawn .fig-drops .fig-arrowhead:nth-of-type(4) { animation-delay: 1240ms; }
+  [data-draw].is-drawn .fig-drops .fig-arrowhead:nth-of-type(6) { animation-delay: 1350ms; }
+
+  [data-draw].is-drawn .fig-hand { animation: mark-appear 480ms var(--ease-ink) 1520ms both; }
 }
