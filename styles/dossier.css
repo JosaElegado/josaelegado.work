@@ -93,10 +93,10 @@
 
 /* ---- Evidence plates ---- */
 
-.plate { margin-block: var(--space-10); }
-.plate--wide { margin-inline: 0; }
-.plate__frame { aspect-ratio: 16/8; }
-.plate--inset .plate__frame { aspect-ratio: 4/3; }
+.dossier-plate { margin-block: var(--space-10); }
+.dossier-plate--wide { margin-inline: 0; }
+.dossier-plate__frame { aspect-ratio: 16/8; }
+.dossier-plate--inset .dossier-plate__frame { aspect-ratio: 4/3; }
 
 /* ---- Margin annotation, set beside the narrative on wide screens ---- */
 

@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /patterns.html
+Disallow: /entry-template.html
+Disallow: /type-specimen.html
 Disallow: /style-guide.html
 
-Sitemap: https://www.josaelegado.com/sitemap.xml
+Sitemap: https://www.josaelegado.work/sitemap.xml

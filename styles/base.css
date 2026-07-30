@@ -101,11 +101,24 @@ h1, h2, h3 {
   text-wrap: balance;
 }
 
+/* Reading text has one weight, so emphasis is carried by case, tracking and
+   ink — never by a bolder cut that does not exist. `font-synthesis: none`
+   makes that a guarantee: anything that still asks for bold renders at its
+   real weight instead of being smeared into a fake one. */
+body { font-synthesis: none; }
+
 h4 {
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
   line-height: var(--leading-snug);
   color: var(--color-ink);
+}
+
+strong, b {
+  font-weight: 400;
+  color: var(--color-plum);
 }
 
 h1 { font-size: var(--text-3xl); }
@@ -115,6 +128,20 @@ h4 { font-size: var(--text-md); }
 
 p { max-width: 62ch; }
 p.lede { font-size: var(--text-md); color: var(--color-ink-soft); line-height: var(--leading-relaxed); }
+
+/* Ligatures off: a reading face will happily turn `--x` into an en-dash, which
+   is exactly wrong when the text is naming a CSS property. */
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "clig" 0, "calt" 0;
+}
+
+code {
+  font-size: 0.88em;
+  color: var(--color-plum);
+  white-space: nowrap;
+}
 
 .font-display,
 .font-serif { font-family: var(--font-display); font-optical-sizing: auto; }

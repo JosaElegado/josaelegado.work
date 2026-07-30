@@ -1,0 +1,171 @@
+/* ==========================================================================
+   PATTERNS — chrome for the system document itself.
+   Nothing in here ships inside an entry; it exists only to present the
+   library. Kept separate from blocks.css so the two never bleed together.
+   ========================================================================== */
+
+.pat-intro { padding-block: var(--space-8) var(--space-10); }
+
+.pat-index {
+  margin-top: var(--space-8);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--space-5) var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.pat-index__group h2 {
+  font-size: var(--text-base);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  margin-bottom: var(--space-3);
+}
+
+.pat-index__group a {
+  display: block;
+  padding-block: 3px;
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+  text-decoration-color: var(--color-hairline);
+  text-underline-offset: 3px;
+}
+.pat-index__group a:hover { text-decoration-color: var(--color-plum); }
+
+/* ---- Section rule ---- */
+
+.pat-section { padding-block: var(--space-10) var(--space-6); }
+
+.pat-section__head {
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-ink);
+}
+
+.pat-section__head h2 { font-size: var(--text-xl); }
+
+.pat-section__head p {
+  margin-top: var(--space-4);
+  max-width: 52ch;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+}
+
+/* ---- One specimen ---- */
+
+.spec { padding-block: var(--space-9); border-bottom: 1px solid var(--color-rule); }
+
+.spec__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+}
+
+.spec__head h3 { font-size: var(--text-lg); }
+
+.spec__use {
+  margin-top: var(--space-4);
+  max-width: 56ch;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+}
+
+.spec__use b { color: var(--color-plum); font-weight: 400; }
+
+/* The live specimen sits in its own ruled field so it reads as a rendering
+   of the component rather than as page content. */
+.spec__demo {
+  margin-top: var(--space-7);
+  padding-block: var(--space-6);
+  position: relative;
+}
+
+.spec__demo::before {
+  content: "Specimen";
+  position: absolute;
+  top: calc(var(--space-2) * -1);
+  /* The demo spans the viewport so blocks can reach the full tier; the label
+     still has to line up with the page margin. */
+  left: max(var(--page-margin), 50% - (var(--content-width) / 2) + var(--page-margin));
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+/* ---- Markup sample ---- */
+
+.pat-code {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  overflow-x: auto;
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-hairline);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.75;
+  color: var(--color-ink-soft);
+  tab-size: 2;
+}
+
+.pat-code b { color: var(--color-plum); font-weight: 400; }
+.pat-code i { color: var(--color-ink-faint); font-style: normal; }
+
+/* ---- Entry-type specimen card ---- */
+
+.pat-type { padding-block: var(--space-8); border-bottom: 1px solid var(--color-rule); }
+
+.pat-type__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 15rem);
+  gap: var(--space-6) var(--space-8);
+  align-items: start;
+}
+
+.pat-type__facts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-left: var(--space-5);
+  border-left: 1px solid var(--color-hairline);
+}
+
+.pat-type__facts > div { display: flex; flex-direction: column; gap: 3px; }
+
+.pat-type__facts dt {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.pat-type__facts dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-ink);
+}
+
+.pat-type__seq {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+  color: var(--color-ink-soft);
+}
+
+.pat-type__seq li::before { content: "→ "; color: var(--color-plum); }
+
+@media (max-width: 860px) {
+  .pat-type__grid { grid-template-columns: minmax(0, 1fr); }
+  .pat-type__facts { padding-left: 0; border-left: 0; padding-top: var(--space-5); border-top: 1px solid var(--color-hairline); }
+}

@@ -1,0 +1,740 @@
+/* ==========================================================================
+   EDITORIAL SYSTEM — entry types, blocks, evidence
+   A library of layouts, not a set of pages. Three layers, and each one only
+   knows about the layer below it:
+
+     ENTRY TYPES  essay · photo essay · field note · project log ·
+                  collection · case study
+                  Six editorial formats. Each tunes the same grid — reading
+                  measure, margin width, which tier evidence defaults to —
+                  and brings its own masthead fields. A magazine runs a photo
+                  story and an interview on one design system; so does this.
+
+     BLOCKS       observation · evidence+reflection · before/after ·
+                  screenshot insight · gallery strip · notebook spread ·
+                  process timeline · quote · artifact grid · photo essay
+                  Arrangements of evidence and text. Entries are assembled
+                  from these; blocks never restyle the plates inside them.
+
+     PLATE        the one slot every artifact goes in — photo, screenshot,
+                  receipt, ticket, map, diagram, sketch, prototype, document,
+                  notebook page.
+
+   Two rules govern the whole file:
+
+   1. EVIDENCE IS THE UNIT. Text explains artifacts, not the other way round.
+      A block may be almost entirely plates; that is a supported composition,
+      not an edge case.
+
+   2. SWAPPING IS FREE. A slot draws a for-position-only keyline until it
+      contains real media, then gets out of the way on its own. Dropping one
+      image element into a slot is the entire migration — no class changes, no layout
+      work, no redesign. Author the composition now, fill it later.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. THE FLOW — three width tiers on one grid
+
+   An entry is a single grid. Text sits in the reading column; evidence breaks
+   out to `wide` or all the way to `full` without leaving the flow or needing a
+   wrapper. This is what lets an entry run 70% visual with no layout rebuilt
+   for it.
+
+   Entry types tune two numbers — the reading measure and the margin — and the
+   whole composition follows. An essay wants a long line and quiet margins; a
+   photo essay wants a short line and wide ones, so pictures dominate by
+   geometry rather than by exception.
+   ========================================================================== */
+
+.entry {
+  --measure: 42rem;
+  --gutter: 13rem;
+
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--page-margin), 1fr)
+    [wide-start] minmax(0, var(--gutter))
+    [text-start] minmax(0, var(--measure)) [text-end]
+    minmax(0, var(--gutter)) [wide-end]
+    minmax(var(--page-margin), 1fr) [full-end];
+  row-gap: var(--space-9);
+}
+
+/* The notebook's margin rule, aligned to *this* entry's reading column rather
+   than to the site-wide content edge — so it keeps its meaning when the entry
+   type changes the measure. The body-level rule is suppressed on these pages
+   (see below) so there is only ever one. */
+/* The reading column is centred between two equal gutters, so its left edge is
+   simply half the leftover width — the gutters cancel. Shown only above the
+   width at which the outer tracks would start clamping and break that identity
+   (every entry type sums to the same 62rem, so one breakpoint covers all six). */
+@media (min-width: 1240px) {
+  .entry::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc((100% - var(--measure)) / 2 - 0.875rem);
+    width: 1px;
+    background: var(--color-plum-rule);
+    pointer-events: none;
+  }
+}
+
+body:has(.entry) {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      var(--color-rule) 0 1px,
+      transparent 1px var(--rule-pitch)
+    );
+  background-repeat: repeat;
+  background-size: 100% var(--rule-pitch);
+  background-position: 0 0;
+}
+
+.entry > * { grid-column: text; }
+.entry > .u-wide { grid-column: wide; }
+.entry > .u-full { grid-column: full; }
+
+/* ---- Entry-type tuning ----
+   Six formats, one grid. These are the only geometric differences between
+   entry types; everything else is shared, which is why a reader never has to
+   work out which kind of entry they opened. */
+
+/* Long-form argument. The longest comfortable line, evidence used sparingly. */
+.entry[data-entry="essay"] { --measure: 44rem; --gutter: 12rem; }
+
+/* Pictures lead. Short line, wide margins — text becomes the exception. */
+.entry[data-entry="photo-essay"] { --measure: 32rem; --gutter: 17rem; row-gap: var(--space-10); }
+
+/* Documented observation. The standard geometry. */
+.entry[data-entry="field-note"] { --measure: 42rem; --gutter: 13rem; }
+
+/* Dated, incremental, screenshot-heavy. Tighter rhythm than a field note. */
+.entry[data-entry="project-log"] { --measure: 40rem; --gutter: 14rem; row-gap: var(--space-8); }
+
+/* Artifacts in bulk. The grid matters more than the prose. */
+.entry[data-entry="collection"] { --measure: 35rem; --gutter: 16rem; }
+
+/* Argued at length and evidenced throughout. */
+.entry[data-entry="case-study"] { --measure: 42rem; --gutter: 13rem; }
+
+/* In a photo essay, a bare plate reaches the wide tier without being asked. */
+.entry[data-entry="photo-essay"] > .plate { grid-column: wide; }
+
+/* Prose inside the flow keeps the ruling pitch, same as everywhere else. */
+.entry > p {
+  max-width: none;
+  line-height: var(--rule-pitch);
+  color: var(--color-ink-soft);
+}
+
+.entry > h2,
+.entry > h3 { margin-top: var(--space-4); }
+
+/* Blocks set their own internal spacing; the flow's row-gap handles the rest. */
+.blk { margin: 0; }
+
+.blk__lede {
+  max-width: 40rem;
+  line-height: var(--rule-pitch);
+  color: var(--color-ink-soft);
+}
+
+
+/* ==========================================================================
+   2. THE PLATE — one slot for every kind of evidence
+
+   <figure class="plate">
+     <div class="plate__slot" data-artifact="Screenshot">[image goes here]</div>
+     <figcaption class="plate__caption">
+       <p class="meta"><span>Bengaluru</span><span>Jul 2026</span></p>
+       <p>What happened here.</p>
+     </figcaption>
+   </figure>
+
+   `data-artifact` does three jobs at once: it labels the empty slot, it picks
+   the default proportion for that kind of artifact, and it decides whether the
+   asset should be cropped or shown whole. One attribute, declared once — there
+   is nothing to keep in sync.  Override the shape per instance with
+   style="--ratio: 21/9".
+   ========================================================================== */
+
+.plate { margin: 0; }
+
+.plate__slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: var(--ratio, 3 / 2);
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-hairline);
+  overflow: hidden;
+}
+
+.plate__slot > img,
+.plate__slot > picture,
+.plate__slot > video,
+.plate__slot > svg,
+.plate__slot > iframe {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--fit, cover);
+  display: block;
+  border: 0;
+}
+
+/* ---- For-position-only state ----
+   A keyline box with a cross and a typed label: the mark a publication
+   designer leaves where a picture is going to sit. It disappears the moment
+   the slot holds media, so it can never survive into a published page. */
+
+.plate__slot:not(:has(img, picture, video, svg, iframe)) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 10 10'%3E%3Cpath d='M0 0 10 10M10 0 0 10' stroke='%2322242a' stroke-opacity='0.11' stroke-width='1' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+.plate__slot:not(:has(img, picture, video, svg, iframe))::after {
+  content: attr(data-artifact);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-paper-raised);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  text-align: center;
+  line-height: 1.5;
+  max-width: 88%;
+}
+
+/* Default proportions per artifact type. A receipt is not shaped like a map;
+   the template should already be the right shape before the asset exists. */
+.plate__slot[data-artifact]                    { --ratio: 3 / 2; }
+.plate__slot[data-artifact="Photo"]            { --ratio: 3 / 2; }
+.plate__slot[data-artifact="Photo, portrait"]  { --ratio: 4 / 5; }
+.plate__slot[data-artifact="Screenshot"]       { --ratio: 16 / 10; }
+.plate__slot[data-artifact="Prototype"]        { --ratio: 4 / 3; }
+.plate__slot[data-artifact="Diagram"]          { --ratio: 4 / 3; }
+.plate__slot[data-artifact="Sketch"]           { --ratio: 4 / 3; }
+.plate__slot[data-artifact="Map"]              { --ratio: 1 / 1; }
+.plate__slot[data-artifact="Receipt"]          { --ratio: 2 / 5; }
+.plate__slot[data-artifact="Ticket"]           { --ratio: 5 / 2; }
+.plate__slot[data-artifact="Document"]         { --ratio: 3 / 4; }
+.plate__slot[data-artifact="Notebook page"]    { --ratio: 3 / 4; }
+
+/* Line art and paper are shown whole; photographs may be cropped to fill.
+   A receipt with its edges cut off is not evidence of anything. */
+.plate__slot[data-artifact="Diagram"],
+.plate__slot[data-artifact="Sketch"],
+.plate__slot[data-artifact="Receipt"],
+.plate__slot[data-artifact="Ticket"],
+.plate__slot[data-artifact="Document"],
+.plate__slot[data-artifact="Notebook page"] { --fit: contain; }
+
+.plate__caption {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.plate__caption > p {
+  margin: 0;
+  max-width: 46ch;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+}
+
+/* The one-line reading of the evidence — what it is *for*, not what it is. */
+.plate__insight {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-md);
+  line-height: 1.35;
+  color: var(--color-ink);
+  max-width: 34ch;
+}
+
+
+/* ==========================================================================
+   3. ANNOTATION — the hand, attached to evidence
+
+   Same language as the rest of the site: plum, Kalam, a drawn arrow that
+   points at the thing it is about. Used by several blocks.
+   ========================================================================== */
+
+.annot {
+  display: flex;
+  gap: var(--space-2);
+  font-family: var(--font-hand);
+  font-size: 1.06rem;
+  line-height: 1.35;
+  color: var(--color-plum);
+}
+
+.annot__arrow {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 16px;
+  margin-top: 0.28em;
+  color: var(--color-plum);
+  opacity: 0.85;
+}
+
+.annot--up .annot__arrow { transform: rotate(-90deg); }
+.annot--down .annot__arrow { transform: rotate(90deg); }
+
+
+/* ==========================================================================
+   4. THE BLOCKS
+   ========================================================================== */
+
+/* ---- Observation ----------------------------------------------------------
+   The smallest complete unit: one artifact, what it is, what it told me.
+   Text tier. Use when the evidence speaks for itself. */
+
+.blk-observation .plate__caption { margin-top: var(--space-4); }
+
+
+/* ---- Evidence + Reflection ------------------------------------------------
+   One large artifact carrying the block, a hand note against it, and about a
+   hundred words. Wide tier: the picture leads, the text explains it. */
+
+.blk-evidence {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: var(--space-6) var(--space-8);
+  align-items: start;
+}
+
+.blk-evidence__figure { grid-row: span 2; }
+.blk-evidence__annot { align-self: end; }
+
+.blk-evidence__text {
+  line-height: var(--rule-pitch);
+  color: var(--color-ink-soft);
+  max-width: 38ch;
+}
+
+
+/* ---- Before / After -------------------------------------------------------
+   Two states of the same thing, an arrow, one sentence. The arrow is drawn,
+   not a glyph, so it reads as the same pen as every other mark on the site. */
+
+.blk-beforeafter__pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.blk-beforeafter__arrow {
+  width: 46px;
+  height: 20px;
+  color: var(--color-plum);
+  align-self: center;
+  margin-top: -2.5rem;
+}
+
+.blk-beforeafter__line {
+  margin-top: var(--space-5);
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-md);
+  line-height: 1.35;
+  color: var(--color-ink);
+  max-width: 44ch;
+}
+
+
+/* ---- Screenshot Insight ---------------------------------------------------
+   A screenshot with one region called out and explained. The callout is an
+   engineering leader-and-keyline, not a yellow sticky: the site's language
+   already has a way to point at something.
+
+   Position the keyline with --x/--y/--w/--h as percentages of the slot. */
+
+.blk-screenshot {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: var(--space-6) var(--space-7);
+  align-items: start;
+}
+
+.blk-screenshot__figure { position: relative; }
+
+.blk-screenshot__callout {
+  position: absolute;
+  left: var(--x, 55%);
+  top: var(--y, 20%);
+  width: var(--w, 34%);
+  height: var(--h, 24%);
+  border: 1.6px solid var(--color-plum);
+  pointer-events: none;
+}
+
+.blk-screenshot__callout::after {
+  content: attr(data-mark);
+  position: absolute;
+  top: -1px;
+  left: 100%;
+  padding: 2px var(--space-2);
+  background: var(--color-plum);
+  color: var(--color-on-plum);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.6;
+}
+
+.blk-screenshot__note {
+  padding: var(--space-5) var(--space-5) var(--space-5) var(--space-6);
+  border-left: 1px solid var(--color-plum-rule);
+}
+
+.blk-screenshot__mark {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-plum);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.blk-screenshot__note p {
+  margin: 0;
+  max-width: 34ch;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+}
+
+
+/* ---- Gallery Strip --------------------------------------------------------
+   Many artifacts, scanned horizontally, each captioned. Full tier. Scroll is
+   snapped and keyboard-reachable; it never auto-plays. */
+
+.blk-strip {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-inline: var(--page-margin);
+  padding-bottom: var(--space-4);
+  scrollbar-width: thin;
+}
+
+.blk-strip > .plate {
+  flex: 0 0 auto;
+  width: clamp(13rem, 26vw, 20rem);
+  scroll-snap-align: start;
+}
+
+.blk-strip:focus-visible { outline: 2px solid var(--color-plum); outline-offset: 4px; }
+
+
+/* ---- Notebook Spread ------------------------------------------------------
+   Left page evidence, right page reflection, one hairline where the fold
+   would be. The only block that literally borrows the book's geometry, and
+   it collapses to one column rather than pretending to be a spread on a
+   phone. */
+
+.blk-spread {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  position: relative;
+}
+
+.blk-spread::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 0.5px);
+  width: 1px;
+  background: var(--color-rule);
+}
+
+.blk-spread__page { display: flex; flex-direction: column; gap: var(--space-5); }
+
+.blk-spread__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.blk-spread__page p {
+  margin: 0;
+  max-width: 40ch;
+  line-height: var(--rule-pitch);
+  color: var(--color-ink-soft);
+}
+
+
+/* ---- Process Timeline -----------------------------------------------------
+   How the thing actually moved: sketch, prototype, pilot, outcome. Steps are
+   numbered because the sequence is the information. */
+
+.blk-process {
+  display: grid;
+  grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr));
+  gap: var(--space-6);
+  counter-reset: step;
+}
+
+.blk-process__step {
+  counter-increment: step;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+}
+
+/* The connector sits in the gutter between steps, at the slot's midline. */
+.blk-process__step + .blk-process__step::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--space-6) * -1);
+  width: var(--space-6);
+  top: 22%;
+  height: 1px;
+  background: var(--color-plum);
+  opacity: 0.5;
+}
+
+.blk-process__no {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-ink-faint);
+}
+
+.blk-process__no::before { content: counter(step, decimal-leading-zero) " · "; }
+
+.blk-process__step h4 { font-size: var(--text-base); }
+
+.blk-process__step p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-ink-soft);
+}
+
+
+/* ---- Quote Block ----------------------------------------------------------
+   Something someone said, at scale, with the evidence that it was said. */
+
+.blk-quote {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: var(--space-7) var(--space-8);
+  align-items: start;
+}
+
+.blk-quote blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-xl);
+  line-height: 1.18;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.blk-quote figcaption {
+  margin-top: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.blk-quote__annot { grid-column: 1; max-width: 34ch; }
+
+
+/* ---- Artifact Grid --------------------------------------------------------
+   Everything that isn't a photograph: receipts, tickets, maps, documents,
+   notebook pages, mixed at their own proportions. Items span different
+   numbers of columns, so the grid stays irregular the way a real collection
+   of paper is — without a single piece of tape. */
+
+.blk-artifacts {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-6) var(--grid-gap);
+  align-items: start;
+}
+
+.blk-artifacts > .plate { grid-column: span var(--span, 3); }
+
+
+/* ---- Photo Essay ----------------------------------------------------------
+   Imagery carries it. Text appears only where an image cannot say the thing.
+   Full tier, deliberately asymmetric: nothing here should tile. */
+
+.blk-essay {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-8) var(--grid-gap);
+  padding-inline: var(--page-margin);
+  align-items: end;
+}
+
+.blk-essay > * { grid-column: span var(--span, 6); }
+.blk-essay > .u-offset { grid-column: var(--start, 2) / span var(--span, 5); }
+
+.blk-essay__aside {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+  max-width: 30ch;
+  align-self: center;
+}
+
+
+/* ==========================================================================
+   5. ENTRY MASTHEAD
+   Every entry opens as a documented record, whatever its type: what kind of
+   entry this is, where, when, how long, and what evidence exists — before the
+   reader has read a word. The shell is identical across all six types; only
+   the fields differ, because a collection has a span and a project log has a
+   phase and neither has a duration.
+   ========================================================================== */
+
+.entry-masthead { padding-block: var(--space-8) var(--space-9); }
+
+.entry-masthead__no {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+/* The type is stated, not implied. A reader should be able to tell a photo
+   essay from a project log at a glance — and should not have to. */
+.entry-masthead__type { color: var(--color-ink-faint); }
+.entry-masthead__type strong { color: var(--color-ink); font-weight: 400; }
+
+.entry-masthead__status { color: var(--color-plum); }
+
+.entry-masthead__title {
+  margin-top: var(--space-6);
+  font-size: var(--text-2xl);
+  max-width: 20ch;
+}
+
+.entry-masthead__standfirst {
+  margin-top: var(--space-5);
+  max-width: 42ch;
+  font-size: clamp(1.06rem, 1rem + 0.28vw, 1.19rem);
+  line-height: var(--rule-pitch);
+  color: var(--color-ink-soft);
+}
+
+.entry-masthead__fields {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-hairline);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--space-6) var(--space-7);
+}
+
+.entry-masthead__fields > div { display: flex; flex-direction: column; gap: 4px; }
+
+.entry-masthead__fields dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.entry-masthead__fields dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+
+/* The evidence inventory: the count is the point, so it is set as a list. */
+.entry-masthead__fields dd ul { display: flex; flex-direction: column; }
+.entry-masthead__fields dd li { white-space: nowrap; }
+
+/* A photo essay opens on a picture, not on a paragraph. */
+.entry-masthead--opener .entry-masthead__title { margin-top: var(--space-7); }
+
+
+/* ==========================================================================
+   6. RESPONSIVE
+   Blocks collapse to a single column at the point their own composition stops
+   working, not at one shared breakpoint. Nothing scrolls sideways except the
+   strip, which is meant to.
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  /* The margin columns are worth more as reading width than as margins once
+     the viewport gets narrow: at 390px they were taking 400 of 350 available
+     pixels between them and squeezing the text column to nothing. All three
+     tiers survive — text and wide become one column inset by the page margin,
+     full still bleeds edge to edge — so no block needs to know. */
+  .entry {
+    grid-template-columns:
+      [full-start] var(--page-margin)
+      [wide-start text-start] minmax(0, 1fr) [text-end wide-end]
+      var(--page-margin) [full-end];
+  }
+
+  .blk-evidence,
+  .blk-screenshot,
+  .blk-quote {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .blk-evidence__figure { grid-row: auto; }
+
+  .blk-quote__annot { grid-column: 1; }
+
+  .blk-spread { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
+  .blk-spread::before { display: none; }
+
+  .blk-process { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
+  .blk-process__step + .blk-process__step::before {
+    left: 12%;
+    top: calc(var(--space-7) * -1);
+    width: 1px;
+    height: var(--space-7);
+  }
+
+  .blk-artifacts > .plate { grid-column: span var(--span-sm, 6); }
+  .blk-essay > *,
+  .blk-essay > .u-offset { grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px) {
+  .blk-beforeafter__pair { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .blk-beforeafter__arrow { transform: rotate(90deg); margin: 0 auto; }
+  .blk-artifacts > .plate { grid-column: span var(--span-xs, 12); }
+  .entry { row-gap: var(--space-8); }
+}

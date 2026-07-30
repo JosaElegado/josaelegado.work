@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Entry template — Josa Elegado</title>
+<meta name="description" content="A complete entry assembled from the editorial system, with every artifact slot still empty." />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#faf8f4" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Fragment+Mono:ital@0;1&family=La+Belle+Aurore&family=Kalam:wght@300;400&family=Libre+Franklin:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/blocks.css" />
+<link rel="stylesheet" href="styles/animations.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-arrow-right" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="annot-arrow" viewBox="0 0 26 16"><path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap site-header__row">
+    <a class="wordmark" href="index.html" aria-label="Josa Elegado — home">Josa Elegado<span class="wordmark__mark">.</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="story.html">The Story</a></li>
+        <li><a href="work.html">The Work</a></li>
+        <li><a href="field-notes.html">Field Notes</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="lets-build.html" class="site-nav__cta">Let's Build</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ==========================================================
+       ONE ENTRY, ASSEMBLED.
+
+       Change data-entry to essay / photo-essay / field-note /
+       project-log / collection / case-study and the whole page
+       re-tunes: reading measure, margin width, and how much room
+       evidence gets. Then swap the masthead fields for that type's
+       set. Nothing else changes.
+
+       Every slot below is empty on purpose. Drop one image element
+       into a .plate__slot and its keyline disappears; the
+       composition stays exactly as it is.
+       ========================================================== -->
+  <article class="entry" data-entry="field-note">
+
+    <header class="entry-masthead">
+      <div class="entry-masthead__no">
+        <span class="entry-masthead__type">Field note <strong>#000</strong></span>
+        <span class="entry-masthead__status">Status</span>
+      </div>
+
+      <h1 class="entry-masthead__title">The title of the entry sits here</h1>
+
+      <p class="entry-masthead__standfirst">
+        One or two sentences of standfirst: what was being looked at, and what
+        turned out to be worth writing down. This is the last thing a reader
+        sees before the evidence starts.
+      </p>
+
+      <dl class="entry-masthead__fields">
+        <div><dt>Location</dt><dd>&ndash;</dd></div>
+        <div><dt>Date</dt><dd>&ndash;</dd></div>
+        <div><dt>Duration</dt><dd>&ndash;</dd></div>
+        <div>
+          <dt>Artifacts</dt>
+          <dd>
+            <ul>
+              <li>&ndash; photos</li>
+              <li>&ndash; screenshots</li>
+              <li>&ndash; receipts</li>
+              <li>&ndash; notebook pages</li>
+            </ul>
+          </dd>
+        </div>
+        <div><dt>Theme</dt><dd>&ndash;</dd></div>
+        <div><dt>Status</dt><dd>&ndash;</dd></div>
+      </dl>
+    </header>
+
+    <!-- Opening observation: one artifact, stated plainly. -->
+    <figure class="blk blk-observation plate">
+      <div class="plate__slot" data-artifact="Photo"></div>
+      <figcaption class="plate__caption">
+        <p class="meta"><span>Location</span><span>Month, year</span></p>
+        <p class="plate__insight">The one-line reading of the opening evidence.</p>
+      </figcaption>
+    </figure>
+
+    <p>
+      A paragraph of setup. What the trip, visit, or piece of work was for, and
+      what was expected going in. Prose sits in the reading column; everything
+      that follows can break out around it.
+    </p>
+
+    <!-- The picture leads; the text explains it. -->
+    <div class="blk blk-evidence u-wide">
+      <figure class="plate blk-evidence__figure">
+        <div class="plate__slot" data-artifact="Photo"></div>
+        <figcaption class="plate__caption">
+          <p class="meta"><span>Location</span><span>Month, year</span></p>
+        </figcaption>
+      </figure>
+      <aside class="annot blk-evidence__annot">
+        <svg class="annot__arrow" aria-hidden="true"><use href="#annot-arrow"/></svg>
+        <span>the thing I did not expect</span>
+      </aside>
+      <p class="blk-evidence__text">
+        About a hundred words on what this artifact actually shows. What was
+        expected, what happened instead, and the part that changes how the next
+        one gets approached.
+      </p>
+    </div>
+
+    <h2>A section heading, where the entry turns</h2>
+
+    <p>
+      More prose. An entry can run mostly text, mostly pictures, or anywhere
+      between. The geometry is the same either way, so nothing has to be rebuilt
+      when the balance changes.
+    </p>
+
+    <!-- Paper: receipts, tickets, maps, documents, notebook pages. -->
+    <div class="blk blk-artifacts u-wide">
+      <figure class="plate" style="--span: 4;">
+        <div class="plate__slot" data-artifact="Notebook page"></div>
+        <figcaption class="plate__caption"><p class="meta"><span>Notebook</span><span>Month, year</span></p></figcaption>
+      </figure>
+      <figure class="plate" style="--span: 5;">
+        <div class="plate__slot" data-artifact="Map"></div>
+        <figcaption class="plate__caption"><p class="meta"><span>Map</span><span>Where</span></p></figcaption>
+      </figure>
+      <figure class="plate" style="--span: 3;">
+        <div class="plate__slot" data-artifact="Receipt"></div>
+        <figcaption class="plate__caption"><p class="meta"><span>Receipt</span><span>Month, year</span></p></figcaption>
+      </figure>
+    </div>
+
+    <!-- Left page evidence, right page argument. -->
+    <div class="blk blk-spread u-wide">
+      <div class="blk-spread__page">
+        <p class="blk-spread__label">Evidence</p>
+        <figure class="plate">
+          <div class="plate__slot" data-artifact="Screenshot"></div>
+          <figcaption class="plate__caption"><p class="meta"><span>Source</span><span>Month, year</span></p></figcaption>
+        </figure>
+      </div>
+      <div class="blk-spread__page">
+        <p class="blk-spread__label">Reflection</p>
+        <p>
+          The right page argues with the left one. It can run long or stop after
+          two lines; the fold holds either way.
+        </p>
+        <aside class="annot">
+          <svg class="annot__arrow" aria-hidden="true"><use href="#annot-arrow"/></svg>
+          <span>check against the earlier note</span>
+        </aside>
+      </div>
+    </div>
+
+    <!-- The sequence, when the sequence is the point. -->
+    <div class="blk blk-process u-wide" style="--steps: 4;">
+      <div class="blk-process__step">
+        <figure class="plate"><div class="plate__slot" data-artifact="Sketch"></div></figure>
+        <p class="blk-process__no">Stage</p>
+        <p>What it looked like at this point.</p>
+      </div>
+      <div class="blk-process__step">
+        <figure class="plate"><div class="plate__slot" data-artifact="Prototype"></div></figure>
+        <p class="blk-process__no">Stage</p>
+        <p>What it looked like at this point.</p>
+      </div>
+      <div class="blk-process__step">
+        <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div></figure>
+        <p class="blk-process__no">Stage</p>
+        <p>What it looked like at this point.</p>
+      </div>
+      <div class="blk-process__step">
+        <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div></figure>
+        <p class="blk-process__no">Stage</p>
+        <p>What it looked like at this point.</p>
+      </div>
+    </div>
+
+    <!-- Many frames, scanned sideways. -->
+    <div class="blk blk-strip u-full" tabindex="0" role="region" aria-label="Gallery — scroll sideways">
+      <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>01</span><span>Caption</span></p></figcaption></figure>
+      <figure class="plate"><div class="plate__slot" data-artifact="Photo, portrait"></div><figcaption class="plate__caption"><p class="meta"><span>02</span><span>Caption</span></p></figcaption></figure>
+      <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>03</span><span>Caption</span></p></figcaption></figure>
+      <figure class="plate"><div class="plate__slot" data-artifact="Photo, portrait"></div><figcaption class="plate__caption"><p class="meta"><span>04</span><span>Caption</span></p></figcaption></figure>
+      <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>05</span><span>Caption</span></p></figcaption></figure>
+    </div>
+
+    <!-- The sentence that reframed it. -->
+    <div class="blk blk-quote u-wide">
+      <figure>
+        <blockquote>The sentence that changed how the rest of the work was approached.</blockquote>
+        <figcaption>Who said it &middot; Where &middot; Month, year</figcaption>
+      </figure>
+      <figure class="plate">
+        <div class="plate__slot" data-artifact="Photo, portrait"></div>
+        <figcaption class="plate__caption"><p class="meta"><span>Context</span></p></figcaption>
+      </figure>
+      <aside class="annot blk-quote__annot">
+        <svg class="annot__arrow" aria-hidden="true"><use href="#annot-arrow"/></svg>
+        <span>wrote this down before I understood it</span>
+      </aside>
+    </div>
+
+    <p>
+      A closing paragraph. What is settled, what is not, and what the next entry
+      on this thread will have to answer.
+    </p>
+
+    <div class="title-block" style="margin-top: var(--space-4);">
+      <div class="title-block__field"><dt>Filed</dt><dd>&ndash;</dd></div>
+      <div class="title-block__field"><dt>Revised</dt><dd>&ndash;</dd></div>
+      <div class="title-block__field"><dt>Related</dt><dd>&ndash;</dd></div>
+      <div class="title-block__field title-block__field--wide"><dt>Status</dt><dd>&ndash;</dd></div>
+    </div>
+
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="site-footer__status">
+      <span class="status-dot" aria-hidden="true"></span>
+      Template &middot; Every artifact slot empty &middot; Updated Jul 2026
+    </p>
+
+    <nav class="site-footer__chapters" aria-label="Chapters">
+      <a href="index.html">Home</a>
+      <a href="patterns.html">Editorial system</a>
+      <a href="work.html">The Work</a>
+      <a href="field-notes.html">Field Notes</a>
+    </nav>
+
+    <div class="site-footer__base">
+      <span>&copy; <span data-current-year>2026</span> Josa Elegado</span>
+      <a href="mailto:hello@josaelegado.com">hello@josaelegado.com</a>
+      <span class="page-mark">&mdash; template &mdash;</span>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>

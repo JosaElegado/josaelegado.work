@@ -30,21 +30,64 @@ lavender `#B9A5CE` is non-text only — secondary connectors, highlight washes.
 Everything else is neutral. If plum is doing more than one job in a viewport,
 remove one.
 
-**Type — four faces, four jobs.**
+**Type — five faces, five jobs.**
 - **Bodoni Moda** — headings, and statements short enough to take in at a
   glance (one or two lines, ≥20px). Never a paragraph: a seven-line block of
   Bodoni is elegant and tiring, so lead paragraphs stay in the reading face and
   get their emphasis from size. A didone chosen for construction, not fashion —
   Bodoni built letters mathematically, which is the right ancestor for an
   engineer's page. Optical sizing on.
-- **Libre Franklin** — body and interface. Franklin Gothic lineage: the American
-  editorial and technical-drawing workhorse. Confident, invisible.
-- **Fragment Mono** — the page's own voice: title-block fields, dates, stage
-  labels, figure numbers, page marks. Measurement and metadata only, never a
-  costume for "technical."
-- **Kalam** — the hand. Margin annotations, sketch labels, crossed-out thoughts.
-  Never body copy, never navigation, never more than ~12 words, at most one or
-  two per viewport.
+- **Fragment Mono** — everything else that is read: body copy, interface, and
+  the page's own voice (title-block fields, dates, stage labels, figure
+  numbers). Reading text and metadata share a face on purpose — the page reads
+  as something typed into a log rather than published at you. They stay
+  distinguishable by case, tracking and size: metadata is uppercase, tracked
+  and smaller; prose is sentence case at the ruling pitch.
+
+  **It ships one weight.** Nothing in this system may lean on `font-weight` for
+  emphasis. `font-synthesis: none` is set on `body` so a stray `600` renders at
+  its real weight instead of being smeared into a fake bold. Emphasis is plum
+  ink; labels and buttons are uppercase with wide tracking. `<strong>` and
+  `<b>` are plum at weight 400.
+
+  It also sets about 28% wider than a proportional face, so every measure
+  defined in `rem` was widened to compensate — reading columns land near 59
+  characters on desktop and 38 on a phone. Measures written in `ch` need no
+  adjustment; prefer `ch`.
+
+  *Reverting:* `--font-sans` is a separate token from `--font-mono` precisely so
+  body can go back to `--font-reading-fallback` (Libre Franklin) without
+  touching metadata. The measures and the weight rules would need undoing too.
+- **Kalam** — the everyday hand. Margin annotations, sketch labels, crossed-out
+  thoughts, diagram notes. Small, plum, under about a dozen words. Never body
+  copy, never navigation, never at display size — it is a marker hand with no
+  stroke contrast and it falls apart when enlarged.
+- **La Belle Aurore** — the pen, and the rarest thing on the site: **one line,
+  on one page.** The second line of the homepage thesis is written and then
+  underlined, so a printed statement gets a handwritten answer. A fine-nib hand
+  written at speed — slanted, quick, personal. Not calligraphy: a formal
+  pointed-pen script (Corinthia, Italianno) reads as an invitation card and
+  fights the engineering register. Not a marker hand either (Kalam) — that has
+  no stroke contrast and falls apart large.
+
+  **It must never wrap.** A handwritten line that breaks over two lines stops
+  looking written and starts looking like a text box. The sentence sets 9.31x
+  its own font-size in this face, so the line is sized in container units
+  against the heading block — `min(9.7cqw, 4.4rem)`, with `white-space: nowrap`
+  and about 10% headroom for the fallback face during the font swap. It re-fits
+  itself at every viewport rather than being tuned for one width. The `4.4rem`
+  cap stops it outgrowing the serif when the block is wide.
+
+  Size and leading come from measurement, never from eye. This pen's x-height
+  is 45 against Bodoni's 48, so the two match optically at the same size — no
+  correction needed. Its descender is two and a half times deeper, so the room
+  goes into leading instead. **Any replacement pen must be re-measured:
+  normalise on x-height, never on total ink height**, or every script measures
+  the same and none of them look right. The multiplier and the `cqw` figure are
+  both specific to this face.
+
+  If a second use of the pen is ever proposed, it stops being handwriting and
+  becomes a font. One line.
 
 **Notation, not doodles.** Diagrams are engineering notation drawn directly on
 the page — no frame, no card, no drop shadow. Squares for stages, thin plum
@@ -91,9 +134,52 @@ passage, a ledger of rows, a dominant figure, a tipped-in case file, a staggered
 spread, a dated index, a quiet handwritten close. Card grids are not a page
 structure here.
 
-**Photographs are never load-bearing.** No layout reserves a box for an image
-that does not exist. A photo slot renders nothing until there is a photograph;
-the caption carries the meaning either way.
+**Photographs are never load-bearing on a published page.** No published layout
+reserves a box for an image that does not exist; the caption carries the meaning
+either way. Templates are the deliberate exception — see the plate below.
+
+## THE EDITORIAL SYSTEM
+
+Three layers, each knowing only the one below it. Defined in `styles/blocks.css`,
+catalogued at `patterns.html`, assembled end to end at `entry-template.html`.
+
+**Entry types** — essay, photo essay, field note, project log, collection, case
+study. Six editorial formats on one grid. A type sets two numbers, the reading
+measure and the margin width, and the composition follows: an essay gets the
+longest line and quiet margins, a photo essay a short line and wide ones so
+pictures dominate by geometry rather than by exception. Everything else is
+shared. Set `data-entry` on the article and the page re-tunes; nothing else
+changes. Each type declares its own masthead fields, because a collection has a
+span and a project log has a phase and neither has a duration.
+
+**Blocks** — observation, evidence + reflection, before/after, screenshot
+insight, gallery strip, notebook spread, process timeline, quote, artifact grid,
+photo essay. Arrangements of evidence and text, drawn on by every entry type.
+A block never restyles the plates inside it, so any artifact can go in any block.
+
+**Plate** — the one slot every artifact goes in. `data-artifact` does three jobs
+at once: labels the empty slot, picks the default proportion for that kind of
+artifact, and decides whether the asset is cropped or shown whole. Line art and
+paper are shown whole; a receipt with its edges cut off is not evidence of
+anything.
+
+**Three width tiers on one grid.** Text sits in the reading column; `.u-wide` and
+`.u-full` break a block out without leaving the flow or needing a wrapper. This
+is what lets an entry run 70% visual with no layout rebuilt for it. Below 900px
+the margin columns convert to reading width — at 390px they were taking 400 of
+350 available pixels — and all three tier names survive, so no block needs to
+know.
+
+**For-position-only is an authoring state, not a design element.** An empty slot
+draws a keyline cross and names the artifact it is waiting for: the mark a
+publication designer leaves where a picture is going to sit. It is scoped to
+`:not(:has(img, picture, video, svg, iframe))`, so it removes itself the moment
+real media arrives and can never survive into a published page. Adding an asset
+is one line of markup: no class to change, no layout to rebuild, no dimensions to
+work out.
+
+**Text explains artifacts, not the other way round.** A block may be almost
+entirely plates; that is a supported composition, not an edge case.
 
 **Nothing is invented.** No figures, dates, capacities, counts, or outcomes
 appear unless Josa has supplied them. Where data is pending, the page says so in

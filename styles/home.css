@@ -27,13 +27,36 @@
   line-height: 1.04;
   letter-spacing: -0.018em;
   max-width: 20ch;
+  /* Lets the written line size itself against this block's real width. */
+  container-type: inline-size;
 }
 
 .hero__thesis-line { display: block; }
 
+/* The turn of the sentence is written with a pen, and then underlined — the
+   statement is printed, the answer to it is in Josa's hand.
+
+   It has to hold on ONE line at every width — a hand-written line that wraps
+   stops looking written and starts looking like a text box. The sentence sets
+   9.31x its own font-size in this face, so 100/9.31 = 10.7cqw would fill the
+   block exactly; 9.7cqw leaves about 10% for the fallback face to breathe
+   during the font swap. Sizing against the container rather than the heading
+   means it re-fits itself at every viewport instead of only at the one width
+   it was tuned for.
+
+   This pen's x-height is 45 against Bodoni's 48, so at equal size the two
+   already match optically — no correction needed, unlike a pointed-pen script
+   which would need about 1.6x. What it does have is a descender two and a half
+   times deeper, so the leading is where the room goes. */
 .hero__thesis-line--turn {
-  font-style: italic;
-  color: var(--color-ink);
+  font-family: var(--font-script);
+  font-style: normal;
+  font-size: min(9.7cqw, 4.4rem);
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--color-plum);
+  margin-top: 0.1em;
 }
 
 /* A hand-drawn underline pulled under the word on load. inline-block so the
@@ -172,10 +195,12 @@
 
 /* ---- Prose ----
    Set at the ruling pitch so the lines of the passage run with the lines of
-   the paper. Measure stays inside the comfortable reading band. */
+   the paper. The measure is wider than it would be for a proportional face:
+   a monospace sets about 28% wider, so 34rem would have held barely 50
+   characters. This lands near 60. */
 
 .prose {
-  max-width: 34rem;
+  max-width: 40rem;
   line-height: var(--rule-pitch);
   color: var(--color-ink-soft);
 }
@@ -305,7 +330,7 @@
   color: var(--color-ink-soft);
 }
 
-.case__aside strong { color: var(--color-ink); font-weight: 600; }
+.case__aside strong { color: var(--color-plum); font-weight: 400; }
 .case__aside .xref--hand { margin-left: var(--space-2); }
 
 /* ---- 05 · Moments ----

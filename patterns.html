@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Editorial System — Josa Elegado</title>
+<meta name="description" content="The entry types, blocks, and evidence slots every entry on this site is assembled from." />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#faf8f4" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Fragment+Mono:ital@0;1&family=La+Belle+Aurore&family=Kalam:wght@300;400&family=Libre+Franklin:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/blocks.css" />
+<link rel="stylesheet" href="styles/patterns.css" />
+<link rel="stylesheet" href="styles/animations.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-arrow-right" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="annot-arrow" viewBox="0 0 26 16"><path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap site-header__row">
+    <a class="wordmark" href="index.html" aria-label="Josa Elegado — home">Josa Elegado<span class="wordmark__mark">.</span></a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="story.html">The Story</a></li>
+        <li><a href="work.html">The Work</a></li>
+        <li><a href="field-notes.html">Field Notes</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="lets-build.html" class="site-nav__cta">Let's Build</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= INTRO ================= -->
+  <section class="pat-intro">
+    <div class="wrap">
+      <dl class="title-block">
+        <div class="title-block__field"><dt>Document</dt><dd>Editorial system</dd></div>
+        <div class="title-block__field"><dt>Scope</dt><dd>Entry types · Blocks · Evidence</dd></div>
+        <div class="title-block__field"><dt>Status</dt><dd>Working</dd></div>
+        <div class="title-block__field title-block__field--wide"><dt>Sheet</dt><dd>Internal</dd></div>
+      </dl>
+
+      <h1 style="margin-top: var(--space-8); max-width: 18ch;">A system for telling many kinds of story in one voice</h1>
+
+      <p class="prose" style="margin-top: var(--space-6); max-width: 46rem;">
+        Every entry on this site is assembled from three layers. An <b>entry
+        type</b> tunes the page geometry and brings its own masthead fields. A
+        handful of <b>blocks</b> arrange evidence and text. A <b>plate</b> holds
+        one artifact: a photograph, a screenshot, a receipt, a map, a sketch. Nothing below knows what it will eventually hold, which is the
+        point: the layouts are finished, and the assets arrive later.
+      </p>
+
+      <div class="boxed" style="max-width: 46rem;">
+        <svg class="boxed__frame" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M3 6 200 4 397 3.5 396.5 50 396 96 200 98 3.5 97.5 3.2 50 3 6 4.2 11.5"/>
+        </svg>
+        <p class="prose prose--stmt" style="max-width: 40ch;">Adding a real asset is one line of markup. Never a redesign.</p>
+      </div>
+
+      <p class="prose" style="max-width: 46rem;">
+        Every empty slot below draws a keyline cross and names the kind of
+        artifact it is waiting for. Put an image inside the slot and the
+        placeholder removes itself. No class to change, no layout to rebuild, no
+        dimensions to work out. The slot already knows the shape
+        that kind of artifact should be.
+      </p>
+
+<pre class="pat-code"><i>&lt;!-- waiting --&gt;</i>
+&lt;div class="plate__slot" <b>data-artifact</b>="Photo"&gt;&lt;/div&gt;
+
+<i>&lt;!-- filled: the keyline disappears on its own --&gt;</i>
+&lt;div class="plate__slot" <b>data-artifact</b>="Photo"&gt;
+  &lt;img src="assets/bengaluru-01.jpg" alt="&hellip;"&gt;
+&lt;/div&gt;</pre>
+
+      <nav class="pat-index" aria-label="Contents">
+        <div class="pat-index__group">
+          <h2>Entry types</h2>
+          <a href="#t-essay">Essay</a>
+          <a href="#t-photo-essay">Photo Essay</a>
+          <a href="#t-field-note">Field Note</a>
+          <a href="#t-project-log">Project Log</a>
+          <a href="#t-collection">Collection</a>
+          <a href="#t-case-study">Case Study</a>
+        </div>
+        <div class="pat-index__group">
+          <h2>Blocks</h2>
+          <a href="#b-observation">Observation</a>
+          <a href="#b-evidence">Evidence + Reflection</a>
+          <a href="#b-beforeafter">Before / After</a>
+          <a href="#b-screenshot">Screenshot Insight</a>
+          <a href="#b-strip">Gallery Strip</a>
+        </div>
+        <div class="pat-index__group">
+          <h2>&nbsp;</h2>
+          <a href="#b-spread">Notebook Spread</a>
+          <a href="#b-process">Process Timeline</a>
+          <a href="#b-quote">Quote</a>
+          <a href="#b-artifacts">Artifact Grid</a>
+          <a href="#b-essay">Photo Essay block</a>
+        </div>
+        <div class="pat-index__group">
+          <h2>Evidence</h2>
+          <a href="#plates">Artifact types</a>
+          <a href="#tiers">Width tiers</a>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ================= 1 · ENTRY TYPES ================= -->
+  <section class="pat-section">
+    <div class="wrap">
+      <div class="pat-section__head">
+        <h2>1 &middot; Entry types</h2>
+        <p>
+          Six editorial formats, one visual language. A type sets the reading
+          measure and the margin width, and therefore how much room pictures get,
+          then declares which masthead fields apply. A
+          reader should never have to work out which kind of entry they opened;
+          it should simply feel like another page from the same notebook.
+        </p>
+      </div>
+    </div>
+
+    <!-- ESSAY -->
+    <article class="pat-type" id="t-essay">
+      <div class="wrap pat-type__grid">
+        <div>
+          <div class="entry-masthead__no">
+            <span class="entry-masthead__type">Entry type &middot; <strong>Essay</strong></span>
+            <span class="entry-masthead__status">Published</span>
+          </div>
+          <h3 class="entry-masthead__title" style="font-size: var(--text-xl);">An argument, made at length</h3>
+          <dl class="entry-masthead__fields">
+            <div><dt>Date</dt><dd>&ndash;</dd></div>
+            <div><dt>Theme</dt><dd>&ndash;</dd></div>
+            <div><dt>Reading</dt><dd>&ndash; min</dd></div>
+            <div><dt>Status</dt><dd>&ndash;</dd></div>
+          </dl>
+        </div>
+        <dl class="pat-type__facts">
+          <div><dt>Geometry</dt><dd>Measure 38rem, margin 12rem. The longest comfortable line on the site.</dd></div>
+          <div><dt>Use when</dt><dd>The thinking is the content and evidence supports it rather than carries it.</dd></div>
+          <div><dt>Typical sequence</dt><dd>
+            <ol class="pat-type__seq">
+              <li>Masthead</li><li>Prose</li><li>Quote</li>
+              <li>Observation</li><li>Prose</li>
+            </ol>
+          </dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- PHOTO ESSAY -->
+    <article class="pat-type" id="t-photo-essay">
+      <div class="wrap pat-type__grid">
+        <div>
+          <div class="entry-masthead__no">
+            <span class="entry-masthead__type">Entry type &middot; <strong>Photo Essay</strong></span>
+            <span class="entry-masthead__status">Published</span>
+          </div>
+          <h3 class="entry-masthead__title" style="font-size: var(--text-xl);">Told almost entirely in pictures</h3>
+          <dl class="entry-masthead__fields">
+            <div><dt>Location</dt><dd>&ndash;</dd></div>
+            <div><dt>Date</dt><dd>&ndash;</dd></div>
+            <div><dt>Frames</dt><dd>&ndash;</dd></div>
+            <div><dt>Theme</dt><dd>&ndash;</dd></div>
+          </dl>
+        </div>
+        <dl class="pat-type__facts">
+          <div><dt>Geometry</dt><dd>Measure 28rem, margin 17rem. A bare plate reaches the wide tier automatically, so pictures dominate by geometry rather than by exception.</dd></div>
+          <div><dt>Use when</dt><dd>The images are the argument. Text appears only where a picture cannot say the thing.</dd></div>
+          <div><dt>Typical sequence</dt><dd>
+            <ol class="pat-type__seq">
+              <li>Full-bleed opener</li><li>Masthead</li><li>Photo essay block</li>
+              <li>Gallery strip</li><li>Short reflection</li>
+            </ol>
+          </dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- FIELD NOTE -->
+    <article class="pat-type" id="t-field-note">
+      <div class="wrap pat-type__grid">
+        <div>
+          <div class="entry-masthead__no">
+            <span class="entry-masthead__type">Field note <strong>#024</strong></span>
+            <span class="entry-masthead__status">Archived</span>
+          </div>
+          <h3 class="entry-masthead__title" style="font-size: var(--text-xl);">A documented observation</h3>
+          <dl class="entry-masthead__fields">
+            <div><dt>Location</dt><dd>&ndash;</dd></div>
+            <div><dt>Date</dt><dd>&ndash;</dd></div>
+            <div><dt>Duration</dt><dd>&ndash;</dd></div>
+            <div><dt>Artifacts</dt><dd><ul><li>&ndash; photos</li><li>&ndash; screenshots</li><li>&ndash; receipts</li></ul></dd></div>
+            <div><dt>Theme</dt><dd>&ndash;</dd></div>
+            <div><dt>Status</dt><dd>&ndash;</dd></div>
+          </dl>
+        </div>
+        <dl class="pat-type__facts">
+          <div><dt>Geometry</dt><dd>Measure 36rem, margin 13rem. The standard.</dd></div>
+          <div><dt>Use when</dt><dd>Something was observed somewhere, on a date, and there is evidence of it. The default type.</dd></div>
+          <div><dt>Typical sequence</dt><dd>
+            <ol class="pat-type__seq">
+              <li>Masthead</li><li>Observation</li><li>Evidence + reflection</li>
+              <li>Artifact grid</li><li>Notebook spread</li>
+            </ol>
+          </dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- PROJECT LOG -->
+    <article class="pat-type" id="t-project-log">
+      <div class="wrap pat-type__grid">
+        <div>
+          <div class="entry-masthead__no">
+            <span class="entry-masthead__type">Project log &middot; <strong>Entry 07</strong></span>
+            <span class="entry-masthead__status">Open</span>
+          </div>
+          <h3 class="entry-masthead__title" style="font-size: var(--text-xl);">What moved since last time</h3>
+          <dl class="entry-masthead__fields">
+            <div><dt>Project</dt><dd>&ndash;</dd></div>
+            <div><dt>Phase</dt><dd>&ndash;</dd></div>
+            <div><dt>Logged</dt><dd>&ndash;</dd></div>
+            <div><dt>Status</dt><dd>&ndash;</dd></div>
+          </dl>
+        </div>
+        <dl class="pat-type__facts">
+          <div><dt>Geometry</dt><dd>Measure 34rem, margin 14rem, tighter vertical rhythm &mdash; a log is read in passes, not in one sitting.</dd></div>
+          <div><dt>Use when</dt><dd>Reporting increments on something still running. Screenshot-heavy by nature.</dd></div>
+          <div><dt>Typical sequence</dt><dd>
+            <ol class="pat-type__seq">
+              <li>Masthead</li><li>Process timeline</li><li>Screenshot insight</li>
+              <li>Before / after</li><li>Open questions</li>
+            </ol>
+          </dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- COLLECTION -->
+    <article class="pat-type" id="t-collection">
+      <div class="wrap pat-type__grid">
+        <div>
+          <div class="entry-masthead__no">
+            <span class="entry-masthead__type">Collection &middot; <strong>No. 03</strong></span>
+            <span class="entry-masthead__status">Growing</span>
+          </div>
+          <h3 class="entry-masthead__title" style="font-size: var(--text-xl);">Things gathered around one idea</h3>
+          <dl class="entry-masthead__fields">
+            <div><dt>Theme</dt><dd>&ndash;</dd></div>
+            <div><dt>Span</dt><dd>&ndash;</dd></div>
+            <div><dt>Items</dt><dd>&ndash;</dd></div>
+            <div><dt>Status</dt><dd>&ndash;</dd></div>
+          </dl>
+        </div>
+        <dl class="pat-type__facts">
+          <div><dt>Geometry</dt><dd>Measure 30rem, margin 16rem. The grid carries it; the prose is a caption to the whole.</dd></div>
+          <div><dt>Use when</dt><dd>Many artifacts, one theme, gathered over time. Order is curatorial, not chronological.</dd></div>
+          <div><dt>Typical sequence</dt><dd>
+            <ol class="pat-type__seq">
+              <li>Masthead</li><li>Short framing</li><li>Artifact grid</li>
+              <li>Gallery strip</li>
+            </ol>
+          </dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- CASE STUDY -->
+    <article class="pat-type" id="t-case-study">
+      <div class="wrap pat-type__grid">
+        <div>
+          <div class="entry-masthead__no">
+            <span class="entry-masthead__type">Case study &middot; <strong>File 001</strong></span>
+            <span class="entry-masthead__status">In process</span>
+          </div>
+          <h3 class="entry-masthead__title" style="font-size: var(--text-xl);">A problem worked end to end</h3>
+          <dl class="entry-masthead__fields">
+            <div><dt>Context</dt><dd>&ndash;</dd></div>
+            <div><dt>Role</dt><dd>&ndash;</dd></div>
+            <div><dt>Period</dt><dd>&ndash;</dd></div>
+            <div><dt>Outcome</dt><dd>&ndash;</dd></div>
+            <div><dt>Status</dt><dd>&ndash;</dd></div>
+          </dl>
+        </div>
+        <dl class="pat-type__facts">
+          <div><dt>Geometry</dt><dd>Measure 36rem, margin 13rem: a field note's geometry, run much longer.</dd></div>
+          <div><dt>Use when</dt><dd>The full arc matters: what the problem was, what was tried, what it cost, what happened.</dd></div>
+          <div><dt>Typical sequence</dt><dd>
+            <ol class="pat-type__seq">
+              <li>Masthead</li><li>Evidence + reflection</li><li>Process timeline</li>
+              <li>Quote</li><li>Before / after</li><li>Status close</li>
+            </ol>
+          </dd></div>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= 2 · BLOCKS ================= -->
+  <section class="pat-section">
+    <div class="wrap">
+      <div class="pat-section__head">
+        <h2>2 &middot; Blocks</h2>
+        <p>
+          Ten arrangements of evidence and text. Every entry type draws on the
+          same ten; the type decides how much room they get. A block never
+          restyles the plates inside it, so any artifact can go in any block.
+        </p>
+      </div>
+    </div>
+
+    <!-- OBSERVATION -->
+    <article class="spec" id="b-observation">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Observation</h3>
+          <p class="meta"><span>.blk-observation</span><span>Text tier</span></p>
+        </div>
+        <p class="spec__use">
+          The smallest complete unit: one artifact, what it is, and what it
+          told me. <b>Use when the evidence speaks for itself.</b>
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="field-note">
+          <figure class="blk blk-observation plate">
+            <div class="plate__slot" data-artifact="Photo"></div>
+            <figcaption class="plate__caption">
+              <p class="meta"><span>Location</span><span>Month, year</span></p>
+              <p class="plate__insight">The one-line reading of the evidence goes here.</p>
+              <p>A sentence of context: what this is, and why it was worth keeping.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- EVIDENCE + REFLECTION -->
+    <article class="spec" id="b-evidence">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Evidence + Reflection</h3>
+          <p class="meta"><span>.blk-evidence</span><span>Wide tier</span></p>
+        </div>
+        <p class="spec__use">
+          One large artifact carrying the block, a hand note set against it, and
+          about a hundred words. <b>The picture leads and the text explains
+          it</b>, not the other way round.
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="field-note">
+          <div class="blk blk-evidence u-wide">
+            <figure class="plate blk-evidence__figure">
+              <div class="plate__slot" data-artifact="Photo"></div>
+              <figcaption class="plate__caption">
+                <p class="meta"><span>Location</span><span>Month, year</span></p>
+              </figcaption>
+            </figure>
+            <aside class="annot blk-evidence__annot">
+              <svg class="annot__arrow" aria-hidden="true"><use href="#annot-arrow"/></svg>
+              <span>the detail I keep coming back to</span>
+            </aside>
+            <p class="blk-evidence__text">
+              About a hundred words of reflection. What was expected, what
+              actually happened, and the part that changed how the next one gets
+              approached. Long enough to hold a thought, short enough that the
+              photograph stays the reason the block exists.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- BEFORE / AFTER -->
+    <article class="spec" id="b-beforeafter">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Before / After</h3>
+          <p class="meta"><span>.blk-beforeafter</span><span>Wide tier</span></p>
+        </div>
+        <p class="spec__use">
+          Two states of the same thing, an arrow, one sentence. <b>Use for a
+          revision, a rebuild, or a site before and after a season.</b> The
+          arrow is drawn rather than typed, so it reads as the same pen as
+          every other mark on the site.
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="project-log">
+          <div class="blk blk-beforeafter u-wide">
+            <div class="blk-beforeafter__pair">
+              <figure class="plate">
+                <div class="plate__slot" data-artifact="Photo"></div>
+                <figcaption class="plate__caption"><p class="meta"><span>Before</span><span>Month, year</span></p></figcaption>
+              </figure>
+              <svg class="blk-beforeafter__arrow" viewBox="0 0 46 20" aria-hidden="true">
+                <path d="M1 10.4C14 9.6 28 10.6 43 9.8M36 4.4 44.4 10 36.4 15.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <figure class="plate">
+                <div class="plate__slot" data-artifact="Photo"></div>
+                <figcaption class="plate__caption"><p class="meta"><span>After</span><span>Month, year</span></p></figcaption>
+              </figure>
+            </div>
+            <p class="blk-beforeafter__line">One sentence saying what changed, and what it cost to change it.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCREENSHOT INSIGHT -->
+    <article class="spec" id="b-screenshot">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Screenshot Insight</h3>
+          <p class="meta"><span>.blk-screenshot</span><span>Wide tier</span></p>
+        </div>
+        <p class="spec__use">
+          A screenshot with one region called out and explained. Position the
+          keyline with <code>--x</code>, <code>--y</code>, <code>--w</code> and
+          <code>--h</code> as percentages of the slot. <b>The callout is an
+          engineering leader-and-keyline, not a yellow sticky</b> &mdash; the
+          site already has a way to point at something, and it is this one.
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="project-log">
+          <div class="blk blk-screenshot u-wide">
+            <figure class="plate blk-screenshot__figure">
+              <div class="plate__slot" data-artifact="Screenshot"></div>
+              <span class="blk-screenshot__callout" data-mark="A" style="--x: 46%; --y: 30%; --w: 34%; --h: 26%;" aria-hidden="true"></span>
+              <figcaption class="plate__caption"><p class="meta"><span>Product</span><span>Month, year</span></p></figcaption>
+            </figure>
+            <div class="blk-screenshot__note">
+              <span class="blk-screenshot__mark">A</span>
+              <p>
+                What is happening in the marked region, and why it matters. Add
+                one note per marked region; the letters are the only thing
+                connecting them.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- GALLERY STRIP -->
+    <article class="spec" id="b-strip">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Gallery Strip</h3>
+          <p class="meta"><span>.blk-strip</span><span>Full tier</span></p>
+        </div>
+        <p class="spec__use">
+          Many artifacts, scanned sideways, each captioned. <b>Use when the
+          sequence matters more than any single frame.</b> Scrolling is snapped
+          and keyboard-reachable, and it never moves on its own.
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="photo-essay">
+          <div class="blk blk-strip u-full" tabindex="0" role="region" aria-label="Gallery strip specimen — scroll sideways">
+            <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>01</span><span>Caption</span></p></figcaption></figure>
+            <figure class="plate"><div class="plate__slot" data-artifact="Photo, portrait"></div><figcaption class="plate__caption"><p class="meta"><span>02</span><span>Caption</span></p></figcaption></figure>
+            <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>03</span><span>Caption</span></p></figcaption></figure>
+            <figure class="plate"><div class="plate__slot" data-artifact="Sketch"></div><figcaption class="plate__caption"><p class="meta"><span>04</span><span>Caption</span></p></figcaption></figure>
+            <figure class="plate"><div class="plate__slot" data-artifact="Photo, portrait"></div><figcaption class="plate__caption"><p class="meta"><span>05</span><span>Caption</span></p></figcaption></figure>
+            <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>06</span><span>Caption</span></p></figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- NOTEBOOK SPREAD -->
+    <article class="spec" id="b-spread">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Notebook Spread</h3>
+          <p class="meta"><span>.blk-spread</span><span>Wide tier</span></p>
+        </div>
+        <p class="spec__use">
+          Left page evidence, right page reflection, one hairline where the fold
+          would be. <b>The only block that borrows the book's geometry</b>, and it collapses to a single column rather than pretending to be a spread
+          on a phone.
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="field-note">
+          <div class="blk blk-spread u-wide">
+            <div class="blk-spread__page">
+              <p class="blk-spread__label">Evidence</p>
+              <figure class="plate"><div class="plate__slot" data-artifact="Notebook page"></div></figure>
+              <figure class="plate"><div class="plate__slot" data-artifact="Receipt"></div></figure>
+            </div>
+            <div class="blk-spread__page">
+              <p class="blk-spread__label">Reflection</p>
+              <p>
+                The right page is where the evidence gets argued with. It can run
+                long or stop after two lines; the fold holds either way.
+              </p>
+              <aside class="annot">
+                <svg class="annot__arrow" aria-hidden="true"><use href="#annot-arrow"/></svg>
+                <span>check this against the earlier note</span>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROCESS TIMELINE -->
+    <article class="spec" id="b-process">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Process Timeline</h3>
+          <p class="meta"><span>.blk-process</span><span>Wide tier</span></p>
+        </div>
+        <p class="spec__use">
+          How the thing actually moved: sketch, prototype, pilot, outcome. Set
+          <code>--steps</code> to the number of stages. <b>The sequence is the
+          information</b>, so the steps are numbered.
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="case-study">
+          <div class="blk blk-process u-wide" style="--steps: 4;">
+            <div class="blk-process__step">
+              <figure class="plate"><div class="plate__slot" data-artifact="Sketch"></div></figure>
+              <p class="blk-process__no">Sketch</p>
+              <p>What it looked like before anything was built.</p>
+            </div>
+            <div class="blk-process__step">
+              <figure class="plate"><div class="plate__slot" data-artifact="Prototype"></div></figure>
+              <p class="blk-process__no">Prototype</p>
+              <p>The first version that could be handled.</p>
+            </div>
+            <div class="blk-process__step">
+              <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div></figure>
+              <p class="blk-process__no">Pilot</p>
+              <p>In the field, under real conditions.</p>
+            </div>
+            <div class="blk-process__step">
+              <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div></figure>
+              <p class="blk-process__no">Outcome</p>
+              <p>What was still standing afterwards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUOTE -->
+    <article class="spec" id="b-quote">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Quote</h3>
+          <p class="meta"><span>.blk-quote</span><span>Wide tier</span></p>
+        </div>
+        <p class="spec__use">
+          Something someone said, at scale, with the evidence that it was said.
+          <b>Use for the sentence that reframed the problem</b> &mdash; not for
+          decoration.
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="essay">
+          <div class="blk blk-quote u-wide">
+            <figure>
+              <blockquote>The sentence that changed how the rest of the work was approached.</blockquote>
+              <figcaption>Who said it &middot; Where &middot; Month, year</figcaption>
+            </figure>
+            <figure class="plate">
+              <div class="plate__slot" data-artifact="Photo, portrait"></div>
+              <figcaption class="plate__caption"><p class="meta"><span>Context</span></p></figcaption>
+            </figure>
+            <aside class="annot blk-quote__annot">
+              <svg class="annot__arrow" aria-hidden="true"><use href="#annot-arrow"/></svg>
+              <span>wrote this down before I understood it</span>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ARTIFACT GRID -->
+    <article class="spec" id="b-artifacts">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Artifact Grid</h3>
+          <p class="meta"><span>.blk-artifacts</span><span>Wide tier</span></p>
+        </div>
+        <p class="spec__use">
+          Everything that isn't a photograph, mixed at its own proportions.
+          Items span different numbers of columns via <code>--span</code>, so
+          the grid stays irregular the way a real collection of paper is,
+          <b>without a single piece of tape.</b>
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="collection">
+          <div class="blk blk-artifacts u-wide">
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Receipt"></div><figcaption class="plate__caption"><p class="meta"><span>Receipt</span></p></figcaption></figure>
+            <figure class="plate" style="--span: 5;"><div class="plate__slot" data-artifact="Map"></div><figcaption class="plate__caption"><p class="meta"><span>Map</span></p></figcaption></figure>
+            <figure class="plate" style="--span: 4;"><div class="plate__slot" data-artifact="Notebook page"></div><figcaption class="plate__caption"><p class="meta"><span>Notebook</span></p></figcaption></figure>
+            <figure class="plate" style="--span: 6;"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>Photo</span></p></figcaption></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Ticket"></div><figcaption class="plate__caption"><p class="meta"><span>Ticket</span></p></figcaption></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Document"></div><figcaption class="plate__caption"><p class="meta"><span>Document</span></p></figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PHOTO ESSAY BLOCK -->
+    <article class="spec" id="b-essay">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Photo Essay block</h3>
+          <p class="meta"><span>.blk-essay</span><span>Full tier</span></p>
+        </div>
+        <p class="spec__use">
+          Imagery carries it; text appears only where an image cannot say the
+          thing. Items take <code>--span</code> and optionally
+          <code>--start</code>, so <b>nothing tiles</b>. The composition is asymmetric on purpose.
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="photo-essay">
+          <div class="blk blk-essay u-full">
+            <figure class="plate" style="--span: 7;"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>01</span><span>Caption</span></p></figcaption></figure>
+            <figure class="plate" style="--span: 4;"><div class="plate__slot" data-artifact="Photo, portrait"></div><figcaption class="plate__caption"><p class="meta"><span>02</span><span>Caption</span></p></figcaption></figure>
+            <p class="blk-essay__aside" style="--span: 3;">A short aside, where a picture cannot say the thing.</p>
+            <figure class="plate u-offset" style="--start: 4; --span: 8;"><div class="plate__slot" data-artifact="Photo"></div><figcaption class="plate__caption"><p class="meta"><span>03</span><span>Caption</span></p></figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= 3 · EVIDENCE ================= -->
+  <section class="pat-section">
+    <div class="wrap">
+      <div class="pat-section__head">
+        <h2>3 &middot; Evidence</h2>
+        <p>
+          Eleven kinds of artifact, each with a default proportion, because the
+          template should already be the right shape before the asset exists.
+          Line art and paper are shown whole; photographs may be cropped to
+          fill. Set <code>data-artifact</code> and the slot handles the rest.
+        </p>
+      </div>
+    </div>
+
+    <article class="spec" id="plates">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Artifact types</h3>
+          <p class="meta"><span>data-artifact</span><span>11 kinds</span></p>
+        </div>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="collection">
+          <div class="blk blk-artifacts u-wide">
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Photo"></div></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Photo, portrait"></div></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Screenshot"></div></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Prototype"></div></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Diagram"></div></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Sketch"></div></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Map"></div></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Notebook page"></div></figure>
+            <figure class="plate" style="--span: 3;"><div class="plate__slot" data-artifact="Document"></div></figure>
+            <figure class="plate" style="--span: 2;"><div class="plate__slot" data-artifact="Receipt"></div></figure>
+            <figure class="plate" style="--span: 5;"><div class="plate__slot" data-artifact="Ticket"></div></figure>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="spec" id="tiers">
+      <div class="wrap">
+        <div class="spec__head">
+          <h3>Width tiers</h3>
+          <p class="meta"><span>.u-wide</span><span>.u-full</span></p>
+        </div>
+        <p class="spec__use">
+          Three tiers on one grid. Text sits in the reading column by default;
+          add <code>.u-wide</code> or <code>.u-full</code> to break a block out
+          without leaving the flow. <b>This is what lets an entry run 70%
+          visual with no layout rebuilt for it.</b>
+        </p>
+      </div>
+      <div class="spec__demo">
+        <div class="entry" data-entry="field-note">
+          <figure class="plate"><div class="plate__slot" data-artifact="Photo" style="--ratio: 6/1;"></div><figcaption class="plate__caption"><p class="meta"><span>Text tier</span><span>default</span></p></figcaption></figure>
+          <figure class="plate u-wide"><div class="plate__slot" data-artifact="Photo" style="--ratio: 10/1;"></div><figcaption class="plate__caption"><p class="meta"><span>Wide tier</span><span>.u-wide</span></p></figcaption></figure>
+          <figure class="plate u-full"><div class="plate__slot" data-artifact="Photo" style="--ratio: 14/1;"></div><figcaption class="plate__caption" style="padding-inline: var(--page-margin);"><p class="meta"><span>Full tier</span><span>.u-full</span></p></figcaption></figure>
+        </div>
+      </div>
+    </article>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="site-footer__status">
+      <span class="status-dot" aria-hidden="true"></span>
+      Internal document &middot; Not linked from the site &middot; Updated Jul 2026
+    </p>
+
+    <nav class="site-footer__chapters" aria-label="Chapters">
+      <a href="index.html">Home</a>
+      <a href="entry-template.html">Assembled entry</a>
+      <a href="work.html">The Work</a>
+      <a href="field-notes.html">Field Notes</a>
+    </nav>
+
+    <div class="site-footer__base">
+      <span>&copy; <span data-current-year>2026</span> Josa Elegado</span>
+      <a href="mailto:hello@josaelegado.com">hello@josaelegado.com</a>
+      <span class="page-mark">&mdash; system &mdash;</span>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+</body>
+</html>

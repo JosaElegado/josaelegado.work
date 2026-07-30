@@ -42,7 +42,7 @@
   --color-on-ink: #f7f5f1;
 
   /* ---- Typography ----
-     Four faces, four jobs.
+     Five faces, five jobs.
      Bodoni Moda — display only, >=28px. Chosen for construction, not
        fashion: Bodoni drew letters mathematically, which is the right
        ancestor for an engineer's page.
@@ -50,12 +50,24 @@
        American editorial and technical-drawing workhorse. Invisible.
      Fragment Mono — the page's own voice: title-block fields, dates, stage
        labels, figure numbers. Metadata and measurement, never costume.
-     Kalam — the hand. Margin notes and sketch labels, a dozen words at a
-       time. Never body copy, never navigation.                            */
+     Kalam — the everyday hand. Margin notes and sketch labels, a dozen
+       words at a time. Never body copy, never navigation, never large.
+     La Belle Aurore — the pen. One written line on one page; --font-script. */
   --font-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
-  --font-sans: "Libre Franklin", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "Fragment Mono", ui-monospace, Menlo, monospace;
+  /* Reading text is set in the same monospace as the metadata: the whole page
+     reads as something typed into a log rather than published at you. The two
+     stay separate tokens so body can be reverted without touching metadata.
+     Fragment Mono ships one weight, so nothing in this system may lean on
+     font-weight for emphasis — see `font-synthesis: none` in base.css. */
+  --font-sans: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-hand: "Kalam", cursive;
+  /* The pen: a fine-nib hand written at speed, for the one written line on the
+     site. Swapping this value alone is not enough — the thesis line's size is
+     measured for this face (see .hero__thesis-line--turn). Alternatives are
+     set up side by side in type-specimen.html. */
+  --font-script: "La Belle Aurore", "Snell Roundhand", cursive;
+  --font-reading-fallback: "Libre Franklin", -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Bodoni carries its own optical sizing; nothing extra to dial in. Kept
      as a token because existing surfaces reference it. */
@@ -63,7 +75,11 @@
 
   --text-xs:   clamp(0.70rem, 0.68rem + 0.10vw, 0.76rem);
   --text-sm:   clamp(0.83rem, 0.80rem + 0.14vw, 0.91rem);
-  --text-base: clamp(1rem, 0.96rem + 0.18vw, 1.09rem);
+  /* A monospace reads optically larger than a proportional face at the same
+     size, and it sets much wider. Starting the ramp lower buys back four or
+     five characters a line on a phone without the text feeling small; the
+     desktop end of the clamp is unchanged. */
+  --text-base: clamp(0.94rem, 0.88rem + 0.26vw, 1.09rem);
   --text-md:   clamp(1.13rem, 1.06rem + 0.32vw, 1.31rem);
   --text-lg:   clamp(1.35rem, 1.22rem + 0.6vw, 1.75rem);
   --text-xl:   clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);

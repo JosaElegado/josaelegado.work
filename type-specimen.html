@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Type specimen — Josa Elegado</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#faf8f4" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Azeret+Mono:ital,wght@0,300..700;1,300..700&family=Fragment+Mono:ital@0;1&family=Kalam:wght@300;400&family=Libre+Franklin:ital,wght@0,400..700;1,400..600&family=Corinthia:wght@400;700&family=Cedarville+Cursive&family=La+Belle+Aurore&family=Birthstone&family=Ephesis&family=Italianno&family=Petit+Formal+Script&display=swap" rel="stylesheet" />
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@300,400,700,401,701&f[]=gambetta@300,400,700,401,701&f[]=boska@300,400,700,401,701&f[]=erode@300,400,700,401,701&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/blocks.css" />
+<link rel="stylesheet" href="styles/patterns.css" />
+
+<style>
+  /* Specimen chrome only. Nothing here ships. */
+
+  /* The site header is sticky at top:0; on this page the toggles matter more,
+     so the header rides along instead of fighting them for the same pixel. */
+  .site-header { position: static; }
+
+  .ts-controls {
+    position: sticky; top: 0; z-index: 90;
+    background: var(--color-paper);
+    border-bottom: 1px solid var(--color-ink);
+    padding-block: var(--space-4);
+  }
+  .ts-controls__row { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); align-items: baseline; }
+  .ts-controls__label {
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: var(--tracking-wider);
+    text-transform: uppercase; color: var(--color-ink-faint); flex: 0 0 5.5rem;
+  }
+  .ts-opt {
+    font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: var(--tracking-wide);
+    background: none; border: 1px solid var(--color-hairline); padding: var(--space-2) var(--space-3);
+    cursor: pointer; color: var(--color-ink-soft); transition: all var(--duration-fast) var(--ease-ink);
+  }
+  .ts-opt:hover { border-color: var(--color-plum); color: var(--color-plum); }
+  .ts-opt[aria-pressed="true"] { background: var(--color-plum); border-color: var(--color-plum); color: var(--color-on-plum); }
+
+  .ts-card { padding-block: var(--space-8); border-bottom: 1px solid var(--color-rule); }
+  .ts-card__name {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3);
+    font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: var(--tracking-wider);
+    text-transform: uppercase; color: var(--color-ink-faint); margin-bottom: var(--space-5);
+  }
+  .ts-card__name b { color: var(--color-ink); font-weight: 400; }
+  .ts-line { font-size: clamp(2rem, 1.2rem + 3.4vw, 3.6rem); line-height: 1.05; letter-spacing: -0.018em; margin: 0; max-width: 18ch; }
+  .ts-line em { font-style: italic; }
+  .ts-sub { font-size: var(--text-lg); margin-top: var(--space-4); max-width: 30ch; }
+  .ts-note { margin-top: var(--space-5); max-width: 54ch; font-size: var(--text-sm); line-height: var(--leading-relaxed); color: var(--color-ink-soft); }
+  .ts-verdict { color: var(--color-plum); }
+
+  /* Borrowed from home.css so the annotation can be judged in place. */
+  .mark-underline { display: inline-block; position: relative; white-space: nowrap; }
+  .mark-underline__stroke {
+    position: absolute; left: 0; width: 100%; top: 100%; height: 0.2em;
+    overflow: visible; fill: none; stroke: var(--color-plum); stroke-linecap: round;
+  }
+  .mark-underline__stroke path { stroke-width: 2.6; vector-effect: non-scaling-stroke; }
+  .ts-pair { font-family: var(--font-display); margin: 0; max-width: 22ch; font-size: clamp(1.9rem, 1.1rem + 3.2vw, 3.4rem); line-height: 1.06; letter-spacing: -0.018em; }
+  .ts-pair em {
+    font-style: normal; display: block; color: var(--color-plum);
+    font-size: calc(1em * var(--optical, 1)); line-height: 0.98; margin-top: 0.14em;
+  }
+
+  .ts-body-sample { max-width: 36rem; line-height: var(--rule-pitch); color: var(--color-ink-soft); }
+  .ts-body-sample + .ts-body-sample { margin-top: var(--rule-pitch); }
+  .ts-metrics { margin-top: var(--space-5); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__row">
+    <a class="wordmark" href="index.html" aria-label="Josa Elegado — home">Josa Elegado<span class="wordmark__mark">.</span></a>
+    <nav class="site-nav" aria-label="Primary"><ul><li><a href="patterns.html">Editorial system</a></li></ul></nav>
+  </div>
+</header>
+
+<!-- Live toggles: these set the real design tokens, so every component below
+     re-renders in the chosen face. What you see is what the site would be. -->
+<div class="ts-controls">
+  <div class="wrap">
+    <div class="ts-controls__row" style="margin-bottom: var(--space-3);">
+      <span class="ts-controls__label">Display</span>
+      <button class="ts-opt" data-var="--font-display" data-val='"Bodoni Moda", Didot, serif' aria-pressed="true">Bodoni Moda</button>
+      <button class="ts-opt" data-var="--font-display" data-val='"Zodiak", Georgia, serif'>Zodiak</button>
+      <button class="ts-opt" data-var="--font-display" data-val='"Gambetta", Georgia, serif'>Gambetta</button>
+      <button class="ts-opt" data-var="--font-display" data-val='"Boska", Georgia, serif'>Boska</button>
+      <button class="ts-opt" data-var="--font-display" data-val='"Erode", Georgia, serif'>Erode</button>
+    </div>
+    <div class="ts-controls__row">
+      <span class="ts-controls__label">Body</span>
+      <button class="ts-opt" data-var="--font-sans" data-val='"Libre Franklin", system-ui, sans-serif' aria-pressed="true">Libre Franklin</button>
+      <button class="ts-opt" data-var="--font-sans" data-val='"Fragment Mono", monospace'>Fragment Mono</button>
+      <button class="ts-opt" data-var="--font-sans" data-val='"Azeret Mono", monospace'>Azeret Mono</button>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="pat-intro">
+    <div class="wrap">
+      <dl class="title-block">
+        <div class="title-block__field"><dt>Document</dt><dd>Type specimen</dd></div>
+        <div class="title-block__field"><dt>Purpose</dt><dd>Choosing a display face</dd></div>
+        <div class="title-block__field title-block__field--wide"><dt>Sheet</dt><dd>Internal</dd></div>
+      </dl>
+      <p class="prose" style="margin-top: var(--space-7); max-width: 46rem;">
+        The buttons above set the real design tokens. Everything below is a live
+        site component, not a mockup, so whatever looks right here is what the
+        site becomes. Fontshare faces are free for commercial use and sit well
+        outside the pool that templates and generated sites draw from.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============ THE THESIS LINE ============ -->
+  <section class="pat-section">
+    <div class="wrap">
+      <div class="pat-section__head">
+        <h2>0 &middot; The thesis line</h2>
+        <p>Line one stays printed in Bodoni. Line two is written with a pen, and the plum stroke is drawn underneath it. Each face is optically scaled so they all sit at the same visual size as the serif above &mdash; a fine script set at the same pixel size as a serif looks half as big, and would lose the comparison for the wrong reason.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Cedarville Cursive</b><span>Everyday hand, fine nib</span></p>
+        <p class="ts-pair" data-script="Cedarville Cursive">The hard part was never the idea.
+          <em style="font-family: 'Cedarville Cursive', cursive;">It&rsquo;s getting it <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6"/></svg></span>.</em></p>
+        <p class="ts-note">A real person&rsquo;s cursive rather than lettering. The least performed of the set &mdash; closest to something actually written in a notebook.</p>
+      </article>
+      <article class="ts-card">
+        <p class="ts-card__name"><b>La Belle Aurore</b><span>Fine pen, slanted</span></p>
+        <p class="ts-pair" data-script="La Belle Aurore">The hard part was never the idea.
+          <em style="font-family: 'La Belle Aurore', cursive;">It&rsquo;s getting it <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6"/></svg></span>.</em></p>
+        <p class="ts-note">Thin and quick, as if written at speed. Personal and unfussy; reads as a note to self.</p>
+      </article>
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Corinthia</b><span>Pointed pen, flowing</span></p>
+        <p class="ts-pair" data-script="Corinthia">The hard part was never the idea.
+          <em style="font-family: 'Corinthia', cursive;">It&rsquo;s getting it <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6"/></svg></span>.</em></p>
+        <p class="ts-note"><span class='ts-verdict'>True nib contrast &mdash; thick on the downstroke, hairline on the up.</span> Elegant without tipping into wedding stationery. My pick for &ldquo;fountain pen&rdquo;.</p>
+      </article>
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Birthstone</b><span>Pointed pen, warm</span></p>
+        <p class="ts-pair" data-script="Birthstone">The hard part was never the idea.
+          <em style="font-family: 'Birthstone', cursive;">It&rsquo;s getting it <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6"/></svg></span>.</em></p>
+        <p class="ts-note">Rounder and friendlier than Corinthia, a little more ink on the page.</p>
+      </article>
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Ephesis</b><span>Modern calligraphic</span></p>
+        <p class="ts-pair" data-script="Ephesis">The hard part was never the idea.
+          <em style="font-family: 'Ephesis', cursive;">It&rsquo;s getting it <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6"/></svg></span>.</em></p>
+        <p class="ts-note">Restrained and contemporary. Calligraphic bones without the flourish.</p>
+      </article>
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Italianno</b><span>Fine formal script</span></p>
+        <p class="ts-pair" data-script="Italianno">The hard part was never the idea.
+          <em style="font-family: 'Italianno', cursive;">It&rsquo;s getting it <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6"/></svg></span>.</em></p>
+        <p class="ts-note">Very fine and very slanted. Beautiful large; gets fragile if it ever has to go small.</p>
+      </article>
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Petit Formal Script</b><span>Copperplate</span></p>
+        <p class="ts-pair" data-script="Petit Formal Script">The hard part was never the idea.
+          <em style="font-family: 'Petit Formal Script', cursive;">It&rsquo;s getting it <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6"/></svg></span>.</em></p>
+        <p class="ts-note">The most formal of the set. Handsome, but it carries invitation-card associations that may fight the engineering register.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ DISPLAY CANDIDATES ============ -->
+  <section class="pat-section">
+    <div class="wrap">
+      <div class="pat-section__head">
+        <h2>1 &middot; Display candidates</h2>
+        <p>Your actual headline, set at actual size, in each face. Judge the italic too: the second line of the homepage thesis is italic, so it has to hold up.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Bodoni Moda</b><span>Current &middot; Google</span></p>
+        <p class="ts-line" style="font-family: 'Bodoni Moda', serif;">The hard part was never the idea.<br><em>It&rsquo;s getting it adopted.</em></p>
+        <p class="ts-note">A didone: mathematically constructed, high contrast, unmistakably editorial. <span class="ts-verdict">The risk is that it is the safe answer</span> &mdash; one step sideways from Playfair Display, and it reads fashion-editorial more than field-journal.</p>
+      </article>
+
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Zodiak</b><span>Fontshare &middot; free</span></p>
+        <p class="ts-line" style="font-family: 'Zodiak', serif;">The hard part was never the idea.<br><em>It&rsquo;s getting it adopted.</em></p>
+        <p class="ts-note">A contemporary serif with blunt, almost architectural terminals and an unusual axis. <span class="ts-verdict">Most distinctive of the four.</span> Reads deliberate and slightly severe &mdash; closer to an engineering document than a magazine.</p>
+      </article>
+
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Gambetta</b><span>Fontshare &middot; free</span></p>
+        <p class="ts-line" style="font-family: 'Gambetta', serif;">The hard part was never the idea.<br><em>It&rsquo;s getting it adopted.</em></p>
+        <p class="ts-note">Calligraphic bones, moderate contrast, a warm and slightly handwritten quality in the italic. <span class="ts-verdict">The most human of the four</span> &mdash; suits a notebook premise without resorting to a script face.</p>
+      </article>
+
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Boska</b><span>Fontshare &middot; free</span></p>
+        <p class="ts-line" style="font-family: 'Boska', serif;">The hard part was never the idea.<br><em>It&rsquo;s getting it adopted.</em></p>
+        <p class="ts-note">High contrast display serif with very fine hairlines. <span class="ts-verdict">Closest in feel to Bodoni</span>, so it keeps the current elegance while being far less common. Needs size to work; poor below about 28px.</p>
+      </article>
+
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Erode</b><span>Fontshare &middot; free</span></p>
+        <p class="ts-line" style="font-family: 'Erode', serif;">The hard part was never the idea.<br><em>It&rsquo;s getting it adopted.</em></p>
+        <p class="ts-note">Organic, slightly weathered edges, as if printed rather than rendered. <span class="ts-verdict">The most bookish</span>. Carries texture without any of the fake-distress the brief rules out, because the texture is drawn into the outlines.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ BODY EXPERIMENT ============ -->
+  <section class="pat-section">
+    <div class="wrap">
+      <div class="pat-section__head">
+        <h2>2 &middot; Body in monospace</h2>
+        <p>The same paragraph in each candidate, at real body size and real measure. Note the words in bold: this is where a single-weight face gives itself away.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Libre Franklin</b><span>Current &middot; 400&ndash;700 + italics</span></p>
+        <p class="ts-body-sample" style="font-family: 'Libre Franklin', sans-serif;">
+          I trained as an engineer. Engineering teaches you that a problem is
+          solved when the design works. A few years of fieldwork taught me that
+          <strong>a working design is about halfway</strong>. Financing that
+          doesn&rsquo;t match how people actually earn is a constraint.
+        </p>
+      </article>
+
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Fragment Mono</b><span>400 only &middot; no bold</span></p>
+        <p class="ts-body-sample" style="font-family: 'Fragment Mono', monospace;">
+          I trained as an engineer. Engineering teaches you that a problem is
+          solved when the design works. A few years of fieldwork taught me that
+          <strong>a working design is about halfway</strong>. Financing that
+          doesn&rsquo;t match how people actually earn is a constraint.
+        </p>
+        <p class="ts-note">
+          <span class="ts-verdict">The bold above is fake.</span> Fragment Mono
+          ships one weight, so the browser smears the outline to simulate it. It
+          also does double duty: if body and metadata are the same face, the
+          title blocks and figure labels lose the separate voice that makes the
+          site read as a documented record.
+        </p>
+      </article>
+
+      <article class="ts-card">
+        <p class="ts-card__name"><b>Azeret Mono</b><span>300&ndash;700 + italics</span></p>
+        <p class="ts-body-sample" style="font-family: 'Azeret Mono', monospace;">
+          I trained as an engineer. Engineering teaches you that a problem is
+          solved when the design works. A few years of fieldwork taught me that
+          <strong>a working design is about halfway</strong>. Financing that
+          doesn&rsquo;t match how people actually earn is a constraint.
+        </p>
+        <p class="ts-note">
+          A real monospace with real weights, so bold is genuine.
+          <span class="ts-verdict">If you want a mono body, this is the way to do it</span>
+          &mdash; and Fragment Mono would then move aside or go entirely.
+        </p>
+      </article>
+
+      <div class="ts-card ts-metrics">
+        <p class="ts-card__name"><b>What changes if body goes mono</b></p>
+        <ul class="prose" style="max-width: 46rem;">
+          <li>Characters per line drop by roughly a third at the same column width, so entries get noticeably longer.</li>
+          <li>Long prose reads more slowly. Fine for captions, labels and short entries; costly for a 2,000-word essay.</li>
+          <li>Body and metadata stop being distinguishable unless the metadata moves to a different face or a much smaller size.</li>
+          <li>It is a strong, deliberate identity: technical, documentary, unmistakably not a template. That is exactly what you asked for.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IN CONTEXT ============ -->
+  <section class="pat-section">
+    <div class="wrap">
+      <div class="pat-section__head">
+        <h2>3 &middot; In context</h2>
+        <p>Real components, driven by the toggles at the top of the page. This is the honest test: not how a face looks in isolation, but how it behaves next to metadata, annotations and a diagram.</p>
+      </div>
+    </div>
+
+    <div class="entry" data-entry="field-note" style="padding-block: var(--space-8);">
+      <header class="entry-masthead">
+        <div class="entry-masthead__no">
+          <span class="entry-masthead__type">Field note <strong>#024</strong></span>
+          <span class="entry-masthead__status">Archived</span>
+        </div>
+        <h1 class="entry-masthead__title">Digital public infrastructure, seen from the queue</h1>
+        <p class="entry-masthead__standfirst">
+          Seven days watching a payments rail that already works technically, and
+          asking why some counters used it and others did not.
+        </p>
+        <dl class="entry-masthead__fields">
+          <div><dt>Location</dt><dd>Bengaluru, India</dd></div>
+          <div><dt>Date</dt><dd>Jul 2026</dd></div>
+          <div><dt>Duration</dt><dd>7 days</dd></div>
+          <div><dt>Theme</dt><dd>Adoption</dd></div>
+        </dl>
+      </header>
+
+      <p>
+        A paragraph of the entry proper, so you can see the display face and the
+        body face working together at the sizes they will actually be used.
+      </p>
+
+      <div class="boxed">
+        <svg class="boxed__frame" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M3 6 200 4 397 3.5 396.5 50 396 96 200 98 3.5 97.5 3.2 50 3 6 4.2 11.5"/>
+        </svg>
+        <p class="prose prose--stmt">The technology is rarely the constraint.</p>
+      </div>
+
+      <ol class="ledger u-wide" style="margin: 0;">
+        <li class="ledger__row">
+          <span class="ledger__no">01</span>
+          <div class="ledger__main">
+            <h3 class="ledger__name">Apolaki</h3>
+            <p class="ledger__q">Does trust transfer between sites, or does it have to be rebuilt every time?</p>
+          </div>
+          <p class="meta meta--stack ledger__meta">
+            <span><strong>Renewable energy</strong></span>
+            <span><em>In process</em></span>
+            <span>Started Jan 2025</span>
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="site-footer__status">
+      <span class="status-dot" aria-hidden="true"></span>
+      Internal &middot; Not linked from the site
+    </p>
+    <div class="site-footer__base">
+      <span>Type specimen</span>
+      <a href="patterns.html">Editorial system</a>
+      <span class="page-mark">&mdash; specimen &mdash;</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* A script face and a serif set at the same px size are not the same visual
+     size: what matters is the height of the actual ink. Measure both and scale
+     each pen face so the comparison is fair. */
+  (async function () {
+    await document.fonts.ready;
+    var c = document.createElement('canvas').getContext('2d');
+    /* x-height, not total ink: a script's ascenders and descenders are huge
+       while its lowercase is tiny, so measuring the full extent makes every
+       face look the same size when they plainly are not. Glyphs chosen to
+       have neither ascender nor descender. */
+    function xheight(face, px) {
+      c.font = px + 'px "' + face + '"';
+      var m = c.measureText('xoena');
+      return m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+    }
+    var target = xheight('Bodoni Moda', 100);
+    document.querySelectorAll('.ts-pair[data-script]').forEach(function (el) {
+      var h = xheight(el.dataset.script, 100);
+      /* Capped: past about 1.9 the ascenders start colliding with the line above. */
+      if (h > 0) el.style.setProperty('--optical', Math.min(target / h, 1.9).toFixed(3));
+    });
+  })();
+
+  document.querySelectorAll('.ts-opt').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var v = btn.dataset.var;
+      document.documentElement.style.setProperty(v, btn.dataset.val);
+      document.querySelectorAll('.ts-opt[data-var="' + v + '"]').forEach(function (o) {
+        o.setAttribute('aria-pressed', String(o === btn));
+      });
+    });
+  });
+</script>
+</body>
+</html>

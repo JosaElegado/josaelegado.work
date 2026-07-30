@@ -236,7 +236,9 @@
   align-items: center;
   gap: var(--space-2);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
   text-decoration: none;
   padding: var(--space-3) var(--space-6);
   border: 1px solid var(--color-eggplant);
@@ -256,7 +258,7 @@
   position: relative;
   text-decoration: none;
   color: var(--color-eggplant);
-  font-weight: 600;
+  font-weight: 400;
   background-image: linear-gradient(currentColor, currentColor);
   background-position: 0 100%;
   background-repeat: no-repeat;
@@ -821,9 +823,11 @@ a.index-row:hover .index-row__arrow { transform: translateX(4px); color: var(--c
    placed immediately after the block they annotate, so auto-placement lands
    each note on its paragraph's row — no absolute positioning to drift. */
 
+/* The body column is sized for the monospace advance width: at 36rem it held
+   barely 53 characters, which is short for continuous reading. */
 .page-layout {
   display: grid;
-  grid-template-columns: minmax(0, 36rem) minmax(0, 15rem);
+  grid-template-columns: minmax(0, 42rem) minmax(0, 15rem);
   column-gap: var(--space-8);
   align-items: start;
 }
