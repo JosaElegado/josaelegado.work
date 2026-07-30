@@ -2,51 +2,56 @@
 
 Static site, no build step. Any static host serves it as-is.
 
-## Current setup
+## State
 
-GitHub Pages, from `main` at the repo root.
-Preview: **https://josaelegado.github.io/josaelegado.work/**
+| Piece | Status |
+|---|---|
+| GitHub repo | `JosaElegado/josaelegado.work` |
+| Pages build | ✅ built, from `main` at root |
+| Custom domain set on Pages | ✅ `www.josaelegado.work` |
+| `CNAME` file in repo | ✅ present |
+| **Cloudflare DNS** | ❌ **still points at Wix — the only thing left** |
 
-## Going live on www.josaelegado.work
+Everything on the GitHub side is finished. The domain does not work yet
+because its DNS still hands traffic to Wix, which no longer has a site
+connected (hence Wix's `ConnectYourDomain Error`).
 
-The domain currently points at Wix ("RISE Innovation Advisors"). Two steps,
-in this order:
+## The remaining step (needs a Cloudflare login)
 
-**1. Add the DNS records** at whoever manages the domain (Wix, if it was
-bought through them: Wix dashboard → Domains → Advanced → DNS records).
+`josaelegado.work` uses Cloudflare nameservers (`vida`/`ram.ns.cloudflare.com`),
+so records are edited in Cloudflare, not Wix or the registrar.
 
-| Type  | Host | Value                   |
-|-------|------|-------------------------|
-| CNAME | www  | `josaelegado.github.io` |
+**Cloudflare → DNS → Records** for `josaelegado.work`:
 
-For the bare domain (`josaelegado.work` with no `www`), add four A records
-pointing at GitHub Pages:
+| Action | Type | Name | Value | Proxy |
+|---|---|---|---|---|
+| Edit existing | CNAME | `www` | `josaelegado.github.io` | **DNS only** |
+| Delete | A | `@` | `185.230.63.107` (Wix) | — |
+| Add | A | `@` | `185.199.108.153` | **DNS only** |
+| Add | A | `@` | `185.199.109.153` | **DNS only** |
+| Add | A | `@` | `185.199.110.153` | **DNS only** |
+| Add | A | `@` | `185.199.111.153` | **DNS only** |
 
-```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
+**Proxy must be grey cloud / DNS only.** If Cloudflare proxies these,
+GitHub sees Cloudflare's IP instead of yours, cannot validate the domain,
+and never issues the TLS certificate — you get an SSL warning rather than
+a site. Enable the proxy later if you want it.
 
-Removing Wix's existing records for `www` is what takes the old site off
-the domain. Wix will keep hosting it internally until the plan is
-cancelled — that is a separate decision.
+Then in the repo: **Settings → Pages → Enforce HTTPS** once the certificate
+is issued (usually under an hour after DNS propagates).
 
-**2. Tell Claude to re-add the CNAME file.** It is deliberately absent
-right now: with it present, the preview URL 301-redirects to the custom
-domain, so there is no way to see the site before the DNS flip. Once DNS
-is pointing at GitHub, the file goes back:
+## Alternative: Cloudflare Pages
 
-```
-echo "www.josaelegado.work" > CNAME && git add CNAME && git commit -m "Point Pages at the custom domain" && git push
-```
+Because DNS is already on Cloudflare, Cloudflare Pages writes the DNS
+records for you instead of you editing six of them by hand. Connect the
+same GitHub repo, add the custom domain, done. The site itself does not
+change. Fewer manual steps; costs one GitHub-app authorisation in
+Cloudflare.
 
-Then enable **Enforce HTTPS** in the repo's Settings → Pages once the
-certificate is issued (usually within an hour of DNS propagating).
-
-## Anything still to decide
+## Still undecided
 
 - The contact address in the markup is `hello@josaelegado.com`, but the
-  site serves from `.work`. That mailbox may not exist. It appears in
-  every page footer and on lets-build.html.
+  site serves from `.work`. That mailbox may not exist. It is in every
+  page footer and on `lets-build.html`.
+- The Wix Premium plan keeps billing until cancelled. RISE's blog content
+  still lives on that Wix site.
