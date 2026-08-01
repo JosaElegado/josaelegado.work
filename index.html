@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="styles/tokens.css" />
 <link rel="stylesheet" href="styles/base.css" />
 <link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/blocks.css" />
 <link rel="stylesheet" href="styles/animations.css" />
 <link rel="stylesheet" href="styles/home.css" />
 
@@ -46,6 +47,114 @@
 <svg style="display:none" aria-hidden="true">
   <symbol id="icon-arrow-right" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="icon-arrow-up-right" viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- ==========================================================
+     THEME GLYPHS
+     One mark per theme, drawn in the same pen as the figures:
+     open strokes, deliberate overshoot at the corners, no fills
+     except where a shape reads better solid. Sized in ems so they
+     scale with the label they sit against, and coloured by
+     currentColor so they inherit the plum.
+
+     These replace emoji. An emoji renders differently on every
+     device and belongs to somebody else's design system; these are
+     drawn to the same rules as Fig. 01 and Fig. 02.
+     ========================================================== -->
+<svg style="display:none" aria-hidden="true">
+  <!-- Energy & climate: a sprout breaking ground -->
+  <symbol id="g-sprout" viewBox="0 0 24 24">
+    <path d="M12 21.5c.2-5 0-7.6.3-10.4" />
+    <path d="M12 13.4C9.4 12.8 7.6 10.6 8 8.1c2.5.3 4.3 2.4 4 5.3Z" />
+    <path d="M12.3 11.6c2.4-.8 3.9-2.9 3.4-5.3-2.4.4-3.8 2.6-3.4 5.3Z" />
+    <path d="M6.6 21.6c3.8-.3 7.4-.4 11 0" />
+  </symbol>
+
+  <!-- People & behaviour: two figures, one turned -->
+  <symbol id="g-people" viewBox="0 0 24 24">
+    <path d="M9.2 8.4a2.6 2.6 0 1 1-.1-.2" />
+    <path d="M17 9.6a2.2 2.2 0 1 1-.1-.2" />
+    <path d="M4.6 19.4c.2-3.4 2.1-5.2 4.7-5.2s4.4 1.9 4.5 5.2" />
+    <path d="M15.2 19.4c.2-2.8 1.6-4.3 3.6-4.3 1.4 0 2.4.7 3 2" />
+  </symbol>
+
+  <!-- Innovation: a filament, lit -->
+  <symbol id="g-idea" viewBox="0 0 24 24">
+    <path d="M12 3.2c3.4 0 5.9 2.6 5.9 5.9 0 2.4-1.3 3.6-2.2 5-.5.8-.7 1.4-.8 2.2H9.1c-.1-.8-.3-1.4-.8-2.2-.9-1.4-2.2-2.6-2.2-5 0-3.3 2.5-5.9 5.9-5.9Z" />
+    <path d="M9.6 19.2h4.9M10.4 21.4h3.3" />
+    <path d="M10.4 13.6 12 10.4l1.6 3.2" />
+  </symbol>
+
+  <!-- Entrepreneurship: launch, with fins that actually read as fins -->
+  <symbol id="g-launch" viewBox="0 0 24 24">
+    <path d="M12 2.4c2.6 2.5 4 5.7 4 9.5v3.5H8v-3.5c0-3.8 1.4-7 4-9.5Z" />
+    <circle cx="12" cy="9.4" r="1.6" />
+    <path d="M8 12.8 5.1 15.4v3.5L8 17.2M16 12.8l2.9 2.6v3.5L16 17.2" />
+    <path d="M10.5 18.6c.5 1.7 1 2.7 1.5 3.2.5-.5 1-1.5 1.5-3.2" />
+  </symbol>
+
+  <!-- Food systems: a head of grain -->
+  <symbol id="g-grain" viewBox="0 0 24 24">
+    <path d="M12 21.4c0-6 0-10.4.2-14.6" />
+    <path d="M12.1 9.2c2.2.2 3.6-1 3.8-3.2-2.2-.2-3.6 1-3.8 3.2ZM12 9.2C9.8 9.4 8.4 8.2 8.2 6c2.2-.2 3.6 1 3.8 3.2Z" />
+    <path d="M12.1 13.6c2.2.2 3.6-1 3.8-3.2-2.2-.2-3.6 1-3.8 3.2ZM12 13.6c-2.2.2-3.6-1-3.8-3.2 2.2-.2 3.6 1 3.8 3.2Z" />
+    <path d="M12.1 5c.6-1.3.3-2.4-.1-3.4-.5 1-.8 2.1-.1 3.4Z" />
+  </symbol>
+
+  <!-- Public service: a portico -->
+  <symbol id="g-institution" viewBox="0 0 24 24">
+    <path d="M2.8 8.6 12 3.4l9.2 5.2H2.8Z" />
+    <path d="M5.4 11v7.4M9.8 11v7.4M14.2 11v7.4M18.6 11v7.4" />
+    <path d="M3.4 18.6h17.4M2.6 21.2h18.9" />
+  </symbol>
+
+  <!-- Relationships: drawn as one stroke, the way you actually draw a heart -->
+  <symbol id="g-heart" viewBox="0 0 24 24">
+    <path d="M12 20.4C7.8 17.2 3.6 14 3.6 9.9 3.6 7.2 5.6 5.2 8.1 5.2c1.7 0 3.1.9 3.9 2.3.8-1.4 2.2-2.3 3.9-2.3 2.5 0 4.5 2 4.5 4.7 0 4.1-4.2 7.3-8.4 10.5Z" />
+  </symbol>
+
+  <!-- Stories: a viewfinder -->
+  <symbol id="g-camera" viewBox="0 0 24 24">
+    <path d="M2.9 7.8h4l1.5-2.4h7.2l1.5 2.4h4v11.2H2.9V7.8Z" />
+    <circle cx="12" cy="13.4" r="3.3" />
+    <path d="M5.2 10.2h1.9" />
+  </symbol>
+
+  <!-- Life: a globe. Drawn with real circles — an arc that nearly closes
+       leaves a nick at the join that is obvious at 92px. -->
+  <symbol id="g-globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9.1" />
+    <path d="M2.9 12h18.2" />
+    <ellipse cx="12" cy="12" rx="4.1" ry="9.1" />
+  </symbol>
+
+  <!-- Apolaki: the sun it is named for -->
+  <symbol id="g-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.9" />
+    <path d="M12 1.8v2.7M12 19.5v2.7M1.8 12h2.7M19.5 12h2.7M4.9 4.9 6.8 6.8M17.2 17.2 19.1 19.1M19.1 4.9 17.2 6.8M6.8 17.2 4.9 19.1" />
+  </symbol>
+
+  <!-- Rubeo Ranch: the land, not the animal. A cow's head at this size reads
+       as a smiley face; a fence line against hills does not. -->
+  <symbol id="g-cattle" viewBox="0 0 24 24">
+    <path d="M2.4 8.6c3.3-2.7 6.7-2.7 9.6 0 2.9 2.7 6.3 2.7 9.6 0" />
+    <path d="M4.8 20.9v-9.4M11.9 20.9v-10M19 20.9v-9.4" />
+    <path d="M3.1 13.9h17.8M3.1 17.1h17.8" />
+  </symbol>
+
+  <!-- Study: a cap -->
+  <symbol id="g-study" viewBox="0 0 24 24">
+    <path d="M12 4.2 22 8.4 12 12.6 2 8.4l10-4.2Z" />
+    <path d="M6.4 10.6v5.2c0 1.6 2.6 2.8 5.6 2.8s5.6-1.2 5.6-2.8v-5.2" />
+    <path d="M21 9v5.4" />
+  </symbol>
+
+  <!-- Field journal: the notebook itself -->
+  <symbol id="g-journal" viewBox="0 0 24 24">
+    <path d="M5.4 3.4h13.2v17.2H5.4V3.4Z" />
+    <path d="M8.6 3.4v17.2" />
+    <path d="M11.2 8.2h4.6M11.2 11.4h4.6M11.2 14.6h3" />
+  </symbol>
 </svg>
 
 <header class="site-header">
@@ -79,26 +188,20 @@
 </nav>
 
 <main id="main">
-
-  <!-- ================= OPENING SPREAD =================
-       The page does not depict a notebook; it is one. The framework is drawn
-       directly on the paper — no card, no frame, no shadow — because that is
-       where an engineer would draw it. One authored motion: the arrows and the
-       underline stroke themselves, in order, once. -->
   <section class="hero">
     <div class="wrap">
 
       <dl class="title-block hero__title-block">
         <div class="title-block__field">
           <dt>Discipline</dt>
-          <dd>Technology commercialization</dd>
+          <dd>Applied innovation</dd>
         </div>
         <div class="title-block__field">
           <dt>Fieldwork</dt>
-          <dd>Renewable energy · Agriculture</dd>
+          <dd>Agriculture · Technology · Social enterprise</dd>
         </div>
         <div class="title-block__field">
-          <dt>Based</dt>
+          <dt>Base</dt>
           <dd>Manila, Philippines</dd>
         </div>
         <div class="title-block__field title-block__field--wide">
@@ -109,35 +212,26 @@
 
       <div class="hero__grid">
         <div class="hero__text">
-          <h1 class="hero__thesis">
-            <span class="hero__thesis-line">The hard part was never the idea.</span>
-            <!-- The annotation: a plum stroke drawn under the word on load,
-                 the way you would underline the line that matters. -->
-            <em class="hero__thesis-line hero__thesis-line--turn">
-              It&rsquo;s getting it
-              <span class="mark-underline">adopted<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6" pathLength="100"/></svg></span>.
-            </em>
-          </h1>
+          <h1 class="hero__thesis">Hi, I&rsquo;m Josa.</h1>
 
           <p class="hero__lede">
-            I&rsquo;m a licensed agricultural and biosystems engineer working in
-            technology commercialization and innovation in the Philippine public
-            sector, and studying for a Master in Innovation and Business. Everything
-            on this site started as a note: the frameworks that held up, the pilots
-            that didn&rsquo;t, and the questions I&rsquo;m still working through.
+            I explore ideas, connect unlikely dots, and turn them into ventures,
+            technologies, and experiences that make a real difference.
           </p>
 
+          <!-- The one written line on the site, underlined the way you would
+               underline the part that matters. -->
+          <p class="hero__pen">From &ldquo;What if?&rdquo; to <span class="mark-underline">&ldquo;What&rsquo;s next?&rdquo;<svg class="mark-underline__stroke" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M1.5 5.4C22 2.9 44 2.2 66 2.6c18 .4 36 1.4 52.5 2.6" pathLength="100"/></svg></span></p>
+
           <div class="hero__actions">
-            <a class="btn btn--solid" href="story.html">
-              Read the story
+            <a class="btn btn--solid" href="field-notes.html">
+              Read my field notes
               <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
             </a>
-            <a class="ink-link" href="field-notes.html">Latest field notes</a>
+            <a class="ink-link" href="#chapters">Latest adventure</a>
           </div>
         </div>
 
-        <!-- The framework, drawn on the page. Pencil for the structure, plum for
-             the through-line, lavender for the loop nobody plans for. -->
         <figure class="hero__figure">
           <figcaption class="figure__label">
             <span>Fig. 01</span>
@@ -148,9 +242,6 @@
             <title id="fig01-title">The route from concept to adoption</title>
             <desc id="fig01-desc">Five stages in sequence: problem, insight (revised from “solution”), prototype, pilot, and impact. A loop runs back from pilot to prototype, annotated “this loop is most of the job.”</desc>
 
-            <!-- Boxes are drawn, not stamped: the corners overshoot and the
-                 verticals lean a fraction, the way they do by hand. The
-                 irregularity lives in the coordinates — never in a filter. -->
             <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
               <path d="M58 16.5 84 15.5 85 41.5 59 42.5 58 16.5 58.8 13.6"/>
               <path d="M58.5 112.5 84.5 111.6 85.4 137.6 59.4 138.5 58.5 112.5 59.2 109.7"/>
@@ -170,7 +261,6 @@
               <path class="fig-arrowhead" d="M66.8 405.4 71 412.5 75.4 405.6"/>
             </g>
 
-            <!-- The loop nobody puts in the proposal. -->
             <g class="fig-loop" fill="none" stroke="var(--color-lavender)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
               <path d="M57 331C34 327 21 309 21.5 283 22 258 34 240 55.5 235.5" stroke-dasharray="3 5"/>
               <path d="M49.6 229.6 56.4 235.4 50.2 241.6"/>
@@ -184,7 +274,6 @@
               <text x="106" y="431.5">IMPACT</text>
             </g>
 
-            <!-- The revision that matters: it was never about having the solution. -->
             <path class="fig-strike" d="M104 125.4 175.5 123.8" pathLength="100" fill="none" stroke="var(--color-plum)" stroke-width="1.4" stroke-linecap="round"/>
             <text class="fig-label fig-label--revised" x="187" y="129.5" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-plum)">INSIGHT</text>
 
@@ -192,165 +281,193 @@
           </svg>
 
           <p class="figure__equation">
-            Technology <span>+</span> People <span>+</span> Policy <span>=</span> <strong>Adoption</strong>
+            Explore <span>&bull;</span> Connect <span>&bull;</span> <strong>Create</strong>
           </p>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       01 — WHY I WORK THIS WAY
-       One question, one format: a single editorial passage with a real
-       margin. No cards, no images, nothing competing. The margin notes
-       explain specific paragraphs; the box marks the one sentence the
-       whole page turns on.
-       ============================================================ -->
-  <section class="mv mv--prose">
+  <section class="mv mv--curious" id="curious">
     <div class="wrap">
       <div class="opener">
-        <p class="opener__q" data-index="01">Why do I work this way?</p>
-        <a class="xref" href="story.html">Full chapter &rarr;</a>
+        <p class="opener__q" data-index="01">What I&rsquo;m curious about</p>
+        <p class="meta"><span>Nine open questions</span></p>
       </div>
 
-      <div class="page-layout">
-        <h2 class="mv__head">A working design is roughly the halfway mark.</h2>
-
+      <div class="curious__intro">
         <p class="prose">
-          I trained as an engineer. Engineering teaches you that a problem is
-          solved when the design works. A few years of fieldwork taught me that
-          a working design is about halfway.
+          A collection of questions I&rsquo;m currently exploring. Some may become
+          projects. Others may simply change the way I think.
         </p>
-
-        <p class="prose">
-          The pattern repeats everywhere I&rsquo;ve worked &mdash; renewable
-          energy, agriculture, the public sector. Financing that doesn&rsquo;t
-          match how people actually earn is a constraint. Institutions that
-          change faster than a pilot can adapt to them are a constraint. Trust
-          is a constraint, and it isn&rsquo;t transferable.
-        </p>
-
-        <aside class="page-note">
-          <svg class="page-note__arrow" viewBox="0 0 26 16" aria-hidden="true">
+        <aside class="annot curious__stamp">
+          <svg class="annot__arrow" viewBox="0 0 26 16" aria-hidden="true">
             <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span>none of these show up on a spec sheet</span>
-        </aside>
-
-        <div class="boxed">
-          <svg class="boxed__frame" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M3 6 200 4 397 3.5 396.5 50 396 96 200 98 3.5 97.5 3.2 50 3 6 4.2 11.5"/>
-          </svg>
-          <p class="prose prose--stmt">The technology is rarely the constraint.</p>
-        </div>
-
-        <p class="prose">
-          So I stopped trying to design better
-          <span class="revision"><s>solutions</s><em>conditions</em></span>
-          and started trying to understand adoption. In practice that means
-          being on the site rather than reading the report about the site.
-          Sitting in the meeting where the decision actually gets made. Asking
-          the question that makes a room briefly uncomfortable, because that is
-          usually the question with the answer in it.
-        </p>
-
-        <p class="prose">
-          And writing all of it down &mdash; because the detail that turns out to
-          matter is almost never the one I walked in expecting to matter.
-          That&rsquo;s what the notebook is for. Not a habit. The method.
-        </p>
-
-        <aside class="page-note">
-          <svg class="page-note__arrow" viewBox="0 0 26 16" aria-hidden="true">
-            <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>which is why every page here has a date on it</span>
+          <span>last updated August 2026</span>
         </aside>
       </div>
+
+      <ul class="curious">
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-sprout"/></svg>
+          <p class="curious__label">Energy &amp; Climate</p>
+          <p class="curious__q">How do we make clean energy the obvious choice &mdash; not the difficult one?</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-people"/></svg>
+          <p class="curious__label">People &amp; Behavior</p>
+          <p class="curious__q">Why do some communities embrace change while others resist it?</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-idea"/></svg>
+          <p class="curious__label">Innovation</p>
+          <p class="curious__q">What separates a good idea from one that people actually adopt?</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-launch"/></svg>
+          <p class="curious__label">Entrepreneurship</p>
+          <p class="curious__q">How do founders build companies without losing the reason they started?</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-grain"/></svg>
+          <p class="curious__label">Food Systems</p>
+          <p class="curious__q">What would agriculture look like if it attracted the next generation?</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-institution"/></svg>
+          <p class="curious__label">Public Service</p>
+          <p class="curious__q">Can governments innovate with the speed and empathy of startups?</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-heart"/></svg>
+          <p class="curious__label">Relationships</p>
+          <p class="curious__q">How do trust, communication, and shared purpose shape the way we work and live together?</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-camera"/></svg>
+          <p class="curious__label">Stories</p>
+          <p class="curious__q">Why do certain stories stay with us long after we&rsquo;ve forgotten the facts?</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-globe"/></svg>
+          <p class="curious__label">Life</p>
+          <p class="curious__q">Am I living up to my highest potential &mdash; or is there still more to discover?</p>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <!-- ============================================================
-       02 — WHAT I'M EXPLORING RIGHT NOW
-       A ledger, not tiles. Rows carry real metadata and one open
-       question each — the running list at the front of a working
-       notebook. Deliberately no confidence ratings on ventures.
-       ============================================================ -->
-  <section class="mv mv--ledger">
+  <section class="mv mv--problems" id="problems">
     <div class="wrap">
       <div class="opener">
-        <p class="opener__q" data-index="02">What am I exploring right now?</p>
-        <p class="meta"><span>Three open threads</span><span>Rev. Jul 2026</span></p>
+        <p class="opener__q" data-index="02">Problems worth solving</p>
+        <p class="meta"><span>Six, regardless of industry</span></p>
       </div>
 
-      <ol class="ledger">
-        <li class="ledger__row">
-          <span class="ledger__no">01</span>
-          <div class="ledger__main">
-            <h3 class="ledger__name"><a href="work-apolaki.html">Apolaki</a></h3>
-            <p class="ledger__q">Does trust transfer between sites, or does it have to be rebuilt every time?</p>
-          </div>
-          <p class="meta meta--stack ledger__meta">
-            <span><strong>Renewable energy</strong></span>
-            <span><em>In process</em></span>
-            <span>Started Jan 2025</span>
-            <span>Luzon &amp; Visayas, PH</span>
+      <p class="prose problems__intro">
+        The kinds of challenges I keep coming back to, regardless of the industry.
+      </p>
+
+      <ol class="problems">
+        <li class="problems__item">
+          <h3>Making complex things easier to understand.</h3>
+          <p>
+            Whether it&rsquo;s solar energy, government programs, or emerging
+            technologies, I enjoy turning complexity into something people can
+            confidently act on.
           </p>
         </li>
-
-        <li class="ledger__row">
-          <span class="ledger__no">02</span>
-          <div class="ledger__main">
-            <h3 class="ledger__name">Rubeo Agrilabs</h3>
-            <p class="ledger__q">What does a farmer actually change their mind about &mdash; and what never moves?</p>
-          </div>
-          <p class="meta meta--stack ledger__meta">
-            <span><strong>Agri-technology</strong></span>
-            <span><em>Early</em></span>
-            <span>Notes only</span>
-            <span class="xref">no case file yet</span>
+        <li class="problems__item">
+          <h3>Helping good ideas reach the people who need them.</h3>
+          <p>
+            Too many promising ideas never make it beyond the laboratory, the
+            whiteboard, or the pitch deck. I&rsquo;m interested in closing that gap.
           </p>
         </li>
-
-        <li class="ledger__row">
-          <span class="ledger__no">03</span>
-          <div class="ledger__main">
-            <h3 class="ledger__name">Master in Innovation &amp; Business</h3>
-            <p class="ledger__q">Which parts of innovation theory survive contact with a barangay?</p>
-          </div>
-          <p class="meta meta--stack ledger__meta">
-            <span><strong>Study</strong></span>
-            <span><em>Ongoing</em></span>
-            <span>Coursework &amp; thesis</span>
+        <li class="problems__item">
+          <h3>Designing systems that work for people &mdash; not just on paper.</h3>
+          <p>
+            Technology, policies, and businesses only succeed when they fit
+            naturally into people&rsquo;s lives.
+          </p>
+        </li>
+        <li class="problems__item">
+          <h3>Building trust before asking for change.</h3>
+          <p>
+            Real adoption starts with listening. People rarely resist change &mdash;
+            they resist being misunderstood or left behind.
+          </p>
+        </li>
+        <li class="problems__item">
+          <h3>Creating opportunities for the next generation.</h3>
+          <p>
+            Whether it&rsquo;s mentoring young founders, supporting inventors, or
+            encouraging women in entrepreneurship, I believe progress grows when
+            more people are invited to participate.
+          </p>
+        </li>
+        <li class="problems__item">
+          <h3>Leaving every system a little better than I found it.</h3>
+          <p>
+            Communities, organizations, relationships, and the environment all
+            thrive when we contribute more than we consume.
           </p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- ============================================================
-       03 — HOW THIS ACTUALLY WORKS
-       The dominant figure on the page. Drawn straight onto the paper:
-       no frame, no card, no shadow. Two variants, horizontal on a wide
-       screen and vertical on a narrow one, because a 2.9:1 drawing
-       cannot carry legible labels on a phone.
-       ============================================================ -->
-  <section class="mv mv--figure">
+  <section class="mv mv--prose" id="why">
     <div class="wrap">
       <div class="opener">
-        <p class="opener__q" data-index="03">How does a thing actually get adopted?</p>
+        <p class="opener__q" data-index="03">Why this matters</p>
+        <a class="xref" href="story.html">Full chapter &rarr;</a>
       </div>
 
+      <div class="page-layout">
+        <h2 class="mv__head">The problems worth solving are rarely solved by one discipline alone.</h2>
+
+        <p class="prose">
+          They live at the intersection of people, technology, business, and
+          public policy. I&rsquo;m drawn to that intersection &mdash; not because
+          I have all the answers, but because I enjoy figuring things out with
+          others.
+        </p>
+
+        <aside class="page-note">
+          <svg class="page-note__arrow" viewBox="0 0 26 16" aria-hidden="true">
+            <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>no single field owns this</span>
+        </aside>
+
+        <p class="prose">
+          Every project, conversation, and story on this website comes back to
+          one question.
+        </p>
+
+        <div class="boxed">
+          <svg class="boxed__frame" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M3 6 200 4 397 3.5 396.5 50 396 96 200 98 3.5 97.5 3.2 50 3 6 4.2 11.5"/>
+          </svg>
+          <p class="prose prose--stmt">How do good ideas become meaningful change?</p>
+        </div>
+
+        <p class="prose">
+          I think that&rsquo;s a question worth spending a lifetime exploring.
+        </p>
+      </div>
+
+      <!-- The figure that shows where the answer usually goes wrong. -->
       <figure class="spread-figure" data-draw>
         <figcaption class="figure__label">
           <span>Fig. 02</span>
-          <span>Where pilots stall</span>
+          <span>Where good ideas stall</span>
         </figcaption>
 
-        <!-- Wide: the pipeline runs left to right, with the three ways it dies
-             dropping out of the long stretch before adoption. -->
         <svg class="spread-figure__wide" viewBox="0 0 880 300" role="img" aria-labelledby="fig02-title fig02-desc">
-          <title id="fig02-title">Where pilots stall on the way to adoption</title>
+          <title id="fig02-title">Where good ideas stall on the way to adoption</title>
           <desc id="fig02-desc">A pipeline runs from research to prototype to pilot to adoption. A bracket marks research through pilot as “what programs measure”, and a second bracket spans the whole pipeline as “what actually decides it”. Three arrows drop out of the long stretch between pilot and adoption into a box listing financing mismatch, governance churn, and no local trust — annotated “none of these are engineering problems”.</desc>
 
           <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
@@ -369,7 +486,6 @@
             <path class="fig-arrowhead" d="M767.4 42 774.5 46.3 767.6 50.6"/>
           </g>
 
-          <!-- Dimension brackets: the drawing states what the measurement misses. -->
           <g class="fig-dim" fill="none" stroke="var(--color-hairline-strong)" stroke-width="1">
             <path d="M20 85 416 85M20 80 20 90M416 80 416 90"/>
             <path d="M20 270 872 270M20 265 20 275M872 265 872 275"/>
@@ -416,9 +532,8 @@
           <path class="fig-hand" d="M386 174 393.5 179.2 386 184" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
 
-        <!-- Narrow: the same drawing, turned so the labels stay legible. -->
         <svg class="spread-figure__narrow" viewBox="0 0 400 580" role="img" aria-labelledby="fig02n-title">
-          <title id="fig02n-title">Where pilots stall on the way to adoption</title>
+          <title id="fig02n-title">Where good ideas stall on the way to adoption</title>
 
           <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
             <path d="M20 14.6 112 13.4 112.8 47.4 20.8 48.4 20 14.6 20.9 11.4"/>
@@ -485,186 +600,214 @@
           <path class="fig-hand" d="M151 407 155.5 400.5 161 403.5" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </figure>
-
-      <p class="figure__note">
-        Every venture on this page is an attempt to work the bottom half of that
-        drawing. <a class="xref" href="work.html">See the case files &rarr;</a>
-      </p>
     </div>
   </section>
 
-  <!-- ============================================================
-       04 — WHAT I'VE WORKED ON
-       One file, at scale, presented as a tipped-in sheet — a page from
-       another document laid on the notebook. The second venture gets a
-       single quiet line rather than a competing card.
-       ============================================================ -->
-  <section class="mv mv--case">
+  <section class="mv mv--works" id="works">
     <div class="wrap">
       <div class="opener">
-        <p class="opener__q" data-index="04">What problems have I worked on?</p>
+        <p class="opener__q" data-index="04">Selected works</p>
         <a class="xref" href="work.html">All files &rarr;</a>
       </div>
 
-      <article class="tipped case">
-        <p class="meta case__stamp">
-          <span>File 001</span><span><strong>Apolaki</strong></span><span><em>In process</em></span>
-        </p>
-
-        <h2 class="case__title">Getting renewable energy adopted, not just installed</h2>
-
-        <p class="prose prose--lead">
-          Apolaki started as a simple question: if solar and micro-hydro systems
-          already work technically, why do so few households keep using them once
-          the pilot support ends? Most renewable energy programmes are measured by
-          installations. This one is measured by what happens after the installer
-          leaves.
-        </p>
-
-        <dl class="title-block case__fields">
-          <div class="title-block__field">
-            <dt>Category</dt>
-            <dd>Renewable energy</dd>
-          </div>
-          <div class="title-block__field">
-            <dt>Started</dt>
-            <dd>Jan 2025</dd>
-          </div>
-          <div class="title-block__field">
-            <dt>Sites</dt>
-            <dd>Luzon &amp; Visayas, PH</dd>
-          </div>
-          <div class="title-block__field title-block__field--wide">
-            <dt>Status</dt>
-            <dd>In process</dd>
-          </div>
-        </dl>
-
-        <p class="case__more">
-          <a class="btn btn--solid" href="work-apolaki.html">
-            Open the file
-            <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
-          </a>
-        </p>
-      </article>
-
-      <p class="case__aside">
-        Also open: <strong>Rubeo Agrilabs</strong> &mdash; early enough that there
-        are field notes but no case file.
-        <span class="xref xref--hand">write this one up next</span>
+      <p class="prose works__intro">
+        Ideas become meaningful through action. These are some of the projects,
+        ventures, and initiatives that have shaped how I think &mdash; and continue
+        to teach me.
       </p>
-    </div>
-  </section>
 
-  <!-- ============================================================
-       05 — WHERE THIS HAPPENS
-       A photo essay that works before the photographs arrive: each
-       moment is a numbered observation with its own metadata, so the
-       captions carry the meaning and an image is an enhancement rather
-       than a hole in the layout. Staggered, so it reads as a spread and
-       not a third list.
+      <div class="works">
+        <article class="work">
+          <figure class="plate work__plate">
+            <div class="plate__slot" data-artifact="Photo"></div>
+            <figcaption class="plate__caption"><p class="meta"><span>Apolaki</span><span>Caption pending</span></p></figcaption>
+          </figure>
+          <div class="work__text">
+            <p class="work__name"><svg class="glyph" aria-hidden="true"><use href="#g-sun"/></svg><a href="work-apolaki.html">Apolaki</a></p>
+            <h3 class="work__tagline">Simplifying the journey to solar adoption.</h3>
+            <p class="prose">
+              A platform helping Filipinos understand, evaluate, and adopt solar
+              energy with confidence. It&rsquo;s where I explore how technology,
+              design, and trust can make climate action accessible to more people.
+            </p>
+            <p class="meta work__themes"><span>Climate tech</span><span>Product strategy</span><span>User experience</span><span>Entrepreneurship</span></p>
+          </div>
+          <aside class="annot work__annot">
+            <svg class="annot__arrow" viewBox="0 0 26 16" aria-hidden="true">
+              <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>the one with a full case file</span>
+          </aside>
+        </article>
 
-       TO ADD A PHOTOGRAPH: append a figure.moment__shot holding one image as
-       the last child of .moment. Nothing else needs to change.
-       ============================================================ -->
-  <section class="mv mv--moments">
-    <div class="wrap">
-      <div class="opener">
-        <p class="opener__q" data-index="05">Where does this actually happen?</p>
-        <p class="meta"><span>Photographs pending</span></p>
+        <article class="work">
+          <figure class="plate work__plate">
+            <div class="plate__slot" data-artifact="Photo"></div>
+            <figcaption class="plate__caption"><p class="meta"><span>Rubeo Ranch</span><span>Caption pending</span></p></figcaption>
+          </figure>
+          <div class="work__text">
+            <p class="work__name"><svg class="glyph" aria-hidden="true"><use href="#g-cattle"/></svg>Rubeo Ranch</p>
+            <h3 class="work__tagline">Building a modern and sustainable cattle farm from the ground up.</h3>
+            <p class="prose">
+              An ongoing journey into agriculture, livestock, and food systems.
+              More than a farm, it&rsquo;s an experiment in stewardship,
+              entrepreneurship, and creating long-term value from the land.
+            </p>
+            <p class="meta work__themes"><span>Agriculture</span><span>Sustainability</span><span>Food systems</span></p>
+          </div>
+        </article>
+
+        <article class="work">
+          <figure class="plate work__plate">
+            <div class="plate__slot" data-artifact="Photo"></div>
+            <figcaption class="plate__caption"><p class="meta"><span>DOST&ndash;TAPI</span><span>Caption pending</span></p></figcaption>
+          </figure>
+          <div class="work__text">
+            <p class="work__name"><svg class="glyph" aria-hidden="true"><use href="#g-institution"/></svg>DOST&ndash;TAPI</p>
+            <h3 class="work__tagline">Helping Filipino innovations reach the real world.</h3>
+            <p class="prose">
+              Through technology commercialization and innovation support,
+              I&rsquo;ve worked with inventors, startups, and researchers to bridge
+              the gap between promising ideas and meaningful impact.
+            </p>
+            <p class="meta work__themes"><span>Public innovation</span><span>Technology commercialization</span><span>Policy</span><span>Innovation ecosystems</span></p>
+          </div>
+          <aside class="annot work__annot">
+            <svg class="annot__arrow" viewBox="0 0 26 16" aria-hidden="true">
+              <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>where most of the fieldwork happened</span>
+          </aside>
+        </article>
+
+        <article class="work">
+          <figure class="plate work__plate">
+            <div class="plate__slot" data-artifact="Notebook page"></div>
+            <figcaption class="plate__caption"><p class="meta"><span>Coursework</span><span>Caption pending</span></p></figcaption>
+          </figure>
+          <div class="work__text">
+            <p class="work__name"><svg class="glyph" aria-hidden="true"><use href="#g-study"/></svg>Master in Innovation &amp; Business</p>
+            <h3 class="work__tagline">Learning while building.</h3>
+            <p class="prose">
+              My graduate studies have become a testing ground for ideas in
+              entrepreneurship, systems thinking, and innovation management &mdash;
+              many of which directly shape the ventures and projects I work on.
+            </p>
+            <p class="meta work__themes"><span>Strategy</span><span>Innovation</span><span>Systems thinking</span></p>
+          </div>
+        </article>
+
+        <article class="work">
+          <figure class="plate work__plate">
+            <div class="plate__slot" data-artifact="Photo"></div>
+            <figcaption class="plate__caption"><p class="meta"><span>Field journal</span><span>Caption pending</span></p></figcaption>
+          </figure>
+          <div class="work__text">
+            <p class="work__name"><svg class="glyph" aria-hidden="true"><use href="#g-journal"/></svg><a href="field-notes.html">Field Journal</a></p>
+            <h3 class="work__tagline">Documenting lessons from the journey.</h3>
+            <p class="prose">
+              A collection of essays, photographs, and reflections on technology,
+              entrepreneurship, travel, and the people I meet along the way.
+            </p>
+            <p class="meta work__themes"><span>Writing</span><span>Photography</span><span>Reflection</span></p>
+          </div>
+        </article>
       </div>
-
-      <ol class="moments">
-        <li class="moment">
-          <span class="moment__no">01</span>
-          <p class="meta"><span>Site visit</span><span>Luzon</span></p>
-          <p class="moment__caption">Everything on the roof works. Nothing about that guarantees it gets used.</p>
-        </li>
-        <li class="moment">
-          <span class="moment__no">02</span>
-          <p class="meta"><span>Cooperative meeting</span><span>Visayas</span></p>
-          <p class="moment__caption">The real decision had already been made before the presentation started.</p>
-        </li>
-        <li class="moment">
-          <span class="moment__no">03</span>
-          <p class="meta"><span>Whiteboard</span><span>Manila</span></p>
-          <p class="moment__caption">Third version of the pipeline this quarter. The gates keep moving.</p>
-        </li>
-        <li class="moment">
-          <span class="moment__no">04</span>
-          <p class="meta"><span>Notebook</span><span>In transit</span></p>
-          <p class="moment__caption">Most of these pages never become anything. That is what they are for.</p>
-        </li>
-      </ol>
     </div>
   </section>
 
   <!-- ============================================================
-       06 — WHAT I LEARNED RECENTLY
-       The most recent entry at length, so one thing dominates, with the
-       older entries as a tight index beneath it. Not a third card grid.
+       05 — FIELD NOTES
+       Where the work happens and what gets written there, together:
+       each note is a place, so keeping them apart was duplicating the
+       same idea twice. Staggered rather than gridded so it reads as a
+       spread, not a third list.
        ============================================================ -->
-  <section class="mv mv--entries">
+  <section class="mv mv--notes" id="notes">
     <div class="wrap">
       <div class="opener">
-        <p class="opener__q" data-index="06">What did I learn recently?</p>
+        <p class="opener__q" data-index="05">Field notes</p>
         <a class="xref" href="field-notes.html">All notes &rarr;</a>
       </div>
 
-      <article class="entry-lead">
-        <p class="meta"><span>Field note</span><span>Jul 2026</span><span>Renewable energy</span></p>
-        <h2 class="entry-lead__title">
-          <a href="field-notes.html">What renewable energy pilots don&rsquo;t tell you</a>
-        </h2>
+      <div class="page-layout notes__intro">
         <p class="prose">
-          A pilot is designed to prove that something works. That makes it a poor
-          instrument for finding out whether anyone wants it. Every pilot
-          I&rsquo;ve been part of arrived with support that would not exist
-          afterwards &mdash; a coordinator, a subsidy, someone who answered the
-          phone. The interesting month is not any month during the pilot. It
-          is the first one after it ends.
+          Most of my time isn&rsquo;t spent in meetings. It&rsquo;s spent reading,
+          writing, sketching ideas, and having conversations that slowly become
+          projects. These are the places, communities, and projects that continue
+          to shape how I think.
         </p>
-        <a class="ink-link" href="field-notes.html">Read the note</a>
-      </article>
+        <aside class="page-note">
+          <svg class="page-note__arrow" viewBox="0 0 26 16" aria-hidden="true">
+            <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>the slow part is the real part</span>
+        </aside>
+        <p class="prose">
+          Thoughts, stories, photographs, and lessons from the road &mdash; not
+          polished conclusions, just snapshots of what I&rsquo;m learning along
+          the way.
+        </p>
+      </div>
 
-      <ol class="entry-index">
-        <li>
-          <p class="meta"><span>Jun 2026</span><span>Innovation</span></p>
-          <a href="field-notes.html">Notes on commercialising hard things</a>
-          <p class="entry-index__take">The technology was never the bottleneck. The institution was.</p>
+      <ol class="notes">
+        <li class="note">
+          <span class="note__no">01</span>
+          <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div></figure>
+          <p class="meta"><span>Bengaluru, India</span><span>Month, year</span></p>
+          <h3 class="note__title"><a href="field-notes.html">Title pending</a></h3>
+          <p class="note__take">A one-line reading of what the trip actually changed.</p>
         </li>
-        <li>
-          <p class="meta"><span>May 2026</span><span>Reflections</span></p>
-          <a href="field-notes.html">A case for slow ideas</a>
-          <p class="entry-index__take">Shipping early is cheap. Shipping early into a system you don&rsquo;t understand is not.</p>
+        <li class="note">
+          <span class="note__no">02</span>
+          <figure class="plate"><div class="plate__slot" data-artifact="Photo, portrait"></div></figure>
+          <p class="meta"><span>Vietnam</span><span>Month, year</span></p>
+          <h3 class="note__title"><a href="field-notes.html">Title pending</a></h3>
+          <p class="note__take">A one-line reading of what the trip actually changed.</p>
+        </li>
+        <li class="note">
+          <span class="note__no">03</span>
+          <figure class="plate"><div class="plate__slot" data-artifact="Photo"></div></figure>
+          <p class="meta"><span>Singapore</span><span>Month, year</span></p>
+          <h3 class="note__title"><a href="field-notes.html">Title pending</a></h3>
+          <p class="note__take">A one-line reading of what the trip actually changed.</p>
+        </li>
+        <li class="note">
+          <span class="note__no">04</span>
+          <figure class="plate"><div class="plate__slot" data-artifact="Sketch"></div></figure>
+          <p class="meta"><span>Cebu</span><span>Month, year</span></p>
+          <h3 class="note__title"><a href="field-notes.html">Title pending</a></h3>
+          <p class="note__take">A one-line reading of what the trip actually changed.</p>
         </li>
       </ol>
+
+      <aside class="annot notes__annot">
+        <svg class="annot__arrow" viewBox="0 0 26 16" aria-hidden="true">
+          <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>essays, photo essays and collections all land here</span>
+      </aside>
     </div>
   </section>
 
-  <!-- ============================================================
-       07 — STILL UNRESOLVED
-       The close, and the one movement with no opener: its question is
-       the content. Open problems in the hand, and one assumption struck
-       out because it stopped holding.
-       ============================================================ -->
-  <section class="mv mv--open">
+  <section class="mv mv--talk" id="talk">
     <div class="wrap">
-      <h2 class="open__head">Still unresolved</h2>
-      <p class="meta open__meta"><span>Working questions</span><span>Rev. Jul 2026</span></p>
-
-      <ol class="open-list">
-        <li>Does trust transfer between sites, or does it have to be rebuilt every time?</li>
-        <li>Is there a version of a pilot that doesn&rsquo;t distort the thing it&rsquo;s measuring?</li>
-        <li>Why do the frameworks that survive fieldwork always end up simpler than the ones that don&rsquo;t?</li>
-        <li>
-          <span class="revision"><s>Adoption is a financing problem.</s><em>less sure about this than I was</em></span>
-        </li>
-      </ol>
-
-      <p class="open__foot">
-        <span class="xref xref--hand">revisit after the next site visit</span>
-      </p>
+      <div class="talk">
+        <p class="meta"><span>Open to</span><span>Speaking</span><span>Advisory</span><span>Projects</span><span>Coffee</span></p>
+        <h2 class="talk__head">Let&rsquo;s talk.</h2>
+        <p class="prose talk__body">
+          If any of this overlaps with what you&rsquo;re working on &mdash; a venture,
+          a policy problem, a farm, a piece of research, or a conversation worth
+          having &mdash; I&rsquo;d like to hear about it.
+        </p>
+        <div class="talk__actions">
+          <a class="btn btn--solid" href="lets-build.html">
+            Start a conversation
+            <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </a>
+          <a class="ink-link" href="mailto:hello@josaelegado.com">hello@josaelegado.com</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>

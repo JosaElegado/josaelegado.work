@@ -103,6 +103,18 @@ get **two authored variants**, horizontal and vertical, swapped by media query �
 never one drawing scaled down until its type disappears, and never a horizontal
 scroll.
 
+**Theme glyphs.** Where the content calls for a marker per theme, it is drawn,
+not borrowed: one plum mark per theme in the same pen and stroke weight as the
+figures, sized in `em` so it always matches the label beside it. Emoji are not
+used — they render differently on every device and belong to somebody else's
+design system.
+
+Draw circles with `<circle>`, not with a near-full arc. An arc that almost
+closes leaves a visible nick at the join; it is invisible at 16px and obvious at
+92px. **Check every glyph at large size before shipping it** — a cow's head at
+icon scale reads as a smiley face, which is how the ranch mark became a fence
+line instead.
+
 **Title block.** Engineering-drawing furniture: a hairline row of labeled mono
 fields opening a page or a case. This is the system's kicker; it replaces the
 tracked uppercase eyebrow stacked over every section.
@@ -133,6 +145,15 @@ polished. No two consecutive sections share a format or a density: an editorial
 passage, a ledger of rows, a dominant figure, a tipped-in case file, a staggered
 spread, a dated index, a quiet handwritten close. Card grids are not a page
 structure here.
+
+The homepage runs: opening spread → what I'm curious about (a scan of open
+questions) → problems worth solving (six commitments) → why this matters (the
+argument, with the page's dominant figure) → selected works → field notes →
+let's talk. Where a section pairs a statement with an explanation, the statement
+takes the display face and the explanation is set smaller beside it rather than
+beneath: six headline-plus-paragraph pairs stacked vertically read as an essay
+and ran 1,700px; side by side they read as a list and lose a third of the height
+without losing a word.
 
 **Photographs are never load-bearing on a published page.** No published layout
 reserves a box for an image that does not exist; the caption carries the meaning

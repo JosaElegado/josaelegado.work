@@ -11,6 +11,8 @@
 
 .hero__title-block { margin-bottom: var(--space-9); }
 
+.hero__text { container-type: inline-size; }
+
 .hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -26,37 +28,24 @@
   font-size: clamp(2.1rem, 1.1rem + 4.2vw, 4.4rem);
   line-height: 1.04;
   letter-spacing: -0.018em;
-  max-width: 20ch;
-  /* Lets the written line size itself against this block's real width. */
-  container-type: inline-size;
+  max-width: 16ch;
 }
 
-.hero__thesis-line { display: block; }
-
-/* The turn of the sentence is written with a pen, and then underlined — the
-   statement is printed, the answer to it is in Josa's hand.
-
-   It has to hold on ONE line at every width — a hand-written line that wraps
-   stops looking written and starts looking like a text box. The sentence sets
-   9.31x its own font-size in this face, so 100/9.31 = 10.7cqw would fill the
-   block exactly; 9.7cqw leaves about 10% for the fallback face to breathe
-   during the font swap. Sizing against the container rather than the heading
-   means it re-fits itself at every viewport instead of only at the one width
-   it was tuned for.
-
-   This pen's x-height is 45 against Bodoni's 48, so at equal size the two
-   already match optically — no correction needed, unlike a pointed-pen script
-   which would need about 1.6x. What it does have is a descender two and a half
-   times deeper, so the leading is where the room goes. */
-.hero__thesis-line--turn {
+/* The written line, now its own element beneath the lede rather than part of
+   the heading. Same rules as before: it must never wrap, so it is sized in
+   container units against the text column and re-fits itself at every width.
+   Measured, not guessed: this sentence sets 14.26x its own font-size in this
+   face — half again as long as the line it replaced — so 100/14.26 = 7.0cqw
+   would fill the column exactly. 6.4cqw leaves ~9% for the fallback face
+   during the font swap. Remeasure if the wording or the pen changes. */
+.hero__pen {
+  margin-top: var(--space-5);
+  max-width: none;
   font-family: var(--font-script);
-  font-style: normal;
-  font-size: min(9.7cqw, 4.4rem);
-  line-height: 1.2;
-  letter-spacing: 0;
+  font-size: min(6.4cqw, 3.4rem);
+  line-height: 1.25;
   white-space: nowrap;
   color: var(--color-plum);
-  margin-top: 0.1em;
 }
 
 /* A hand-drawn underline pulled under the word on load. inline-block so the
@@ -166,38 +155,57 @@
 
 /* ==========================================================================
    MOVEMENTS
-   The homepage is one continuous read, not a directory. Seven movements, each
-   answering exactly one question, and no two sharing a format or a density.
-   Spacing is deliberately uneven: prose breathes, the ledger is tight, the
-   figure gets the most room on the page, the close is quiet.
+   The homepage is one continuous read, not a directory. Each movement
+   answers one question, and no two consecutive ones share a format or a
+   density: a passage with a dominant figure, a scan of open questions, a
+   numbered list of commitments, five works with evidence, a staggered
+   spread, a note index, a quiet close, an invitation.
    ========================================================================== */
 
 .mv { padding-block: var(--space-10); }
 
-/* Pacing. These are not a scale — they are seven specific decisions. */
-.mv--prose   { padding-block: var(--space-11) var(--space-10); }
-.mv--ledger  { padding-block: var(--space-8) var(--space-9); }
-.mv--figure  { padding-block: var(--space-11); }
-.mv--case    { padding-block: var(--space-9) var(--space-10); }
-.mv--moments { padding-block: var(--space-10) var(--space-11); }
-.mv--entries { padding-block: var(--space-9) var(--space-10); }
-.mv--open    { padding-block: var(--space-11) var(--space-13); }
+/* Pacing. Not a scale — a set of specific decisions. */
+.mv--curious  { padding-block: var(--space-9) var(--space-10); }
+.mv--problems { padding-block: var(--space-9); }
+.mv--prose    { padding-block: var(--space-11) var(--space-10); }
+.mv--works    { padding-block: var(--space-9) var(--space-11); }
+.mv--notes    { padding-block: var(--space-10) var(--space-11); }
+.mv--talk     { padding-block: var(--space-10) var(--space-13); }
 
-/* A hairline between movements, so the page reads as one continuous sheet
-   with ruled divisions rather than a stack of independent blocks. */
+/* A hairline between movements: one continuous sheet with ruled divisions,
+   not a stack of independent blocks. */
 .mv + .mv { border-top: 1px solid var(--color-rule); }
 
 .mv__head {
   font-size: var(--text-xl);
-  max-width: 26ch;
+  max-width: 24ch;
   margin-bottom: var(--space-6);
 }
 
+
+/* ---- Theme glyph ----
+   Drawn marks standing in for the emoji in the brief: same pen, same plum,
+   same stroke weight as the figures. Sized in ems so a glyph always matches
+   the label it sits with, and never needs its own breakpoint. */
+
+.glyph {
+  width: 1.5em;
+  height: 1.5em;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--color-plum);
+  overflow: visible;
+}
+
+
 /* ---- Prose ----
-   Set at the ruling pitch so the lines of the passage run with the lines of
-   the paper. The measure is wider than it would be for a proportional face:
-   a monospace sets about 28% wider, so 34rem would have held barely 50
-   characters. This lands near 60. */
+   Set at the ruling pitch so the lines of a passage run with the lines of the
+   paper. The measure is wider than it would be for a proportional face: a
+   monospace sets about 28% wider. */
 
 .prose {
   max-width: 40rem;
@@ -206,16 +214,6 @@
 }
 
 .prose + .prose { margin-top: var(--rule-pitch); }
-
-/* A lead paragraph is still a paragraph: it stays in the reading face. The
-   display face is for headings and for statements short enough to take in at
-   a glance — a seven-line block of Bodoni is elegant and tiring. */
-.prose--lead {
-  font-size: clamp(1.06rem, 1rem + 0.28vw, 1.19rem);
-  line-height: var(--rule-pitch);
-  color: var(--color-ink);
-  max-width: 44ch;
-}
 
 /* One line, said once. This is where the display face belongs. */
 .prose--stmt {
@@ -229,69 +227,15 @@
 
 .boxed .prose--stmt { margin: 0; }
 
-/* ---- 02 · Ledger ----
-   The running list at the front of a working notebook: index, name, the open
-   question, then the metadata that makes it a record rather than a claim. */
 
-/* No rule of its own: the opener already closes with one, and two hairlines
-   a few pixels apart read as a stutter rather than a table head. */
-.ledger__row {
-  display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 18rem);
-  gap: var(--space-3) var(--space-6);
-  align-items: baseline;
-  padding-block: var(--space-6);
-  border-bottom: 1px solid var(--color-hairline);
-}
+/* ---- 01 · The dominant figure ----
+   Drawn straight onto the paper: no frame, no card, no shadow. Two variants —
+   a wide drawing cannot hold legible labels on a phone. */
 
-.ledger__no {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: var(--color-ink-faint);
-}
-
-.ledger__name {
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-2);
-}
-
-.ledger__name a {
-  text-decoration-color: var(--color-hairline);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-  transition: text-decoration-color var(--duration-fast) var(--ease-ink);
-}
-.ledger__name a:hover { text-decoration-color: var(--color-plum); }
-
-/* The open question is written by hand, because it is a note to self rather
-   than a description of the project. */
-.ledger__q {
-  font-family: var(--font-hand);
-  font-size: 1.13rem;
-  line-height: 1.4;
-  color: var(--color-plum);
-  max-width: 40ch;
-}
-
-.ledger__meta { align-items: flex-end; text-align: right; }
-
-@media (max-width: 860px) {
-  .ledger__row { grid-template-columns: 2.25rem minmax(0, 1fr); }
-  .ledger__meta { grid-column: 2; align-items: flex-start; text-align: left; }
-}
-
-/* ---- 03 · The dominant figure ----
-   Drawn straight onto the paper: no frame, no card, no shadow. It gets more
-   width than anything else on the page because it is the page's one argument.
-   Two variants — a wide drawing cannot hold legible labels on a phone. */
-
-.spread-figure { margin: 0 auto; max-width: 62rem; }
-
+.spread-figure { margin: var(--space-10) auto 0; max-width: 62rem; }
 .spread-figure .figure__label { margin-bottom: var(--space-7); }
-
 .spread-figure__wide,
 .spread-figure__narrow { width: 100%; height: auto; }
-
 .spread-figure__narrow { display: none; }
 
 @media (max-width: 820px) {
@@ -299,60 +243,197 @@
   .spread-figure__narrow { display: block; max-width: 24rem; }
 }
 
-.figure__note {
-  max-width: 46ch;
-  margin-top: var(--space-8);
-  font-size: var(--text-sm);
-  color: var(--color-ink-soft);
-}
 
-/* ---- 04 · Case file ----
-   One file at scale rather than two competing previews. */
+/* ---- 02 · What I'm curious about ----
+   Nine questions, scanned rather than read. Two columns, tight rhythm: the
+   density is the point, and it is the opposite of the passage above it. */
 
-.case { max-width: 48rem; }
-
-.case__stamp { margin-bottom: var(--space-5); }
-
-.case__title {
-  font-size: var(--text-xl);
-  max-width: 24ch;
-  margin-bottom: var(--space-5);
-}
-
-.case__fields { margin-top: var(--space-7); border-bottom: none; }
-
-.case__more { margin-top: var(--space-7); max-width: none; }
-
-.case__aside {
-  margin-top: var(--space-6);
-  max-width: 46ch;
-  font-size: var(--text-sm);
-  color: var(--color-ink-soft);
-}
-
-.case__aside strong { color: var(--color-plum); font-weight: 400; }
-.case__aside .xref--hand { margin-left: var(--space-2); }
-
-/* ---- 05 · Moments ----
-   A photo essay that stands up before the photographs exist: the caption is
-   the content, an image is an enhancement. Staggered so it reads as a spread
-   rather than a list. No empty frames are ever reserved. */
-
-.moments {
+.curious__intro {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: minmax(0, 36rem) minmax(0, 15rem);
+  gap: var(--space-5) var(--space-8);
+  align-items: start;
+  margin-bottom: var(--space-9);
+}
+
+.curious__stamp { padding-top: 0.35em; }
+
+.curious {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-9);
+}
+
+.curious__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
+  align-items: start;
+}
+
+.curious__item .glyph { grid-row: span 2; margin-top: 0.05em; font-size: 1.1rem; }
+
+.curious__label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.curious__q {
+  margin: 0;
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-size: var(--text-md);
+  line-height: 1.3;
+  color: var(--color-ink);
+  max-width: 30ch;
+}
+
+@media (max-width: 860px) {
+  .curious { grid-template-columns: minmax(0, 1fr); gap: var(--space-7); }
+  .curious__intro { grid-template-columns: minmax(0, 1fr); }
+}
+
+
+/* ---- 02 · Problems worth solving ----
+   Six commitments. The wordiness was structural, not verbal: a headline
+   sentence followed by a paragraph, six times over, reads as an essay and ran
+   1,700px. Setting the statement and its explanation side by side makes the
+   statement the content and the explanation a gloss on it — the six read as a
+   list you can scan, the detail is there when wanted, and the block loses
+   roughly half its height without losing a word. */
+
+.problems__intro { margin-bottom: var(--space-8); }
+
+.problems { counter-reset: prob; }
+
+.problems__item {
+  counter-increment: prob;
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-4) var(--space-7);
+  align-items: baseline;
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.problems__item::before {
+  content: counter(prob, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--color-ink-faint);
+}
+
+/* The statement carries it. */
+.problems__item h3 {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: 1.24;
+  max-width: 22ch;
+}
+
+/* The explanation is a gloss, not a paragraph: smaller, quieter, and it never
+   competes with the line it explains. */
+.problems__item p {
+  margin: 0;
+  max-width: 46ch;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+}
+
+@media (max-width: 900px) {
+  .problems__item {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: var(--space-3) var(--space-5);
+  }
+  .problems__item p { grid-column: 2; }
+}
+
+/* ---- 04 · Selected works ----
+   Five entries, each carrying its own evidence. The plate alternates sides so
+   the run never settles into a template. */
+
+.works__intro { margin-bottom: var(--space-9); }
+
+.works { display: flex; flex-direction: column; gap: var(--space-11); }
+
+.work {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: var(--space-5) var(--space-8);
+  align-items: start;
+}
+
+/* Alternate, so the eye is not led down a single rail. */
+.work:nth-child(even) .work__plate { order: 2; }
+.work:nth-child(even) .work__text  { order: 1; }
+
+.work__name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.work__name a { text-decoration-color: var(--color-hairline); text-underline-offset: 4px; }
+.work__name a:hover { text-decoration-color: var(--color-plum); }
+
+.work__tagline {
+  font-size: var(--text-lg);
+  max-width: 24ch;
+  margin-bottom: var(--space-4);
+}
+
+.work__text .prose { max-width: 44ch; }
+
+.work__themes { margin-top: var(--space-5); }
+
+.work__annot { grid-column: 2; padding-top: var(--space-2); }
+.work:nth-child(even) .work__annot { grid-column: 1; }
+
+@media (max-width: 860px) {
+  .work { grid-template-columns: minmax(0, 1fr); }
+  .work:nth-child(even) .work__plate,
+  .work:nth-child(even) .work__text { order: initial; }
+  .work__annot,
+  .work:nth-child(even) .work__annot { grid-column: 1; }
+  .works { gap: var(--space-10); }
+}
+
+
+/* ---- 05 · Field notes ----
+   Where the work happens and what gets written there, merged: every note is a
+   place, so two sections were saying the same thing twice. Staggered widths so
+   the run reads as a spread rather than a row of equal tiles. */
+
+.notes__intro { margin-bottom: var(--space-8); }
+
+.notes__intro { margin-bottom: var(--space-10); }
+
+.notes {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--grid-gap);
   row-gap: var(--space-9);
+  align-items: start;
 }
 
-.moment { position: relative; padding-left: var(--space-6); }
+.note { position: relative; padding-left: var(--space-6); }
+.note:nth-child(1) { grid-column: 1 / span 5; }
+.note:nth-child(2) { grid-column: 7 / span 4; margin-top: var(--space-8); }
+.note:nth-child(3) { grid-column: 2 / span 4; }
+.note:nth-child(4) { grid-column: 7 / span 5; margin-top: var(--space-6); }
 
-.moment:nth-child(1) { grid-column: 1 / span 5; }
-.moment:nth-child(2) { grid-column: 7 / span 5; margin-top: var(--space-8); }
-.moment:nth-child(3) { grid-column: 2 / span 5; }
-.moment:nth-child(4) { grid-column: 8 / span 4; margin-top: var(--space-6); }
-
-.moment__no {
+.note__no {
   position: absolute;
   left: 0;
   top: 0.1em;
@@ -361,126 +442,49 @@
   color: var(--color-ink-faint);
 }
 
-.moment .meta { margin-bottom: var(--space-3); }
+.note .plate { margin-bottom: var(--space-4); }
 
-.moment__caption {
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
+.note__title {
   font-size: var(--text-md);
-  line-height: 1.4;
-  color: var(--color-ink);
-  max-width: 30ch;
+  margin: var(--space-2) 0 var(--space-2);
 }
 
-/* When a photograph arrives it drops in here and the row absorbs it. */
-.moment__shot { margin: var(--space-4) 0 0; }
-.moment__shot img {
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--color-hairline);
+.note__title a { text-decoration: none; }
+.note__title a:hover { color: var(--color-plum); }
+
+.note__take {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
 }
+
+.notes__annot { margin-top: var(--space-8); }
 
 @media (max-width: 820px) {
-  .moments { grid-template-columns: 1fr; row-gap: var(--space-8); }
-  .moment:nth-child(1),
-  .moment:nth-child(2),
-  .moment:nth-child(3),
-  .moment:nth-child(4) { grid-column: 1; margin-top: 0; }
+  .notes { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .note:nth-child(1), .note:nth-child(2),
+  .note:nth-child(3), .note:nth-child(4) { grid-column: 1; margin-top: 0; }
 }
 
-/* ---- 06 · Entries ----
-   The newest note dominates; the older ones are an index under it. */
 
-.entry-lead { max-width: 40rem; }
+/* ---- 06 · Let's talk ----
+   One invitation, one action, nothing competing. The page ends on an offer
+   rather than on a sitemap. */
 
-.entry-lead .meta { margin-bottom: var(--space-4); }
+.talk { max-width: 44rem; }
 
-.entry-lead__title {
-  font-size: var(--text-xl);
-  max-width: 26ch;
-  margin-bottom: var(--space-5);
+.talk__head {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-4);
 }
 
-.entry-lead__title a { text-decoration: none; }
-.entry-lead__title a:hover { color: var(--color-plum); }
+.talk__body { margin-top: var(--space-5); max-width: 44ch; }
 
-.entry-lead .prose { margin-bottom: var(--space-5); }
-
-.entry-index {
-  margin-top: var(--space-9);
-  border-top: 1px solid var(--color-hairline);
-  max-width: 46rem;
+.talk__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-7);
+  margin-top: var(--space-8);
 }
-
-.entry-index li {
-  display: grid;
-  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
-  gap: var(--space-2) var(--space-6);
-  padding-block: var(--space-5);
-  border-bottom: 1px solid var(--color-hairline);
-  align-items: baseline;
-}
-
-.entry-index a {
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-size: var(--text-md);
-  text-decoration-color: var(--color-hairline);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-  transition: text-decoration-color var(--duration-fast) var(--ease-ink);
-}
-.entry-index a:hover { text-decoration-color: var(--color-plum); }
-
-.entry-index__take {
-  grid-column: 2;
-  font-size: var(--text-sm);
-  color: var(--color-ink-soft);
-  max-width: 52ch;
-}
-
-@media (max-width: 700px) {
-  .entry-index li { grid-template-columns: 1fr; }
-  .entry-index__take { grid-column: 1; }
-}
-
-/* ---- 07 · Still unresolved ----
-   The quiet close. Open problems in the hand, generously spaced, and one
-   assumption struck out because it stopped holding. */
-
-.open__head { font-size: var(--text-2xl); }
-
-.open__meta { margin-top: var(--space-4); }
-
-.open-list {
-  margin-top: var(--space-9);
-  counter-reset: openq;
-  max-width: 44rem;
-}
-
-.open-list > li {
-  counter-increment: openq;
-  position: relative;
-  padding-left: var(--space-7);
-  font-family: var(--font-hand);
-  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
-  line-height: 1.45;
-  color: var(--color-plum);
-}
-
-.open-list > li + li { margin-top: var(--space-7); }
-
-.open-list > li::before {
-  content: counter(openq, decimal-leading-zero);
-  position: absolute;
-  left: 0;
-  top: 0.42em;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: var(--color-ink-faint);
-}
-
-.open-list .revision s { color: var(--color-ink-faint); }
-.open-list .revision em { display: block; margin-left: 0; font-size: 0.86em; }
-
-.open__foot { margin-top: var(--space-9); }
