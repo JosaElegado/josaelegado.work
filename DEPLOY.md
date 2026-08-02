@@ -2,56 +2,84 @@
 
 Static site, no build step. Any static host serves it as-is.
 
-## State
+## State — checked 2 Aug 2026
 
 | Piece | Status |
 |---|---|
 | GitHub repo | `JosaElegado/josaelegado.work` |
 | Pages build | ✅ built, from `main` at root |
-| Custom domain set on Pages | ✅ `www.josaelegado.work` |
-| `CNAME` file in repo | ✅ present |
-| **Cloudflare DNS** | ❌ **still points at Wix — the only thing left** |
+| `CNAME` file | ✅ `www.josaelegado.work` |
+| **Cloudflare DNS** | ✅ **done** — four GitHub A records + `www` CNAME |
+| **HTTP** | ✅ serves — `http://www.josaelegado.work/` loads |
+| Cloudflare SSL/TLS mode | ✅ already **Full** |
+| **HTTPS** | ❌ **no certificate.** Search Console: "Invalid server SSL certificate" |
+| Local commits pushed | ❌ pending |
 
-Everything on the GitHub side is finished. The domain does not work yet
-because its DNS still hands traffic to Wix, which no longer has a site
-connected (hence Wix's `ConnectYourDomain Error`).
+The DNS step described in earlier versions of this file is finished. Records:
 
-## The remaining step (needs a Cloudflare login)
+| Type | Name | Content | Proxy |
+|---|---|---|---|
+| A | `@` | `185.199.108.153` – `.111.153` | DNS only ← **needs to change** |
+| CNAME | `www` | `josaelegado.github.io` | DNS only ← **needs to change** |
 
-`josaelegado.work` uses Cloudflare nameservers (`vida`/`ram.ns.cloudflare.com`),
-so records are edited in Cloudflare, not Wix or the registrar.
+The Wix `A @ 185.230.63.107` record is gone.
 
-**Cloudflare → DNS → Records** for `josaelegado.work`:
+## Why HTTPS fails
 
-| Action | Type | Name | Value | Proxy |
-|---|---|---|---|---|
-| Edit existing | CNAME | `www` | `josaelegado.github.io` | **DNS only** |
-| Delete | A | `@` | `185.230.63.107` (Wix) | — |
-| Add | A | `@` | `185.199.108.153` | **DNS only** |
-| Add | A | `@` | `185.199.109.153` | **DNS only** |
-| Add | A | `@` | `185.199.110.153` | **DNS only** |
-| Add | A | `@` | `185.199.111.153` | **DNS only** |
+GitHub Pages never issued a TLS certificate for the custom domain. The site
+answers on port 80 but presents nothing valid on 443, which is exactly what
+Google Search Console reports when indexing is attempted.
 
-**Proxy must be grey cloud / DNS only.** If Cloudflare proxies these,
-GitHub sees Cloudflare's IP instead of yours, cannot validate the domain,
-and never issues the TLS certificate — you get an SSL warning rather than
-a site. Enable the proxy later if you want it.
+## The fix: let Cloudflare terminate TLS
 
-Then in the repo: **Settings → Pages → Enforce HTTPS** once the certificate
-is issued (usually under an hour after DNS propagates).
+SSL/TLS encryption mode is already **Full**, so only the proxy toggles are
+left. In **Cloudflare → DNS → Records**, switch these five from grey cloud
+(DNS only) to **orange cloud (Proxied)**:
+
+- `A  @  185.199.108.153`
+- `A  @  185.199.109.153`
+- `A  @  185.199.110.153`
+- `A  @  185.199.111.153`
+- `CNAME  www  josaelegado.github.io`
+
+Each row: **Edit → Proxy status → Proxied → Save**.
+
+Cloudflare's Universal SSL certificate then covers the domain and HTTPS works
+within a few minutes. Cloudflare reaches GitHub over TLS but does not validate
+GitHub's certificate — which is what "Full" means, and is the normal
+arrangement for a static public site fronted by Cloudflare.
+
+Cloudflare shows a warning when proxying to GitHub Pages IPs. It is expected
+in this configuration and can be dismissed.
+
+**Consequence:** while proxied, GitHub can never issue its own certificate,
+because it sees Cloudflare's IP rather than a direct resolution. That is fine —
+Cloudflare is the one serving TLS now. To go back to GitHub-issued certs, turn
+the proxy off first, then re-save the custom domain in repo Settings → Pages.
+
+## The other remaining step
+
+Commits are sitting on local `main`:
+
+```
+cd ~/josaelegado.work && git push origin main
+```
 
 ## Alternative: Cloudflare Pages
 
-Because DNS is already on Cloudflare, Cloudflare Pages writes the DNS
-records for you instead of you editing six of them by hand. Connect the
-same GitHub repo, add the custom domain, done. The site itself does not
-change. Fewer manual steps; costs one GitHub-app authorisation in
-Cloudflare.
+Cloudflare Pages builds from the same repo and manages the certificate itself,
+removing this class of problem. Costs one GitHub-app authorisation.
+
+## After the site is live on HTTPS
+
+- Submit `https://www.josaelegado.work/sitemap.xml` in Google Search Console.
+- Request indexing for `/my-favorite-discoveries-in-India/` directly; a new
+  domain with no backlinks can otherwise sit uncrawled for weeks.
 
 ## Still undecided
 
-- The contact address in the markup is `josaelegado@gmail.com`, but the
-  site serves from `.work`. That mailbox may not exist. It is in every
-  page footer and on `lets-build.html`.
-- The Wix Premium plan keeps billing until cancelled. RISE's blog content
-  still lives on that Wix site.
+- Contact address in the markup is `josaelegado@gmail.com` but the site serves
+  from `.work`. MX records point at Cloudflare Email Routing, so a
+  `hello@josaelegado.work` forward is available if wanted.
+- The Wix Premium plan keeps billing until cancelled. RISE's blog content still
+  lives on that Wix site.
