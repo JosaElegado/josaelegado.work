@@ -175,8 +175,12 @@ body:has(.entry) {
   overflow: hidden;
 }
 
+/* `object-fit` does nothing on a <picture> — it is a wrapper, not a replaced
+   element — so the inner <img> is listed too. Without it a picture-wrapped
+   asset ignores --fit entirely and gets cropped by the slot's overflow. */
 .plate__slot > img,
 .plate__slot > picture,
+.plate__slot > picture > img,
 .plate__slot > video,
 .plate__slot > svg,
 .plate__slot > iframe {
@@ -226,6 +230,10 @@ body:has(.entry) {
 .plate__slot[data-artifact="Ticket"]           { --ratio: 5 / 2; }
 .plate__slot[data-artifact="Document"]         { --ratio: 3 / 4; }
 .plate__slot[data-artifact="Notebook page"]    { --ratio: 3 / 4; }
+/* A card composed elsewhere — a carousel panel, a slide, a poster. It arrives
+   square with its own type already set on it, so it is never cropped: cutting
+   a word off a card someone else laid out is worse than leaving margin. */
+.plate__slot[data-artifact="Card"]             { --ratio: 1 / 1; }
 
 /* Line art and paper are shown whole; photographs may be cropped to fill.
    A receipt with its edges cut off is not evidence of anything. */
@@ -234,7 +242,8 @@ body:has(.entry) {
 .plate__slot[data-artifact="Receipt"],
 .plate__slot[data-artifact="Ticket"],
 .plate__slot[data-artifact="Document"],
-.plate__slot[data-artifact="Notebook page"] { --fit: contain; }
+.plate__slot[data-artifact="Notebook page"],
+.plate__slot[data-artifact="Card"] { --fit: contain; }
 
 .plate__caption {
   margin-top: var(--space-3);
@@ -287,7 +296,223 @@ body:has(.entry) {
   opacity: 0.85;
 }
 
+/* Entries draw the arrow as a pen stroke rather than a rule — a longer, more
+   curved path that needs a wider box than the 26x16 used elsewhere. Scoped so
+   the five inline `viewBox="0 0 26 16"` arrows on the other pages keep the
+   geometry they were authored against. */
+.entry .annot__arrow { width: 34px; height: 20px; }
+
 .annot--up .annot__arrow { transform: rotate(-90deg); }
+
+/* ---- Card + note ----------------------------------------------------------
+   A panel composed somewhere else — a carousel slide, a poster — set into the
+   page beside a hand note that points at it. It carries no caption: a card
+   already captions itself, and repeating that underneath is the third time a
+   reader has been told the same thing.
+
+   The card is deliberately smaller than the reading column. A square set to
+   the full measure is 670px tall and stops the page dead; at 22rem it sits in
+   the text the way a plate sits in a printed page.
+
+   The arrow points left at the card on a wide screen and up at it on a narrow
+   one, the same behaviour as a margin note — an annotation whose arrow points
+   at nothing is decoration. */
+
+/* The card is centred in the reading column and never cropped: it arrived
+   square with somebody's type already set on it, and cutting a word off a
+   panel someone else laid out is worse than leaving margin. The note sits
+   under it with its arrow turned up, so it points at the card rather than
+   floating beside it. */
+/* The card runs to the full tier so there is real margin either side of it to
+   put a note in — at the wide tier the margin was 17rem and a note plus its
+   arrow could not fit without breaking to three lines. The card itself stays
+   centred on the reading column regardless. */
+.entry > .blk-card { grid-column: full; }
+
+/* The note is pushed up against its own inner edge, so this column gap is the
+   entire distance between the arrowhead and the image — 4px, near enough to
+   touching that the pen reads as landing on the card. It only works because
+   the arrow viewBoxes are cropped tight; with the old padded boxes a zero gap
+   still left a visible 8px of nothing. */
+.blk-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  justify-items: center;
+  column-gap: 4px;
+  row-gap: var(--space-4);
+}
+
+/* Bigger on a desktop, but a square is the worst shape a phone can be handed:
+   at 92vw it is 359px tall on a 390px screen and eats the whole viewport
+   before a single line of the paragraph it belongs to. The vw cap is what
+   stops that, and it binds before --card-w does on anything narrow. */
+.blk-card > .plate {
+  grid-column: 2;
+  grid-row: 1;
+  width: min(var(--card-w, 34rem), 78vw);
+}
+
+@media (max-width: 620px) {
+  .blk-card > .plate { width: min(var(--card-w, 34rem), 68vw); }
+}
+
+/* ---- Where the note sits ----
+   Four corners, alternating down the page, so the margin is used the way a
+   reader actually annotates a notebook: never twice in the same place. The
+   note is a grid sibling of the card rather than absolutely positioned, so it
+   cannot drift off its own card when the type reflows. */
+/* Arrow beside the words, never stacked over or under them, and centred on
+   the note's full height so it reads as one gesture rather than a mark plus
+   a caption. `flex-direction: row` is stated rather than left to the default
+   because an earlier version of this block set `column` here, and a stale
+   copy of that rule further down the file quietly won for two revisions. */
+.blk-card > .annot {
+  grid-row: 1;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 13rem;
+}
+
+.blk-card > .annot span { text-wrap: balance; }
+
+.blk-card--tl > .annot,
+.blk-card--bl > .annot {
+  grid-column: 1;
+  justify-self: end;
+  text-align: right;
+  flex-direction: row;
+}
+/* On the left, the words come first and the pen runs from them to the card. */
+.blk-card--tl .annot__arrow,
+.blk-card--bl .annot__arrow { order: 2; }
+
+/* `justify-self` has to be stated on both sides. The block sets
+   `justify-items: center` so the card sits centred in its own track, and a
+   note in the right-hand column inherits that — leaving it floating in the
+   middle of the margin while its left-hand counterpart, which does say
+   `justify-self: end`, sits flush against the card. */
+.blk-card--tr > .annot,
+.blk-card--br > .annot {
+  grid-column: 3;
+  justify-self: start;
+  text-align: left;
+}
+
+/* Set in from the corner rather than flush with it. The card is 544px tall;
+   at 1.5rem the note sat 24px from its edge, so the arrow aimed at the very
+   corner of the image instead of into it. */
+.blk-card--tl > .annot,
+.blk-card--tr > .annot { align-self: start; padding-top: var(--space-9); }
+
+.blk-card--bl > .annot,
+.blk-card--br > .annot { align-self: end; padding-bottom: var(--space-9); }
+
+/* Below the point where the margins stop being margins, the note goes under
+   its card and the corners collapse to one arrangement. */
+@media (max-width: 860px) {
+  .blk-card { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .blk-card > .plate { grid-column: 1; }
+  .blk-card > .annot {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+    align-self: auto;
+    text-align: center;
+    padding: 0;
+    max-width: 30ch;
+  }
+}
+
+/* Each arrow is a different stroke at a different proportion, so each one
+   carries its own box rather than being squeezed into a shared one. Width is
+   the only figure given: `aspect-ratio` derives the height from the viewBox,
+   so an arrow can never be stretched out of its own drawing. The vw term
+   shrinks them together on a mid-sized window rather than letting them crowd
+   the note off the margin. */
+/* viewBoxes are cropped tight to the ink, so the aspect ratios are the real
+   proportions of each drawing and the tip sits within ~2% of the box edge.
+   Before this the boxes were rounded-off rectangles with up to 10% dead space
+   on the pointing side — about 8px of invisible padding that no amount of
+   closing the column gap could remove. */
+.annot__arrow--1 { --aw: 74px; aspect-ratio: 55.60 / 14.94; }
+.annot__arrow--3 { --aw: 74px; aspect-ratio: 55.60 / 14.47; }
+.annot__arrow--4 { --aw: 74px; aspect-ratio: 55.60 / 15.10; }
+.annot__arrow--6 { --aw: 74px; aspect-ratio: 55.60 / 14.94; }
+.annot__arrow--7 { --aw: 70px; aspect-ratio: 53.60 / 12.86; }
+.annot__arrow--9 { --aw: 70px; aspect-ratio: 53.60 / 10.13; }
+
+/* Because the stroke does not scale, weight is set here once and holds at
+   any size. 1.5 was a hairline against a 74px arrow — these are drawn with
+   a fatter nib than the 24px section glyphs, and have to look it. */
+.entry [class*="annot__arrow--"] {
+  width: min(var(--aw), 9vw);
+  height: auto;
+  margin-top: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 1;
+}
+
+/* `vector-effect` is set as an attribute on the paths themselves, not here.
+   A <use> renders into a shadow tree that document CSS cannot reach except
+   through inherited properties, and vector-effect is not inherited — a rule
+   written at this level would silently do nothing. Without it a 1.5 pen in a
+   60-unit viewBox draws at ~3.7px once the arrow is 148px wide, twice the
+   weight of every other mark on the page. */
+
+
+/* ---- A line someone said ----
+   Centred on the reading column, in the same marker hand as the notes,
+   because it is the same voice writing it down. No attribution line: the
+   paragraph on either side already says who said it and when. */
+.entry-quote {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: clamp(1.4rem, 1.1rem + 1.3vw, 2.05rem);
+  line-height: 1.4;
+  color: var(--color-plum);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* The last two sentences, written rather than typed. */
+.entry-close {
+  font-family: var(--font-hand);
+  font-size: clamp(1.2rem, 1.05rem + 0.7vw, 1.6rem);
+  line-height: 1.45;
+  color: var(--color-plum);
+}
+
+
+/* ---- Section glyphs -------------------------------------------------------
+   One drawn mark per section, in the same pen and stroke weight as the
+   figures, sized in em so it always matches the heading beside it. Emoji are
+   not used: they render differently on every device and belong to somebody
+   else's design system. */
+
+.entry h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.glyph-mark {
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--color-plum);
+  overflow: visible;
+}
 .annot--down .annot__arrow { transform: rotate(90deg); }
 
 
@@ -540,14 +765,17 @@ body:has(.entry) {
   align-items: start;
 }
 
+/* Something someone actually said is set in the marker hand — the same hand
+   as the margin notes, because it is the same voice writing it down. Kalam
+   has no stroke contrast and falls apart when enlarged, so this is capped
+   well below display size and allowed to wrap: unlike the pen, the marker
+   survives a second line. */
 .blk-quote blockquote {
   margin: 0;
-  font-family: var(--font-display);
-  font-optical-sizing: auto;
-  font-size: var(--text-xl);
-  line-height: 1.18;
-  letter-spacing: var(--tracking-tight);
-  color: var(--color-ink);
+  font-family: var(--font-hand);
+  font-size: clamp(1.35rem, 1.1rem + 1.2vw, 1.95rem);
+  line-height: 1.4;
+  color: var(--color-plum);
   text-wrap: balance;
 }
 
@@ -650,13 +878,39 @@ body:has(.entry) {
   color: var(--color-ink-soft);
 }
 
+/* The masthead runs to the wide tier so the record line can stretch across
+   the sheet the way the fields on a drawing do. The title is pulled back to
+   the reading measure, because a headline set to 68rem is a banner. */
+.entry > .entry-masthead { grid-column: wide; }
+.entry-masthead__title,
+.entry-masthead__standfirst { max-width: var(--measure); }
+
+/* Four fields, one row, full width. `auto-fit` was dropping Status onto a
+   second line the moment the first three fields got long enough — an
+   explicit four-column track keeps the record on one line where it reads
+   as a single stamp rather than a little block of metadata. */
+/* Four fields distributed across the sheet, each sized to its own content and
+   spaced apart rather than each padded out to a quarter of the width — equal
+   columns left a ragged gap after "Travel" and "Filed" while "Bengaluru &
+   Mysuru, Karnataka" was still wrapping. */
 .entry-masthead__fields {
-  margin-top: var(--space-8);
-  padding-top: var(--space-5);
+  margin-top: var(--space-7);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--color-hairline);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: var(--space-6) var(--space-7);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-5) var(--space-8);
+}
+
+.entry-masthead__fields > div { flex: 0 1 auto; }
+
+@media (max-width: 720px) {
+  .entry-masthead__fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .entry-masthead__fields > div { display: flex; flex-direction: column; gap: 4px; }

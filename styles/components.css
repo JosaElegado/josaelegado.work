@@ -908,6 +908,15 @@ a.index-row:hover .index-row__arrow { transform: translateX(4px); color: var(--c
 
 .boxed > :last-child { margin-bottom: 0; }
 
+/* A drawn box is only as wide as it is; text ragging out two thirds of the
+   way across leaves the frame looking half empty on the right. Centred and
+   balanced, the sentence fills the box it was drawn for. */
+.boxed--centred p {
+  max-width: none;
+  text-align: center;
+  text-wrap: balance;
+}
+
 /* ---- Cross-reference ----
    "see fig. 02", "revisit later", "still unresolved". Mono when it is a
    pointer, hand when it is a note to self. */
