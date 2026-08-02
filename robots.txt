@@ -4,5 +4,7 @@ Disallow: /patterns.html
 Disallow: /entry-template.html
 Disallow: /type-specimen.html
 Disallow: /style-guide.html
+Disallow: /story.html
+Disallow: /timeline.html
 
 Sitemap: https://www.josaelegado.work/sitemap.xml

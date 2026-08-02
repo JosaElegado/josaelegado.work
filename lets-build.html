@@ -3,24 +3,147 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Let's Build — Josa Elegado | Field Journal</title>
-<meta name="description" content="Ways to work with Josa Elegado — speaking, advisory, projects, coffee chats, and startup discussions." />
+<title>Work with Josa Elegado — Advisory, partnerships, speaking</title>
+<meta name="description" content="Advisory, partnerships, speaking and board work in applied innovation, renewable energy, agriculture and public-sector technology commercialization." />
 <link rel="canonical" href="https://www.josaelegado.work/lets-build.html" />
-<meta name="theme-color" content="#faf6ef" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Josa Elegado — Field Journal" />
+<meta property="og:title" content="Work with Josa Elegado" />
+<meta property="og:description" content="A field journal documenting ventures, research, and lessons in renewable energy, agriculture, and innovation." />
+<meta property="og:url" content="https://www.josaelegado.work/lets-build.html" />
+<meta property="og:locale" content="en_PH" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta name="theme-color" content="#faf8f4" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Fragment+Mono:ital@0;1&family=La+Belle+Aurore&family=Kalam:wght@300;400&family=Libre+Franklin:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet" />
+
 <link rel="stylesheet" href="styles/tokens.css" />
 <link rel="stylesheet" href="styles/base.css" />
 <link rel="stylesheet" href="styles/components.css" />
+<link rel="stylesheet" href="styles/blocks.css" />
 <link rel="stylesheet" href="styles/animations.css" />
+<link rel="stylesheet" href="styles/home.css" />
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <svg style="display:none" aria-hidden="true">
   <symbol id="icon-arrow-right" viewBox="0 0 16 16"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="icon-arrow-up-right" viewBox="0 0 16 16"><path d="M4 12 12 4M6 4h6v6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<!-- ==========================================================
+     THEME GLYPHS
+     One mark per theme, drawn in the same pen as the figures:
+     open strokes, deliberate overshoot at the corners, no fills
+     except where a shape reads better solid. Sized in ems so they
+     scale with the label they sit against, and coloured by
+     currentColor so they inherit the plum.
+
+     These replace emoji. An emoji renders differently on every
+     device and belongs to somebody else's design system; these are
+     drawn to the same rules as Fig. 01 and Fig. 02.
+     ========================================================== -->
+<svg style="display:none" aria-hidden="true">
+  <!-- Energy & climate: a sprout breaking ground -->
+  <symbol id="g-sprout" viewBox="0 0 24 24">
+    <path d="M12 21.5c.2-5 0-7.6.3-10.4" />
+    <path d="M12 13.4C9.4 12.8 7.6 10.6 8 8.1c2.5.3 4.3 2.4 4 5.3Z" />
+    <path d="M12.3 11.6c2.4-.8 3.9-2.9 3.4-5.3-2.4.4-3.8 2.6-3.4 5.3Z" />
+    <path d="M6.6 21.6c3.8-.3 7.4-.4 11 0" />
+  </symbol>
+
+  <!-- People & behaviour: two figures, one turned -->
+  <symbol id="g-people" viewBox="0 0 24 24">
+    <path d="M9.2 8.4a2.6 2.6 0 1 1-.1-.2" />
+    <path d="M17 9.6a2.2 2.2 0 1 1-.1-.2" />
+    <path d="M4.6 19.4c.2-3.4 2.1-5.2 4.7-5.2s4.4 1.9 4.5 5.2" />
+    <path d="M15.2 19.4c.2-2.8 1.6-4.3 3.6-4.3 1.4 0 2.4.7 3 2" />
+  </symbol>
+
+  <!-- Innovation: a filament, lit -->
+  <symbol id="g-idea" viewBox="0 0 24 24">
+    <path d="M12 3.2c3.4 0 5.9 2.6 5.9 5.9 0 2.4-1.3 3.6-2.2 5-.5.8-.7 1.4-.8 2.2H9.1c-.1-.8-.3-1.4-.8-2.2-.9-1.4-2.2-2.6-2.2-5 0-3.3 2.5-5.9 5.9-5.9Z" />
+    <path d="M9.6 19.2h4.9M10.4 21.4h3.3" />
+    <path d="M10.4 13.6 12 10.4l1.6 3.2" />
+  </symbol>
+
+  <!-- Entrepreneurship: launch, with fins that actually read as fins -->
+  <symbol id="g-launch" viewBox="0 0 24 24">
+    <path d="M12 2.4c2.6 2.5 4 5.7 4 9.5v3.5H8v-3.5c0-3.8 1.4-7 4-9.5Z" />
+    <circle cx="12" cy="9.4" r="1.6" />
+    <path d="M8 12.8 5.1 15.4v3.5L8 17.2M16 12.8l2.9 2.6v3.5L16 17.2" />
+    <path d="M10.5 18.6c.5 1.7 1 2.7 1.5 3.2.5-.5 1-1.5 1.5-3.2" />
+  </symbol>
+
+  <!-- Food systems: a head of grain -->
+  <symbol id="g-grain" viewBox="0 0 24 24">
+    <path d="M12 21.4c0-6 0-10.4.2-14.6" />
+    <path d="M12.1 9.2c2.2.2 3.6-1 3.8-3.2-2.2-.2-3.6 1-3.8 3.2ZM12 9.2C9.8 9.4 8.4 8.2 8.2 6c2.2-.2 3.6 1 3.8 3.2Z" />
+    <path d="M12.1 13.6c2.2.2 3.6-1 3.8-3.2-2.2-.2-3.6 1-3.8 3.2ZM12 13.6c-2.2.2-3.6-1-3.8-3.2 2.2-.2 3.6 1 3.8 3.2Z" />
+    <path d="M12.1 5c.6-1.3.3-2.4-.1-3.4-.5 1-.8 2.1-.1 3.4Z" />
+  </symbol>
+
+  <!-- Public service: a portico -->
+  <symbol id="g-institution" viewBox="0 0 24 24">
+    <path d="M2.8 8.6 12 3.4l9.2 5.2H2.8Z" />
+    <path d="M5.4 11v7.4M9.8 11v7.4M14.2 11v7.4M18.6 11v7.4" />
+    <path d="M3.4 18.6h17.4M2.6 21.2h18.9" />
+  </symbol>
+
+  <!-- Relationships: drawn as one stroke, the way you actually draw a heart -->
+  <symbol id="g-heart" viewBox="0 0 24 24">
+    <path d="M12 20.4C7.8 17.2 3.6 14 3.6 9.9 3.6 7.2 5.6 5.2 8.1 5.2c1.7 0 3.1.9 3.9 2.3.8-1.4 2.2-2.3 3.9-2.3 2.5 0 4.5 2 4.5 4.7 0 4.1-4.2 7.3-8.4 10.5Z" />
+  </symbol>
+
+  <!-- Stories: a viewfinder -->
+  <symbol id="g-camera" viewBox="0 0 24 24">
+    <path d="M2.9 7.8h4l1.5-2.4h7.2l1.5 2.4h4v11.2H2.9V7.8Z" />
+    <circle cx="12" cy="13.4" r="3.3" />
+    <path d="M5.2 10.2h1.9" />
+  </symbol>
+
+  <!-- Life: a globe. Drawn with real circles — an arc that nearly closes
+       leaves a nick at the join that is obvious at 92px. -->
+  <symbol id="g-globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9.1" />
+    <path d="M2.9 12h18.2" />
+    <ellipse cx="12" cy="12" rx="4.1" ry="9.1" />
+  </symbol>
+
+  <!-- Apolaki: the sun it is named for -->
+  <symbol id="g-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.9" />
+    <path d="M12 1.8v2.7M12 19.5v2.7M1.8 12h2.7M19.5 12h2.7M4.9 4.9 6.8 6.8M17.2 17.2 19.1 19.1M19.1 4.9 17.2 6.8M6.8 17.2 4.9 19.1" />
+  </symbol>
+
+  <!-- Rubeo Ranch: the land, not the animal. A cow's head at this size reads
+       as a smiley face; a fence line against hills does not. -->
+  <symbol id="g-cattle" viewBox="0 0 24 24">
+    <path d="M2.4 8.6c3.3-2.7 6.7-2.7 9.6 0 2.9 2.7 6.3 2.7 9.6 0" />
+    <path d="M4.8 20.9v-9.4M11.9 20.9v-10M19 20.9v-9.4" />
+    <path d="M3.1 13.9h17.8M3.1 17.1h17.8" />
+  </symbol>
+
+  <!-- Study: a cap -->
+  <symbol id="g-study" viewBox="0 0 24 24">
+    <path d="M12 4.2 22 8.4 12 12.6 2 8.4l10-4.2Z" />
+    <path d="M6.4 10.6v5.2c0 1.6 2.6 2.8 5.6 2.8s5.6-1.2 5.6-2.8v-5.2" />
+    <path d="M21 9v5.4" />
+  </symbol>
+
+  <!-- Field journal: the notebook itself -->
+  <symbol id="g-journal" viewBox="0 0 24 24">
+    <path d="M5.4 3.4h13.2v17.2H5.4V3.4Z" />
+    <path d="M8.6 3.4v17.2" />
+    <path d="M11.2 8.2h4.6M11.2 11.4h4.6M11.2 14.6h3" />
+  </symbol>
 </svg>
 
 <header class="site-header">
@@ -28,11 +151,9 @@
     <a class="wordmark" href="index.html" aria-label="Josa Elegado — home">Josa Elegado<span class="wordmark__mark">.</span></a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
-        <li><a href="story.html">The Story</a></li>
         <li><a href="work.html">The Work</a></li>
         <li><a href="field-notes.html">Field Notes</a></li>
-        <li><a href="timeline.html">Timeline</a></li>
-        <li><a href="lets-build.html" class="site-nav__cta" aria-current="page">Let's Build</a></li>
+        <li><a href="lets-build.html" class="site-nav__cta">Let&rsquo;s work together</a></li>
       </ul>
     </nav>
     <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav">
@@ -43,39 +164,106 @@
 </header>
 
 <nav id="mobile-nav" class="mobile-nav" aria-label="Table of contents">
-  <p class="mobile-nav__label font-hand">Table of contents</p>
+  <p class="mobile-nav__label">Index</p>
   <ol>
-    <li><a href="story.html">The Story</a></li>
     <li><a href="work.html">The Work</a></li>
     <li><a href="field-notes.html">Field Notes</a></li>
-    <li><a href="timeline.html">Timeline</a></li>
-    <li><a href="lets-build.html">Let's Build</a></li>
+    <li><a href="lets-build.html">Let&rsquo;s work together</a></li>
   </ol>
 </nav>
 
 <main id="main">
-  <section class="chapter-stub">
-    <div class="wrap chapter-stub__inner" data-reveal>
-      <p class="eyebrow">Chapter 05</p>
-      <h1>Let's Build</h1>
-      <p class="lede">
-        An invitation, not a contact form — for speaking, advisory, projects,
-        coffee chats, and startup discussions. The full page (and a proper form)
-        is coming; for now, the fastest way to reach me is by email.
-      </p>
-      <div style="display:flex; flex-wrap:wrap; gap: var(--space-2); margin-bottom: var(--space-7);">
-        <span class="tag">Speaking</span>
-        <span class="tag">Advisory</span>
-        <span class="tag">Projects</span>
-        <span class="tag">Coffee chats</span>
-        <span class="tag">Startup discussions</span>
+  <section class="hero">
+    <div class="wrap">
+      <dl class="title-block hero__title-block">
+        <div class="title-block__field"><dt>Open to</dt><dd>Advisory &middot; Partnerships</dd></div>
+        <div class="title-block__field"><dt>Also</dt><dd>Speaking &middot; Board &amp; committee work</dd></div>
+        <div class="title-block__field"><dt>Base</dt><dd>Manila, Philippines</dd></div>
+        <div class="title-block__field title-block__field--wide"><dt>Sheet</dt><dd>02 &mdash; Contact</dd></div>
+      </dl>
+
+      <div class="hero__grid">
+        <div class="hero__text">
+          <h1 class="hero__thesis">Let&rsquo;s work together.</h1>
+          <p class="hero__lede">
+            If you are trying to get something adopted &mdash; a technology, a
+            programme, a policy, a venture &mdash; and the hard part is no longer
+            whether it works but whether anyone will use it, that is the problem
+            I spend my time on.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--solid" href="mailto:josaelegado@gmail.com?subject=Working%20together">
+              Email me
+              <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="ink-link" href="index.html#works">See selected work</a>
+          </div>
+        </div>
       </div>
-      <div class="chapter-stub__actions">
-        <a class="btn btn--solid" href="mailto:hello@josaelegado.com">
-          Say hello
-          <svg class="btn__arrow" width="16" height="16"><use href="#icon-arrow-right"/></svg>
-        </a>
-        <a class="ink-link" href="index.html">← Back to the journal home</a>
+    </div>
+  </section>
+
+  <section class="mv mv--problems">
+    <div class="wrap">
+      <div class="opener">
+        <p class="opener__q" data-index="01">What I take on</p>
+        <p class="meta"><span>Four ways of working</span></p>
+      </div>
+
+      <ol class="problems">
+        <li class="problems__item">
+          <h3>Advisory</h3>
+          <p>
+            Ongoing work with a venture, agency or programme on adoption strategy:
+            why uptake has stalled, what would actually move it, and what to stop
+            doing. Usually a retained engagement rather than a one-off.
+          </p>
+        </li>
+        <li class="problems__item">
+          <h3>Partnerships &amp; collaborations</h3>
+          <p>
+            Joint work where our two sides each bring something the other cannot
+            buy &mdash; a network, a technology, a mandate, a market. Most of the
+            projects on this site started this way.
+          </p>
+        </li>
+        <li class="problems__item">
+          <h3>Speaking &amp; facilitation</h3>
+          <p>
+            Talks and workshops on technology commercialization, innovation in the
+            public sector, and why good ideas stall between the pilot and the
+            people they were built for.
+          </p>
+        </li>
+        <li class="problems__item">
+          <h3>Board &amp; committee work</h3>
+          <p>
+            Governance and advisory seats where the questions are about adoption,
+            innovation strategy, or bringing research and enterprise closer
+            together.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="mv mv--talk">
+    <div class="wrap">
+      <div class="talk">
+        <p class="meta"><span>Fastest route</span><span>Email</span></p>
+        <h2 class="talk__head">Tell me what you&rsquo;re working on.</h2>
+        <p class="prose talk__body">
+          A paragraph is plenty &mdash; what you are trying to get adopted, who it
+          is for, and where it is stuck. If it is not something I can help with I
+          will say so quickly, and point you at someone who can.
+        </p>
+        <div class="talk__actions">
+          <a class="btn btn--solid" href="mailto:josaelegado@gmail.com?subject=Working%20together">
+            josaelegado@gmail.com
+            <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+          </a>
+          <a class="ink-link" href="index.html">Back to the journal</a>
+        </div>
       </div>
     </div>
   </section>
@@ -89,17 +277,17 @@
     </p>
 
     <nav class="site-footer__chapters" aria-label="Chapters">
-      <a href="story.html">The Story</a>
       <a href="work.html">The Work</a>
       <a href="field-notes.html">Field Notes</a>
-      <a href="timeline.html">Timeline</a>
-      <a href="lets-build.html">Let&rsquo;s Build</a>
+      <a href="lets-build.html">Let&rsquo;s work together</a>
     </nav>
 
     <div class="site-footer__base">
       <span>&copy; <span data-current-year>2026</span> Josa Elegado</span>
-      <a href="mailto:hello@josaelegado.com">hello@josaelegado.com</a>
-      <span class="page-mark">— pg. 06 —</span>
+      <a href="mailto:josaelegado@gmail.com">josaelegado@gmail.com</a>
+      <!-- TODO(josa): replace with the real LinkedIn URL, then delete this comment -->
+      <a href="https://www.linkedin.com/in/REPLACE-ME" rel="me noopener">LinkedIn</a>
+      <span class="page-mark">— pg. 01 —</span>
     </div>
   </div>
 </footer>

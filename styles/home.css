@@ -49,8 +49,13 @@
 }
 
 /* A hand-drawn underline pulled under the word on load. inline-block so the
-   stroke has the word's exact box to measure against; non-scaling-stroke so the
-   line keeps one pen width however far the box stretches. */
+   stroke has the word's box to measure against; non-scaling-stroke so the line
+   keeps one pen width however far the box stretches.
+
+   It deliberately overshoots the text at both ends. A stroke that stops exactly
+   at the glyph edges is geometrically correct and looks tentative — a real pen
+   runs past the word at both ends, and without that overshoot the line reads as
+   too short no matter how accurate it is. */
 .mark-underline {
   display: inline-block;
   position: relative;
@@ -59,8 +64,11 @@
 
 .mark-underline__stroke {
   position: absolute;
-  left: 0;
-  width: 100%;
+  left: -0.24em;
+  width: calc(100% + 0.48em);
+  /* base.css caps every svg at max-width:100%, which silently clamped the
+     overshoot back to the word's exact width. */
+  max-width: none;
   top: 100%;
   height: 0.2em;
   overflow: visible;
@@ -409,6 +417,41 @@
   .works { gap: var(--space-10); }
 }
 
+
+/* The personal work, kept but demoted. Two commercial cases carry the
+   section; a farm, a degree and a blog listed as their equals made the offer
+   read as diffuse, which costs partnerships. */
+.works-also {
+  margin-top: var(--space-10);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.works-also__label {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.works-also__list { max-width: 52rem; }
+
+.works-also__list li {
+  padding-block: var(--space-3);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+}
+
+.works-also__list strong { color: var(--color-ink); font-weight: 400; }
+
+.notes__soon {
+  max-width: 44rem;
+  line-height: var(--rule-pitch);
+  color: var(--color-ink-soft);
+}
 
 /* ---- 05 · Field notes ----
    Where the work happens and what gets written there, merged: every note is a

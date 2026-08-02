@@ -50,7 +50,7 @@ Cloudflare.
 
 ## Still undecided
 
-- The contact address in the markup is `hello@josaelegado.com`, but the
+- The contact address in the markup is `josaelegado@gmail.com`, but the
   site serves from `.work`. That mailbox may not exist. It is in every
   page footer and on `lets-build.html`.
 - The Wix Premium plan keeps billing until cancelled. RISE's blog content
