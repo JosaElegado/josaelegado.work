@@ -191,6 +191,68 @@
 }
 
 
+/* ---- Affiliations strip ----
+   Named institutions, stated plainly and early. Not a logo wall: set in the
+   page's own metadata voice so it reads as a record rather than as badges. */
+
+.credentials {
+  padding-block: var(--space-6) var(--space-7);
+  border-top: 1px solid var(--color-hairline);
+}
+
+.credentials__label {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.credentials__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-7);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-ink);
+}
+
+/* ---- The numbers ----
+   The only figures on the site, so they are allowed to carry weight: plum,
+   a size up, and never buried in a sentence. */
+.work__proof {
+  margin: var(--space-5) 0 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-plum-rule);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  max-width: 44ch;
+}
+
+.work__proof strong {
+  font-weight: 400;
+  font-size: 1.25em;
+  color: var(--color-plum);
+}
+
+/* ---- The most recent note, given room ---- */
+.note-lead { max-width: 44rem; }
+
+.note-lead__title {
+  font-size: var(--text-lg);
+  max-width: 26ch;
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.note-lead__title a { text-decoration: none; }
+.note-lead__title a:hover { color: var(--color-plum); }
+
+.note-lead .prose { margin-bottom: var(--space-5); }
+
 /* ---- Theme glyph ----
    Drawn marks standing in for the emoji in the brief: same pen, same plum,
    same stroke weight as the figures. Sized in ems so a glyph always matches

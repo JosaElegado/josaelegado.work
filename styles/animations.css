@@ -15,6 +15,11 @@
   to { stroke-dashoffset: 0; }
 }
 
+@keyframes draw-underline {
+  from { stroke-dashoffset: 1200; }
+  to { stroke-dashoffset: 0; }
+}
+
 @keyframes mark-appear {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -24,10 +29,19 @@
 
   /* ---- Fig. 01, in the opening spread: drawn on arrival ---- */
 
-  /* The headline underline is read first, so it is drawn first. */
+  /* The headline underline is read first, so it is drawn first.
+
+     It cannot use draw-stroke. That keyframe relies on pathLength="100"
+     normalising the dash pattern, and `vector-effect: non-scaling-stroke`
+     defeats exactly that: with it, stroke-dasharray is measured in SCREEN
+     pixels rather than path units. A dasharray of 100 therefore rendered a
+     100px dash, a 100px gap, then a short dash — the underline was drawing
+     as two segments with a hole in the middle, which read as "too short" at
+     every size. The dash below is simply longer than the stroke can ever be,
+     so it never repeats. */
   .mark-underline__stroke path {
-    stroke-dasharray: 100;
-    animation: draw-stroke 620ms var(--ease-draw) 420ms both;
+    stroke-dasharray: 1200;
+    animation: draw-underline 620ms var(--ease-draw) 420ms both;
   }
 
   .hero__figure .fig-arrow {
