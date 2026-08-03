@@ -172,6 +172,48 @@
     <path d="M8.6 3.4v17.2" />
     <path d="M11.2 8.2h4.6M11.2 11.4h4.6M11.2 14.6h3" />
   </symbol>
+
+  <!-- ========================================================
+       Marks for the four problem cards. Drawn for this section
+       only: the nine curiosity glyphs sit immediately above, so
+       these had to be their own four rather than borrowed ones.
+       Same pen — 24×24, stroked, no fill, coordinates left
+       slightly off true so the line reads as drawn.
+       ======================================================== -->
+
+  <!-- I · Making complex things easier to understand: three lines
+       in, one line out. (Drawn first as a knot resolving into a
+       line — at 76px the knot filled in and read as a blob.) -->
+  <symbol id="p-untangle" viewBox="0 0 24 24">
+    <path d="M2.4 6.7c2.5.5 3.7 2.7 6.1 4.7" vector-effect="non-scaling-stroke" />
+    <path d="M2.2 12.3h8.1" vector-effect="non-scaling-stroke" />
+    <path d="M2.5 17.9c2.4-.5 3.4-2.8 5.8-4.8" vector-effect="non-scaling-stroke" />
+    <path d="M10.3 12.3h9.9" vector-effect="non-scaling-stroke" />
+    <path d="M17.2 9.4 20.4 12.3 17.1 15.2" vector-effect="non-scaling-stroke" />
+  </symbol>
+
+  <!-- II · Helping good ideas reach people: the gap, and the thing
+       carried across it -->
+  <symbol id="p-bridge" viewBox="0 0 24 24">
+    <path d="M2.3 16.6h6.1M15.5 16.5h6.2" vector-effect="non-scaling-stroke" />
+    <path d="M6.7 15.9C8 11.4 16.1 11.2 17.5 15.8" vector-effect="non-scaling-stroke" />
+    <circle cx="12.1" cy="11.4" r="1.6" vector-effect="non-scaling-stroke" />
+  </symbol>
+
+  <!-- III · Creating opportunities: a way up that was not there
+       before -->
+  <symbol id="p-stair" viewBox="0 0 24 24">
+    <path d="M2.4 20.1h5.1v-4.3h4.6v-4.2h4.7V7.3h4.2" vector-effect="non-scaling-stroke" />
+    <path d="M18.2 4.5 21.5 7.3 18.3 10" vector-effect="non-scaling-stroke" />
+  </symbol>
+
+  <!-- IV · Leaving every system better: a cycle that does not close
+       where it started -->
+  <symbol id="p-cycle" viewBox="0 0 24 24">
+    <path d="M19.6 8.6A8.3 8.3 0 1 0 20.4 14.2" vector-effect="non-scaling-stroke" />
+    <path d="M14.4 8.9 19.8 8.5 20.2 3.2" vector-effect="non-scaling-stroke" />
+    <path d="M8.3 13.6 11 10.5l2.5 2.2 2.7-3.6" vector-effect="non-scaling-stroke" />
+  </symbol>
 </svg>
 
 <header class="site-header">
@@ -243,6 +285,25 @@
             </a>
             <a class="ink-link" href="#works">See selected work</a>
           </div>
+
+          <!-- Credentials close the opening spread: the claim, the
+               invitation, then the receipts. Set as a two-column index
+               rather than a wrapping row — seven names of very different
+               lengths flowed into a ragged four-line block, which is what
+               made it read as scattered. Columns give it an edge to align
+               to. -->
+          <div class="hero__creds">
+            <p class="credentials__label">Affiliations &amp; credentials</p>
+            <ul class="credentials__list">
+              <li>DOST&ndash;TAPI</li>
+              <li>UNLEASH Alumna</li>
+              <li>Asian Institute of Management</li>
+              <li>GIMI Certified Innovation Associate</li>
+              <li>Central Luzon State University</li>
+              <li>GIMI MCI Management Consulting Analyst</li>
+              <li>PSABE Member</li>
+            </ul>
+          </div>
         </div>
 
         <figure class="hero__figure">
@@ -301,75 +362,112 @@
     </div>
   </section>
 
-  
-  <!-- Credentials sit directly under the opening spread on purpose. For a
-       partnership the question "is this person real" gets asked before "is
-       this person interesting", and until now the site answered neither. -->
-  <section class="credentials">
+  <!-- ============================================================
+       01 — WHAT I'M CURIOUS ABOUT
+       Five marks then four, so the row breaks where it was meant to
+       rather than wherever auto-fit happens to land. The stamp moved
+       below the grid: it dates the list, and a date belongs after the
+       thing it dates.
+       ============================================================ -->
+  <section class="mv mv--curious" id="curious">
     <div class="wrap">
-      <p class="credentials__label">Affiliations &amp; credentials</p>
-      <ul class="credentials__list">
-        <li>DOST&ndash;TAPI</li>
-        <li>UNLEASH Alumna</li>
-        <li>GIMI Certified Innovation Associate</li>
-        <li>GIMI MCI Management Consulting Analyst</li>
-        <li>PSABE Member</li>
+      <div class="opener">
+        <p class="opener__q" data-index="01">What I&rsquo;m curious about</p>
+        <p class="meta"><span>Nine open questions</span></p>
+      </div>
+
+      <ul class="curious">
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-sprout"/></svg>
+          <p class="curious__label">Energy &amp; Climate</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-people"/></svg>
+          <p class="curious__label">People &amp; Behavior</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-idea"/></svg>
+          <p class="curious__label">Innovation</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-launch"/></svg>
+          <p class="curious__label">Entrepreneurship</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-grain"/></svg>
+          <p class="curious__label">Food Systems</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-institution"/></svg>
+          <p class="curious__label">Public Service</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-heart"/></svg>
+          <p class="curious__label">Relationships</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-camera"/></svg>
+          <p class="curious__label">Stories</p>
+        </li>
+        <li class="curious__item">
+          <svg class="glyph" aria-hidden="true"><use href="#g-globe"/></svg>
+          <p class="curious__label">Life</p>
+        </li>
       </ul>
     </div>
   </section>
 
+  <!-- ============================================================
+       02 — PROBLEMS WORTH SOLVING
+       Four cards, two by two, at tarot proportions. The card is doing
+       real work: it gives each problem a fixed frame so none of the
+       four can out-argue the others by running longer, and the numeral
+       makes them read as a set rather than a ranking. The mark inside
+       is drawn for this section — the nine curiosity glyphs sit
+       directly above, so reusing one would read as a mistake.
+       ============================================================ -->
   <section class="mv mv--problems" id="problems">
     <div class="wrap">
       <div class="opener">
-        <p class="opener__q" data-index="01">Problems worth solving</p>
-        <p class="meta"><span>Six, regardless of industry</span></p>
+        <p class="opener__q" data-index="02">Problems worth solving</p>
+        <p class="meta"><span>Four, regardless of industry</span></p>
       </div>
 
-      <p class="prose problems__intro">
-        The kinds of challenges I keep coming back to, regardless of the industry.
-      </p>
-
       <ol class="problems">
-        <li class="problems__item">
+        <li class="problems__card">
+          <p class="problems__numeral" aria-hidden="true">I</p>
+          <svg class="problems__mark" aria-hidden="true"><use href="#p-untangle"/></svg>
           <h3>Making complex things easier to understand.</h3>
-          <p>
+          <p class="problems__gloss">
             Whether it&rsquo;s solar energy, government programs, or emerging
             technologies, I enjoy turning complexity into something people can
             confidently act on.
           </p>
         </li>
-        <li class="problems__item">
+        <li class="problems__card">
+          <p class="problems__numeral" aria-hidden="true">II</p>
+          <svg class="problems__mark" aria-hidden="true"><use href="#p-bridge"/></svg>
           <h3>Helping good ideas reach the people who need them.</h3>
-          <p>
+          <p class="problems__gloss">
             Too many promising ideas never make it beyond the laboratory, the
             whiteboard, or the pitch deck. I&rsquo;m interested in closing that gap.
           </p>
         </li>
-        <li class="problems__item">
-          <h3>Designing systems that work for people &mdash; not just on paper.</h3>
-          <p>
-            Technology, policies, and businesses only succeed when they fit
-            naturally into people&rsquo;s lives.
-          </p>
-        </li>
-        <li class="problems__item">
-          <h3>Building trust before asking for change.</h3>
-          <p>
-            Real adoption starts with listening. People rarely resist change &mdash;
-            they resist being misunderstood or left behind.
-          </p>
-        </li>
-        <li class="problems__item">
+        <li class="problems__card">
+          <p class="problems__numeral" aria-hidden="true">III</p>
+          <svg class="problems__mark" aria-hidden="true"><use href="#p-stair"/></svg>
           <h3>Creating opportunities for the next generation.</h3>
-          <p>
+          <p class="problems__gloss">
             Whether it&rsquo;s mentoring young founders, supporting inventors, or
             encouraging women in entrepreneurship, I believe progress grows when
             more people are invited to participate.
           </p>
         </li>
-        <li class="problems__item">
+        <li class="problems__card">
+          <p class="problems__numeral" aria-hidden="true">IV</p>
+          <svg class="problems__mark" aria-hidden="true"><use href="#p-cycle"/></svg>
           <h3>Leaving every system a little better than I found it.</h3>
-          <p>
+          <p class="problems__gloss">
             Communities, organizations, relationships, and the environment all
             thrive when we contribute more than we consume.
           </p>
@@ -378,76 +476,14 @@
     </div>
   </section>
 
-  <section class="mv mv--curious" id="curious">
-    <div class="wrap">
-      <div class="opener">
-        <p class="opener__q" data-index="02">What I&rsquo;m curious about</p>
-        <p class="meta"><span>Nine open questions</span></p>
-      </div>
-
-      <div class="curious__intro">
-        <p class="prose">
-          A collection of questions I&rsquo;m currently exploring. Some may become
-          projects. Others may simply change the way I think.
-        </p>
-        <aside class="annot curious__stamp">
-          <svg class="annot__arrow" viewBox="0 0 26 16" aria-hidden="true">
-            <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>last updated August 2026</span>
-        </aside>
-      </div>
-
-      <ul class="curious">
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-sprout"/></svg>
-          <p class="curious__label">Energy &amp; Climate</p>
-          <p class="curious__q">How do we make clean energy the obvious choice &mdash; not the difficult one?</p>
-        </li>
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-people"/></svg>
-          <p class="curious__label">People &amp; Behavior</p>
-          <p class="curious__q">Why do some communities embrace change while others resist it?</p>
-        </li>
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-idea"/></svg>
-          <p class="curious__label">Innovation</p>
-          <p class="curious__q">What separates a good idea from one that people actually adopt?</p>
-        </li>
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-launch"/></svg>
-          <p class="curious__label">Entrepreneurship</p>
-          <p class="curious__q">How do founders build companies without losing the reason they started?</p>
-        </li>
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-grain"/></svg>
-          <p class="curious__label">Food Systems</p>
-          <p class="curious__q">What would agriculture look like if it attracted the next generation?</p>
-        </li>
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-institution"/></svg>
-          <p class="curious__label">Public Service</p>
-          <p class="curious__q">Can governments innovate with the speed and empathy of startups?</p>
-        </li>
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-heart"/></svg>
-          <p class="curious__label">Relationships</p>
-          <p class="curious__q">How do trust, communication, and shared purpose shape the way we work and live together?</p>
-        </li>
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-camera"/></svg>
-          <p class="curious__label">Stories</p>
-          <p class="curious__q">Why do certain stories stay with us long after we&rsquo;ve forgotten the facts?</p>
-        </li>
-        <li class="curious__item">
-          <svg class="glyph" aria-hidden="true"><use href="#g-globe"/></svg>
-          <p class="curious__label">Life</p>
-          <p class="curious__q">Am I living up to my highest potential &mdash; or is there still more to discover?</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
+  <!-- ============================================================
+       03 — WHY THIS MATTERS
+       Two columns, mirroring the opening spread: there the text leads
+       and the figure sits right; here the figure leads and the text
+       sits right. Fig. 02 uses what was the phone variant — a tall
+       drawing is the correct shape for a half-page column, and it
+       means one drawing instead of two to keep in step.
+       ============================================================ -->
   <section class="mv mv--prose" id="why">
     <div class="wrap">
       <div class="opener">
@@ -455,181 +491,106 @@
         <a class="xref" href="work.html">See the work &rarr;</a>
       </div>
 
-      <div class="page-layout">
-        <h2 class="mv__head">The problems worth solving are rarely solved by one discipline alone.</h2>
+      <div class="why__grid">
+        <figure class="why__figure" data-draw>
+          <figcaption class="figure__label">
+            <span>Fig. 02</span>
+            <span>Where good ideas stall</span>
+          </figcaption>
+          <svg class="why-figure__svg" viewBox="0 0 400 580" role="img" aria-labelledby="fig02n-title">
+                    <title id="fig02n-title">Where good ideas stall on the way to adoption</title>
 
-        <p class="prose">
-          They live at the intersection of people, technology, business, and
-          public policy. I&rsquo;m drawn to that intersection &mdash; not because
-          I have all the answers, but because I enjoy figuring things out with
-          others.
-        </p>
+                    <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
+                      <path d="M20 14.6 112 13.4 112.8 47.4 20.8 48.4 20 14.6 20.9 11.4"/>
+                      <path d="M20 94.4 112 93.6 112.9 127.6 20.9 128.4 20 94.4 20.8 91.3"/>
+                      <path d="M20 174.7 112 173.5 112.7 207.5 20.7 208.5 20 174.7 20.8 171.5"/>
+                    </g>
+                    <path class="fig-node fig-node--terminal" d="M20 486.5 112 485.5 112.8 519.5 20.8 520.5Z" fill="var(--color-plum)" stroke="var(--color-plum)" stroke-width="1.5"/>
 
-        <aside class="page-note">
-          <svg class="page-note__arrow" viewBox="0 0 26 16" aria-hidden="true">
-            <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>no single field owns this</span>
-        </aside>
+                    <g class="fig-arrows" fill="none" stroke="var(--color-plum)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path class="fig-arrow" d="M66 48.5 65.6 87" pathLength="100"/>
+                      <path class="fig-arrowhead" d="M61.4 81.4 65.6 88.5 70 81.5"/>
+                      <path class="fig-arrow" d="M66 128.5 66.4 167" pathLength="100"/>
+                      <path class="fig-arrowhead" d="M62 161.4 66.4 168.5 70.8 161.5"/>
+                      <path class="fig-arrow" d="M66 208.5 65.6 479" pathLength="100"/>
+                      <path class="fig-arrowhead" d="M61.4 473.4 65.6 480.5 70 473.5"/>
+                    </g>
 
-        <p class="prose">
-          Every project, conversation, and story on this website comes back to
-          one question.
-        </p>
+                    <g class="fig-dim" fill="none" stroke="var(--color-hairline-strong)" stroke-width="1">
+                      <path d="M132 14 132 208M127 14 137 14M127 208 137 208"/>
+                      <path d="M20 548 392 548M20 543 20 553M392 543 392 553"/>
+                    </g>
+                    <g class="fig-dim-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.1" fill="var(--color-ink-faint)">
+                      <text x="146" y="106">WHAT PROGRAMS</text>
+                      <text x="146" y="124">MEASURE</text>
+                      <text x="20" y="570">WHAT ACTUALLY DECIDES IT</text>
+                    </g>
 
-        <div class="boxed">
-          <svg class="boxed__frame" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M3 6 200 4 397 3.5 396.5 50 396 96 200 98 3.5 97.5 3.2 50 3 6 4.2 11.5"/>
-          </svg>
-          <p class="prose prose--stmt">How do good ideas become meaningful change?</p>
+                    <g class="fig-drops" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path class="fig-arrow" d="M68 268 128 267.6" pathLength="100"/>
+                      <path class="fig-arrowhead" d="M122.4 263.2 129.5 267.7 122.6 272"/>
+                      <path class="fig-arrow" d="M68 318 128 317.6" pathLength="100"/>
+                      <path class="fig-arrowhead" d="M122.4 313.2 129.5 317.7 122.6 322"/>
+                      <path class="fig-arrow" d="M68 368 128 367.6" pathLength="100"/>
+                      <path class="fig-arrowhead" d="M122.4 363.2 129.5 367.7 122.6 372"/>
+                    </g>
+
+                    <path class="fig-box" d="M138 240 392 238.5 392.8 394 138.8 395.2 138 240 138.9 236.6" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round"/>
+
+                    <g class="fig-fail" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round">
+                      <path d="M157 263 167 273M167 263 157 273"/>
+                      <path d="M157 313 167 323M167 313 157 323"/>
+                      <path d="M157 363 167 373M167 363 157 373"/>
+                    </g>
+                    <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)">
+                      <text x="180" y="272">FINANCING</text>
+                      <text x="180" y="290">MISMATCH</text>
+                      <text x="180" y="322">GOVERNANCE</text>
+                      <text x="180" y="340">CHURN</text>
+                      <text x="180" y="372">NO LOCAL TRUST</text>
+                    </g>
+
+                    <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)" text-anchor="middle">
+                      <text x="66" y="36">RESEARCH</text>
+                      <text x="66" y="116">PROTOTYPE</text>
+                      <text x="66" y="196">PILOT</text>
+                      <text x="66" y="508" fill="var(--color-on-plum)">ADOPTION</text>
+                    </g>
+
+                    <g class="fig-hand" font-family="Kalam, cursive" font-size="20" fill="var(--color-plum)">
+                      <text x="150" y="432">none of these are</text>
+                      <text x="150" y="454">engineering problems</text>
+                    </g>
+                    <path class="fig-hand" d="M160 418 156 402" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round"/>
+                    <path class="fig-hand" d="M151 407 155.5 400.5 161 403.5" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+        </figure>
+
+        <div class="why__text">
+          <h2 class="mv__head">The problems worth solving are rarely solved by one discipline alone.</h2>
+
+          <p class="prose">
+            These problems lie at the intersection of people, technology,
+            business, and public policy.
+          </p>
+
+          <p class="prose">
+            Every project, conversation, and story on this website comes back to
+            one question.
+          </p>
+
+          <div class="boxed">
+            <svg class="boxed__frame" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M3 6 200 4 397 3.5 396.5 50 396 96 200 98 3.5 97.5 3.2 50 3 6 4.2 11.5"/>
+            </svg>
+            <p class="prose prose--stmt">How do good ideas become meaningful change?</p>
+          </div>
+
+          <p class="prose">
+            I think that&rsquo;s a question worth spending a lifetime exploring.
+          </p>
         </div>
-
-        <p class="prose">
-          I think that&rsquo;s a question worth spending a lifetime exploring.
-        </p>
       </div>
-
-      <!-- The figure that shows where the answer usually goes wrong. -->
-      <figure class="spread-figure" data-draw>
-        <figcaption class="figure__label">
-          <span>Fig. 02</span>
-          <span>Where good ideas stall</span>
-        </figcaption>
-
-        <svg class="spread-figure__wide" viewBox="0 0 880 300" role="img" aria-labelledby="fig02-title fig02-desc">
-          <title id="fig02-title">Where good ideas stall on the way to adoption</title>
-          <desc id="fig02-desc">A pipeline runs from research to prototype to pilot to adoption. A bracket marks research through pilot as “what programs measure”, and a second bracket spans the whole pipeline as “what actually decides it”. Three arrows drop out of the long stretch between pilot and adoption into a box listing financing mismatch, governance churn, and no local trust — annotated “none of these are engineering problems”.</desc>
-
-          <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
-            <path d="M20 30.6 112 29.4 112.8 63.4 20.8 64.4 20 30.6 20.9 27.4"/>
-            <path d="M172 30.4 264 29.6 264.9 63.6 172.9 64.4 172 30.4 172.8 27.3"/>
-            <path d="M324 30.7 416 29.5 416.7 63.5 324.7 64.5 324 30.7 324.8 27.5"/>
-          </g>
-          <path class="fig-node fig-node--terminal" d="M780 30.5 872 29.5 872.8 63.5 780.8 64.5Z" fill="var(--color-plum)" stroke="var(--color-plum)" stroke-width="1.5"/>
-
-          <g class="fig-arrows" fill="none" stroke="var(--color-plum)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path class="fig-arrow" d="M112 47.2 165 46.6" pathLength="100"/>
-            <path class="fig-arrowhead" d="M159.4 42.4 166.5 46.7 159.6 51"/>
-            <path class="fig-arrow" d="M264 47 317 46.5" pathLength="100"/>
-            <path class="fig-arrowhead" d="M311.4 42.3 318.5 46.6 311.6 50.9"/>
-            <path class="fig-arrow" d="M416 46.8 773 46.2" pathLength="100"/>
-            <path class="fig-arrowhead" d="M767.4 42 774.5 46.3 767.6 50.6"/>
-          </g>
-
-          <g class="fig-dim" fill="none" stroke="var(--color-hairline-strong)" stroke-width="1">
-            <path d="M20 85 416 85M20 80 20 90M416 80 416 90"/>
-            <path d="M20 270 872 270M20 265 20 275M872 265 872 275"/>
-          </g>
-          <g class="fig-dim-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.1" fill="var(--color-ink-faint)" text-anchor="middle">
-            <text x="218" y="102">WHAT PROGRAMS MEASURE</text>
-            <text x="446" y="287">WHAT ACTUALLY DECIDES IT</text>
-          </g>
-
-          <g class="fig-drops" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path class="fig-arrow" d="M500 48 500.4 104" pathLength="100"/>
-            <path class="fig-arrowhead" d="M496 98.5 500.4 105.5 504.8 98.5"/>
-            <path class="fig-arrow" d="M570 48 569.6 104" pathLength="100"/>
-            <path class="fig-arrowhead" d="M565.2 98.5 569.6 105.5 574 98.5"/>
-            <path class="fig-arrow" d="M640 48 640.4 104" pathLength="100"/>
-            <path class="fig-arrowhead" d="M636 98.5 640.4 105.5 644.8 98.5"/>
-          </g>
-
-          <path class="fig-box" d="M400 113 790 111.5 790.8 247 400.8 248.2 400 113 400.9 109.6" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round"/>
-
-          <g class="fig-fail" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round">
-            <path d="M419 143 429 153M429 143 419 153"/>
-            <path d="M419 177 429 187M429 177 419 187"/>
-            <path d="M419 211 429 221M429 211 419 221"/>
-          </g>
-          <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)">
-            <text x="448" y="152">FINANCING MISMATCH</text>
-            <text x="448" y="186">GOVERNANCE CHURN</text>
-            <text x="448" y="220">NO LOCAL TRUST</text>
-          </g>
-
-          <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)" text-anchor="middle">
-            <text x="66" y="52">RESEARCH</text>
-            <text x="218" y="52">PROTOTYPE</text>
-            <text x="370" y="52">PILOT</text>
-            <text x="826" y="52" fill="var(--color-on-plum)">ADOPTION</text>
-          </g>
-
-          <g class="fig-hand" font-family="Kalam, cursive" font-size="20" fill="var(--color-plum)">
-            <text x="40" y="168">none of these are</text>
-            <text x="40" y="190">engineering problems</text>
-          </g>
-          <path class="fig-hand" d="M232 182 392 179" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round"/>
-          <path class="fig-hand" d="M386 174 393.5 179.2 386 184" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-
-        <svg class="spread-figure__narrow" viewBox="0 0 400 580" role="img" aria-labelledby="fig02n-title">
-          <title id="fig02n-title">Where good ideas stall on the way to adoption</title>
-
-          <g class="fig-node" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round">
-            <path d="M20 14.6 112 13.4 112.8 47.4 20.8 48.4 20 14.6 20.9 11.4"/>
-            <path d="M20 94.4 112 93.6 112.9 127.6 20.9 128.4 20 94.4 20.8 91.3"/>
-            <path d="M20 174.7 112 173.5 112.7 207.5 20.7 208.5 20 174.7 20.8 171.5"/>
-          </g>
-          <path class="fig-node fig-node--terminal" d="M20 486.5 112 485.5 112.8 519.5 20.8 520.5Z" fill="var(--color-plum)" stroke="var(--color-plum)" stroke-width="1.5"/>
-
-          <g class="fig-arrows" fill="none" stroke="var(--color-plum)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path class="fig-arrow" d="M66 48.5 65.6 87" pathLength="100"/>
-            <path class="fig-arrowhead" d="M61.4 81.4 65.6 88.5 70 81.5"/>
-            <path class="fig-arrow" d="M66 128.5 66.4 167" pathLength="100"/>
-            <path class="fig-arrowhead" d="M62 161.4 66.4 168.5 70.8 161.5"/>
-            <path class="fig-arrow" d="M66 208.5 65.6 479" pathLength="100"/>
-            <path class="fig-arrowhead" d="M61.4 473.4 65.6 480.5 70 473.5"/>
-          </g>
-
-          <g class="fig-dim" fill="none" stroke="var(--color-hairline-strong)" stroke-width="1">
-            <path d="M132 14 132 208M127 14 137 14M127 208 137 208"/>
-            <path d="M20 548 392 548M20 543 20 553M392 543 392 553"/>
-          </g>
-          <g class="fig-dim-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="11.5" letter-spacing="1.1" fill="var(--color-ink-faint)">
-            <text x="146" y="106">WHAT PROGRAMS</text>
-            <text x="146" y="124">MEASURE</text>
-            <text x="20" y="570">WHAT ACTUALLY DECIDES IT</text>
-          </g>
-
-          <g class="fig-drops" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path class="fig-arrow" d="M68 268 128 267.6" pathLength="100"/>
-            <path class="fig-arrowhead" d="M122.4 263.2 129.5 267.7 122.6 272"/>
-            <path class="fig-arrow" d="M68 318 128 317.6" pathLength="100"/>
-            <path class="fig-arrowhead" d="M122.4 313.2 129.5 317.7 122.6 322"/>
-            <path class="fig-arrow" d="M68 368 128 367.6" pathLength="100"/>
-            <path class="fig-arrowhead" d="M122.4 363.2 129.5 367.7 122.6 372"/>
-          </g>
-
-          <path class="fig-box" d="M138 240 392 238.5 392.8 394 138.8 395.2 138 240 138.9 236.6" fill="none" stroke="var(--color-ink-soft)" stroke-width="1.5" stroke-linecap="round"/>
-
-          <g class="fig-fail" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round">
-            <path d="M157 263 167 273M167 263 157 273"/>
-            <path d="M157 313 167 323M167 313 157 323"/>
-            <path d="M157 363 167 373M167 363 157 373"/>
-          </g>
-          <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)">
-            <text x="180" y="272">FINANCING</text>
-            <text x="180" y="290">MISMATCH</text>
-            <text x="180" y="322">GOVERNANCE</text>
-            <text x="180" y="340">CHURN</text>
-            <text x="180" y="372">NO LOCAL TRUST</text>
-          </g>
-
-          <g class="fig-label" font-family="Fragment Mono, ui-monospace, monospace" font-size="12.5" letter-spacing="1.2" fill="var(--color-ink)" text-anchor="middle">
-            <text x="66" y="36">RESEARCH</text>
-            <text x="66" y="116">PROTOTYPE</text>
-            <text x="66" y="196">PILOT</text>
-            <text x="66" y="508" fill="var(--color-on-plum)">ADOPTION</text>
-          </g>
-
-          <g class="fig-hand" font-family="Kalam, cursive" font-size="20" fill="var(--color-plum)">
-            <text x="150" y="432">none of these are</text>
-            <text x="150" y="454">engineering problems</text>
-          </g>
-          <path class="fig-hand" d="M160 418 156 402" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round"/>
-          <path class="fig-hand" d="M151 407 155.5 400.5 161 403.5" fill="none" stroke="var(--color-plum)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </figure>
     </div>
   </section>
 
@@ -639,12 +600,6 @@
         <p class="opener__q" data-index="04">Selected works</p>
         <a class="xref" href="work.html">All files &rarr;</a>
       </div>
-
-      <p class="prose works__intro">
-        Ideas become meaningful through action. These are some of the projects,
-        ventures, and initiatives that have shaped how I think &mdash; and continue
-        to teach me.
-      </p>
 
       <div class="works">
         <article class="work">
@@ -656,7 +611,7 @@
               energy with confidence. It&rsquo;s where I explore how technology,
               design, and trust can make climate action accessible to more people.
             </p>
-            <p class="work__proof"><strong>2</strong> installations completed &middot; <strong>5</strong> in the pipeline &middot; <strong>3</strong> verified installers</p>
+            <p class="work__proof"><span><strong>2</strong> installations completed</span><span><strong>5</strong> in the pipeline</span><span><strong>3</strong> verified installers</span></p>
             <p class="meta work__themes"><span>Climate tech</span><span>Product strategy</span><span>User experience</span><span>Entrepreneurship</span></p>
           </div>
           <aside class="annot work__annot">
@@ -667,6 +622,9 @@
           </aside>
         </article>
 <article class="work">
+          <figure class="work__plate">
+            <img src="/assets/work/dost-tapi.jpg" srcset="/assets/work/dost-tapi-700.jpg 700w, /assets/work/dost-tapi.jpg 1400w" sizes="(min-width: 860px) 40rem, 90vw" width="1400" height="1050" alt="Nine people standing together in the DOST lobby beneath a coloured DNA-helix sculpture, in front of a screen reading “MOA Orientation and Pre-implementation Meeting”." loading="lazy" decoding="async" />
+          </figure>
           <div class="work__text">
             <p class="work__name"><svg class="glyph" aria-hidden="true"><use href="#g-institution"/></svg>DOST&ndash;TAPI</p>
             <h3 class="work__tagline">Helping Filipino innovations reach the real world.</h3>
@@ -675,7 +633,7 @@
               I&rsquo;ve worked with inventors, startups, and researchers to bridge
               the gap between promising ideas and meaningful impact.
             </p>
-            <p class="work__proof"><strong>36</strong> innovation projects in portfolio &middot; over <strong>3</strong> years</p>
+            <p class="work__proof"><span><strong>36</strong> innovation projects in portfolio</span><span>over <strong>3</strong> years</span></p>
             <p class="meta work__themes"><span>Public innovation</span><span>Technology commercialization</span><span>Policy</span><span>Innovation ecosystems</span></p>
           </div>
           <aside class="annot work__annot">
@@ -687,14 +645,6 @@
         </article>
       </div>
 
-      <div class="works-also">
-        <p class="works-also__label">Also ongoing</p>
-        <ul class="works-also__list">
-          <li><strong>Rubeo Ranch</strong> &mdash; building a modern, sustainable cattle farm from the ground up.</li>
-          <li><strong>Master in Innovation &amp; Business</strong> &mdash; graduate study used as a testing ground for the ventures.</li>
-          <li><strong>Field Journal</strong> &mdash; essays, photographs and reflections from the road.</li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -707,42 +657,30 @@
 
       <div class="page-layout notes__intro">
         <p class="prose">
-          Most of my time isn&rsquo;t spent in meetings. It&rsquo;s spent reading,
-          writing, sketching ideas, and having conversations that slowly become
-          projects. These are the places, communities, and projects that continue
-          to shape how I think.
-        </p>
-        <aside class="page-note">
-          <svg class="page-note__arrow" viewBox="0 0 26 16" aria-hidden="true">
-            <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>the slow part is the real part</span>
-        </aside>
-        <p class="prose">
           Thoughts, stories, photographs, and lessons from the road &mdash; not
           polished conclusions, just snapshots of what I&rsquo;m learning along
           the way.
         </p>
       </div>
       <article class="note-lead">
-        <p class="meta"><span>Field note 001</span><span>Karnataka, India</span><span>July 2026</span></p>
-        <h3 class="note-lead__title">
-          <a href="/my-favorite-discoveries-in-India/">India wasn&rsquo;t the trip I planned, but it became one of my favorites</a>
-        </h3>
-        <p class="prose">
-          A week in Bengaluru and Mysuru, almost none of it according to plan.
-          What I learned about India came from Uber rides and living rooms, not
-          from the convention center I flew out for.
-        </p>
-        <a class="ink-link" href="/my-favorite-discoveries-in-India/">Read the India field note</a>
+        <div class="note-lead__plate">
+          <a class="note-lead__cover" href="/my-favorite-discoveries-in-India/" tabindex="-1" aria-hidden="true">
+            <img src="/assets/field-notes/india/01-cover.webp" srcset="/assets/field-notes/india/01-cover-640.webp 700w, /assets/field-notes/india/01-cover.webp 1350w" sizes="(min-width: 900px) 20rem, 70vw" width="1350" height="1350" alt="" loading="lazy" decoding="async" />
+          </a>
+        </div>
+        <div class="note-lead__body">
+          <p class="meta"><span>Field note 001</span><span>Karnataka, India</span><span>July 2026</span></p>
+          <h3 class="note-lead__title">
+            <a href="/my-favorite-discoveries-in-India/">India wasn&rsquo;t the trip I planned, but it became one of my favorites</a>
+          </h3>
+          <p class="prose">
+            A week in Bengaluru and Mysuru, almost none of it according to plan.
+            What I learned about India came from Uber rides and living rooms, not
+            from the convention center I flew out for.
+          </p>
+          <a class="ink-link" href="/my-favorite-discoveries-in-India/">Read the India field note</a>
+        </div>
       </article>
-
-      <aside class="annot notes__annot">
-        <svg class="annot__arrow" viewBox="0 0 26 16" aria-hidden="true">
-          <path d="M25 8.4C18 8 11 8.6 2.5 8.2M8 3.4 1.6 8.3 8.2 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>essays, photo essays and collections all land here</span>
-      </aside>
     </div>
   </section>
 

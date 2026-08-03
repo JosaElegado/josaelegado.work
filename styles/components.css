@@ -882,11 +882,17 @@ a.index-row:hover .index-row__arrow { transform: translateX(4px); color: var(--c
    stretched to the content with a constant pen width, so the irregularity
    reads as a hand and never as a border-radius. */
 
+/* The drawn frame sits at inset 0, so the padding is the only thing keeping
+   the sentence off the pen line. It needs more than a text block would. */
 .boxed {
   position: relative;
-  padding: var(--space-5) var(--space-6);
-  margin-block: var(--space-6);
+  padding: var(--space-7) var(--space-7);
+  margin-block: var(--space-7);
+  text-align: center;
 }
+
+/* Centred inside the box, whatever measure the statement is given. */
+.boxed > * { margin-inline: auto; }
 
 .boxed__frame {
   position: absolute;
