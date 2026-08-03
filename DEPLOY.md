@@ -78,7 +78,7 @@ removing this class of problem. Costs one GitHub-app authorisation.
 
 ## Still undecided
 
-- Contact address in the markup is `josaelegado@gmail.com` but the site serves
+- Contact address in the markup is `elegadojosa@gmail.com` but the site serves
   from `.work`. MX records point at Cloudflare Email Routing, so a
   `hello@josaelegado.work` forward is available if wanted.
 - The Wix Premium plan keeps billing until cancelled. RISE's blog content still
