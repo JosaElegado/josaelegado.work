@@ -24,6 +24,15 @@
   <!-- Image entries are declared because this entry is image-led and travel
        queries surface heavily in image search. -->
   <url>
+    <loc>https://www.josaelegado.work/first-time-travelers-guide-to-bangalore/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.josaelegado.work/assets/field-notes/bangalore/07-mysuru-palace.jpg</image:loc>
+      <image:title>Mysuru Palace, Karnataka</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.josaelegado.work/my-favorite-discoveries-in-India/</loc>
     <lastmod>2026-08-02</lastmod>
     <priority>0.9</priority>

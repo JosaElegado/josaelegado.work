@@ -231,9 +231,10 @@ body:has(.entry) {
 .plate__slot[data-artifact="Document"]         { --ratio: 3 / 4; }
 .plate__slot[data-artifact="Notebook page"]    { --ratio: 3 / 4; }
 /* A card composed elsewhere — a carousel panel, a slide, a poster. It arrives
-   square with its own type already set on it, so it is never cropped: cutting
-   a word off a card someone else laid out is worse than leaving margin. */
+   with its own type already set on it, so it is never cropped: cutting a word
+   off a card someone else laid out is worse than leaving margin. */
 .plate__slot[data-artifact="Card"]             { --ratio: 1 / 1; }
+.plate__slot[data-artifact="Card, portrait"]   { --ratio: 4 / 5; }
 
 /* Line art and paper are shown whole; photographs may be cropped to fill.
    A receipt with its edges cut off is not evidence of anything. */
@@ -243,7 +244,47 @@ body:has(.entry) {
 .plate__slot[data-artifact="Ticket"],
 .plate__slot[data-artifact="Document"],
 .plate__slot[data-artifact="Notebook page"],
-.plate__slot[data-artifact="Card"] { --fit: contain; }
+.plate__slot[data-artifact="Card"],
+.plate__slot[data-artifact="Card, portrait"] { --fit: contain; }
+
+
+/* ---- Place record ---------------------------------------------------------
+   Where a thing is and how to get to it, set as a labelled field pair rather
+   than a sentence — the same furniture as the entry masthead, because it is
+   the same kind of information: a stamp, not prose. A reader scanning for the
+   address should find it without reading the paragraph. */
+
+.place-record {
+  margin-block: var(--space-5) var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-hairline);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-2) var(--space-5);
+  align-items: baseline;
+}
+
+.place-record dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  white-space: nowrap;
+}
+
+.place-record dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--color-ink);
+}
+
+@media (max-width: 560px) {
+  .place-record { grid-template-columns: minmax(0, 1fr); gap: 2px var(--space-5); }
+  .place-record dd { margin-bottom: var(--space-3); }
+}
 
 .plate__caption {
   margin-top: var(--space-3);
