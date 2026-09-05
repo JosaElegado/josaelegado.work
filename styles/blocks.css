@@ -248,43 +248,42 @@ body:has(.entry) {
 .plate__slot[data-artifact="Card, portrait"] { --fit: contain; }
 
 
-/* ---- Place record ---------------------------------------------------------
-   Where a thing is and how to get to it, set as a labelled field pair rather
-   than a sentence — the same furniture as the entry masthead, because it is
-   the same kind of information: a stamp, not prose. A reader scanning for the
-   address should find it without reading the paragraph. */
+/* ---- Place meta -----------------------------------------------------------
+   Where a thing is and how to get to it, set as a small line directly beneath
+   the heading it belongs to — a dateline, not a table. The entry grid puts a
+   4rem row gap between every child, so this is pulled back up against its own
+   heading; without that it floats halfway to the picture and stops reading as
+   part of the title. */
 
-.place-record {
-  margin-block: var(--space-5) var(--space-6);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-hairline);
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--space-2) var(--space-5);
+.place-meta {
+  margin-top: calc(var(--space-9) * -1 + var(--space-3));
+  margin-bottom: 0;
+  max-width: none;
+  display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-}
-
-.place-record dt {
+  gap: 0 var(--space-3);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
+  font-size: 0.72rem;
+  line-height: 1.6;
   color: var(--color-ink-faint);
-  white-space: nowrap;
 }
 
-.place-record dd {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  line-height: 1.65;
-  color: var(--color-ink);
+/* The separator trails its field, so a wrapped line never opens with an
+   orphaned middot. */
+.place-meta > *:not(:last-child)::after {
+  content: "·";
+  margin-left: var(--space-3);
+  color: var(--color-hairline-strong);
 }
 
-@media (max-width: 560px) {
-  .place-record { grid-template-columns: minmax(0, 1fr); gap: 2px var(--space-5); }
-  .place-record dd { margin-bottom: var(--space-3); }
+.place-meta a {
+  color: var(--color-plum);
+  text-decoration-color: var(--color-plum-rule);
+  text-underline-offset: 3px;
 }
+
+.place-meta a:hover { text-decoration-color: var(--color-plum); }
 
 .plate__caption {
   margin-top: var(--space-3);
