@@ -334,9 +334,18 @@
    differently again; the plate's own bottom margin guarantees clear air under
    a cover even if the sibling rule is ever defeated. Two covers touching is
    the failure worth over-insuring against. */
-.note-lead + .note-lead {
-  margin-top: var(--space-11);
-  padding-top: var(--space-10);
+/* The gap lives on the container, as a grid `gap`, not as a margin between
+   siblings. A margin between two tall grid items is exactly the case where
+   collapsing, specificity and source order all get a vote; `gap` on the
+   parent has none of those failure modes — it is reserved space in the
+   parent's own layout and nothing downstream can eat it. */
+.note-list {
+  display: grid;
+  gap: var(--space-11);
+}
+
+.note-list > .note-lead + .note-lead {
+  padding-top: var(--space-9);
   border-top: 1px solid var(--color-hairline);
 }
 
