@@ -255,8 +255,12 @@ body:has(.entry) {
    heading; without that it floats halfway to the picture and stops reading as
    part of the title. */
 
-.place-meta {
-  margin-top: calc(var(--space-9) * -1 + var(--space-3));
+/* Selector is `.entry > .place-meta` rather than `.place-meta` so it outranks
+   `.entry > p`, which is what this element is. The entry grid puts 4rem
+   between every child, so almost all of that is pulled back: the line belongs
+   to the heading above it, not to the picture below. */
+.entry > .place-meta {
+  margin-top: calc(var(--space-9) * -1 + var(--space-2));
   margin-bottom: 0;
   max-width: none;
   display: flex;
