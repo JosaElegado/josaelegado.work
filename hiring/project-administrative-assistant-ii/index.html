@@ -37,7 +37,7 @@
      rows with a mono index, not bullets. Everything else is the shared system. */
   .posting { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
   @media (min-width: 900px) {
-    .posting { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: var(--space-10); align-items: start; }
+    .posting { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--space-9); align-items: start; }
     .posting__side { position: sticky; top: var(--space-6); }
   }
   .posting__lede { font-size: var(--text-md); line-height: var(--leading-relaxed); color: var(--color-ink-soft); max-width: 60ch; }
@@ -66,6 +66,8 @@
   .minreq dt { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink-faint); padding-top: 0.3em; }
   .minreq dd { margin: 0; color: var(--color-ink-soft); }
   @media (max-width: 480px) { .minreq > div { grid-template-columns: 6.5rem minmax(0, 1fr); } }
+  .posting__side-head { font-size: var(--text-xl); margin: 0 0 var(--space-2); }
+  .posting__docs { margin-top: var(--space-4); padding-top: var(--space-5); border-top: 1px solid var(--color-ink); }
   .posting__alt { font-size: var(--text-sm); color: var(--color-ink-soft); line-height: var(--leading-normal); }
   .posting__addressee { display: block; color: var(--color-ink); }
   .posting__addr { display: block; color: var(--color-ink-soft); font-size: var(--text-sm); line-height: var(--leading-normal); margin-top: var(--space-1); }
@@ -134,7 +136,7 @@
               Apply via Gmail
               <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
             </a>
-            <a class="ink-link" href="#tor">Read the terms of reference</a>
+            <a class="ink-link" href="#tor">Read the requirements and terms of reference</a>
           </div>
         </div>
         <figure class="posting__poster hero__poster">
@@ -150,8 +152,16 @@
       <div class="posting">
 
         <div class="posting__main">
+          <h2 id="tor">Minimum requirements</h2>
+          <dl class="minreq">
+            <div><dt>Education</dt><dd>Bachelor&rsquo;s degree relevant to the job</dd></div>
+            <div><dt>Experience</dt><dd>None required</dd></div>
+            <div><dt>Training</dt><dd>None required</dd></div>
+            <div><dt>Eligibility</dt><dd>None required</dd></div>
+          </dl>
 
-          <h2 id="tor">Terms of reference</h2>
+
+          <h2>Terms of reference</h2>
           <ol class="duties">
             <li><span class="duties__no">a</span><span>Coordinate with the DOST councils and implementing agencies to facilitate the liquidation of all TECHNICOM 1.0 projects.</span></li>
             <li><span class="duties__no">b</span><span>Secure financial liquidation from TAPI FAD and endorse delinquent projects to the TAPI Legal Unit.</span></li>
@@ -160,6 +170,7 @@
             <li><span class="duties__no">e</span><span>Perform other duties for the Division as the need arises.</span></li>
           </ol>
 
+
           <h2>Core functions</h2>
           <ol class="duties">
             <li><span class="duties__no">01</span><span>Develop and maintain project monitoring databases, liquidation trackers, documentation systems, and records management tools to support the M&amp;E Unit&rsquo;s project oversight and reporting functions.</span></li>
@@ -167,47 +178,18 @@
             <li><span class="duties__no">03</span><span>Design monitoring templates, project tracking tools, and data collection instruments used for monitoring commercialization progress, socioeconomic impact, and project performance.</span></li>
           </ol>
 
+
           <h2>Other functions</h2>
           <ol class="duties">
             <li><span class="duties__no">04</span><span>Coordinate with DOST Sectoral Councils, Implementing Agencies, and project proponents to facilitate project monitoring, liquidation, data validation, and timely completion of TECHNICOM 1.0 project requirements.</span></li>
             <li><span class="duties__no">05</span><span>Ensure the completeness, integrity, and compliance of project records, monitoring documentation, and liquidation files in accordance with DOST-TAPI policies and quality management requirements.</span></li>
             <li><span class="duties__no">06</span><span>Collect, validate, consolidate, and analyze project performance data and prepare technical reports, impact assessment summaries, and project analytics to support evidence-based management decisions.</span></li>
           </ol>
-
-          <h2>Minimum requirements</h2>
-          <dl class="minreq">
-            <div><dt>Education</dt><dd>Bachelor&rsquo;s degree relevant to the job</dd></div>
-            <div><dt>Experience</dt><dd>None required</dd></div>
-            <div><dt>Training</dt><dd>None required</dd></div>
-            <div><dt>Eligibility</dt><dd>None required</dd></div>
-          </dl>
-
-          <h2>Preferred qualifications</h2>
-          <ol class="duties">
-            <li><span class="duties__no">01</span><span>Knowledge of basic administrative and office management functions.</span></li>
-            <li><span class="duties__no">02</span><span>Proficient in Microsoft Office applications (Word, Excel, and PowerPoint), with strong spreadsheet skills for building trackers and databases.</span></li>
-            <li><span class="duties__no">03</span><span>Familiarity with government financial documents, liquidation reports, and records management is an advantage.</span></li>
-            <li><span class="duties__no">04</span><span>Ability to prepare reports, minutes, and data summaries, and to maintain records in an ISO-compliant filing system.</span></li>
-            <li><span class="duties__no">05</span><span>Can coordinate with multiple agencies and proponents, work with minimal supervision, and meet deadlines.</span></li>
-          </ol>
         </div>
 
         <aside class="posting__side" aria-label="How to apply">
           <div class="tipped">
-            <div>
-              <p class="posting__label">Documents to submit, until 13 September 2026</p>
-              <ol class="reqs">
-                <li><span class="duties__no">01</span><span>Application letter addressed to Atty. Marion Ivy D. Decena, CESO III, Director, DOST-TAPI, indicating the position applied for</span></li>
-                <li><span class="duties__no">02</span><span>Updated Personal Data Sheet (CSC Form 212) with recent ID picture</span></li>
-                <li><span class="duties__no">03</span><span>True copy of Transcript of Records and Diploma</span></li>
-                <li><span class="duties__no">04</span><span>Authenticated Board Rating or CSC Eligibility, if any</span></li>
-                <li><span class="duties__no">05</span><span>Copy of training certificates attended</span></li>
-                <li><span class="duties__no">06</span><span>Certificate of Employment or Service Record from current and/or previous employers</span></li>
-                <li><span class="duties__no">07</span><span>Clearance from previous employment, if applicable</span></li>
-                <li><span class="duties__no">08</span><span>NBI or Police Clearance</span></li>
-                <li><span class="duties__no">09</span><span>Performance rating in the last rating period, if applicable</span></li>
-              </ol>
-            </div>
+            <h2 class="posting__side-head">How to apply</h2>
             <dl>
               <div>
                 <dt>Address your application to</dt>
@@ -228,6 +210,22 @@
               <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
             </a>
             <p class="posting__alt">Not on Gmail? <a class="ink-link" href="mailto:meunit@tapi.dost.gov.ph?cc=josa.elegado@tapi.dost.gov.ph">Open in your mail app</a> or copy the addresses above.</p>
+            <div class="posting__docs">
+            <div>
+              <p class="posting__label">Documents to submit, until 13 September 2026</p>
+              <ol class="reqs">
+                <li><span class="duties__no">01</span><span>Application letter addressed to Atty. Marion Ivy D. Decena, CESO III, Director, DOST-TAPI, indicating the position applied for</span></li>
+                <li><span class="duties__no">02</span><span>Updated Personal Data Sheet (CSC Form 212) with recent ID picture</span></li>
+                <li><span class="duties__no">03</span><span>True copy of Transcript of Records and Diploma</span></li>
+                <li><span class="duties__no">04</span><span>Authenticated Board Rating or CSC Eligibility, if any</span></li>
+                <li><span class="duties__no">05</span><span>Copy of training certificates attended</span></li>
+                <li><span class="duties__no">06</span><span>Certificate of Employment or Service Record from current and/or previous employers</span></li>
+                <li><span class="duties__no">07</span><span>Clearance from previous employment, if applicable</span></li>
+                <li><span class="duties__no">08</span><span>NBI or Police Clearance</span></li>
+                <li><span class="duties__no">09</span><span>Performance rating in the last rating period, if applicable</span></li>
+              </ol>
+            </div>
+            </div>
           </div>
         </aside>
 
