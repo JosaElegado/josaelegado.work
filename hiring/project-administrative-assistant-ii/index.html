@@ -60,6 +60,12 @@
   .posting__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink-faint); margin: 0 0 var(--space-2); }
   .reqs > li { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: var(--space-3); padding-block: var(--space-3); border-top: 1px solid var(--color-ink-line); font-size: var(--text-md); line-height: var(--leading-normal); }
   .reqs > li:last-child { border-bottom: 1px solid var(--color-ink-line); }
+  .minreq { display: grid; gap: 0; margin-top: var(--space-5); }
+  .minreq > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: var(--space-4); padding-block: var(--space-3); border-top: 1px solid var(--color-ink-line); line-height: var(--leading-normal); }
+  .minreq > div:last-child { border-bottom: 1px solid var(--color-ink-line); }
+  .minreq dt { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink-faint); padding-top: 0.3em; }
+  .minreq dd { margin: 0; color: var(--color-ink-soft); }
+  @media (max-width: 480px) { .minreq > div { grid-template-columns: 6.5rem minmax(0, 1fr); } }
   .posting__alt { font-size: var(--text-sm); color: var(--color-ink-soft); line-height: var(--leading-normal); }
   .posting__addressee { display: block; color: var(--color-ink); }
   .posting__addr { display: block; color: var(--color-ink-soft); font-size: var(--text-sm); line-height: var(--leading-normal); margin-top: var(--space-1); }
@@ -111,6 +117,7 @@
         <div class="title-block__field"><dt>Posting</dt><dd>Urgent hiring &middot; 1 slot</dd></div>
         <div class="title-block__field"><dt>Office</dt><dd>DOST-TAPI &middot; IDD &middot; M&amp;E Unit</dd></div>
         <div class="title-block__field"><dt>Status</dt><dd>Contract of Service (COS)</dd></div>
+        <div class="title-block__field"><dt>Daily rate</dt><dd>Php 1,441.14 + 20% premium</dd></div>
         <div class="title-block__field title-block__field--wide"><dt>Deadline</dt><dd>13 September 2026</dd></div>
       </dl>
 
@@ -166,6 +173,23 @@
             <li><span class="duties__no">04</span><span>Coordinate with DOST Sectoral Councils, Implementing Agencies, and project proponents to facilitate project monitoring, liquidation, data validation, and timely completion of TECHNICOM 1.0 project requirements.</span></li>
             <li><span class="duties__no">05</span><span>Ensure the completeness, integrity, and compliance of project records, monitoring documentation, and liquidation files in accordance with DOST-TAPI policies and quality management requirements.</span></li>
             <li><span class="duties__no">06</span><span>Collect, validate, consolidate, and analyze project performance data and prepare technical reports, impact assessment summaries, and project analytics to support evidence-based management decisions.</span></li>
+          </ol>
+
+          <h2>Minimum requirements</h2>
+          <dl class="minreq">
+            <div><dt>Education</dt><dd>Bachelor&rsquo;s degree relevant to the job</dd></div>
+            <div><dt>Experience</dt><dd>None required</dd></div>
+            <div><dt>Training</dt><dd>None required</dd></div>
+            <div><dt>Eligibility</dt><dd>None required</dd></div>
+          </dl>
+
+          <h2>Preferred qualifications</h2>
+          <ol class="duties">
+            <li><span class="duties__no">01</span><span>Knowledge of basic administrative and office management functions.</span></li>
+            <li><span class="duties__no">02</span><span>Proficient in Microsoft Office applications (Word, Excel, and PowerPoint), with strong spreadsheet skills for building trackers and databases.</span></li>
+            <li><span class="duties__no">03</span><span>Familiarity with government financial documents, liquidation reports, and records management is an advantage.</span></li>
+            <li><span class="duties__no">04</span><span>Ability to prepare reports, minutes, and data summaries, and to maintain records in an ISO-compliant filing system.</span></li>
+            <li><span class="duties__no">05</span><span>Can coordinate with multiple agencies and proponents, work with minimal supervision, and meet deadlines.</span></li>
           </ol>
         </div>
 
