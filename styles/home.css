@@ -308,18 +308,30 @@
 
 .note-lead__cover { display: block; }
 
-/* Square by default, because the first card was drawn square — but the ratio
-   is a variable, because the second entry's cover is a 4:5 portrait. Getting
-   this wrong does not crop, it stretches: an <img> with a fixed aspect-ratio
-   and the default `object-fit: fill` squashes whatever it is given. The
-   hairline keeps the pale paper edge of the card from bleeding into the
+/* No `aspect-ratio` at all. It was here to reserve space before the image
+   loaded, but the <img> carries width and height attributes, so the browser
+   already knows the shape and reserves it. Declaring a ratio only creates a
+   second source of truth that can disagree with the file — which is exactly
+   what happened when a 4:5 cover met a hardcoded square and got squashed.
+   Intrinsic dimensions cannot be wrong.
+
+   The hairline keeps the pale paper edge of the card from bleeding into the
    page's own paper. */
 .note-lead__cover img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: var(--cover-ratio, 1);
   border: 1px solid var(--color-hairline);
+}
+
+/* Two entries needed a gap between them; there was only ever one before, so
+   nothing had asked for it. Generous, because each entry is a cover plus a
+   headline plus a paragraph — too little air and the next cover reads as
+   belonging to the paragraph above it. */
+.note-lead + .note-lead {
+  margin-top: var(--space-11);
+  padding-top: var(--space-10);
+  border-top: 1px solid var(--color-hairline);
 }
 
 .note-lead__title {
