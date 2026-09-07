@@ -50,14 +50,16 @@
   .duties > li:last-child { border-bottom: 1px solid var(--color-ink-line); }
   .duties__no { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink-faint); padding-top: 0.35em; }
   .posting h2 { margin-top: var(--space-9); }
-  .posting h2:first-of-type { margin-top: 0; }
+  .posting h2:first-child { margin-top: 0; }
   .posting__side .tipped { display: grid; gap: var(--space-5); }
   .posting__side .tipped p { max-width: none; margin: 0; line-height: var(--rule-pitch); }
   .posting__side dl { display: grid; gap: var(--space-4); margin: 0; }
   .posting__side dt { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink-faint); margin-bottom: 2px; }
   .posting__side dd { margin: 0; line-height: var(--rule-pitch); }
   .posting__side dd a { color: var(--color-eggplant); }
-  .posting__deadline { font-family: var(--font-display); font-optical-sizing: auto; font-size: var(--text-xl); line-height: var(--leading-tight); }
+  .posting__deadline { font-family: var(--font-display); font-optical-sizing: auto; font-size: var(--text-xl); line-height: 1.22; letter-spacing: 0; text-wrap: balance; max-width: 22ch; }
+  .posting__addressee { display: block; color: var(--color-ink); }
+  .posting__addr { display: block; color: var(--color-ink-soft); font-size: var(--text-sm); line-height: var(--leading-normal); margin-top: var(--space-1); }
   .posting__note { font-family: var(--font-hand); color: var(--color-eggplant); font-size: var(--text-md); }
   .posting__poster { margin: var(--space-6) 0 0; }
   .posting__poster img { display: block; width: 100%; height: auto; border: 1px solid var(--color-hairline); }
@@ -76,7 +78,6 @@
     <a class="wordmark" href="/" aria-label="Josa Elegado — home">Josa Elegado<span class="wordmark__mark">.</span></a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
-        <li><a href="/work/">The Work</a></li>
         <li><a href="/field-notes/">Field Notes</a></li>
         <li><a href="/lets-build/" class="site-nav__cta">Let&rsquo;s work together</a></li>
       </ul>
@@ -91,7 +92,6 @@
 <nav id="mobile-nav" class="mobile-nav" aria-label="Table of contents">
   <p class="mobile-nav__label">Index</p>
   <ol>
-    <li><a href="/work/">The Work</a></li>
     <li><a href="/field-notes/">Field Notes</a></li>
     <li><a href="/lets-build/">Let&rsquo;s work together</a></li>
   </ol>
@@ -117,7 +117,7 @@
             until <strong>September 13, 2026</strong>.
           </p>
           <div class="hero__actions">
-            <a class="btn btn--solid" href="mailto:meunit@tapi.dost.gov.ph?cc=josa.elegado@tapi.dost.gov.ph&amp;subject=Application%3A%20Project%20Administrative%20Assistant%20II%20(M%26E%20Unit)">
+            <a class="btn btn--solid" href="mailto:meunit@tapi.dost.gov.ph?cc=josa.elegado@tapi.dost.gov.ph">
               Apply by email
               <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
             </a>
@@ -133,19 +133,6 @@
       <div class="posting">
 
         <div class="posting__main">
-          <div class="opener">
-            <p class="opener__q" data-index="01">The post</p>
-            <p class="meta"><span>Monitoring &amp; Evaluation Unit</span><span>Invention Development Division</span></p>
-          </div>
-
-          <p class="posting__lede">
-            The M&amp;E Unit tracks what happens to TECHNICOM 1.0 projects after
-            funding: whether they close out properly, whether the money is
-            liquidated, and whether the technology actually reached a market.
-            This post keeps that machinery running: the trackers, the records,
-            the coordination with councils and implementing agencies, and the
-            first read on how close a project is to commercialization.
-          </p>
 
           <h2 id="tor">Terms of reference</h2>
           <ol class="duties">
@@ -173,12 +160,11 @@
 
         <aside class="posting__side" aria-label="How to apply">
           <div class="tipped">
-            <p class="meta"><span>How to apply</span><span>Until 13 Sep 2026</span></p>
             <p class="posting__deadline">Send your cover letter, Personal Data Sheet, and diploma.</p>
             <dl>
               <div>
                 <dt>Address your application to</dt>
-                <dd>Atty. Marion Ivy D. Decena, CESO III<br />Director, TAPI<br />DOST Compound, General Santos Avenue<br />Bicutan, Taguig City</dd>
+                <dd><span class="posting__addressee">Atty. Marion Ivy D. Decena, CESO III</span><span class="posting__addr">Director, TAPI</span><span class="posting__addr">DOST Compound, General Santos Avenue<br />Bicutan, Taguig City</span></dd>
               </div>
               <div>
                 <dt>Submit by email to</dt>
@@ -190,7 +176,7 @@
               </div>
             </dl>
             <p class="posting__note">Only applicants with complete requirements will be considered for preliminary screening.</p>
-            <a class="btn btn--solid" href="mailto:meunit@tapi.dost.gov.ph?cc=josa.elegado@tapi.dost.gov.ph&amp;subject=Application%3A%20Project%20Administrative%20Assistant%20II%20(M%26E%20Unit)">
+            <a class="btn btn--solid" href="mailto:meunit@tapi.dost.gov.ph?cc=josa.elegado@tapi.dost.gov.ph">
               Apply by email
               <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
             </a>
@@ -215,7 +201,6 @@
     </p>
 
     <nav class="site-footer__chapters" aria-label="Chapters">
-      <a href="/work/">The Work</a>
       <a href="/field-notes/">Field Notes</a>
       <a href="/lets-build/">Let&rsquo;s work together</a>
     </nav>

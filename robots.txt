@@ -6,5 +6,6 @@ Disallow: /type-specimen.html
 Disallow: /style-guide.html
 Disallow: /story/
 Disallow: /timeline/
+Disallow: /work/
 
 Sitemap: https://www.josaelegado.work/sitemap.xml
