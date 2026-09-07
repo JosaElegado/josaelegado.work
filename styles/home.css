@@ -341,25 +341,18 @@
    parent's own layout and nothing downstream can eat it. */
 .note-list {
   display: grid;
-  gap: var(--space-11);
+  gap: var(--space-7);
 }
 
 .note-list > .note-lead + .note-lead {
-  padding-top: var(--space-9);
+  padding-top: var(--space-6);
   border-top: 1px solid var(--color-hairline);
 }
 
-.note-lead__plate { margin-bottom: var(--space-6); }
+.note-lead__plate { margin: 0; }
 
 /* Stacked, the cover and the words below it need their own separation, and
    the next entry needs more than that again. */
-@media (max-width: 900px) {
-  .note-lead + .note-lead {
-    margin-top: var(--space-10);
-    padding-top: var(--space-8);
-  }
-}
-
 .note-lead__title {
   font-size: var(--text-lg);
   max-width: 26ch;
