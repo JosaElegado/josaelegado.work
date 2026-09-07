@@ -61,7 +61,11 @@
   .posting__addressee { display: block; color: var(--color-ink); }
   .posting__addr { display: block; color: var(--color-ink-soft); font-size: var(--text-sm); line-height: var(--leading-normal); margin-top: var(--space-1); }
   .posting__note { font-family: var(--font-hand); color: var(--color-eggplant); font-size: var(--text-md); }
-  .posting__poster { margin: var(--space-6) 0 0; }
+  .hero__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8); align-items: start; }
+  @media (min-width: 900px) { .hero__grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--space-10); } }
+  .posting__poster { margin: 0; }
+  .hero__poster { max-width: 32rem; justify-self: end; }
+  @media (max-width: 899px) { .hero__poster { justify-self: start; max-width: 24rem; } }
   .posting__poster img { display: block; width: 100%; height: auto; border: 1px solid var(--color-hairline); }
   .posting__poster figcaption { margin-top: var(--space-2); }
 </style>
@@ -124,6 +128,10 @@
             <a class="ink-link" href="#tor">Read the terms of reference</a>
           </div>
         </div>
+        <figure class="posting__poster hero__poster">
+          <img src="/assets/hiring/paa2-poster-700.jpg" width="700" height="875" alt="DOST-TAPI Invention Development Division poster: We're looking for a Project Administrative Assistant II, Monitoring and Evaluation Unit. Send your cover letter, Personal Data Sheet and diploma to meunit@tapi.dost.gov.ph, cc josa.elegado@tapi.dost.gov.ph." decoding="async" />
+          <figcaption class="meta"><span>Poster</span><span>DOST-TAPI IDD</span><span>Sep 2026</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -181,11 +189,6 @@
               <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
             </a>
           </div>
-
-          <figure class="posting__poster">
-            <img src="/assets/hiring/paa2-poster-700.jpg" width="700" height="875" alt="DOST-TAPI Invention Development Division poster: We're looking for a Project Administrative Assistant II, Monitoring and Evaluation Unit. Send your cover letter, Personal Data Sheet and diploma to meunit@tapi.dost.gov.ph, cc josa.elegado@tapi.dost.gov.ph." loading="lazy" decoding="async" />
-            <figcaption class="meta"><span>Poster</span><span>DOST-TAPI IDD</span><span>Sep 2026</span></figcaption>
-          </figure>
         </aside>
 
       </div>
