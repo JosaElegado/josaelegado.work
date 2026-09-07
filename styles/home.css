@@ -304,7 +304,7 @@
   max-width: 44rem;
 }
 
-.note-lead__plate { margin: 0; }
+
 
 .note-lead__cover { display: block; }
 
@@ -327,11 +327,28 @@
 /* Two entries needed a gap between them; there was only ever one before, so
    nothing had asked for it. Generous, because each entry is a cover plus a
    headline plus a paragraph — too little air and the next cover reads as
-   belonging to the paragraph above it. */
+   belonging to the paragraph above it.
+
+   The space is stated three ways on purpose. A margin between siblings is the
+   obvious rule, but margins collapse and a grid child's margin behaves
+   differently again; the plate's own bottom margin guarantees clear air under
+   a cover even if the sibling rule is ever defeated. Two covers touching is
+   the failure worth over-insuring against. */
 .note-lead + .note-lead {
   margin-top: var(--space-11);
   padding-top: var(--space-10);
   border-top: 1px solid var(--color-hairline);
+}
+
+.note-lead__plate { margin-bottom: var(--space-6); }
+
+/* Stacked, the cover and the words below it need their own separation, and
+   the next entry needs more than that again. */
+@media (max-width: 900px) {
+  .note-lead + .note-lead {
+    margin-top: var(--space-10);
+    padding-top: var(--space-8);
+  }
 }
 
 .note-lead__title {
