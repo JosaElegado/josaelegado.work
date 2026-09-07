@@ -68,6 +68,7 @@
   @media (max-width: 480px) { .minreq > div { grid-template-columns: 6.5rem minmax(0, 1fr); } }
   .posting__side-head { font-size: var(--text-xl); margin: 0 0 var(--space-2); }
   .posting__docs { margin-top: var(--space-4); padding-top: var(--space-5); border-top: 1px solid var(--color-ink); }
+  .posting__sublabel { font-family: var(--font-hand); color: var(--color-eggplant); font-size: var(--text-md); margin: var(--space-4) 0 var(--space-1); }
   .posting__alt { font-size: var(--text-sm); color: var(--color-ink-soft); line-height: var(--leading-normal); }
   .posting__addressee { display: block; color: var(--color-ink); }
   .posting__addr { display: block; color: var(--color-ink-soft); font-size: var(--text-sm); line-height: var(--leading-normal); margin-top: var(--space-1); }
@@ -213,16 +214,20 @@
             <div class="posting__docs">
             <div>
               <p class="posting__label">Documents to submit, until 13 September 2026</p>
+              <p class="posting__sublabel">Required</p>
               <ol class="reqs">
                 <li><span class="duties__no">01</span><span>Application letter addressed to Atty. Marion Ivy D. Decena, CESO III, Director, DOST-TAPI, indicating the position applied for</span></li>
                 <li><span class="duties__no">02</span><span>Updated Personal Data Sheet (CSC Form 212) with recent ID picture</span></li>
                 <li><span class="duties__no">03</span><span>True copy of Transcript of Records and Diploma</span></li>
-                <li><span class="duties__no">04</span><span>Authenticated Board Rating or CSC Eligibility, if any</span></li>
+              </ol>
+              <p class="posting__sublabel">If applicable</p>
+              <ol class="reqs">
+                <li><span class="duties__no">04</span><span>Authenticated Board Rating or CSC Eligibility</span></li>
                 <li><span class="duties__no">05</span><span>Copy of training certificates attended</span></li>
                 <li><span class="duties__no">06</span><span>Certificate of Employment or Service Record from current and/or previous employers</span></li>
-                <li><span class="duties__no">07</span><span>Clearance from previous employment, if applicable</span></li>
+                <li><span class="duties__no">07</span><span>Clearance from previous employment</span></li>
                 <li><span class="duties__no">08</span><span>NBI or Police Clearance</span></li>
-                <li><span class="duties__no">09</span><span>Performance rating in the last rating period, if applicable</span></li>
+                <li><span class="duties__no">09</span><span>Performance rating in the last rating period</span></li>
               </ol>
             </div>
             </div>
