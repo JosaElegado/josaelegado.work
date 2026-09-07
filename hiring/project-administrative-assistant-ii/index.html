@@ -57,7 +57,10 @@
   .posting__side dt { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink-faint); margin-bottom: 2px; }
   .posting__side dd { margin: 0; line-height: var(--rule-pitch); }
   .posting__side dd a { color: var(--color-eggplant); }
-  .posting__deadline { font-family: var(--font-display); font-optical-sizing: auto; font-size: var(--text-xl); line-height: 1.22; letter-spacing: 0; text-wrap: balance; max-width: 22ch; }
+  .posting__label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-ink-faint); margin: 0 0 var(--space-2); }
+  .reqs > li { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: var(--space-3); padding-block: var(--space-3); border-top: 1px solid var(--color-ink-line); font-size: var(--text-md); line-height: var(--leading-normal); }
+  .reqs > li:last-child { border-bottom: 1px solid var(--color-ink-line); }
+  .posting__alt { font-size: var(--text-sm); color: var(--color-ink-soft); line-height: var(--leading-normal); }
   .posting__addressee { display: block; color: var(--color-ink); }
   .posting__addr { display: block; color: var(--color-ink-soft); font-size: var(--text-sm); line-height: var(--leading-normal); margin-top: var(--space-1); }
   .posting__note { font-family: var(--font-hand); color: var(--color-eggplant); font-size: var(--text-md); }
@@ -121,8 +124,8 @@
             until <strong>September 13, 2026</strong>.
           </p>
           <div class="hero__actions">
-            <a class="btn btn--solid" href="mailto:meunit@tapi.dost.gov.ph?cc=josa.elegado@tapi.dost.gov.ph">
-              Apply by email
+            <a class="btn btn--solid" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meunit@tapi.dost.gov.ph&amp;cc=josa.elegado@tapi.dost.gov.ph&amp;su=Application%3A%20Project%20Administrative%20Assistant%20II" target="_blank" rel="noopener">
+              Apply via Gmail
               <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
             </a>
             <a class="ink-link" href="#tor">Read the terms of reference</a>
@@ -168,7 +171,14 @@
 
         <aside class="posting__side" aria-label="How to apply">
           <div class="tipped">
-            <p class="posting__deadline">Send your cover letter, Personal Data Sheet, and diploma.</p>
+            <div>
+              <p class="posting__label">Send these three, until 13 September 2026</p>
+              <ol class="reqs">
+                <li><span class="duties__no">01</span><span>Cover letter</span></li>
+                <li><span class="duties__no">02</span><span>Personal Data Sheet (CSC Form 212)</span></li>
+                <li><span class="duties__no">03</span><span>Diploma</span></li>
+              </ol>
+            </div>
             <dl>
               <div>
                 <dt>Address your application to</dt>
@@ -184,10 +194,11 @@
               </div>
             </dl>
             <p class="posting__note">Only applicants with complete requirements will be considered for preliminary screening.</p>
-            <a class="btn btn--solid" href="mailto:meunit@tapi.dost.gov.ph?cc=josa.elegado@tapi.dost.gov.ph">
-              Apply by email
+            <a class="btn btn--solid" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=meunit@tapi.dost.gov.ph&amp;cc=josa.elegado@tapi.dost.gov.ph&amp;su=Application%3A%20Project%20Administrative%20Assistant%20II" target="_blank" rel="noopener">
+              Apply via Gmail
               <svg class="btn__arrow" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
             </a>
+            <p class="posting__alt">Not on Gmail? <a class="ink-link" href="mailto:meunit@tapi.dost.gov.ph?cc=josa.elegado@tapi.dost.gov.ph">Open in your mail app</a> or copy the addresses above.</p>
           </div>
         </aside>
 
