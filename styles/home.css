@@ -291,10 +291,15 @@
    the :has() rule below drops the block back to the single text column it
    shipped with, at its original measure. */
 
+/* The cover is a thumbnail in an index, not a plate in an entry. At 20rem a
+   portrait card stands 400px tall next to a three-line summary, which leaves
+   a void beside the text and makes any gap between entries read as either
+   cramped or cavernous. At 15rem the entry is about as tall as its own words,
+   and a modest gap is then all the separation it needs. */
 .note-lead {
   display: grid;
-  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
-  gap: var(--space-6) var(--space-9);
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: var(--space-6) var(--space-8);
   align-items: start;
   max-width: 60rem;
 }
@@ -341,13 +346,12 @@
    parent's own layout and nothing downstream can eat it. */
 .note-list {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-8);
 }
 
-.note-list > .note-lead + .note-lead {
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-hairline);
-}
+/* No rule between entries. A hairline needs air on both sides to look
+   deliberate, and that air was most of what read as too much space — the
+   separation is doing its job on its own. */
 
 .note-lead__plate { margin: 0; }
 
@@ -371,7 +375,7 @@
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-6);
   }
-  .note-lead__plate { max-width: 20rem; }
+  .note-lead__plate { max-width: 15rem; }
 }
 
 /* ---- Theme glyph ----
