@@ -89,7 +89,7 @@ ul, ol { padding: 0; margin: 0; list-style: none; }
 
 /* ---- Typography ---- */
 
-/* Bodoni is display type: it lives large, where its hairlines are the point.
+/* Newsreader is display type here: it lives large, at 28px and up.
    Optical sizing does the work of keeping it from getting brittle. */
 h1, h2, h3 {
   font-family: var(--font-display);

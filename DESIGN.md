@@ -31,12 +31,25 @@ Everything else is neutral. If plum is doing more than one job in a viewport,
 remove one.
 
 **Type — five faces, five jobs.**
-- **Bodoni Moda** — headings, and statements short enough to take in at a
+- **Newsreader** — headings, and statements short enough to take in at a
   glance (one or two lines, ≥20px). Never a paragraph: a seven-line block of
-  Bodoni is elegant and tiring, so lead paragraphs stay in the reading face and
-  get their emphasis from size. A didone chosen for construction, not fashion —
-  Bodoni built letters mathematically, which is the right ancestor for an
-  engineer's page. Optical sizing on.
+  display serif is elegant and tiring, so lead paragraphs stay in the reading
+  face and get their emphasis from size.
+
+  *It replaced Bodoni Moda in Sept 2026.* Bodoni was chosen for construction
+  rather than fashion — Bodoni built letters mathematically, which is the
+  right ancestor for an engineer's page — but it is a didone, and its
+  optical-size axis thins the hairlines as the type grows. With
+  `font-optical-sizing: auto`, a 90px heading used the display cut and the
+  thin strokes rendered near 1px and dropped out. The typeface was doing what
+  it was drawn to do; it was the wrong instruction for a screen. Newsreader
+  is drawn for screens, carries moderate stroke contrast, and has no hairline
+  to lose at any size. Optical sizing stays on.
+
+  *If a replacement is ever proposed:* the test is the longest real headline
+  on the site — "Project Administrative Assistant II" at the hero size — not
+  a specimen word. Judge the thin strokes on the capitals.
+
 - **Fragment Mono** — everything else that is read: body copy, interface, and
   the page's own voice (title-block fields, dates, stage labels, figure
   numbers). Reading text and metadata share a face on purpose — the page reads

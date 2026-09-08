@@ -51,9 +51,12 @@
 
   /* ---- Typography ----
      Five faces, five jobs.
-     Bodoni Moda — display only, >=28px. Chosen for construction, not
-       fashion: Bodoni drew letters mathematically, which is the right
-       ancestor for an engineer's page.
+     Newsreader — display only, >=28px. Replaced Bodoni Moda, which was
+       chosen for construction rather than fashion but is a didone: its
+       optical-size axis thins the hairlines as the type grows, so at 90px
+       the thin strokes rendered near 1px and dropped out. Newsreader was
+       drawn for screens and carries moderate stroke contrast, so there is
+       no hairline to lose at any size. It keeps its own optical sizing.
      Libre Franklin — body and interface. Franklin Gothic lineage, the
        American editorial and technical-drawing workhorse. Invisible.
      Fragment Mono — the page's own voice: title-block fields, dates, stage
@@ -61,7 +64,7 @@
      Kalam — the everyday hand. Margin notes and sketch labels, a dozen
        words at a time. Never body copy, never navigation, never large.
      La Belle Aurore — the pen. One written line on one page; --font-script. */
-  --font-display: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
   /* Reading text is set in the same monospace as the metadata: the whole page
      reads as something typed into a log rather than published at you. The two
      stay separate tokens so body can be reverted without touching metadata.
@@ -77,8 +80,8 @@
   --font-script: "La Belle Aurore", "Snell Roundhand", cursive;
   --font-reading-fallback: "Libre Franklin", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Bodoni carries its own optical sizing; nothing extra to dial in. Kept
-     as a token because existing surfaces reference it. */
+  /* Newsreader carries its own optical sizing; nothing extra to dial in.
+     Kept as a token because existing surfaces reference it. */
   --serif-personality: normal;
 
   --text-xs:   clamp(0.70rem, 0.68rem + 0.10vw, 0.76rem);
@@ -100,7 +103,10 @@
   --leading-normal: 1.55;
   --leading-relaxed: 1.75;
 
-  --tracking-tight: -0.015em;   /* didones do not want to be crushed */
+  /* Was -0.015em, set for a didone. Newsreader sets a little wider and has
+     a larger x-height, so it takes slightly more negative tracking at display
+     size without looking crushed. */
+  --tracking-tight: -0.019em;
   --tracking-normal: 0;
   --tracking-wide: 0.06em;
   --tracking-wider: 0.13em;

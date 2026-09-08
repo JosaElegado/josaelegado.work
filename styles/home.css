@@ -22,8 +22,8 @@
 
 /* ---- The thesis ---- */
 
-/* Ramps faster than the global display step so Bodoni's hairlines are not
-   pushed against the page margin on a phone. */
+/* Ramps faster than the global display step so the heading is not pushed
+   against the page margin on a phone. */
 .hero__thesis {
   font-size: clamp(2.1rem, 1.1rem + 4.2vw, 4.4rem);
   line-height: 1.04;
@@ -578,7 +578,7 @@
 }
 
 /* Set in the display face rather than the page's mono: a roman numeral in
-   Bodoni is the one piece of real card grammar available without inventing
+   The display serif is the one piece of real card grammar available without inventing
    ornament, and it is the whimsy this section is allowed. */
 .problems__numeral {
   margin: 0;
