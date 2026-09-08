@@ -9,10 +9,15 @@
    ========================================================================== */
 
 :root {
-  /* ---- Paper — warm white, not yellow, not aged ----------------------- */
-  --color-paper: #faf8f4;          /* the page itself */
-  --color-paper-raised: #fefdfb;   /* a fresh sheet laid on the pad */
-  --color-paper-sunk: #f2efe9;     /* a recessed band, quieter than the page */
+  /* ---- Paper — warm white, not yellow, not aged -----------------------
+     The page moved up to #fefdfb, which used to be the raised value. The
+     other two moved with it: three surfaces that only mean anything relative
+     to each other, so raising the page without raising the rest would have
+     flattened plates, tipped sheets and every FPO slot into the background.
+     Raised is now plain white — the only step left above the new page. */
+  --color-paper: #fefdfb;          /* the page itself */
+  --color-paper-raised: #ffffff;   /* a fresh sheet laid on the pad */
+  --color-paper-sunk: #f4f1eb;     /* a recessed band, quieter than the page */
 
   /* ---- Ink — graphite, faintly cool against warm paper ---------------- */
   --color-ink: #22242a;            /* body + headings          14.5:1 */
@@ -21,7 +26,10 @@
 
   /* Ruled lines and hairlines. The rule is the faintest mark on the page:
      you should notice it only when you go looking for it. */
-  --color-rule: rgba(34, 36, 42, 0.055);   /* notebook ruling */
+  /* The ruling reads stronger on lighter paper — same ink, more contrast
+     beneath it — so it comes down as the page goes up. It is meant to be
+     legible only on close inspection. */
+  --color-rule: rgba(34, 36, 42, 0.035);   /* notebook ruling */
   --color-hairline: rgba(34, 36, 42, 0.13); /* structural rules, borders */
   --color-hairline-strong: rgba(34, 36, 42, 0.24);
 
