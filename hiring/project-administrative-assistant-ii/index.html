@@ -70,9 +70,6 @@
   .posting__docs { margin-top: var(--space-4); padding-top: var(--space-5); border-top: 1px solid var(--color-ink); }
   .posting__sublabel { font-family: var(--font-hand); color: var(--color-eggplant); font-size: var(--text-md); margin: var(--space-4) 0 var(--space-1); }
   .urgent { display: inline-flex; align-items: center; gap: var(--space-3); margin: 0 0 var(--space-5); padding: var(--space-2) var(--space-4); font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-on-plum); background: var(--color-eggplant); max-width: none; }
-  .urgent__dot { width: 0.5em; height: 0.5em; border-radius: 50%; background: currentColor; animation: urgent-pulse 1.6s ease-in-out infinite; }
-  @keyframes urgent-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
-  @media (prefers-reduced-motion: reduce) { .urgent__dot { animation: none; } }
   .hero { padding-top: var(--space-9); }
   .posting__alt { font-size: var(--text-sm); color: var(--color-ink-soft); line-height: var(--leading-normal); }
   .posting__addressee { display: block; color: var(--color-ink); }
@@ -126,7 +123,7 @@
 
       <div class="hero__grid">
         <div class="hero__text">
-          <p class="urgent"><span class="urgent__dot" aria-hidden="true"></span>Urgent hiring &middot; DOST-TAPI IDD, M&amp;E Unit</p>
+          <p class="urgent">Urgent hiring</p>
           <h1 class="hero__thesis">Project Administrative Assistant II</h1>
           <p class="hero__lede">
             The DOST-TAPI Invention Development Division, Monitoring and
@@ -241,10 +238,6 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p class="site-footer__status">
-      <span class="status-dot" aria-hidden="true"></span>
-      Manila &middot; DOST-TAPI posting &middot; Open until 13 Sep 2026
-    </p>
 
     <nav class="site-footer__chapters" aria-label="Chapters">
       <a href="/hiring/project-administrative-assistant-ii/">Urgent Hiring</a>
